@@ -7,6 +7,7 @@ import { Toaster } from "./components/ui/sonner";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import FloatingCTA from "./components/FloatingCTA";
+import FloatingLeadForm from "./components/FloatingLeadForm";
 
 // Page Components
 import HomePage from "./pages/HomePage";
@@ -17,6 +18,7 @@ import TestimonialsPage from "./pages/TestimonialsPage";
 import ProcessPage from "./pages/ProcessPage";
 import ContactPage from "./pages/ContactPage";
 import EstimatePage from "./pages/EstimatePage";
+import MaterialsPage from "./pages/MaterialsPage";
 
 // Layout wrapper component
 const Layout = ({ children }) => {
