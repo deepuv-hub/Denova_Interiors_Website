@@ -89,9 +89,6 @@ const Footer = () => {
                     <a href={`tel:${companyInfo.primaryPhone}`} className="text-gray-300 hover:text-[#C8A35F] transition-colors block">
                       {companyInfo.primaryPhone}
                     </a>
-                    <a href={`tel:${companyInfo.secondaryPhone}`} className="text-gray-400 hover:text-[#C8A35F] transition-colors text-sm">
-                      {companyInfo.secondaryPhone}
-                    </a>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
