@@ -59,8 +59,11 @@ const Header = () => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex flex-col">
-              <span className="text-2xl md:text-3xl font-bold text-[#1F1F1F]" style={{ fontFamily: 'Playfair Display, serif' }}>
-                Denova<span className="text-[#C8A35F]">.</span>
+              <span className="text-2xl md:text-3xl font-bold text-[#1F1F1F] flex items-baseline" style={{ fontFamily: 'Playfair Display, serif' }}>
+                Denov<span className="text-[#C8A35F] relative inline-block">
+                  A
+                  <span className="absolute -top-2 left-1/2 -translate-x-1/2 text-[10px] text-[#C8A35F]">▲</span>
+                </span><span className="text-[#C8A35F]">.</span>
               </span>
               <span className="text-xs text-[#777777] -mt-1">Interiors</span>
             </Link>
