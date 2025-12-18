@@ -15,11 +15,8 @@ const Footer = () => {
             {/* Company Info */}
             <div>
               <div className="mb-6">
-                <span className="text-3xl font-bold flex items-baseline" style={{ fontFamily: 'Playfair Display, serif' }}>
-                  Denov<span className="text-[#C8A35F] relative inline-block">
-                    A
-                    <span className="absolute -top-2 left-1/2 -translate-x-1/2 text-[10px] text-[#C8A35F]">▲</span>
-                  </span><span className="text-[#C8A35F]">.</span>
+                <span className="text-3xl font-bold" style={{ fontFamily: 'Playfair Display, serif' }}>
+                  Denova<span className="text-[#C8A35F]">.</span>
                 </span>
                 <span className="text-sm text-gray-400 block">Interiors</span>
               </div>
