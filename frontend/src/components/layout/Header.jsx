@@ -101,11 +101,8 @@ const Header = () => {
               <SheetContent side="right" className="w-[300px] sm:w-[350px]">
                 <div className="flex flex-col h-full py-6">
                   <div className="mb-8">
-                    <span className="text-2xl font-bold text-[#1F1F1F] flex items-baseline" style={{ fontFamily: 'Playfair Display, serif' }}>
-                      Denov<span className="text-[#C8A35F] relative inline-block">
-                        A
-                        <span className="absolute -top-2 left-1/2 -translate-x-1/2 text-[8px] text-[#C8A35F]">▲</span>
-                      </span><span className="text-[#C8A35F]">.</span>
+                    <span className="text-2xl font-bold text-[#1F1F1F]" style={{ fontFamily: 'Playfair Display, serif' }}>
+                      Denova<span className="text-[#C8A35F]">.</span>
                     </span>
                     <span className="text-xs text-[#777777] block">Interiors</span>
                   </div>
