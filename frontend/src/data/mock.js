@@ -155,7 +155,7 @@ export const testimonials = [
     rating: 5,
     text: "Our old house looks brand new after the renovation. The team was courteous, punctual, and delivered exactly what was promised.",
     projectType: "Home Renovation",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80"
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&q=80"
   }
 ];
 
