@@ -160,7 +160,9 @@ const EstimatePage = () => {
                       <SelectValue placeholder="Select scope" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="modular">Modular Kitchen & Wardrobes Only</SelectItem>
+                      <SelectItem value="kitchen">Modular Kitchen Only</SelectItem>
+                      <SelectItem value="wardrobe">Wardrobes Only</SelectItem>
+                      <SelectItem value="modular">Modular Kitchen & Wardrobes</SelectItem>
                       <SelectItem value="full">Full Home Interior</SelectItem>
                       <SelectItem value="premium">Premium Full Home + Civil Work</SelectItem>
                     </SelectContent>
