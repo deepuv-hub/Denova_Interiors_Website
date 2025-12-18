@@ -3,9 +3,8 @@
 export const companyInfo = {
   name: "Denova Interiors",
   tagline: "A division of Denova Creations",
-  primaryPhone: "+91 9164011181",
-  secondaryPhone: "+91 9591039597",
-  email: "info@denovainteriors.com",
+  primaryPhone: "+91 99643 55525",
+  email: "admin@denovacreations.com",
   address: "373/2, Begur – Hulimavu Rd, Opp. Rejoice Apartment, Classic Paradise Layout, Begur, Bengaluru, Karnataka 560114",
   serviceArea: "Bengaluru (all zones) and nearby locations",
   rating: 4.9,
