@@ -1,39 +1,32 @@
-import { useEffect } from "react";
-import "@/App.css";
+import React from "react";
+import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import { Toaster } from "./components/ui/sonner";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+// Layout Components
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+import FloatingCTA from "./components/FloatingCTA";
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
+// Page Components
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import ServicesPage from "./pages/ServicesPage";
+import ProjectsPage from "./pages/ProjectsPage";
+import TestimonialsPage from "./pages/TestimonialsPage";
+import ProcessPage from "./pages/ProcessPage";
+import ContactPage from "./pages/ContactPage";
+import EstimatePage from "./pages/EstimatePage";
 
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
+// Layout wrapper component
+const Layout = ({ children }) => {
   return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
+    <>
+      <Header />
+      <main className="min-h-screen">{children}</main>
+      <Footer />
+      <FloatingCTA />
+    </>
   );
 };
 
@@ -41,11 +34,19 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/testimonials" element={<TestimonialsPage />} />
+            <Route path="/process" element={<ProcessPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/estimate" element={<EstimatePage />} />
+          </Routes>
+        </Layout>
+        <Toaster position="top-right" />
       </BrowserRouter>
     </div>
   );
