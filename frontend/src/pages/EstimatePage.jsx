@@ -40,6 +40,8 @@ const EstimatePage = () => {
     };
 
     const scopeMultipliers = {
+      'kitchen': 0.35,
+      'wardrobe': 0.3,
       'modular': 0.6,
       'full': 1,
       'premium': 1.5
