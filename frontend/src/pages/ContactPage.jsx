@@ -172,9 +172,6 @@ const ContactPage = () => {
                     <a href={`tel:${companyInfo.primaryPhone}`} className="text-[#4A4A4A] hover:text-[#C8A35F] transition-colors block">
                       {companyInfo.primaryPhone}
                     </a>
-                    <a href={`tel:${companyInfo.secondaryPhone}`} className="text-[#777777] hover:text-[#C8A35F] transition-colors text-sm">
-                      {companyInfo.secondaryPhone}
-                    </a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
