@@ -215,6 +215,153 @@ export const faqs = [
   }
 ];
 
+// Material Guide Information
+export const materialGuide = {
+  plywood: {
+    title: "Plywood Guide",
+    description: "Plywood forms the core structure of your furniture. Choosing the right grade ensures durability and longevity.",
+    types: [
+      {
+        name: "BWR (Boiling Water Resistant)",
+        description: "Ideal for kitchens and bathrooms. Resistant to moisture and humidity.",
+        recommended: "Kitchen cabinets, bathroom vanities, wash areas",
+        priceRange: "₹65-85 per sq.ft"
+      },
+      {
+        name: "BWP (Boiling Water Proof)",
+        description: "Marine-grade plywood with highest water resistance. Best for wet areas.",
+        recommended: "Outdoor furniture, balcony storage, high-moisture areas",
+        priceRange: "₹85-120 per sq.ft"
+      },
+      {
+        name: "MR (Moisture Resistant)",
+        description: "Good for dry areas with moderate humidity resistance.",
+        recommended: "Wardrobes, TV units, bedroom furniture",
+        priceRange: "₹45-65 per sq.ft"
+      },
+      {
+        name: "Commercial Plywood",
+        description: "Budget-friendly option for dry areas with minimal moisture exposure.",
+        recommended: "Storage units, study tables, bookshelves",
+        priceRange: "₹35-50 per sq.ft"
+      }
+    ],
+    brands: ["Century", "Greenply", "Kitply", "Archid", "Duro"]
+  },
+  laminates: {
+    title: "Laminate Guide",
+    description: "Laminates provide the finishing touch and define the visual appeal of your furniture.",
+    types: [
+      {
+        name: "High Pressure Laminate (HPL)",
+        description: "Premium finish with excellent scratch and heat resistance.",
+        recommended: "Kitchen countertops, high-traffic surfaces",
+        priceRange: "₹1,200-2,500 per sheet"
+      },
+      {
+        name: "Decorative Laminate",
+        description: "Wide variety of colors and patterns. Good durability for general use.",
+        recommended: "Wardrobes, TV units, wall panels",
+        priceRange: "₹800-1,500 per sheet"
+      },
+      {
+        name: "Acrylic Laminate",
+        description: "High-gloss finish for modern, contemporary look.",
+        recommended: "Modular kitchens, modern furniture",
+        priceRange: "₹1,500-3,000 per sheet"
+      },
+      {
+        name: "PVC Laminate",
+        description: "Waterproof and easy to maintain. Ideal for humid areas.",
+        recommended: "Bathrooms, kitchens, balcony furniture",
+        priceRange: "₹600-1,200 per sheet"
+      }
+    ],
+    brands: ["Merino", "Greenlam", "Century", "Royale Touche", "Virgo"]
+  },
+  hardware: {
+    title: "Hardware Guide",
+    description: "Quality hardware ensures smooth functionality and long life of your furniture.",
+    types: [
+      {
+        name: "Hinges",
+        description: "Soft-close hinges prevent slamming and extend cabinet life.",
+        recommended: "All cabinets and doors",
+        brands: ["Hettich", "Hafele", "Ebco", "Godrej"]
+      },
+      {
+        name: "Drawer Channels",
+        description: "Ball-bearing channels for smooth, silent operation.",
+        recommended: "All drawers, especially kitchen and wardrobes",
+        brands: ["Hettich", "Hafele", "Ebco", "Sleekline"]
+      },
+      {
+        name: "Handles & Knobs",
+        description: "Choose based on style - modern, contemporary, or classic.",
+        recommended: "Personalize based on design theme",
+        brands: ["Hafele", "Dorset", "Ozone", "Ipsa"]
+      },
+      {
+        name: "Basket & Organizers",
+        description: "Maximize storage efficiency in kitchens and wardrobes.",
+        recommended: "Modular kitchens, walk-in wardrobes",
+        brands: ["Hettich", "Hafele", "Kaff", "Ebco"]
+      }
+    ]
+  },
+  colorGuidance: {
+    title: "Color Selection Tips",
+    tips: [
+      {
+        title: "Consider Natural Light",
+        description: "Rooms with less natural light benefit from lighter shades like whites, creams, and soft pastels. Well-lit rooms can handle darker, bolder colors."
+      },
+      {
+        title: "60-30-10 Rule",
+        description: "Use 60% dominant color (walls/large furniture), 30% secondary color (curtains/accent furniture), and 10% accent color (décor/accessories)."
+      },
+      {
+        title: "Warm vs Cool Tones",
+        description: "Warm colors (beige, cream, wood tones) create cozy spaces. Cool colors (grey, blue, white) create modern, spacious feel."
+      },
+      {
+        title: "Test Before Committing",
+        description: "Always view laminate samples in your actual space lighting. Colors appear different under natural vs artificial light."
+      },
+      {
+        title: "Timeless Combinations",
+        description: "White + Wood, Grey + Yellow accents, Beige + Brown, Navy + Gold are timeless combinations that age well."
+      },
+      {
+        title: "Kitchen Color Tips",
+        description: "Light upper cabinets with darker lower cabinets create visual balance. Neutral countertops offer flexibility for future changes."
+      }
+    ],
+    popularPalettes: [
+      {
+        name: "Modern Minimal",
+        colors: ["White", "Light Grey", "Oak Wood", "Black accents"],
+        bestFor: "Apartments, compact spaces"
+      },
+      {
+        name: "Warm Contemporary",
+        colors: ["Beige", "Walnut Brown", "Cream", "Gold accents"],
+        bestFor: "Living rooms, bedrooms"
+      },
+      {
+        name: "Bold & Elegant",
+        colors: ["Charcoal Grey", "Navy Blue", "White", "Brass accents"],
+        bestFor: "Feature walls, statement furniture"
+      },
+      {
+        name: "Natural Earthy",
+        colors: ["Sage Green", "Terracotta", "Natural Wood", "Off-white"],
+        bestFor: "Eco-friendly, organic designs"
+      }
+    ]
+  }
+};
+
 export const projectCategories = [
   "All",
   "Apartment",
