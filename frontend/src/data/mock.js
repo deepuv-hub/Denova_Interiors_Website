@@ -74,7 +74,7 @@ export const projects = [
     category: "Villa",
     location: "Sarjapur Road, Bengaluru",
     area: "4200 sq.ft",
-    duration: "4 months",
+    duration: "60 days",
     image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
     description: "Premium villa interiors with Italian marble and custom woodwork."
   },
