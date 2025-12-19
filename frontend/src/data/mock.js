@@ -114,7 +114,7 @@ export const projects = [
     category: "Apartment",
     location: "HSR Layout, Bengaluru",
     area: "2400 sq.ft",
-    duration: "3 months",
+    duration: "55 days",
     image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
     description: "Elegant interiors with premium finishes and custom lighting."
   }
