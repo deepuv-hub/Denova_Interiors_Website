@@ -363,3 +363,79 @@ export const projectCategories = [
   "Commercial",
   "Renovation"
 ];
+
+// Our Clients List
+export const clients = [
+  { name: "LAPP INDIA", logo: null },
+  { name: "HMGROUP", logo: null },
+  { name: "Piramal", logo: null },
+  { name: "OCWEN", logo: null },
+  { name: "LG Soft India", logo: null },
+  { name: "ENERPARC", logo: null },
+  { name: "Sycomp", logo: null },
+  { name: "AQuity Solutions", logo: null },
+  { name: "CPG BPM", logo: null },
+  { name: "CHINA NAVIGATION (Swire)", logo: null },
+  { name: "BMS INSTITUTE OF TECHNOLOGY & MANAGEMENT", logo: null },
+  { name: "MOOG", logo: null }
+];
+
+// Factory & Facility Gallery (from Alpha Interiors Profile - excluding CMS Interiors photos)
+export const factoryGallery = [
+  {
+    id: 1,
+    title: "Modern Reception Area",
+    category: "Reception",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
+    description: "Elegant reception with green wall feature"
+  },
+  {
+    id: 2,
+    title: "Open Plan Office",
+    category: "Office",
+    image: "https://images.unsplash.com/photo-1497215842964-222b430dc094?w=800&q=80",
+    description: "Modern open-plan workspace with modular furniture"
+  },
+  {
+    id: 3,
+    title: "Conference Room",
+    category: "Meeting Room",
+    image: "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?w=800&q=80",
+    description: "Professional conference room setup"
+  },
+  {
+    id: 4,
+    title: "Collaborative Space",
+    category: "Lounge",
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80",
+    description: "Breakout area with comfortable seating"
+  },
+  {
+    id: 5,
+    title: "Workstation Setup",
+    category: "Office",
+    image: "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=800&q=80",
+    description: "Ergonomic workstation design with partitions"
+  },
+  {
+    id: 6,
+    title: "Cafeteria Design",
+    category: "Cafeteria",
+    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80",
+    description: "Modern cafeteria with artistic murals"
+  },
+  {
+    id: 7,
+    title: "Glass Partition Offices",
+    category: "Office",
+    image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80",
+    description: "Transparent office spaces with glass partitions"
+  },
+  {
+    id: 8,
+    title: "Executive Cabin",
+    category: "Office",
+    image: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=800&q=80",
+    description: "Premium executive cabin design"
+  }
+];
