@@ -271,7 +271,7 @@ export const materialGuide = {
         priceRange: "₹600-1,200 per sheet"
       }
     ],
-    brands: ["Merino", "Greenlam", "Century", "Royale Touche", "Virgo", "Aerolam", "Booklam"]
+    brands: ["Merino", "Greenlam", "Century", "Royale Touche", "Virgo", "Aerolam", "Booklam", "Welmica Laminates", "Decor World", "Advance"]
   },
   hardware: {
     title: "Hardware Guide",
