@@ -19,6 +19,7 @@ import ProcessPage from "./pages/ProcessPage";
 import ContactPage from "./pages/ContactPage";
 import EstimatePage from "./pages/EstimatePage";
 import MaterialsPage from "./pages/MaterialsPage";
+import GalleryPage from "./pages/GalleryPage";
 
 // Layout wrapper component
 const Layout = ({ children }) => {
