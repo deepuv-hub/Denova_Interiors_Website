@@ -155,7 +155,7 @@ const AboutPage = () => {
                 {[
                   'Premium designs at budget-friendly prices',
                   'End-to-end turnkey solutions',
-                  'Timely project delivery within 3 months',
+                  'Timely project delivery within 45-60 days',
                   'Experienced team of designers & craftsmen',
                   'Quality materials with warranty',
                   'Transparent pricing with no hidden costs',
