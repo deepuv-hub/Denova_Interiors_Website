@@ -75,7 +75,7 @@ const ProcessPage = () => {
               Typical Project Timeline
             </h2>
             <p className="text-white/70 max-w-2xl mx-auto">
-              Most residential projects are completed within 3 months. Timeline may vary based on project scope and complexity.
+              Most residential projects are completed within 45-60 days. Timeline may vary based on project scope and complexity.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
