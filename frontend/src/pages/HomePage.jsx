@@ -289,7 +289,7 @@ const HomePage = () => {
       </section>
 
       {/* Our Clients Section */}
-      <section className="section-padding bg-[#F5F5F5]">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="text-center mb-12">
             <p className="text-[#C8A35F] font-medium mb-3 tracking-wide uppercase text-sm">Trusted By</p>
@@ -300,30 +300,13 @@ const HomePage = () => {
               We're proud to have worked with these esteemed organizations
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {clients.map((client, idx) => (
-              <div 
-                key={idx} 
-                className="bg-white p-6 rounded-sm flex items-center justify-center min-h-[120px] border border-gray-100 hover:border-[#C8A35F] hover:shadow-md transition-all group"
-              >
-                {client.logo ? (
-                  <img 
-                    src={client.logo} 
-                    alt={client.name}
-                    className="max-h-16 max-w-[140px] object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'block';
-                    }}
-                  />
-                ) : null}
-                <p 
-                  className={`text-[#1A1A1A] font-semibold text-center text-sm md:text-base ${client.logo ? 'hidden' : 'block'}`}
-                >
-                  {client.name}
-                </p>
-              </div>
-            ))}
+          {/* Client Logos Banner */}
+          <div className="bg-[#F5F5F5] p-8 rounded-sm">
+            <img 
+              src={clientLogoBanner}
+              alt="Our Clients"
+              className="w-full max-w-4xl mx-auto object-contain"
+            />
           </div>
         </div>
       </section>
