@@ -366,19 +366,22 @@ export const projectCategories = [
 
 // Our Clients List with Logos
 export const clients = [
-  { name: "LAPP INDIA", logo: "https://www.lappindia.com/fileadmin/DAM/Global_Media_Folder/news/Lapp-india-logo.png" },
-  { name: "HMGROUP", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/200px-H%26M-Logo.svg.png" },
-  { name: "Piramal", logo: "https://www.piramal.com/wp-content/themes/developer starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter/images/logo.svg" },
-  { name: "OCWEN", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Ocwen_Financial_Corporation_Logo.svg/200px-Ocwen_Financial_Corporation_Logo.svg.png" },
-  { name: "LG Soft India", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/LG_symbol.svg/200px-LG_symbol.svg.png" },
-  { name: "ENERPARC", logo: "https://www.enerparc.com/fileadmin/templates/img/logo.svg" },
-  { name: "Sycomp", logo: "https://www.sycomp.com/wp-content/uploads/2021/03/sycomp-logo.png" },
-  { name: "AQuity Solutions", logo: "https://www.aquitysolutions.com/images/logo.png" },
+  { name: "LAPP INDIA", logo: "https://logo.clearbit.com/lappgroup.com" },
+  { name: "HMGROUP", logo: "https://logo.clearbit.com/hmgroup.com" },
+  { name: "Piramal", logo: "https://logo.clearbit.com/piramal.com" },
+  { name: "OCWEN", logo: "https://logo.clearbit.com/ocwen.com" },
+  { name: "LG Soft India", logo: "https://logo.clearbit.com/lg.com" },
+  { name: "ENERPARC", logo: "https://logo.clearbit.com/enerparc.com" },
+  { name: "Sycomp", logo: "https://logo.clearbit.com/sycomp.com" },
+  { name: "AQuity Solutions", logo: "https://logo.clearbit.com/aquitysolutions.com" },
   { name: "CPG BPM", logo: null },
-  { name: "CHINA NAVIGATION (Swire)", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Swire_logo.svg/200px-Swire_logo.svg.png" },
+  { name: "CHINA NAVIGATION (Swire)", logo: "https://logo.clearbit.com/swire.com" },
   { name: "BMS Institute of Technology", logo: null },
-  { name: "MOOG", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Moog_logo.svg/200px-Moog_logo.svg.png" }
+  { name: "MOOG", logo: "https://logo.clearbit.com/moog.com" }
 ];
+
+// Client logos banner image (all logos in one image)
+export const clientLogoBanner = "https://customer-assets.emergentagent.com/job_luxury-homes-17/artifacts/a2rub5k2_image.png";
 
 // Factory & Facility Gallery (from Alpha Interiors Profile - excluding CMS Interiors photos)
 export const factoryGallery = [
