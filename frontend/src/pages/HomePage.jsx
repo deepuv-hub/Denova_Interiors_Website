@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Star, CheckCircle2, Home, Building2, Castle, Briefcase, Wrench, Key, ChevronRight } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
-import { companyInfo, services, projects, testimonials, processSteps, clients } from '../data/mock';
+import { companyInfo, services, projects, testimonials, processSteps, clients, clientLogoBanner } from '../data/mock';
 
 const iconMap = {
   Home: Home,
