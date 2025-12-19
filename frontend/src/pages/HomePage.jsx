@@ -288,6 +288,33 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Our Clients Section */}
+      <section className="section-padding bg-[#F5F5F5]">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <p className="text-[#C8A35F] font-medium mb-3 tracking-wide uppercase text-sm">Trusted By</p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A1A] mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
+              Our Clients
+            </h2>
+            <p className="text-[#4A4A4A] max-w-2xl mx-auto text-lg">
+              We're proud to have worked with these esteemed organizations
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {clients.map((client, idx) => (
+              <div 
+                key={idx} 
+                className="bg-white p-6 rounded-sm flex items-center justify-center min-h-[100px] border border-gray-100 hover:border-[#C8A35F] hover:shadow-md transition-all"
+              >
+                <p className="text-[#1A1A1A] font-semibold text-center text-sm md:text-base">
+                  {client.name}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="section-padding bg-[#C8A35F]">
         <div className="container-custom text-center">
