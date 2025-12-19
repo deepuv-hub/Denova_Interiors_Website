@@ -304,9 +304,22 @@ const HomePage = () => {
             {clients.map((client, idx) => (
               <div 
                 key={idx} 
-                className="bg-white p-6 rounded-sm flex items-center justify-center min-h-[100px] border border-gray-100 hover:border-[#C8A35F] hover:shadow-md transition-all"
+                className="bg-white p-6 rounded-sm flex items-center justify-center min-h-[120px] border border-gray-100 hover:border-[#C8A35F] hover:shadow-md transition-all group"
               >
-                <p className="text-[#1A1A1A] font-semibold text-center text-sm md:text-base">
+                {client.logo ? (
+                  <img 
+                    src={client.logo} 
+                    alt={client.name}
+                    className="max-h-16 max-w-[140px] object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'block';
+                    }}
+                  />
+                ) : null}
+                <p 
+                  className={`text-[#1A1A1A] font-semibold text-center text-sm md:text-base ${client.logo ? 'hidden' : 'block'}`}
+                >
                   {client.name}
                 </p>
               </div>
