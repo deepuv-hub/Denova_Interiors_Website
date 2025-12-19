@@ -364,20 +364,20 @@ export const projectCategories = [
   "Renovation"
 ];
 
-// Our Clients List
+// Our Clients List with Logos
 export const clients = [
-  { name: "LAPP INDIA", logo: null },
-  { name: "HMGROUP", logo: null },
-  { name: "Piramal", logo: null },
-  { name: "OCWEN", logo: null },
-  { name: "LG Soft India", logo: null },
-  { name: "ENERPARC", logo: null },
-  { name: "Sycomp", logo: null },
-  { name: "AQuity Solutions", logo: null },
+  { name: "LAPP INDIA", logo: "https://www.lappindia.com/fileadmin/DAM/Global_Media_Folder/news/Lapp-india-logo.png" },
+  { name: "HMGROUP", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/200px-H%26M-Logo.svg.png" },
+  { name: "Piramal", logo: "https://www.piramal.com/wp-content/themes/developer starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter starter/images/logo.svg" },
+  { name: "OCWEN", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Ocwen_Financial_Corporation_Logo.svg/200px-Ocwen_Financial_Corporation_Logo.svg.png" },
+  { name: "LG Soft India", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/LG_symbol.svg/200px-LG_symbol.svg.png" },
+  { name: "ENERPARC", logo: "https://www.enerparc.com/fileadmin/templates/img/logo.svg" },
+  { name: "Sycomp", logo: "https://www.sycomp.com/wp-content/uploads/2021/03/sycomp-logo.png" },
+  { name: "AQuity Solutions", logo: "https://www.aquitysolutions.com/images/logo.png" },
   { name: "CPG BPM", logo: null },
-  { name: "CHINA NAVIGATION (Swire)", logo: null },
-  { name: "BMS INSTITUTE OF TECHNOLOGY & MANAGEMENT", logo: null },
-  { name: "MOOG", logo: null }
+  { name: "CHINA NAVIGATION (Swire)", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Swire_logo.svg/200px-Swire_logo.svg.png" },
+  { name: "BMS Institute of Technology", logo: null },
+  { name: "MOOG", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Moog_logo.svg/200px-Moog_logo.svg.png" }
 ];
 
 // Factory & Facility Gallery (from Alpha Interiors Profile - excluding CMS Interiors photos)
