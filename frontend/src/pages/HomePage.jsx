@@ -99,7 +99,7 @@ const HomePage = () => {
                 <Briefcase className="w-6 h-6 text-[#C8A35F]" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-[#1F1F1F]">3 Months</p>
+                <p className="text-2xl font-bold text-[#1F1F1F]">45-60 Days</p>
                 <p className="text-sm text-[#777777]">Typical Delivery</p>
               </div>
             </div>
