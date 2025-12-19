@@ -104,7 +104,7 @@ export const projects = [
     category: "Renovation",
     location: "Jayanagar, Bengaluru",
     area: "2200 sq.ft",
-    duration: "3.5 months",
+    duration: "55 days",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
     description: "Complete renovation blending traditional aesthetics with modern amenities."
   },
