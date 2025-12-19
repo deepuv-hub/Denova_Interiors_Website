@@ -195,7 +195,7 @@ export const processSteps = [
 export const faqs = [
   {
     question: "What is the typical project timeline?",
-    answer: "Most projects are completed within 3 months, depending on the scope and complexity. We provide a detailed timeline during the initial consultation."
+    answer: "Most projects are completed within 45-60 days, depending on the scope and complexity. We provide a detailed timeline during the initial consultation."
   },
   {
     question: "Do you offer budget-friendly options?",
