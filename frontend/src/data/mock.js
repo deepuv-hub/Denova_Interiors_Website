@@ -94,7 +94,7 @@ export const projects = [
     category: "Commercial",
     location: "Koramangala, Bengaluru",
     area: "3500 sq.ft",
-    duration: "3 months",
+    duration: "50 days",
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
     description: "Modern workspace design promoting collaboration and productivity."
   },
