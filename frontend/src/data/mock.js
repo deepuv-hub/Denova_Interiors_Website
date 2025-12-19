@@ -9,7 +9,7 @@ export const companyInfo = {
   serviceArea: "Bengaluru (all zones) and nearby locations",
   rating: 4.9,
   projectsCompleted: 150,
-  deliveryTimeline: "3 months"
+  deliveryTimeline: "45-60 days"
 };
 
 export const services = [
