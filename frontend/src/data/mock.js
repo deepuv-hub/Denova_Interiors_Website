@@ -239,12 +239,6 @@ export const materialGuide = {
         recommended: "Wardrobes, TV units, bedroom furniture",
         priceRange: "₹45-65 per sq.ft"
       },
-      {
-        name: "Commercial Plywood",
-        description: "Budget-friendly option for dry areas with minimal moisture exposure.",
-        recommended: "Storage units, study tables, bookshelves",
-        priceRange: "₹35-50 per sq.ft"
-      }
     ],
     brands: ["Century", "Greenply", "Kitply", "Archid", "Duro"]
   },
