@@ -50,7 +50,7 @@ export const services = [
   },
   {
     id: 6,
-    title: "Turnkey Solutions",
+    title: "Projects",
     description: "End-to-end interior solutions from concept to completion, hassle-free.",
     icon: "Key",
     features: ["Design & Planning", "Material Procurement", "Execution", "Handover"]
