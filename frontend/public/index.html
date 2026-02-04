@@ -35,19 +35,30 @@
                     href.includes('wa.me')
                 ) {
                     e.preventDefault();
+                    e.stopPropagation();
 
+                    // Push event to dataLayer
                     window.dataLayer = window.dataLayer || [];
                     window.dataLayer.push({
                         event: 'whatsapp_click',
                         link_url: href,
-                        link_text: link.innerText || link.getAttribute('aria-label') || 'WhatsApp'
+                        link_text: link.innerText || link.getAttribute('aria-label') || 'WhatsApp',
+                        eventCallback: function() {
+                            // This fires after GTM processes the event
+                            console.log('GTM processed whatsapp_click event');
+                        },
+                        eventTimeout: 2000
                     });
 
+                    // Log for debugging
+                    console.log('whatsapp_click pushed to dataLayer:', href);
+
+                    // Increased delay to 500ms to ensure GA4 beacon is sent
                     setTimeout(function () {
                         window.location.href = href;
-                    }, 300);
+                    }, 500);
                 }
-            });
+            }, true); // Use capture phase
         });
         </script>
         <!-- End WhatsApp Click Tracking -->
