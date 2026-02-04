@@ -4,14 +4,27 @@ import { companyInfo } from '../data/mock';
 
 const FloatingCTA = () => {
   const whatsappNumber = companyInfo.primaryPhone.replace(/[^0-9]/g, '');
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hi, I'm interested in your interior design services.`;
+  const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=Hi, I'm interested in your interior design services.`;
+
+  const handleWhatsAppClick = (e) => {
+    e.preventDefault();
+    const link = e.currentTarget;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'whatsapp_click',
+      link_url: link.href,
+      link_text: link.getAttribute('aria-label') || link.innerText || 'WhatsApp'
+    });
+    setTimeout(() => {
+      window.location.href = link.href;
+    }, 300);
+  };
 
   return (
     <div className="floating-cta">
       <a
         href={whatsappLink}
-        target="_blank"
-        rel="noopener noreferrer"
+        onClick={handleWhatsAppClick}
         className="floating-btn bg-[#25D366] text-white"
         aria-label="Chat on WhatsApp"
       >
