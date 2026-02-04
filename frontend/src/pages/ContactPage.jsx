@@ -225,8 +225,8 @@ const ContactPage = () => {
               {/* WhatsApp CTA */}
               <a
                 href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
+                onClick={handleWhatsAppClick}
+                aria-label="Chat on WhatsApp"
                 className="flex items-center gap-3 bg-[#25D366] text-white px-6 py-4 rounded-sm font-semibold hover:bg-[#20BD5A] transition-colors w-full justify-center mb-8"
               >
                 <MessageCircle className="w-6 h-6" />
