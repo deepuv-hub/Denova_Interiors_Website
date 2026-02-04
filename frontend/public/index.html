@@ -20,6 +20,37 @@
         })(window,document,'script','dataLayer','GTM-59NLP9MV');
         </script>
         <!-- End Google Tag Manager -->
+
+        <!-- WhatsApp Click Tracking for GTM/GA4 -->
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.body.addEventListener('click', function (e) {
+                var link = e.target.closest('a');
+                if (!link) return;
+
+                var href = link.getAttribute('href') || '';
+
+                if (
+                    href.includes('api.whatsapp.com') ||
+                    href.includes('wa.me')
+                ) {
+                    e.preventDefault();
+
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({
+                        event: 'whatsapp_click',
+                        link_url: href,
+                        link_text: link.innerText || link.getAttribute('aria-label') || 'WhatsApp'
+                    });
+
+                    setTimeout(function () {
+                        window.location.href = href;
+                    }, 300);
+                }
+            });
+        });
+        </script>
+        <!-- End WhatsApp Click Tracking -->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#1F1F1F" />
