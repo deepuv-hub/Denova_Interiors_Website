@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "./components/ui/sonner";
+import CityLanding from "./pages/CityLanding";
 
 // Layout Components
 import Header from "./components/layout/Header";
@@ -50,6 +51,7 @@ function App() {
             <Route path="/process" element={<ProcessPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/estimate" element={<EstimatePage />} />
+            <Route path="/interior-designers-:city-bangalore" element={<CityLanding />} />
           </Routes>
         </Layout>
         <Toaster position="top-right" />
