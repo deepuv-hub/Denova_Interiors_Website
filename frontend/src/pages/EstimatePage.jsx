@@ -11,6 +11,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs'
 import { companyInfo, materialGuide } from '../data/mock';
 
 const EstimatePage = () => {
+  const [name, setName] = useState("");
+const [phone, setPhone] = useState("");
   const [propertyType, setPropertyType] = useState('');
   const [area, setArea] = useState(1000);
   const [scope, setScope] = useState('');
@@ -75,6 +77,44 @@ const EstimatePage = () => {
     }
     return `₹${amount.toLocaleString('en-IN')}`;
   };
+
+
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  console.log("FORM SUBMITTED");
+
+  if (!name || phone.length !== 10) {
+    alert("Enter valid details");
+    return;
+  }
+
+  try {
+    await fetch("https://script.google.com/macros/s/AKfycbz-e8LRs1I3H0avL17ryzctzD53Mq4F3KCPQ066DtyH4ksHMj7ZmWhNmsJz9DfbOPtK/exec", {
+      method: "POST",
+      mode: "no-cors",
+      body: JSON.stringify({
+        name,
+        phone,
+        propertyType: propertyType || "",
+        area: area || "",
+        scope: scope || "",
+        budget: budget || "",
+        location: "",
+        source: "Estimate Page",
+      }),
+    });
+
+    alert("Submitted successfully");
+
+    setName("");
+    setPhone("");
+
+  } catch (err) {
+    console.log("Lead error", err);
+  }
+};
+
 
   return (
     <div>
@@ -397,6 +437,46 @@ const EstimatePage = () => {
             </TabsContent>
           </Tabs>
         </div>
+
+        {/* 🔥 LEAD CAPTURE FORM (ADDED ONLY) */}
+<div className="mt-10 p-6 bg-[#F5F5F5] rounded-sm">
+  <h3 className="text-xl font-semibold mb-4 text-[#1A1A1A]">
+    Get Detailed Consultation
+  </h3>
+
+  <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4">
+
+    <input
+      type="text"
+      placeholder="Your Name"
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+      required
+      className="p-3 border rounded w-full"
+    />
+
+    <input
+      type="tel"
+      placeholder="Phone Number"
+      value={phone}
+      onChange={(e) => setPhone(e.target.value)}
+      required
+      className="p-3 border rounded w-full"
+    />
+
+    <button
+      type="submit"
+      className="bg-[#C8A35F] text-black px-6 py-3 rounded font-semibold"
+    >
+      Get Detailed Quote
+    </button>
+
+  </form>
+
+  <p className="text-sm text-gray-500 mt-2">
+    Our expert will call you within 30 minutes.
+  </p>
+</div>
       </section>
 
       {/* What's Included */}

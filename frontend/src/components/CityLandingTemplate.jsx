@@ -28,14 +28,16 @@ Please share details.`;
   );
 
   try {
-    await fetch("https://script.google.com/macros/s/AKfycbzNJ8sIocwARx549U8iAn-RYxwiNj0kMPxDQ6io8Wmby_Kc2VMBHyV9A5hLuRJa_gZB/exec", {
-      method: "POST",
-      body: JSON.stringify({
-        name,
-        phone,
-        location: location.name,
-      }),
-    });
+    await fetch("https://script.google.com/macros/s/AKfycbz-e8LRs1I3H0avL17ryzctzD53Mq4F3KCPQ066DtyH4ksHMj7ZmWhNmsJz9DfbOPtK/exec", {
+  method: "POST",
+  mode: "no-cors",
+  body: JSON.stringify({
+    name,
+    phone,
+    location: location.name,
+    source: "Landing Page",
+  }),
+});
 
     setSuccess(true);
     setName("");

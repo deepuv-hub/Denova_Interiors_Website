@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, CheckCircle2, Home, Building2, Castle, Briefcase, Wrench, Key, ChevronRight } from 'lucide-react';
 import { Button } from '../components/ui/button';
@@ -15,6 +15,42 @@ const iconMap = {
 };
 
 const HomePage = () => {
+  const [name, setName] = useState("");
+const [phone, setPhone] = useState("");
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (phone.length !== 10) {
+    alert("Enter valid phone number");
+    return;
+  }
+
+  const msg = `Hi, I'm ${name}. My number is ${phone}. I need interior design service.`;
+
+  window.open(
+    `https://wa.me/919591039597?text=${encodeURIComponent(msg)}`,
+    "_blank"
+  );
+
+  try {
+    await fetch("https://script.google.com/macros/s/AKfycbz-e8LRs1I3H0avL17ryzctzD53Mq4F3KCPQ066DtyH4ksHMj7ZmWhNmsJz9DfbOPtK/exec", {
+      method: "POST",
+      mode: "no-cors",
+      body: JSON.stringify({
+        name,
+        phone,
+        location: "",
+        source: "Homepage",
+      }),
+    });
+
+    setName("");
+    setPhone("");
+
+  } catch (err) {
+    console.log("Lead error");
+  }
+};
   return (
     <div>
       {/* Hero Section */}
@@ -43,6 +79,34 @@ const HomePage = () => {
             <p className="text-lg md:text-xl text-white/80 mb-8 leading-relaxed animate-fade-in-up stagger-2">
               Premium interior design solutions for homes, apartments, villas & commercial spaces in Bengaluru. Quality craftsmanship delivered within {companyInfo.deliveryTimeline}.
             </p>
+            <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4 mb-6">
+
+  <input
+    type="text"
+    placeholder="Your Name"
+    value={name}
+    onChange={(e) => setName(e.target.value)}
+    required
+    className="p-3 rounded w-full"
+  />
+
+  <input
+    type="tel"
+    placeholder="Phone Number"
+    value={phone}
+    onChange={(e) => setPhone(e.target.value)}
+    required
+    className="p-3 rounded w-full"
+  />
+
+  <button
+    type="submit"
+    className="bg-[#C8A35F] text-black px-6 py-3 rounded font-semibold"
+  >
+    Get Free Quote
+  </button>
+
+</form>
             <div className="flex flex-wrap gap-4 animate-fade-in-up stagger-3">
               <Link to="/estimate">
                 <Button className="btn-gold px-8 py-4 text-lg rounded-sm font-semibold flex items-center gap-2">
