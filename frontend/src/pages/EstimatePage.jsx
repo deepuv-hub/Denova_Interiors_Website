@@ -1,3 +1,4 @@
+import { SCRIPT_URL } from "../utils/api";
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Calculator, ArrowRight, Info, Phone, Palette, Layers, Settings, Lightbulb } from 'lucide-react';
@@ -79,7 +80,7 @@ const [phone, setPhone] = useState("");
   };
 
 
- const handleSubmit = async (e) => {
+ const handleSubmit = (e) => {
   e.preventDefault();
 
   console.log("FORM SUBMITTED");
@@ -89,30 +90,24 @@ const [phone, setPhone] = useState("");
     return;
   }
 
-  try {
-    await fetch("https://script.google.com/macros/s/AKfycbz-e8LRs1I3H0avL17ryzctzD53Mq4F3KCPQ066DtyH4ksHMj7ZmWhNmsJz9DfbOPtK/exec", {
-      method: "POST",
-      mode: "no-cors",
-      body: JSON.stringify({
-        name,
-        phone,
-        propertyType: propertyType || "",
-        area: area || "",
-        scope: scope || "",
-        budget: budget || "",
-        location: "",
-        source: "Estimate Page",
-      }),
-    });
+  // 🔥 Trigger action immediately (important)
+  alert("Submitting your details...");
 
-    alert("Submitted successfully");
+  // 🔥 Send data
+  fetch(SCRIPT_URL, {
+    method: "POST",
+    mode: "no-cors",
+    body: JSON.stringify({
+      name,
+      phone,
+      location: "Estimate Page",
+      source: "Website",
+    }),
+  });
 
-    setName("");
-    setPhone("");
-
-  } catch (err) {
-    console.log("Lead error", err);
-  }
+  // Reset
+  setName("");
+  setPhone("");
 };
 
 
@@ -139,6 +134,10 @@ const [phone, setPhone] = useState("");
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Calculator Form */}
+
+
+
+            
             <div>
               <h2 className="text-2xl md:text-3xl font-bold text-[#1A1A1A] mb-8" style={{ fontFamily: 'Playfair Display, serif' }}>
                 <Calculator className="inline w-8 h-8 mr-3 text-[#C8A35F]" />
@@ -162,6 +161,58 @@ const [phone, setPhone] = useState("");
                     </SelectContent>
                   </Select>
                 </div>
+
+                <div className="mt-8">
+  <h3 className="text-lg font-semibold mb-4">Get Consultation</h3>
+
+  <form
+    onSubmit={(e) => {
+      e.preventDefault();
+
+      fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify({
+          name,
+          phone,
+          location: "Estimate Page",
+          source: "Website",
+        }),
+      });
+
+      alert("Submitted successfully");
+
+      setName("");
+      setPhone("");
+    }}
+    className="flex flex-col gap-4"
+  >
+    <input
+      type="text"
+      placeholder="Your Name"
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+      required
+      className="p-3 border rounded"
+    />
+
+    <input
+      type="tel"
+      placeholder="Phone Number"
+      value={phone}
+      onChange={(e) => setPhone(e.target.value)}
+      required
+      className="p-3 border rounded"
+    />
+
+    <button
+      type="submit"
+      className="bg-[#C8A35F] text-black py-3 rounded font-semibold"
+    >
+      Submit
+    </button>
+  </form>
+</div>
 
                 {/* Area - Now with both input and slider */}
                 <div className="space-y-3">
@@ -438,45 +489,11 @@ const [phone, setPhone] = useState("");
           </Tabs>
         </div>
 
-        {/* 🔥 LEAD CAPTURE FORM (ADDED ONLY) */}
-<div className="mt-10 p-6 bg-[#F5F5F5] rounded-sm">
-  <h3 className="text-xl font-semibold mb-4 text-[#1A1A1A]">
-    Get Detailed Consultation
-  </h3>
-
-  <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4">
-
-    <input
-      type="text"
-      placeholder="Your Name"
-      value={name}
-      onChange={(e) => setName(e.target.value)}
-      required
-      className="p-3 border rounded w-full"
-    />
-
-    <input
-      type="tel"
-      placeholder="Phone Number"
-      value={phone}
-      onChange={(e) => setPhone(e.target.value)}
-      required
-      className="p-3 border rounded w-full"
-    />
-
-    <button
-      type="submit"
-      className="bg-[#C8A35F] text-black px-6 py-3 rounded font-semibold"
-    >
-      Get Detailed Quote
-    </button>
-
-  </form>
+ 
 
   <p className="text-sm text-gray-500 mt-2">
     Our expert will call you within 30 minutes.
   </p>
-</div>
       </section>
 
       {/* What's Included */}

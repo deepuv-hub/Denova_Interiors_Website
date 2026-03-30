@@ -33,16 +33,16 @@ const handleSubmit = async (e) => {
   );
 
   try {
-    await fetch("https://script.google.com/macros/s/AKfycbz-e8LRs1I3H0avL17ryzctzD53Mq4F3KCPQ066DtyH4ksHMj7ZmWhNmsJz9DfbOPtK/exec", {
-      method: "POST",
-      mode: "no-cors",
-      body: JSON.stringify({
-        name,
-        phone,
-        location: "",
-        source: "Homepage",
-      }),
-    });
+    await fetch("https://script.google.com/macros/s/AKfycbzNJ8sIocwARx549U8iAn-RYxwiNj0kMPxDQ6io8Wmby_Kc2VMBHyV9A5hLuRJa_gZB/exec", {
+  method: "POST",
+  mode: "no-cors",
+  body: JSON.stringify({
+    name,
+    phone,
+    location: "Estimate Page",
+    source: "Website",
+  }),
+});
 
     setName("");
     setPhone("");
@@ -80,31 +80,6 @@ const handleSubmit = async (e) => {
               Premium interior design solutions for homes, apartments, villas & commercial spaces in Bengaluru. Quality craftsmanship delivered within {companyInfo.deliveryTimeline}.
             </p>
             <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4 mb-6">
-
-  <input
-    type="text"
-    placeholder="Your Name"
-    value={name}
-    onChange={(e) => setName(e.target.value)}
-    required
-    className="p-3 rounded w-full"
-  />
-
-  <input
-    type="tel"
-    placeholder="Phone Number"
-    value={phone}
-    onChange={(e) => setPhone(e.target.value)}
-    required
-    className="p-3 rounded w-full"
-  />
-
-  <button
-    type="submit"
-    className="bg-[#C8A35F] text-black px-6 py-3 rounded font-semibold"
-  >
-    Get Free Quote
-  </button>
 
 </form>
             <div className="flex flex-wrap gap-4 animate-fade-in-up stagger-3">

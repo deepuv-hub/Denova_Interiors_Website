@@ -1,3 +1,4 @@
+import { SCRIPT_URL } from "../utils/api";
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
 import { Button } from '../components/ui/button';
@@ -7,6 +8,8 @@ import { Label } from '../components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { companyInfo } from '../data/mock';
 import { toast } from 'sonner';
+
+
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -27,25 +30,37 @@ const ContactPage = () => {
     setFormData(prev => ({ ...prev, propertyType: value }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission (mock)
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast.success('Thank you for your enquiry! We will contact you shortly.');
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      propertyType: '',
-      message: ''
-    });
-    setIsSubmitting(false);
-  };
+  const handleSubmit = (e) => {
+  e.preventDefault();
 
-  const whatsappNumber = companyInfo.primaryPhone.replace(/[^0-9]/g, '');
+  if (!formData.name || formData.phone.length !== 10) {
+    alert("Enter valid details");
+    return;
+  }
+
+  fetch(SCRIPT_URL, {
+    method: "POST",
+    mode: "no-cors",
+    body: JSON.stringify({
+      name: formData.name,
+      phone: formData.phone,
+      location: "Contact Page",
+      source: "Website",
+    }),
+  });
+
+  alert("Enquiry submitted");
+
+  setFormData({
+    name: '',
+    email: '',
+    phone: '',
+    propertyType: '',
+    message: ''
+  });
+};
+
+const whatsappNumber = companyInfo.primaryPhone.replace(/[^0-9]/g, '');
   const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=Hi, I'm interested in your interior design services.`;
 
   return (

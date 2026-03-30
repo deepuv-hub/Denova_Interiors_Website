@@ -1,3 +1,4 @@
+import { SCRIPT_URL } from "../utils/api";
 import React, { useState } from "react";
 
 const CityLandingTemplate = ({ location }) => {
@@ -28,7 +29,7 @@ Please share details.`;
   );
 
   try {
-    await fetch("https://script.google.com/macros/s/AKfycbz-e8LRs1I3H0avL17ryzctzD53Mq4F3KCPQ066DtyH4ksHMj7ZmWhNmsJz9DfbOPtK/exec", {
+    await fetch(SCRIPT_URL, {
   method: "POST",
   mode: "no-cors",
   body: JSON.stringify({
