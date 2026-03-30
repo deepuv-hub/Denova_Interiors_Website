@@ -22,7 +22,7 @@ import EstimatePage from "./pages/EstimatePage";
 import MaterialsPage from "./pages/MaterialsPage";
 import GalleryPage from "./pages/GalleryPage";
 
-// Layout wrapper component
+// ✅ Layout wrapper (kept same)
 const Layout = ({ children }) => {
   return (
     <>
@@ -39,8 +39,12 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+
+        {/* ✅ Layout wraps ONLY the pages */}
         <Layout>
           <Routes>
+
+            {/* Static Pages */}
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/services" element={<ServicesPage />} />
@@ -51,10 +55,19 @@ function App() {
             <Route path="/process" element={<ProcessPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/estimate" element={<EstimatePage />} />
-            <Route path="/interior-designers-:city-bangalore" element={<CityLanding />} />
+
+            {/* ✅ Dynamic Landing Page */}
+            <Route
+  path="/interior-designers/:city"
+  element={<CityLanding />}
+/>
+
           </Routes>
         </Layout>
+
+        {/* Toast outside layout */}
         <Toaster position="top-right" />
+
       </BrowserRouter>
     </div>
   );
