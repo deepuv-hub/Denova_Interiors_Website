@@ -6,25 +6,22 @@ import CityLandingTemplate from "../components/CityLandingTemplate";
 const CityLanding = () => {
   const { city } = useParams();
 
+  console.log("URL city:", city);
+  console.log("Locations:", locations);
+
   const location = locations.find(
-    (loc) =>
-      loc.slug &&
-      city &&
-      loc.slug.trim().toLowerCase() === city.trim().toLowerCase()
+    (loc) => loc.slug.toLowerCase() === city.toLowerCase()
   );
 
-  // ❌ If location not found
   if (!location) {
     return (
-      <div className="p-10 text-center">
-        <h2 className="text-2xl font-semibold text-red-600">
-          Location not found: {city}
-        </h2>
+      <div style={{ padding: "50px", textAlign: "center" }}>
+        <h2>City Not Found</h2>
+        <p>{city}</p>
       </div>
     );
   }
 
-  // ✅ Correct render
   return <CityLandingTemplate location={location} />;
 };
 
