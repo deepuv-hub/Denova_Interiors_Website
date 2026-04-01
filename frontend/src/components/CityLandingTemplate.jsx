@@ -9,47 +9,46 @@ const CityLandingTemplate = ({ location }) => {
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (phone.length !== 10) {
-    alert("Enter valid phone number");
-    return;
-  }
+    if (phone.length !== 10) {
+      alert("Enter valid phone number");
+      return;
+    }
 
-  setLoading(true);
+    setLoading(true);
 
-  // ✅ Open WhatsApp FIRST (avoid popup block)
-  const msg = `Hi, I'm ${name}.
+    const msg = `Hi, I'm ${name}.
 My number is ${phone}.
 I need interior design service in ${location.name}.
 Please share details.`;
-  window.open(
-    `https://wa.me/919591039597?text=${encodeURIComponent(msg)}`,
-    "_blank"
-  );
 
-  try {
-    await fetch(SCRIPT_URL, {
-  method: "POST",
-  mode: "no-cors",
-  body: JSON.stringify({
-    name,
-    phone,
-    location: location.name,
-    source: "Landing Page",
-  }),
-});
+    window.open(
+      `https://wa.me/919591039597?text=${encodeURIComponent(msg)}`,
+      "_blank"
+    );
 
-    setSuccess(true);
-    setName("");
-    setPhone("");
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify({
+          name,
+          phone,
+          location: location.name,
+          source: "Landing Page",
+        }),
+      });
 
-  } catch (err) {
-    console.log("Error saving lead");
-  }
+      setSuccess(true);
+      setName("");
+      setPhone("");
+    } catch (err) {
+      console.log("Error saving lead");
+    }
 
-  setLoading(false);
-};
+    setLoading(false);
+  };
 
   return (
     <div className="bg-white text-gray-800">
@@ -61,7 +60,7 @@ Please share details.`;
         </h1>
 
         <p className="mt-4 text-gray-600 max-w-xl mx-auto">
-          Transform your home in {location.name} with modern, functional interiors by Denova Creations.
+          {location.content}
         </p>
       </section>
 
@@ -73,7 +72,7 @@ Please share details.`;
       {/* SERVICES */}
       <section className="py-16 max-w-5xl mx-auto text-center">
         <h2 className="text-2xl font-semibold mb-6">
-          Our Services
+          Interior Design Services in {location.name}
         </h2>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -86,21 +85,45 @@ Please share details.`;
         </div>
       </section>
 
-      <div className="text-center py-4 text-sm text-gray-600">
-  ⭐ 4.9 Rated | 150+ Projects Completed | Bangalore Experts
-</div>
+      {/* LOCAL SEO BOOST */}
+      <section className="py-12 max-w-4xl mx-auto text-center">
+        <h2 className="text-xl font-semibold mb-4">
+          Interior Experts in {location.name}
+        </h2>
 
-      {/* FORM */}
+        <p className="text-gray-600">
+          Denova Creations has experience working with apartments, villas, and gated communities in {location.name}. 
+          Our designs are tailored to suit modern lifestyles, space optimization, and budget preferences.
+        </p>
+      </section>
+
+      <div className="text-center py-4 text-sm text-gray-600">
+        ⭐ 4.9 Rated | 150+ Projects Completed | Bangalore Experts
+      </div>
+
+      {/* INTERNAL LINKS */}
+      <section className="py-10 text-center">
+        <h2 className="text-xl font-semibold mb-4">
+          Other Areas We Serve
+        </h2>
+
+        <ul className="flex flex-wrap justify-center gap-4 text-blue-600">
+          <li><a href="/interior-designers/sarjapur-road">Sarjapur Road</a></li>
+          <li><a href="/interior-designers/hsr-layout">HSR Layout</a></li>
+          <li><a href="/interior-designers/marathahalli">Marathahalli</a></li>
+          <li><a href="/interior-designers/indiranagar">Indiranagar</a></li>
+        </ul>
+      </section>
+
+      {/* FORM / CTA */}
       <section className="py-20 text-center bg-gray-50">
         <h2 className="text-2xl font-semibold mb-4">
-          Get Free Consultation
+          Get Free Interior Consultation in {location.name}
         </h2>
-        <h2>Other Areas We Serve</h2>
-<ul>
-  <li><a href="/interior-designers/sarjapur-road">Sarjapur</a></li>
-  <li><a href="/interior-designers/hsr-layout">HSR Layout</a></li>
-  <li><a href="/interior-designers/marathahalli">Marathahalli</a></li>
-</ul>
+
+        <p className="text-gray-600 mb-6">
+          Call or WhatsApp us now to discuss your home interior requirements.
+        </p>
 
         <form
           onSubmit={handleSubmit}
@@ -129,11 +152,12 @@ Please share details.`;
             disabled={loading}
             className="bg-black text-white py-3 rounded"
           >
-            {loading ? "Submitting..." : "Submit"}
+            {loading ? "Submitting..." : "Get Free Consultation"}
           </button>
+
           <p className="text-sm text-gray-500">
-  Limited slots available this month. Book your free consultation now.
-</p>
+            Limited slots available this month. Book your free consultation now.
+          </p>
         </form>
 
         {success && (

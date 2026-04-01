@@ -7,9 +7,6 @@ import { Helmet } from "react-helmet";
 const CityLanding = () => {
   const { city } = useParams();
 
-  console.log("URL city:", city);
-  console.log("Locations:", locations);
-
   const location = locations.find(
     (loc) => loc.slug.toLowerCase() === city.toLowerCase()
   );
@@ -22,12 +19,17 @@ const CityLanding = () => {
       </div>
     );
   }
-  <Helmet>
-  <title>{location.title}</title>
-  <meta name="description" content={location.description} />
-</Helmet>
 
-  return <CityLandingTemplate location={location} />;
+  return (
+    <>
+      <Helmet>
+        <title>{location.title}</title>
+        <meta name="description" content={location.description} />
+      </Helmet>
+
+      <CityLandingTemplate location={location} />
+    </>
+  );
 };
 
 export default CityLanding;
