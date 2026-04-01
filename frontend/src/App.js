@@ -57,10 +57,7 @@ function App() {
             <Route path="/estimate" element={<EstimatePage />} />
 
             {/* ✅ Dynamic Landing Page */}
-            <Route
-  path="/interior-designers/:city"
-  element={<CityLanding />}
-/>
+            <Route path="/interior-designers/:city" element={<CityLanding />}/>
 
           </Routes>
         </Layout>
