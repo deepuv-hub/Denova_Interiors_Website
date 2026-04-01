@@ -60,7 +60,12 @@ Please share details.`;
         </h1>
 
         <p className="mt-4 text-gray-600 max-w-xl mx-auto">
-          {location.content}
+          {location.content || `Denova Creations offers modern and functional interior design services in ${location.name}.`}
+        </p>
+
+        {/* EXTRA INTRO */}
+        <p className="mt-4 text-gray-600 max-w-xl mx-auto">
+          At Denova Creations, we provide complete home interior solutions including modular kitchens, wardrobes, living room designs, and full home interiors tailored to your lifestyle and budget.
         </p>
       </section>
 
@@ -85,21 +90,44 @@ Please share details.`;
         </div>
       </section>
 
-      {/* LOCAL SEO BOOST */}
+      {/* COST SECTION */}
       <section className="py-12 max-w-4xl mx-auto text-center">
         <h2 className="text-xl font-semibold mb-4">
-          Interior Experts in {location.name}
+          Interior Design Cost in {location.name}
         </h2>
 
         <p className="text-gray-600">
-          Denova Creations has experience working with apartments, villas, and gated communities in {location.name}. 
-          Our designs are tailored to suit modern lifestyles, space optimization, and budget preferences.
+          The cost of interior design in {location.name} depends on home size, materials, and customization. For a 2BHK home, interior costs typically start from ₹3.5 lakhs and vary based on design preferences.
+        </p>
+      </section>
+
+      {/* LOCAL SEO BOOST */}
+      <section className="py-12 max-w-4xl mx-auto text-center">
+        <h2 className="text-xl font-semibold mb-4">
+          Why Choose Denova Creations in {location.name}?
+        </h2>
+
+        <p className="text-gray-600">
+          We design interiors tailored for homes in {location.name}, including apartments, villas, and gated communities. Our focus is on space optimization, aesthetics, and functionality.
         </p>
       </section>
 
       <div className="text-center py-4 text-sm text-gray-600">
         ⭐ 4.9 Rated | 150+ Projects Completed | Bangalore Experts
       </div>
+
+      {/* FAQ SECTION */}
+      <section className="py-12 max-w-4xl mx-auto">
+        <h2 className="text-xl font-semibold mb-4 text-center">
+          Frequently Asked Questions
+        </h2>
+
+        <p><strong>What is the cost of interior design in {location.name}?</strong></p>
+        <p>Interior cost starts from ₹3.5 lakhs for a 2BHK and varies based on customization.</p>
+
+        <p className="mt-4"><strong>Do you provide full home interiors?</strong></p>
+        <p>Yes, we provide complete home interior solutions including modular kitchen, wardrobes, and furniture.</p>
+      </section>
 
       {/* INTERNAL LINKS */}
       <section className="py-10 text-center">
@@ -108,9 +136,9 @@ Please share details.`;
         </h2>
 
         <ul className="flex flex-wrap justify-center gap-4 text-blue-600">
+          <li><a href="/interior-designers/whitefield">Whitefield</a></li>
           <li><a href="/interior-designers/sarjapur-road">Sarjapur Road</a></li>
           <li><a href="/interior-designers/hsr-layout">HSR Layout</a></li>
-          <li><a href="/interior-designers/marathahalli">Marathahalli</a></li>
           <li><a href="/interior-designers/indiranagar">Indiranagar</a></li>
         </ul>
       </section>
@@ -122,7 +150,7 @@ Please share details.`;
         </h2>
 
         <p className="text-gray-600 mb-6">
-          Call or WhatsApp us now to discuss your home interior requirements.
+          Call or WhatsApp us now to get personalized interior design solutions.
         </p>
 
         <form
