@@ -57,7 +57,7 @@ Please share details.`;
       {/* HERO */}
       <section className="py-20 text-center bg-gray-50">
         <h1 className="text-4xl font-bold">
-          Interior Designers in {location.name}
+          Best Interior Designers in {location.name} Bangalore
         </h1>
 
         <p className="mt-4 text-gray-600 max-w-xl mx-auto">
@@ -95,6 +95,12 @@ Please share details.`;
         <h2 className="text-2xl font-semibold mb-4">
           Get Free Consultation
         </h2>
+        <h2>Other Areas We Serve</h2>
+<ul>
+  <li><a href="/interior-designers/sarjapur-road">Sarjapur</a></li>
+  <li><a href="/interior-designers/hsr-layout">HSR Layout</a></li>
+  <li><a href="/interior-designers/marathahalli">Marathahalli</a></li>
+</ul>
 
         <form
           onSubmit={handleSubmit}

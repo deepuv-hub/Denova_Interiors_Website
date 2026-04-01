@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import locations from "../data/locations";
 import CityLandingTemplate from "../components/CityLandingTemplate";
+import { Helmet } from "react-helmet";
 
 const CityLanding = () => {
   const { city } = useParams();
@@ -21,6 +22,10 @@ const CityLanding = () => {
       </div>
     );
   }
+  <Helmet>
+  <title>{location.title}</title>
+  <meta name="description" content={location.description} />
+</Helmet>
 
   return <CityLandingTemplate location={location} />;
 };
