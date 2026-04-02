@@ -61,6 +61,57 @@ Please share details.`;
           name="description"
           content={`Looking for interior designers in ${location.name} Bangalore? Get modular kitchen, wardrobes, and full home interiors with transparent pricing.`}
         />
+          {/* Local Business Schema */}
+          <script type="application/ld+json">
+{JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Denova Creations",
+  "image": "https://denovacreations.com/logo.png",
+  "@id": "https://denovacreations.com",
+  "url": "https://denovacreations.com",
+  "telephone": "+91-9591039597",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": location.name,
+    "addressRegion": "Karnataka",
+    "addressCountry": "India"
+  },
+  "areaServed": {
+    "@type": "Place",
+    "name": location.name
+  },
+  "priceRange": "₹₹",
+  "sameAs": []
+})}
+</script>
+
+ {/* FAQ Schema */}
+<script type="application/ld+json">
+{JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": `What is the cost of interior design in ${location.name}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Interior design cost starts from ₹3.5 lakhs and varies based on customization."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `Do you provide full home interiors in ${location.name}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we provide complete home interior solutions including modular kitchen, wardrobes, and furniture."
+      }
+    }
+  ]
+})}
+</script>
+
       </Helmet>
 
       {/* HERO */}
