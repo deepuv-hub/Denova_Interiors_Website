@@ -1,5 +1,6 @@
 import { SCRIPT_URL } from "../utils/api";
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 
 const CityLandingTemplate = ({ location }) => {
 
@@ -53,6 +54,15 @@ Please share details.`;
   return (
     <div className="bg-white text-gray-800">
 
+      {/* SEO META */}
+      <Helmet>
+        <title>Best Interior Designers in {location.name} Bangalore | Denova Creations</title>
+        <meta
+          name="description"
+          content={`Looking for interior designers in ${location.name} Bangalore? Get modular kitchen, wardrobes, and full home interiors with transparent pricing.`}
+        />
+      </Helmet>
+
       {/* HERO */}
       <section className="py-20 text-center bg-gray-50">
         <h1 className="text-4xl font-bold">
@@ -60,16 +70,15 @@ Please share details.`;
         </h1>
 
         <p className="mt-4 text-gray-600 max-w-xl mx-auto">
-          {location.content || `Denova Creations offers modern and functional interior design services in ${location.name}.`}
+          Looking for the best interior designers in {location.name} Bangalore? Denova Creations offers modern, functional, and premium home interior solutions tailored for apartments, villas, and gated communities.
         </p>
 
-        {/* EXTRA INTRO */}
         <p className="mt-4 text-gray-600 max-w-xl mx-auto">
-          At Denova Creations, we provide complete home interior solutions including modular kitchens, wardrobes, living room designs, and full home interiors tailored to your lifestyle and budget.
+          We provide complete home interiors including modular kitchens, wardrobes, living room designs, and full home interiors customized to your lifestyle and budget.
         </p>
       </section>
 
-      {/* TRUST BAR */}
+      {/* TRUST */}
       <div className="text-center py-4 text-sm text-gray-600">
         ✔ 100+ Projects | ✔ On-Time Delivery | ✔ Transparent Pricing
       </div>
@@ -82,68 +91,94 @@ Please share details.`;
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <div className="border p-4">Full Home Interiors</div>
-          <div className="border p-4">Modular Kitchen</div>
-          <div className="border p-4">Wardrobes</div>
+          <div className="border p-4">Modular Kitchen Design</div>
+          <div className="border p-4">Wardrobes & Storage</div>
           <div className="border p-4">False Ceiling</div>
-          <div className="border p-4">Living Room</div>
-          <div className="border p-4">Bedroom Design</div>
+          <div className="border p-4">Living Room Interiors</div>
+          <div className="border p-4">Bedroom Interiors</div>
         </div>
       </section>
 
-      {/* COST SECTION */}
+      {/* COST */}
       <section className="py-12 max-w-4xl mx-auto text-center">
         <h2 className="text-xl font-semibold mb-4">
-          Interior Design Cost in {location.name}
+          Interior Design Cost in {location.name} Bangalore
         </h2>
 
         <p className="text-gray-600">
-          The cost of interior design in {location.name} depends on home size, materials, and customization. For a 2BHK home, interior costs typically start from ₹3.5 lakhs and vary based on design preferences.
+          Interior design cost in {location.name} depends on home size, materials, and customization level.
         </p>
+
+        <ul className="mt-4 text-gray-700">
+          <li>2BHK Interiors: ₹3.5L – ₹6L</li>
+          <li>3BHK Interiors: ₹5L – ₹10L</li>
+          <li>Modular Kitchen: Starts from ₹1.5L</li>
+        </ul>
       </section>
 
-      {/* LOCAL SEO BOOST */}
+      {/* WHY CHOOSE */}
       <section className="py-12 max-w-4xl mx-auto text-center">
         <h2 className="text-xl font-semibold mb-4">
           Why Choose Denova Creations in {location.name}?
         </h2>
 
-        <p className="text-gray-600">
-          We design interiors tailored for homes in {location.name}, including apartments, villas, and gated communities. Our focus is on space optimization, aesthetics, and functionality.
-        </p>
+        <ul className="text-gray-600 space-y-2">
+          <li>✔ 100+ Completed Projects</li>
+          <li>✔ On-Time Delivery</li>
+          <li>✔ Premium Quality Materials</li>
+          <li>✔ Customized Design Solutions</li>
+          <li>✔ Bangalore-Based Experts</li>
+        </ul>
       </section>
 
       <div className="text-center py-4 text-sm text-gray-600">
         ⭐ 4.9 Rated | 150+ Projects Completed | Bangalore Experts
       </div>
 
-      {/* FAQ SECTION */}
+      {/* PROCESS */}
+      <section className="py-12 max-w-4xl mx-auto text-center">
+        <h2 className="text-xl font-semibold mb-4">
+          Our Interior Design Process
+        </h2>
+
+        <ol className="text-gray-600 space-y-2">
+          <li>1. Free Consultation</li>
+          <li>2. Space Planning</li>
+          <li>3. 3D Design</li>
+          <li>4. Material Selection</li>
+          <li>5. Execution</li>
+          <li>6. Final Handover</li>
+        </ol>
+      </section>
+
+      {/* INTERNAL LINKS */}
+      <section className="py-10 text-center">
+        <h2 className="text-xl font-semibold mb-4">
+          Areas We Serve Near {location.name}
+        </h2>
+
+        <ul className="flex flex-wrap justify-center gap-4 text-blue-600">
+          <li><a href="/interior-designers/sarjapur-road">Sarjapur Road</a></li>
+          <li><a href="/interior-designers/hsr-layout">HSR Layout</a></li>
+          <li><a href="/interior-designers/indiranagar">Indiranagar</a></li>
+          <li><a href="/interior-designers/marathahalli">Marathahalli</a></li>
+        </ul>
+      </section>
+
+      {/* FAQ */}
       <section className="py-12 max-w-4xl mx-auto">
         <h2 className="text-xl font-semibold mb-4 text-center">
           Frequently Asked Questions
         </h2>
 
         <p><strong>What is the cost of interior design in {location.name}?</strong></p>
-        <p>Interior cost starts from ₹3.5 lakhs for a 2BHK and varies based on customization.</p>
+        <p>Interior cost starts from ₹3.5 lakhs and varies based on customization.</p>
 
         <p className="mt-4"><strong>Do you provide full home interiors?</strong></p>
-        <p>Yes, we provide complete home interior solutions including modular kitchen, wardrobes, and furniture.</p>
+        <p>Yes, we provide complete home interior solutions.</p>
       </section>
 
-      {/* INTERNAL LINKS */}
-      <section className="py-10 text-center">
-        <h2 className="text-xl font-semibold mb-4">
-          Other Areas We Serve
-        </h2>
-
-        <ul className="flex flex-wrap justify-center gap-4 text-blue-600">
-          <li><a href="/interior-designers/whitefield">Whitefield</a></li>
-          <li><a href="/interior-designers/sarjapur-road">Sarjapur Road</a></li>
-          <li><a href="/interior-designers/hsr-layout">HSR Layout</a></li>
-          <li><a href="/interior-designers/indiranagar">Indiranagar</a></li>
-        </ul>
-      </section>
-
-      {/* FORM / CTA */}
+      {/* CTA */}
       <section className="py-20 text-center bg-gray-50">
         <h2 className="text-2xl font-semibold mb-4">
           Get Free Interior Consultation in {location.name}
@@ -184,13 +219,13 @@ Please share details.`;
           </button>
 
           <p className="text-sm text-gray-500">
-            Limited slots available this month. Book your free consultation now.
+            Limited slots available this month. Book now.
           </p>
         </form>
 
         {success && (
           <p className="text-green-600 mt-4">
-            Lead submitted! Redirecting to WhatsApp...
+            Redirecting to WhatsApp...
           </p>
         )}
       </section>
