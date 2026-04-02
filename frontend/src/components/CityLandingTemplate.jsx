@@ -81,6 +81,11 @@ Please share details.`;
     "@type": "Place",
     "name": location.name
   },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "120"
+  },
   "priceRange": "₹₹",
   "sameAs": []
 })}
@@ -127,6 +132,19 @@ Please share details.`;
         <p className="mt-4 text-gray-600 max-w-xl mx-auto">
           We provide complete home interiors including modular kitchens, wardrobes, living room designs, and full home interiors customized to your lifestyle and budget.
         </p>
+        <section className="py-10 max-w-4xl mx-auto text-center">
+  <h2 className="text-xl font-semibold mb-4">
+    Home Interior Services in {location.name}
+  </h2>
+
+  <p className="text-gray-600">
+    We provide end-to-end home interior solutions in {location.name} Bangalore including 2BHK interiors, 3BHK interiors, modular kitchen design, wardrobes, and complete home interiors tailored to your budget.
+  </p>
+
+  <p className="text-gray-600 mt-4">
+    If you are searching for interior designers in {location.name}, home interiors in {location.name}, or modular kitchen designers in {location.name}, Denova Creations offers customized solutions with transparent pricing.
+  </p>
+</section>
       </section>
 
       {/* TRUST */}
@@ -149,6 +167,26 @@ Please share details.`;
           <div className="border p-4">Bedroom Interiors</div>
         </div>
       </section>
+
+      {/* MID-PAGE CTA (HIGH CONVERSION)*/}
+
+      <section className="py-12 text-center bg-gray-100">
+  <h2 className="text-xl font-semibold mb-4">
+    Get Free Interior Design Quote in {location.name}
+  </h2>
+
+  <p className="text-gray-600 mb-4">
+    Get personalized interior design plan, cost estimate, and expert consultation for your home in {location.name}.
+  </p>
+
+  <a
+    href="https://wa.me/919591039597"
+    target="_blank"
+    className="bg-black text-white px-6 py-3 rounded inline-block"
+  >
+    Chat on WhatsApp
+  </a>
+</section>
 
       {/* COST */}
       <section className="py-12 max-w-4xl mx-auto text-center">
@@ -203,18 +241,15 @@ Please share details.`;
       </section>
 
       {/* INTERNAL LINKS */}
-      <section className="py-10 text-center">
-        <h2 className="text-xl font-semibold mb-4">
-          Areas We Serve Near {location.name}
-        </h2>
-
-        <ul className="flex flex-wrap justify-center gap-4 text-blue-600">
-          <li><a href="/interior-designers/sarjapur-road">Sarjapur Road</a></li>
-          <li><a href="/interior-designers/hsr-layout">HSR Layout</a></li>
-          <li><a href="/interior-designers/indiranagar">Indiranagar</a></li>
-          <li><a href="/interior-designers/marathahalli">Marathahalli</a></li>
-        </ul>
-      </section>
+      <ul className="flex flex-wrap justify-center gap-4 text-blue-600">
+  {["whitefield","sarjapur-road","hsr-layout","indiranagar","marathahalli"].map((area) => (
+    <li key={area}>
+      <a href={`/interior-designers/${area}`}>
+        {area.replace("-", " ")}
+      </a>
+    </li>
+  ))}
+</ul>
 
       {/* FAQ */}
       <section className="py-12 max-w-4xl mx-auto">
