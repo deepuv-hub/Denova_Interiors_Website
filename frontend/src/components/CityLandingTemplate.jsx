@@ -29,6 +29,12 @@ Please share details.`;
       "_blank"
     );
 
+    if (window.gtag) {
+      window.gtag("event", "conversion", {
+        send_to: "AW-11303451952/zBhUCM29o5QcELD6840q",
+      });
+    }
+
     try {
       await fetch(SCRIPT_URL, {
         method: "POST",
@@ -54,22 +60,21 @@ Please share details.`;
   return (
     <div className="bg-white text-gray-800">
 
-      {/* SEO META */}
+      {/* SEO META + SCHEMA */}
       <Helmet>
-        <title>Best Interior Designers in {location.name} Bangalore | Denova Creations</title>
+        <title>Interior Designers in {location.name} Bangalore | Denova Creations</title>
+
         <meta
           name="description"
-          content={`Looking for interior designers in ${location.name} Bangalore? Get modular kitchen, wardrobes, and full home interiors with transparent pricing.`}
+          content={`Interior designers in ${location.name} Bangalore for modular kitchen, wardrobes & full home interiors.`}
         />
-          {/* Local Business Schema */}
-          <script type="application/ld+json">
+
+        {/* LOCAL BUSINESS SCHEMA */}
+        <script type="application/ld+json">
 {JSON.stringify({
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Denova Creations",
-  "image": "https://denovacreations.com/logo.png",
-  "@id": "https://denovacreations.com",
-  "url": "https://denovacreations.com",
   "telephone": "+91-9591039597",
   "address": {
     "@type": "PostalAddress",
@@ -77,22 +82,16 @@ Please share details.`;
     "addressRegion": "Karnataka",
     "addressCountry": "India"
   },
-  "areaServed": {
-    "@type": "Place",
-    "name": location.name
-  },
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
     "reviewCount": "120"
-  },
-  "priceRange": "₹₹",
-  "sameAs": []
+  }
 })}
 </script>
 
- {/* FAQ Schema */}
-<script type="application/ld+json">
+        {/* FAQ SCHEMA */}
+        <script type="application/ld+json">
 {JSON.stringify({
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -102,15 +101,7 @@ Please share details.`;
       "name": `What is the cost of interior design in ${location.name}?`,
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Interior design cost starts from ₹3.5 lakhs and varies based on customization."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": `Do you provide full home interiors in ${location.name}?`,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, we provide complete home interior solutions including modular kitchen, wardrobes, and furniture."
+        "text": "Interior design cost starts from ₹3.5 lakhs depending on requirements."
       }
     }
   ]
@@ -119,165 +110,137 @@ Please share details.`;
 
       </Helmet>
 
-      {/* HERO */}
-      <section className="py-20 text-center bg-gray-50">
-        <h1 className="text-4xl font-bold">
-          Best Interior Designers in {location.name} Bangalore
-        </h1>
+      {/* HERO (CONVERSION ONLY) */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
 
-        <p className="mt-4 text-gray-600 max-w-xl mx-auto">
-          Looking for the best interior designers in {location.name} Bangalore? Denova Creations offers modern, functional, and premium home interior solutions tailored for apartments, villas, and gated communities.
-        </p>
+          <div>
+            <h1 className="text-4xl font-bold">
+              Interior Designers in {location.name} Bangalore
+            </h1>
 
-        <p className="mt-4 text-gray-600 max-w-xl mx-auto">
-          We provide complete home interiors including modular kitchens, wardrobes, living room designs, and full home interiors customized to your lifestyle and budget.
-        </p>
-        <section className="py-10 max-w-4xl mx-auto text-center">
-  <h2 className="text-xl font-semibold mb-4">
-    Home Interior Services in {location.name}
-  </h2>
+            <p className="mt-4 text-gray-600">
+              Premium home interiors with modular kitchens, wardrobes and full home design solutions.
+            </p>
 
-  <p className="text-gray-600">
-    We provide end-to-end home interior solutions in {location.name} Bangalore including 2BHK interiors, 3BHK interiors, modular kitchen design, wardrobes, and complete home interiors tailored to your budget.
-  </p>
+            <ul className="mt-6 space-y-2">
+              <li>✔ 150+ Homes Delivered</li>
+              <li>✔ Transparent Pricing</li>
+              <li>✔ 4.9 Rated Designers</li>
+            </ul>
+          </div>
 
-  <p className="text-gray-600 mt-4">
-    If you are searching for interior designers in {location.name}, home interiors in {location.name}, or modular kitchen designers in {location.name}, Denova Creations offers customized solutions with transparent pricing.
-  </p>
-</section>
+          {/* FORM */}
+          <form onSubmit={handleSubmit} className="bg-white shadow-xl p-6 rounded flex flex-col gap-4">
+            <h2 className="text-lg font-semibold">Get Free Consultation</h2>
+
+            <input
+              type="text"
+              placeholder="Your Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              className="p-3 border rounded"
+            />
+
+            <input
+              type="tel"
+              placeholder="Phone Number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              required
+              className="p-3 border rounded"
+            />
+
+            <button type="submit" className="bg-black text-white py-3 rounded">
+              {loading ? "Submitting..." : "Book Free Consultation"}
+            </button>
+          </form>
+
+        </div>
       </section>
 
       {/* TRUST */}
       <div className="text-center py-4 text-sm text-gray-600">
-        ✔ 100+ Projects | ✔ On-Time Delivery | ✔ Transparent Pricing
+        ✔ 150+ Projects | ✔ On-Time Delivery | ✔ Bangalore Experts
       </div>
 
-      {/* SERVICES */}
-      <section className="py-16 max-w-5xl mx-auto text-center">
-        <h2 className="text-2xl font-semibold mb-6">
-          Interior Design Services in {location.name}
-        </h2>
+      {/* DESIGN GALLERY */}
+      <section className="py-16 max-w-6xl mx-auto text-center">
+        <h2 className="text-2xl font-semibold mb-8">Interior Design Ideas</h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          <div className="border p-4">Full Home Interiors</div>
-          <div className="border p-4">Modular Kitchen Design</div>
-          <div className="border p-4">Wardrobes & Storage</div>
-          <div className="border p-4">False Ceiling</div>
-          <div className="border p-4">Living Room Interiors</div>
-          <div className="border p-4">Bedroom Interiors</div>
+        <div className="grid md:grid-cols-3 gap-6">
+          <img src="/images/kitchen.jpg" className="rounded" />
+          <img src="/images/living.jpg" className="rounded" />
+          <img src="/images/bedroom.jpg" className="rounded" />
         </div>
       </section>
 
-      {/* MID-PAGE CTA (HIGH CONVERSION)*/}
-
-      <section className="py-12 text-center bg-gray-100">
-  <h2 className="text-xl font-semibold mb-4">
-    Get Free Interior Design Quote in {location.name}
-  </h2>
-
-  <p className="text-gray-600 mb-4">
-    Get personalized interior design plan, cost estimate, and expert consultation for your home in {location.name}.
-  </p>
-
-  <a
-    href="https://wa.me/919591039597"
-    target="_blank"
-    className="bg-black text-white px-6 py-3 rounded inline-block"
-  >
-    Chat on WhatsApp
-  </a>
-</section>
-
-      {/* COST */}
-      <section className="py-12 max-w-4xl mx-auto text-center">
+      {/* MID CTA */}
+      <section className="py-12 bg-black text-white text-center">
         <h2 className="text-xl font-semibold mb-4">
-          Interior Design Cost in {location.name} Bangalore
+          Get Instant Interior Quote
+        </h2>
+
+        <a href="tel:9591039597" className="bg-white text-black px-6 py-3 rounded mr-4">
+          Call Now
+        </a>
+
+        <a href="https://wa.me/919591039597" className="bg-green-500 px-6 py-3 rounded">
+          WhatsApp Now
+        </a>
+      </section>
+
+      {/* PORTFOLIO */}
+      <section className="py-16 max-w-6xl mx-auto text-center">
+        <h2 className="text-2xl font-semibold mb-8">
+          Our Recent Projects
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          <img src="/images/project1.jpg" />
+          <img src="/images/project2.jpg" />
+          <img src="/images/project3.jpg" />
+        </div>
+      </section>
+
+      {/* SEO SECTION (SAFE BELOW FOLD) */}
+      <section className="py-16 max-w-4xl mx-auto">
+        <h2 className="text-2xl font-semibold mb-4">
+          Interior Designers in {location.name}
         </h2>
 
         <p className="text-gray-600">
-          Interior design cost in {location.name} depends on home size, materials, and customization level.
+          Looking for interior designers in {location.name} Bangalore? Denova Creations provides
+          complete home interiors including modular kitchens, wardrobes, and full home design solutions.
         </p>
 
-        <ul className="mt-4 text-gray-700">
-          <li>2BHK Interiors: ₹3.5L – ₹6L</li>
-          <li>3BHK Interiors: ₹5L – ₹10L</li>
-          <li>Modular Kitchen: Starts from ₹1.5L</li>
+        <h3 className="mt-6 font-semibold">
+          Interior Design Cost in {location.name}
+        </h3>
+
+        <ul className="mt-2 text-gray-600">
+          <li>2BHK: ₹3.5L – ₹6L</li>
+          <li>3BHK: ₹5L – ₹10L</li>
         </ul>
       </section>
 
-      {/* WHY CHOOSE */}
-      <section className="py-12 max-w-4xl mx-auto text-center">
-        <h2 className="text-xl font-semibold mb-4">
-          Why Choose Denova Creations in {location.name}?
-        </h2>
-
-        <ul className="text-gray-600 space-y-2">
-          <li>✔ 100+ Completed Projects</li>
-          <li>✔ On-Time Delivery</li>
-          <li>✔ Premium Quality Materials</li>
-          <li>✔ Customized Design Solutions</li>
-          <li>✔ Bangalore-Based Experts</li>
-        </ul>
-      </section>
-
-      <div className="text-center py-4 text-sm text-gray-600">
-        ⭐ 4.9 Rated | 150+ Projects Completed | Bangalore Experts
+      {/* INTERNAL LINKS (SEO SAFE) */}
+      <div className="text-center py-6">
+        {["whitefield","sarjapur-road","hsr-layout"].map((area) => (
+          <a key={area} href={`/interior-designers/${area}`} className="mx-2 text-blue-600">
+            Interior Designers in {area}
+          </a>
+        ))}
       </div>
 
-      {/* PROCESS */}
-      <section className="py-12 max-w-4xl mx-auto text-center">
-        <h2 className="text-xl font-semibold mb-4">
-          Our Interior Design Process
-        </h2>
-
-        <ol className="text-gray-600 space-y-2">
-          <li>1. Free Consultation</li>
-          <li>2. Space Planning</li>
-          <li>3. 3D Design</li>
-          <li>4. Material Selection</li>
-          <li>5. Execution</li>
-          <li>6. Final Handover</li>
-        </ol>
-      </section>
-
-      {/* INTERNAL LINKS */}
-      <ul className="flex flex-wrap justify-center gap-4 text-blue-600">
-  {["whitefield","sarjapur-road","hsr-layout","indiranagar","marathahalli"].map((area) => (
-    <li key={area}>
-      <a href={`/interior-designers/${area}`}>
-        {area.replace("-", " ")}
-      </a>
-    </li>
-  ))}
-</ul>
-
-      {/* FAQ */}
-      <section className="py-12 max-w-4xl mx-auto">
-        <h2 className="text-xl font-semibold mb-4 text-center">
-          Frequently Asked Questions
-        </h2>
-
-        <p><strong>What is the cost of interior design in {location.name}?</strong></p>
-        <p>Interior cost starts from ₹3.5 lakhs and varies based on customization.</p>
-
-        <p className="mt-4"><strong>Do you provide full home interiors?</strong></p>
-        <p>Yes, we provide complete home interior solutions.</p>
-      </section>
-
-      {/* CTA */}
+      {/* FINAL CTA */}
       <section className="py-20 text-center bg-gray-50">
         <h2 className="text-2xl font-semibold mb-4">
-          Get Free Interior Consultation in {location.name}
+          Book Free Consultation
         </h2>
 
-        <p className="text-gray-600 mb-6">
-          Call or WhatsApp us now to get personalized interior design solutions.
-        </p>
-
-        <form
-          onSubmit={handleSubmit}
-          className="max-w-md mx-auto flex flex-col gap-4"
-        >
+        <form onSubmit={handleSubmit} className="max-w-md mx-auto flex flex-col gap-4">
           <input
             type="text"
             placeholder="Your Name"
@@ -296,25 +259,21 @@ Please share details.`;
             className="p-3 border rounded"
           />
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="bg-black text-white py-3 rounded"
-          >
+          <button type="submit" className="bg-black text-white py-3 rounded">
             {loading ? "Submitting..." : "Get Free Consultation"}
           </button>
-
-          <p className="text-sm text-gray-500">
-            Limited slots available this month. Book now.
-          </p>
         </form>
 
-        {success && (
-          <p className="text-green-600 mt-4">
-            Redirecting to WhatsApp...
-          </p>
-        )}
+        {success && <p className="text-green-600 mt-4">Redirecting...</p>}
       </section>
+
+      {/* STICKY CTA */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white shadow p-3 flex justify-between items-center">
+        <span>Free Consultation</span>
+        <a href="https://wa.me/919591039597" className="bg-green-500 text-white px-4 py-2 rounded">
+          WhatsApp
+        </a>
+      </div>
 
     </div>
   );
