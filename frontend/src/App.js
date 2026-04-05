@@ -1,8 +1,11 @@
+import Home from "./pages/Home";
 import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "./components/ui/sonner";
 import CityLanding from "./pages/CityLanding";
+import AdsLanding from "./pages/AdsLanding";
+
 
 // Layout Components
 import Header from "./components/layout/Header";
@@ -21,6 +24,7 @@ import ContactPage from "./pages/ContactPage";
 import EstimatePage from "./pages/EstimatePage";
 import MaterialsPage from "./pages/MaterialsPage";
 import GalleryPage from "./pages/GalleryPage";
+import ThankYou from "./pages/ThankYou";
 
 // ✅ Layout wrapper (kept same)
 const Layout = ({ children }) => {
@@ -44,22 +48,26 @@ function App() {
         <Layout>
           <Routes>
 
-            {/* Static Pages */}
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/projects" element={<ProjectsPage />} />
-            <Route path="/gallery" element={<GalleryPage />} />
-            <Route path="/materials" element={<MaterialsPage />} />
-            <Route path="/testimonials" element={<TestimonialsPage />} />
-            <Route path="/process" element={<ProcessPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/estimate" element={<EstimatePage />} />
+  {/* Static Pages */}
+  <Route path="/" element={<HomePage />} />
+  <Route path="/about" element={<AboutPage />} />
+  <Route path="/services" element={<ServicesPage />} />
+  <Route path="/projects" element={<ProjectsPage />} />
+  <Route path="/gallery" element={<GalleryPage />} />
+  <Route path="/materials" element={<MaterialsPage />} />
+  <Route path="/testimonials" element={<TestimonialsPage />} />
+  <Route path="/process" element={<ProcessPage />} />
+  <Route path="/contact" element={<ContactPage />} />
+  <Route path="/estimate" element={<EstimatePage />} />
 
-            {/* ✅ Dynamic Landing Page */}
-            <Route path="/interior-designers/:city" element={<CityLanding />}/>
+  {/* Dynamic Pages */}
+  <Route path="/interior-designers/:city" element={<CityLanding />} />
 
-          </Routes>
+  {/* ✅ ADS LANDING PAGE */}
+  <Route path="/lp/interior-design-bangalore" element={<AdsLanding />} />
+  <Route path="/thank-you" element={<ThankYou />} />
+
+</Routes>
         </Layout>
 
         {/* Toast outside layout */}
