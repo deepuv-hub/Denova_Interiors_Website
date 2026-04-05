@@ -6,10 +6,15 @@ const AdsLanding = () => {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
+  // ✅ Clean validation
+  const isValidPhone = (num) => {
+    return /^[6-9]\d{9}$/.test(num);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (phone.length !== 10) {
+    if (!isValidPhone(phone)) {
       alert("Enter valid phone number");
       return;
     }
@@ -20,9 +25,14 @@ const AdsLanding = () => {
     const msg = `Hi, I'm ${name}. I need interior design service in Bangalore. My number is ${phone}`;
 
     setTimeout(() => {
-      window.open(`https://wa.me/919164011181?text=${encodeURIComponent(msg)}`);
+      window.open(`https://wa.me/919591039597?text=${encodeURIComponent(msg)}`);
       window.location.href = "/thank-you";
-    }, 1500);
+    }, 1200);
+  };
+
+  // ✅ CTA scroll instead of submit
+  const scrollToForm = () => {
+    document.getElementById("leadForm").scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -46,6 +56,7 @@ const AdsLanding = () => {
 
         {/* FORM */}
         <form
+          id="leadForm"
           onSubmit={handleSubmit}
           className="mt-8 bg-white shadow-2xl p-6 rounded-xl flex flex-col gap-4"
         >
@@ -67,7 +78,7 @@ const AdsLanding = () => {
             className="p-3 border rounded-lg"
           />
 
-          <button className="bg-black text-white py-3 rounded-lg text-lg font-semibold shadow-lg hover:scale-105 transition">
+          <button className="bg-[#C8A96A] text-black py-3 rounded-lg text-lg font-semibold shadow-lg hover:scale-105 transition">
             {loading ? "Submitting..." : "Get Free Design Plan"}
           </button>
         </form>
@@ -78,90 +89,76 @@ const AdsLanding = () => {
           </p>
         )}
 
-        <p className="text-sm text-gray-500 mt-4">
-          ✔ Free 3D Design | ✔ 24hr Estimate | ✔ 150+ Homes Delivered
-        </p>
-
       </section>
 
       {/* TRUST */}
       <section className="py-16 bg-gray-100 text-center">
-
         <h2 className="text-2xl font-semibold mb-10">
           Trusted by Homeowners Across Bangalore
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
-
+        <div className="grid md:grid-cols-3 gap-8 px-4">
           <div className="bg-white p-6 rounded-xl shadow-md">
             <h3 className="text-3xl font-bold text-[#C8A96A]">150+</h3>
-            <p className="mt-2">Homes Delivered</p>
+            <p>Homes Delivered</p>
           </div>
 
           <div className="bg-white p-6 rounded-xl shadow-md">
             <h3 className="text-3xl font-bold text-[#C8A96A]">4.9★</h3>
-            <p className="mt-2">Client Rating</p>
+            <p>Client Rating</p>
           </div>
 
           <div className="bg-white p-6 rounded-xl shadow-md">
             <h3 className="text-3xl font-bold text-[#C8A96A]">5+</h3>
-            <p className="mt-2">Years Experience</p>
+            <p>Years Experience</p>
           </div>
-
         </div>
-
       </section>
 
       {/* PROJECTS */}
       <section className="py-16 text-center max-w-6xl mx-auto">
-
         <h2 className="text-2xl font-semibold mb-8">
           Recent Interior Projects
         </h2>
 
         <div className="grid md:grid-cols-3 gap-6 px-4">
+          <img src="/images/project1.webp" className="rounded-xl" />
+          <img src="/images/project2.webp" className="rounded-xl" />
+          <img src="/images/project3.webp" className="rounded-xl" />
+        </div>
+      </section>
 
-          <div className="bg-white shadow-md rounded-xl overflow-hidden">
-            <img src="/images/project1.webp" className="w-full h-56 object-cover" />
-            <p className="p-3 text-sm text-gray-600">
-              2BHK Interior – Whitefield – ₹5L
-            </p>
+      {/* PREMIUM OFFER */}
+      <section className="py-20 bg-gradient-to-br from-[#1a1a1a] to-[#2b2b2b] text-white text-center">
+
+        <h2 className="text-3xl font-semibold mb-4">
+          Free Interior Design Consultation
+        </h2>
+
+        <p className="text-gray-300 mb-8">
+          Limited Slots Available This Week — Book Now
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-6 mb-10 px-4">
+
+          <div className="bg-white/5 p-5 rounded-xl">
+            Free <span className="text-[#C8A96A] font-semibold">3D Design</span>
           </div>
 
-          <div className="bg-white shadow-md rounded-xl overflow-hidden">
-            <img src="/images/project2.webp" className="w-full h-56 object-cover" />
-            <p className="p-3 text-sm text-gray-600">
-              Modular Kitchen – ₹1.8L
-            </p>
+          <div className="bg-white/5 p-5 rounded-xl">
+            Budget Plan in 24 Hours
           </div>
 
-          <div className="bg-white shadow-md rounded-xl overflow-hidden">
-            <img src="/images/project3.webp" className="w-full h-56 object-cover" />
-            <p className="p-3 text-sm text-gray-600">
-              Wardrobe Design – ₹1.2L
-            </p>
+          <div className="bg-white/5 p-5 rounded-xl">
+            Limited Slots Available
           </div>
 
         </div>
 
-      </section>
-
-      {/* OFFER */}
-      <section className="py-16 bg-black text-white text-center">
-
-        <h2 className="text-2xl font-semibold mb-6">
-          Free Interior Design Consultation
-        </h2>
-
-        <ul className="space-y-3 mb-6 text-lg">
-          <li>✔ Free <span className="text-[#C8A96A]">3D Design</span></li>
-          <li>✔ Budget Plan in 24 Hours</li>
-          <li>✔ Limited Slots Available</li>
-        </ul>
-
+        {/* FIXED CTA */}
         <button
-          onClick={handleSubmit}
-          className="bg-white text-black px-8 py-3 rounded-lg font-semibold shadow-lg hover:scale-105 transition"
+          onClick={scrollToForm}
+          className="bg-[#C8A96A] text-black px-8 py-4 rounded-lg font-semibold text-lg shadow-lg hover:scale-105 transition"
         >
           Claim Free Consultation
         </button>
@@ -169,15 +166,15 @@ const AdsLanding = () => {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-16 text-center">
+      <section className="py-16 text-center bg-gray-100">
 
         <h2 className="text-2xl mb-4">
           Start Your Dream Home Today
         </h2>
 
         <button
-          onClick={handleSubmit}
-          className="bg-black text-white px-6 py-3 rounded-lg"
+          onClick={scrollToForm}
+          className="bg-[#C8A96A] text-black px-6 py-3 rounded-lg font-semibold shadow-lg"
         >
           Get Free Design Plan
         </button>
@@ -186,7 +183,6 @@ const AdsLanding = () => {
 
       {/* STICKY CTA */}
       <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg p-3 flex justify-between items-center">
-
         <span className="text-sm font-medium">
           Free Consultation Available
         </span>
@@ -197,7 +193,6 @@ const AdsLanding = () => {
         >
           WhatsApp Now
         </a>
-
       </div>
 
     </div>
