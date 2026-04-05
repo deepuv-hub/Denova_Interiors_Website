@@ -14,7 +14,10 @@
   --heading-color: #1A1A1A;
   --body-color: #4A4A4A;
   --muted-color: #777777;
-}
+    --primary: #111111;
+  --accent: #C8A96A;   /* GOLD */
+  --bg-light: #F8F8F8;
+}}
 
 body {
   margin: 0;

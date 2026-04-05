@@ -10,7 +10,7 @@ const AdsLanding = () => {
     e.preventDefault();
 
     if (phone.length !== 10) {
-      alert("Enter valid number");
+      alert("Enter valid phone number");
       return;
     }
 
@@ -19,7 +19,6 @@ const AdsLanding = () => {
 
     const msg = `Hi, I'm ${name}. I need interior design service in Bangalore. My number is ${phone}`;
 
-    // Delay improves perceived trust
     setTimeout(() => {
       window.open(`https://wa.me/919164011181?text=${encodeURIComponent(msg)}`);
       window.location.href = "/thank-you";
@@ -29,27 +28,34 @@ const AdsLanding = () => {
   return (
     <div className="bg-white text-gray-800">
 
-      {/* 🔥 HERO */}
-      <section className="py-16 px-4 text-center max-w-3xl mx-auto">
+      {/* HERO */}
+      <section className="py-20 px-4 text-center max-w-4xl mx-auto">
 
-        <h1 className="text-4xl font-bold leading-tight">
-          Get Free 3D Interior Design in Bangalore
+        <h1 className="text-4xl md:text-5xl font-bold leading-tight">
+          Transform Your Home with{" "}
+          <span className="text-[#C8A96A]">Premium Interior Design</span>
         </h1>
 
-        <p className="mt-3 text-gray-600">
-          Instant Cost Estimate + Consultation | Limited 5 Slots This Week
+        <p className="mt-4 text-gray-600 text-lg">
+          Get Free 3D Design + Instant Cost Estimate in Bangalore
+        </p>
+
+        <p className="mt-2 text-sm text-gray-500">
+          Limited 5 Slots Available This Week
         </p>
 
         {/* FORM */}
-        <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-3">
-
+        <form
+          onSubmit={handleSubmit}
+          className="mt-8 bg-white shadow-2xl p-6 rounded-xl flex flex-col gap-4"
+        >
           <input
             type="text"
             placeholder="Your Name"
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="p-3 border rounded"
+            className="p-3 border rounded-lg"
           />
 
           <input
@@ -58,10 +64,10 @@ const AdsLanding = () => {
             required
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            className="p-3 border rounded"
+            className="p-3 border rounded-lg"
           />
 
-          <button className="bg-black text-white py-3 rounded text-lg">
+          <button className="bg-black text-white py-3 rounded-lg text-lg font-semibold shadow-lg hover:scale-105 transition">
             {loading ? "Submitting..." : "Get Free Design Plan"}
           </button>
         </form>
@@ -78,89 +84,120 @@ const AdsLanding = () => {
 
       </section>
 
-      {/* 🔥 TRUST SECTION */}
-      <section className="py-10 bg-gray-100 text-center">
-        <h2 className="text-xl font-semibold">Why Choose Denova Creations</h2>
+      {/* TRUST */}
+      <section className="py-16 bg-gray-100 text-center">
 
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <h2 className="text-2xl font-semibold mb-10">
+          Trusted by Homeowners Across Bangalore
+        </h2>
 
-          <div>
-            <h3 className="text-2xl font-bold">150+</h3>
-            <p>Homes Delivered</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+
+          <div className="bg-white p-6 rounded-xl shadow-md">
+            <h3 className="text-3xl font-bold text-[#C8A96A]">150+</h3>
+            <p className="mt-2">Homes Delivered</p>
           </div>
 
-          <div>
-            <h3 className="text-2xl font-bold">4.9★</h3>
-            <p>Client Rating</p>
+          <div className="bg-white p-6 rounded-xl shadow-md">
+            <h3 className="text-3xl font-bold text-[#C8A96A]">4.9★</h3>
+            <p className="mt-2">Client Rating</p>
           </div>
 
-          <div>
-            <h3 className="text-2xl font-bold">5+</h3>
-            <p>Years Experience</p>
+          <div className="bg-white p-6 rounded-xl shadow-md">
+            <h3 className="text-3xl font-bold text-[#C8A96A]">5+</h3>
+            <p className="mt-2">Years Experience</p>
           </div>
 
         </div>
+
       </section>
 
-      {/* 🔥 PROJECT PROOF */}
-      <section className="py-12 text-center">
-        <h2 className="text-xl font-semibold mb-6">Recent Work</h2>
+      {/* PROJECTS */}
+      <section className="py-16 text-center max-w-6xl mx-auto">
 
-        <div className="grid md:grid-cols-3 gap-4 px-4">
-          <img src="/images/project1.webp" loading="lazy" />
-          <img src="/images/project2.webp" loading="lazy" />
-          <img src="/images/project3.webp" loading="lazy" />
+        <h2 className="text-2xl font-semibold mb-8">
+          Recent Interior Projects
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-6 px-4">
+
+          <div className="bg-white shadow-md rounded-xl overflow-hidden">
+            <img src="/images/project1.webp" className="w-full h-56 object-cover" />
+            <p className="p-3 text-sm text-gray-600">
+              2BHK Interior – Whitefield – ₹5L
+            </p>
+          </div>
+
+          <div className="bg-white shadow-md rounded-xl overflow-hidden">
+            <img src="/images/project2.webp" className="w-full h-56 object-cover" />
+            <p className="p-3 text-sm text-gray-600">
+              Modular Kitchen – ₹1.8L
+            </p>
+          </div>
+
+          <div className="bg-white shadow-md rounded-xl overflow-hidden">
+            <img src="/images/project3.webp" className="w-full h-56 object-cover" />
+            <p className="p-3 text-sm text-gray-600">
+              Wardrobe Design – ₹1.2L
+            </p>
+          </div>
+
         </div>
 
-        <p className="mt-4 text-sm text-gray-500">
-          2BHK Interiors starting ₹3.5L | 3BHK from ₹5L
-        </p>
       </section>
 
-      {/* 🔥 OFFER */}
-      <section className="py-12 bg-black text-white text-center">
-        <h2 className="text-xl font-semibold mb-4">
+      {/* OFFER */}
+      <section className="py-16 bg-black text-white text-center">
+
+        <h2 className="text-2xl font-semibold mb-6">
           Free Interior Design Consultation
         </h2>
 
-        <ul className="mb-6 space-y-2">
-          <li>✔ Free 3D Design</li>
+        <ul className="space-y-3 mb-6 text-lg">
+          <li>✔ Free <span className="text-[#C8A96A]">3D Design</span></li>
           <li>✔ Budget Plan in 24 Hours</li>
           <li>✔ Limited Slots Available</li>
         </ul>
 
         <button
           onClick={handleSubmit}
-          className="bg-white text-black px-6 py-3 rounded"
+          className="bg-white text-black px-8 py-3 rounded-lg font-semibold shadow-lg hover:scale-105 transition"
         >
           Claim Free Consultation
         </button>
+
       </section>
 
-      {/* 🔥 FINAL CTA */}
+      {/* FINAL CTA */}
       <section className="py-16 text-center">
+
         <h2 className="text-2xl mb-4">
           Start Your Dream Home Today
         </h2>
 
         <button
           onClick={handleSubmit}
-          className="bg-black text-white px-6 py-3 rounded"
+          className="bg-black text-white px-6 py-3 rounded-lg"
         >
           Get Free Design Plan
         </button>
+
       </section>
 
-      {/* 🔥 STICKY CTA */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white shadow p-3 flex justify-between items-center">
-        <span className="text-sm">Free Consultation</span>
+      {/* STICKY CTA */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg p-3 flex justify-between items-center">
+
+        <span className="text-sm font-medium">
+          Free Consultation Available
+        </span>
 
         <a
-          href="https://wa.me/919164011181"
-          className="bg-green-500 text-white px-4 py-2 rounded"
+          href="https://wa.me/919591039597"
+          className="bg-green-500 text-white px-5 py-2 rounded-lg font-semibold"
         >
           WhatsApp Now
         </a>
+
       </div>
 
     </div>
