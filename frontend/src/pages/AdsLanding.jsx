@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzNJ8sIocwARx549U8iAn-RYxwiNj0kMPxDQ6io8Wmby_Kc2VMBHyV9A5hLuRJa_gZB/exec"; // 🔥 IMPORTANT
+
 const AdsLanding = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  // ✅ Clean validation
-  const isValidPhone = (num) => {
-    return /^[6-9]\d{9}$/.test(num);
-  };
+  // ✅ Validation
+  const isValidPhone = (num) => /^[6-9]\d{9}$/.test(num);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!isValidPhone(phone)) {
@@ -22,15 +22,30 @@ const AdsLanding = () => {
     setLoading(true);
     setSubmitted(true);
 
+    // ✅ Save lead to Google Sheet
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify({
+          name,
+          phone,
+          location: "Bangalore",
+          source: "Ads Landing Page",
+        }),
+      });
+    } catch (err) {
+      console.log("Lead save failed");
+    }
+
     const msg = `Hi, I'm ${name}. I need interior design service in Bangalore. My number is ${phone}`;
 
     setTimeout(() => {
       window.open(`https://wa.me/919591039597?text=${encodeURIComponent(msg)}`);
       window.location.href = "/thank-you";
-    }, 1200);
+    }, 1000);
   };
 
-  // ✅ CTA scroll instead of submit
   const scrollToForm = () => {
     document.getElementById("leadForm").scrollIntoView({ behavior: "smooth" });
   };
@@ -128,10 +143,10 @@ const AdsLanding = () => {
         </div>
       </section>
 
-      {/* PREMIUM OFFER */}
+      {/* OFFER */}
       <section className="py-20 bg-gradient-to-br from-[#1a1a1a] to-[#2b2b2b] text-white text-center">
 
-        <h2 className="text-3xl font-semibold mb-4">
+        <h2 className="text-3xl font-semibold mb-4 !text-white">
           Free Interior Design Consultation
         </h2>
 
@@ -140,7 +155,6 @@ const AdsLanding = () => {
         </p>
 
         <div className="grid md:grid-cols-3 gap-6 mb-10 px-4">
-
           <div className="bg-white/5 p-5 rounded-xl">
             Free <span className="text-[#C8A96A] font-semibold">3D Design</span>
           </div>
@@ -152,10 +166,8 @@ const AdsLanding = () => {
           <div className="bg-white/5 p-5 rounded-xl">
             Limited Slots Available
           </div>
-
         </div>
 
-        {/* FIXED CTA */}
         <button
           onClick={scrollToForm}
           className="bg-[#C8A96A] text-black px-8 py-4 rounded-lg font-semibold text-lg shadow-lg hover:scale-105 transition"
