@@ -44,7 +44,7 @@ const CityLandingTemplate = ({ location }) => {
     const msg = `Hi, I'm ${name}. My number is ${phone}. I need interior design service in ${location.name}.`;
 
     window.open(
-      `https://wa.me/919164011181?text=${encodeURIComponent(msg)}`,
+      `https://wa.me/919591039597?text=${encodeURIComponent(msg)}`,
       "_blank"
     );
 
@@ -113,7 +113,7 @@ const CityLandingTemplate = ({ location }) => {
               </button>
 
               <a
-                href="https://wa.me/919164011181"
+                href="https://wa.me/919591039597"
                 className="bg-green-500 text-white px-6 py-3 rounded"
               >
                 WhatsApp Now
