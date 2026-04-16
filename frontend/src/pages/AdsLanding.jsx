@@ -1,49 +1,56 @@
 import React, { useState } from "react";
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzNJ8sIocwARx549U8iAn-RYxwiNj0kMPxDQ6io8Wmby_Kc2VMBHyV9A5hLuRJa_gZB/exec"; // 🔥 IMPORTANT
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzNJ8sIocwARx549U8iAn-RYxwiNj0kMPxDQ6io8Wmby_Kc2VMBHyV9A5hLuRJa_gZB/exec";
 
 const AdsLanding = () => {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    property: "",
+    budget: "",
+  });
+
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  // ✅ Validation
-  const isValidPhone = (num) => /^[6-9]\d{9}$/.test(num);
+  const isValidPhone = (num) => num.replace(/\D/g, "").length === 10;
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!isValidPhone(phone)) {
-      alert("Enter valid phone number");
+    const cleanedPhone = form.phone.replace(/\D/g, "");
+
+    if (!isValidPhone(cleanedPhone)) {
+      alert("Enter valid 10-digit phone number");
       return;
     }
 
     setLoading(true);
     setSubmitted(true);
 
-    // ✅ Save lead to Google Sheet
     try {
       await fetch(SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
         body: JSON.stringify({
-          name,
-          phone,
+          ...form,
+          phone: cleanedPhone,
           location: "Bangalore",
-          source: "Ads Landing Page",
+          source: "Google Ads Landing",
         }),
       });
-    } catch (err) {
-      console.log("Lead save failed");
-    }
+    } catch (err) {}
 
-    const msg = `Hi, I'm ${name}. I need interior design service in Bangalore. My number is ${phone}`;
+    const msg = `Hi, I'm ${form.name}. I need interior design for ${form.property}. My number is ${cleanedPhone}`;
 
     setTimeout(() => {
       window.open(`https://wa.me/919591039597?text=${encodeURIComponent(msg)}`);
-      window.location.href = "/thank-you";
-    }, 1000);
+      window.location.href = "/thank-you?source=ads";
+    }, 800);
   };
 
   const scrollToForm = () => {
@@ -53,87 +60,105 @@ const AdsLanding = () => {
   return (
     <div className="bg-white text-gray-800">
 
-      {/* HERO */}
-      <section className="py-20 px-4 text-center max-w-4xl mx-auto">
+      {/* HERO SPLIT */}
+      <section className="py-16 px-4 max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
 
-        <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-          Transform Your Home with{" "}
-          <span className="text-[#C8A96A]">Premium Interior Design</span>
-        </h1>
+        {/* LEFT */}
+        <div>
+          <h1 className="text-4xl md:text-5xl font-bold leading-tight">
+            Transform Your Home in Bangalore
+            <span className="text-[#C8A96A] block">
+              Without Overspending
+            </span>
+          </h1>
 
-        <p className="mt-4 text-gray-600 text-lg">
-          Get Free 3D Design + Instant Cost Estimate in Bangalore
-        </p>
+          <p className="mt-4 text-lg text-gray-600">
+            Get Free 3D Design + Transparent Pricing + Expert Consultation
+          </p>
 
-        <p className="mt-2 text-sm text-gray-500">
-          Limited 5 Slots Available This Week
-        </p>
+          <div className="mt-6 space-y-2 text-sm">
+            <p>✅ 150+ Homes Delivered</p>
+            <p>✅ 5+ Years Experience</p>
+            <p>✅ Bangalore-Based Team</p>
+          </div>
 
-        {/* FORM */}
+          <button
+            onClick={scrollToForm}
+            className="mt-6 bg-[#C8A96A] px-6 py-3 rounded-lg font-semibold"
+          >
+            Book Free Consultation
+          </button>
+        </div>
+
+        {/* RIGHT FORM */}
         <form
           id="leadForm"
           onSubmit={handleSubmit}
-          className="mt-8 bg-white shadow-2xl p-6 rounded-xl flex flex-col gap-4"
+          className="bg-white shadow-2xl p-6 rounded-xl flex flex-col gap-4 border"
         >
+          <h3 className="text-xl font-semibold text-center">
+            Get Free Design Consultation
+          </h3>
+
           <input
             type="text"
+            name="name"
             placeholder="Your Name"
             required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={form.name}
+            onChange={handleChange}
             className="p-3 border rounded-lg"
           />
 
           <input
             type="tel"
+            name="phone"
             placeholder="Phone Number"
             required
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            value={form.phone}
+            onChange={handleChange}
             className="p-3 border rounded-lg"
           />
 
-          <button className="bg-[#C8A96A] text-black py-3 rounded-lg text-lg font-semibold shadow-lg hover:scale-105 transition">
-            {loading ? "Submitting..." : "Get Free Design Plan"}
+          <select
+            name="property"
+            required
+            value={form.property}
+            onChange={handleChange}
+            className="p-3 border rounded-lg"
+          >
+            <option value="">Property Type</option>
+            <option>2 BHK</option>
+            <option>3 BHK</option>
+            <option>Villa</option>
+          </select>
+
+          <select
+            name="budget"
+            value={form.budget}
+            onChange={handleChange}
+            className="p-3 border rounded-lg"
+          >
+            <option value="">Budget (Optional)</option>
+            <option>3L - 5L</option>
+            <option>5L - 10L</option>
+            <option>10L+</option>
+          </select>
+
+          <button className="bg-[#C8A96A] py-3 rounded-lg font-semibold text-lg">
+            {loading ? "Submitting..." : "Get Free Quote"}
           </button>
-        </form>
 
-        {submitted && (
-          <p className="text-green-600 mt-3">
-            Our designer will contact you within 10 minutes...
+          <p className="text-xs text-center text-gray-500">
+            Limited slots available this month
           </p>
-        )}
-
-      </section>
-
-      {/* TRUST */}
-      <section className="py-16 bg-gray-100 text-center">
-        <h2 className="text-2xl font-semibold mb-10">
-          Trusted by Homeowners Across Bangalore
-        </h2>
-
-        <div className="grid md:grid-cols-3 gap-8 px-4">
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <h3 className="text-3xl font-bold text-[#C8A96A]">150+</h3>
-            <p>Homes Delivered</p>
-          </div>
-
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <h3 className="text-3xl font-bold text-[#C8A96A]">4.9★</h3>
-            <p>Client Rating</p>
-          </div>
-
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <h3 className="text-3xl font-bold text-[#C8A96A]">5+</h3>
-            <p>Years Experience</p>
-          </div>
-        </div>
+        </form>
       </section>
 
       {/* PROJECTS */}
-      <section className="py-16 text-center max-w-6xl mx-auto">
-        <h2 className="text-2xl font-semibold mb-8">
-          Recent Interior Projects
+      <section className="py-12 text-center max-w-6xl mx-auto">
+        <h2 className="text-2xl font-semibold mb-6">
+          Recent Projects
         </h2>
 
         <div className="grid md:grid-cols-3 gap-6 px-4">
@@ -143,68 +168,51 @@ const AdsLanding = () => {
         </div>
       </section>
 
-      {/* OFFER */}
-      <section className="py-20 bg-gradient-to-br from-[#1a1a1a] to-[#2b2b2b] text-white text-center">
-
-        <h2 className="text-3xl font-semibold mb-4 !text-white">
-          Free Interior Design Consultation
+      {/* TESTIMONIALS */}
+      <section className="py-12 text-center bg-gray-50">
+        <h2 className="text-2xl font-semibold mb-6">
+          What Clients Say
         </h2>
 
-        <p className="text-gray-300 mb-8">
-          Limited Slots Available This Week — Book Now
-        </p>
-
-        <div className="grid md:grid-cols-3 gap-6 mb-10 px-4">
-          <div className="bg-white/5 p-5 rounded-xl">
-            Free <span className="text-[#C8A96A] font-semibold">3D Design</span>
-          </div>
-
-          <div className="bg-white/5 p-5 rounded-xl">
-            Budget Plan in 24 Hours
-          </div>
-
-          <div className="bg-white/5 p-5 rounded-xl">
-            Limited Slots Available
-          </div>
+        <div className="grid md:grid-cols-3 gap-6 px-4">
+          <div className="p-4 shadow rounded-xl">“Great work & timely delivery.”</div>
+          <div className="p-4 shadow rounded-xl">“Designs within budget.”</div>
+          <div className="p-4 shadow rounded-xl">“Very professional team.”</div>
         </div>
-
-        <button
-          onClick={scrollToForm}
-          className="bg-[#C8A96A] text-black px-8 py-4 rounded-lg font-semibold text-lg shadow-lg hover:scale-105 transition"
-        >
-          Claim Free Consultation
-        </button>
-
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-16 text-center bg-gray-100">
-
+      <section className="py-16 text-center">
         <h2 className="text-2xl mb-4">
-          Start Your Dream Home Today
+          Ready to Design Your Dream Home?
         </h2>
 
         <button
           onClick={scrollToForm}
-          className="bg-[#C8A96A] text-black px-6 py-3 rounded-lg font-semibold shadow-lg"
+          className="bg-[#C8A96A] px-6 py-3 rounded-lg font-semibold"
         >
-          Get Free Design Plan
+          Book Free Consultation
         </button>
-
       </section>
+
+      {/* WHATSAPP */}
+      <a
+        href="https://wa.me/919591039597"
+        className="fixed bottom-20 right-4 bg-green-500 text-white px-4 py-3 rounded-full shadow-lg"
+      >
+        Chat
+      </a>
 
       {/* STICKY CTA */}
       <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg p-3 flex justify-between items-center">
-        <span className="text-sm font-medium">
-          Free Consultation Available
-        </span>
+        <span className="text-sm font-medium">Free Consultation</span>
 
-        <a
-          href="https://wa.me/919591039597"
-          className="bg-green-500 text-white px-5 py-2 rounded-lg font-semibold"
+        <button
+          onClick={scrollToForm}
+          className="bg-[#C8A96A] px-5 py-2 rounded-lg font-semibold"
         >
-          WhatsApp Now
-        </a>
+          Book Now
+        </button>
       </div>
 
     </div>

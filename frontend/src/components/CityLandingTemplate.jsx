@@ -10,19 +10,14 @@ const CityLandingTemplate = ({ location }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (phone.length !== 10) {
-      alert("Enter valid phone number");
-      return;
-    }
+    if (!/^[0-9]{10}$/.test(phone)) {
+  alert("Please enter a valid 10-digit phone number");
+  return;
+}
 
     setLoading(true);
 
-    // Google Ads Conversion
-    if (window.gtag) {
-      window.gtag("event", "conversion", {
-        send_to: "AW-11303451952/zBhUCM29o5QcELD6840q",
-      });
-    }
+    
 
     // Save Lead
     try {
@@ -48,7 +43,7 @@ const CityLandingTemplate = ({ location }) => {
       "_blank"
     );
 
-    window.location.href = "/thank-you";
+    window.location.href = "/thank-you?source=seo";
   };
 
   return (
@@ -106,11 +101,13 @@ const CityLandingTemplate = ({ location }) => {
 
             <div className="mt-6 flex gap-4">
               <button
-                onClick={handleSubmit}
-                className="bg-black text-white px-6 py-3 rounded"
-              >
-                Get Free Consultation
-              </button>
+  onClick={() => {
+    document.getElementById("lead-form").scrollIntoView({ behavior: "smooth" });
+  }}
+  className="bg-black text-white px-6 py-3 rounded"
+>
+  Get Free Consultation
+</button>
 
               <a
                 href="https://wa.me/919591039597"
@@ -123,9 +120,10 @@ const CityLandingTemplate = ({ location }) => {
 
           {/* FORM */}
           <form
-            onSubmit={handleSubmit}
-            className="bg-white shadow-xl p-6 rounded flex flex-col gap-4"
-          >
+  id="lead-form"
+  onSubmit={handleSubmit}
+  className="bg-white shadow-xl p-6 rounded flex flex-col gap-4"
+>
             <h2 className="text-lg font-semibold">
               Free Consultation (Limited Slots)
             </h2>
@@ -140,13 +138,15 @@ const CityLandingTemplate = ({ location }) => {
             />
 
             <input
-              type="tel"
-              placeholder="Phone Number"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              required
-              className="p-3 border rounded"
-            />
+  type="tel"
+  placeholder="Phone Number"
+  value={phone}
+  onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
+  maxLength="10"
+  pattern="[0-9]{10}"
+  required
+  className="p-3 border rounded"
+/>
 
             <button
               type="submit"
@@ -198,6 +198,9 @@ const CityLandingTemplate = ({ location }) => {
           <img src="/images/project1.webp" alt={`Interior project in ${location.name}`} />
           <img src="/images/project2.webp" alt={`Interior project in ${location.name}`} />
           <img src="/images/project3.webp" alt={`Interior project in ${location.name}`} />
+          <img src="/images/project4.webp" alt={`Interior project in ${location.name}`} />
+          <img src="/images/project5.webp" alt={`Interior project in ${location.name}`} />
+          <img src="/images/project6.webp" alt={`Interior project in ${location.name}`} />
         </div>
       </section>
 

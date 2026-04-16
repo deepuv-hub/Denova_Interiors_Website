@@ -3,12 +3,19 @@ import React, { useEffect } from "react";
 const ThankYou = () => {
 
   useEffect(() => {
-    // Google Ads conversion (optional upgrade)
+    // ✅ Get source safely inside component
+    const params = new URLSearchParams(window.location.search);
+    const source = params.get("source");
+
+    console.log("Lead Source:", source); // 🔥 Debug (optional)
+
+    // ✅ Google Ads conversion
     if (window.gtag) {
       window.gtag("event", "conversion", {
         send_to: "AW-11303451952/zBhUCM29o5QcELD6840q",
       });
     }
+
   }, []);
 
   return (
@@ -36,7 +43,6 @@ const ThankYou = () => {
 
       </div>
 
-      {/* 🔥 ACTION BUTTONS */}
       <div className="mt-8 flex gap-4">
 
         <a
