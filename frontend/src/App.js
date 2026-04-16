@@ -6,7 +6,6 @@ import { Toaster } from "./components/ui/sonner";
 import CityLanding from "./pages/CityLanding";
 import AdsLanding from "./pages/AdsLanding";
 
-
 // Layout Components
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
@@ -26,7 +25,7 @@ import MaterialsPage from "./pages/MaterialsPage";
 import GalleryPage from "./pages/GalleryPage";
 import ThankYou from "./pages/ThankYou";
 
-// ✅ Layout wrapper (kept same)
+// Layout wrapper
 const Layout = ({ children }) => {
   return (
     <>
@@ -44,33 +43,38 @@ function App() {
     <div className="App">
       <BrowserRouter>
 
-        {/* ✅ Layout wraps ONLY the pages */}
-        <Layout>
-          <Routes>
+        <Routes>
 
-  {/* Static Pages */}
-  <Route path="/" element={<HomePage />} />
-  <Route path="/about" element={<AboutPage />} />
-  <Route path="/services" element={<ServicesPage />} />
-  <Route path="/projects" element={<ProjectsPage />} />
-  <Route path="/gallery" element={<GalleryPage />} />
-  <Route path="/materials" element={<MaterialsPage />} />
-  <Route path="/testimonials" element={<TestimonialsPage />} />
-  <Route path="/process" element={<ProcessPage />} />
-  <Route path="/contact" element={<ContactPage />} />
-  <Route path="/estimate" element={<EstimatePage />} />
+          {/* ✅ ADS PAGE (NO LAYOUT) */}
+          <Route path="/lp/interior-design-bangalore" element={<AdsLanding />} />
 
-  {/* Dynamic Pages */}
-  <Route path="/interior-designers/:city" element={<CityLanding />} />
+          {/* ✅ THANK YOU PAGE (NO DISTRACTION) */}
+          <Route path="/thank-you" element={<ThankYou />} />
 
-  {/* ✅ ADS LANDING PAGE */}
-  <Route path="/lp/interior-design-bangalore" element={<AdsLanding />} />
-  <Route path="/thank-you" element={<ThankYou />} />
+          {/* ✅ ALL OTHER PAGES WITH LAYOUT */}
+          <Route
+            path="*"
+            element={
+              <Layout>
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/about" element={<AboutPage />} />
+                  <Route path="/services" element={<ServicesPage />} />
+                  <Route path="/projects" element={<ProjectsPage />} />
+                  <Route path="/gallery" element={<GalleryPage />} />
+                  <Route path="/materials" element={<MaterialsPage />} />
+                  <Route path="/testimonials" element={<TestimonialsPage />} />
+                  <Route path="/process" element={<ProcessPage />} />
+                  <Route path="/contact" element={<ContactPage />} />
+                  <Route path="/estimate" element={<EstimatePage />} />
+                  <Route path="/interior-designers/:city" element={<CityLanding />} />
+                </Routes>
+              </Layout>
+            }
+          />
 
-</Routes>
-        </Layout>
+        </Routes>
 
-        {/* Toast outside layout */}
         <Toaster position="top-right" />
 
       </BrowserRouter>
