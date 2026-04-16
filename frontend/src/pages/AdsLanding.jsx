@@ -128,6 +128,7 @@ const AdsLanding = () => {
             className="p-3 border rounded-lg"
           >
             <option value="">Property Type</option>
+            <option>1 BHK</option>
             <option>2 BHK</option>
             <option>3 BHK</option>
             <option>Villa</option>
@@ -145,6 +146,8 @@ const AdsLanding = () => {
             <option>10L+</option>
           </select>
 
+
+
           <button className="bg-[#C8A96A] py-3 rounded-lg font-semibold text-lg">
             {loading ? "Submitting..." : "Get Free Quote"}
           </button>
@@ -154,6 +157,51 @@ const AdsLanding = () => {
           </p>
         </form>
       </section>
+
+      {/* GOOGLE REVIEWS - OPTIMIZED */}
+<section className="py-10 bg-gray-50 text-center">
+  <h2 className="text-xl font-semibold mb-2">
+    Trusted by Bangalore Homeowners
+  </h2>
+
+  <p className="text-sm text-gray-600 mb-6">
+    ⭐ Rated 4.9/5 by our clients on Google
+  </p>
+
+  <div className="grid md:grid-cols-3 gap-6 px-4 max-w-5xl mx-auto">
+
+    <div className="bg-white p-5 rounded-xl shadow">
+      <p className="text-[#C8A96A] text-lg">★★★★★</p>
+      <p className="text-sm mt-2">
+        “Exceeded all expectations. The design quality and execution were outstanding.”
+      </p>
+      <p className="text-xs mt-3 text-gray-500">
+        — Vinod, Bangalore
+      </p>
+    </div>
+
+    <div className="bg-white p-5 rounded-xl shadow">
+      <p className="text-[#C8A96A] text-lg">★★★★★</p>
+      <p className="text-sm mt-2">
+        “Professional and transparent team. Premium materials and great finish.”
+      </p>
+      <p className="text-xs mt-3 text-gray-500">
+        — Harish, Bangalore
+      </p>
+    </div>
+
+    <div className="bg-white p-5 rounded-xl shadow">
+      <p className="text-[#C8A96A] text-lg">★★★★★</p>
+      <p className="text-sm mt-2">
+        “Smooth renovation process and exactly the results I expected.”
+      </p>
+      <p className="text-xs mt-3 text-gray-500">
+        — Srinath, Bangalore
+      </p>
+    </div>
+
+  </div>
+</section>
 
       {/* PROJECTS */}
       <section className="py-12 text-center max-w-6xl mx-auto">
