@@ -162,10 +162,34 @@ const AdsLanding = () => {
         </div>
       </section>
 
-      {/* TRUST */}
-      <section className="py-6 bg-[#F8F5F0] border-y border-[#E5D8C5] text-center">
-        100+ Homes Delivered • 5+ Years Experience • 4.9 Star Client Rating
-      </section>
+           {/* TRUST with HIGHLIGHT */}
+<section className="py-10 bg-[#C8A96A] text-green">
+  <div className="max-w-5xl mx-auto px-4">
+
+    <div className="grid grid-cols-1 md:grid-cols-3 text-center gap-6">
+
+      {/* ITEM 1 */}
+      <div>
+        <p className="text-3xl font-bold">100+</p>
+        <p className="text-sm mt-1 opacity-100">Homes Delivered</p>
+      </div>
+
+      {/* ITEM 2 */}
+      <div>
+        <p className="text-3xl font-bold">5+ Years</p>
+        <p className="text-sm mt-1 opacity-90">Experience</p>
+      </div>
+
+      {/* ITEM 3 */}
+      <div>
+        <p className="text-3xl font-bold">4.9 ★</p>
+        <p className="text-sm mt-1 opacity-90">Client Rating</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
       {/* SHOWCASE - OUR WORK*/}
       <section className="py-20 max-w-6xl mx-auto px-4">
@@ -224,93 +248,200 @@ const AdsLanding = () => {
       <section className="py-20 bg-[#F8F5F0]">
   <div className="max-w-6xl mx-auto px-4">
 
-    <h2 className="text-3xl font-bold text-center mb-12">
-      Our Services
+    <h2 className="text-3xl font-bold text-center mb-6">
+      Interior Design Services in Bangalore
     </h2>
 
+    <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+      End-to-end interior solutions tailored for homes, apartments, villas, and commercial spaces.
+    </p>
+
+    {/* 🔴 TOP LEVEL SERVICES */}
+    <div className="grid md:grid-cols-3 gap-6 mb-12">
+
+      <div className="bg-white p-6 rounded-xl shadow text-center hover:shadow-lg transition">
+        <h3 className="font-semibold text-lg mb-2">Residential Interiors</h3>
+        <p className="text-sm text-gray-600">Complete home interior solutions</p>
+      </div>
+
+      <div className="bg-white p-6 rounded-xl shadow text-center hover:shadow-lg transition">
+        <h3 className="font-semibold text-lg mb-2">Apartment Interiors</h3>
+        <p className="text-sm text-gray-600">Optimized designs for flats & apartments</p>
+      </div>
+
+      <div className="bg-white p-6 rounded-xl shadow text-center hover:shadow-lg transition">
+        <h3 className="font-semibold text-lg mb-2">Villa Interiors</h3>
+        <p className="text-sm text-gray-600">Luxury interiors for villas & independent homes</p>
+      </div>
+
+      <div className="bg-white p-6 rounded-xl shadow text-center hover:shadow-lg transition">
+        <h3 className="font-semibold text-lg mb-2">Corporate & Commercial</h3>
+        <p className="text-sm text-gray-600">Office and commercial interior design</p>
+      </div>
+
+      <div className="bg-white p-6 rounded-xl shadow text-center hover:shadow-lg transition">
+        <h3 className="font-semibold text-lg mb-2">Renovation Projects</h3>
+        <p className="text-sm text-gray-600">Upgrade and transform existing spaces</p>
+      </div>
+
+      <div className="bg-white p-6 rounded-xl shadow text-center hover:shadow-lg transition">
+        <h3 className="font-semibold text-lg mb-2">Turnkey Projects</h3>
+        <p className="text-sm text-gray-600">End-to-end design & execution</p>
+      </div>
+
+    </div>
+
+    {/* 🔴 DETAILED SERVICES (YOUR EXISTING CARDS) */}
     <div className="grid md:grid-cols-4 gap-8">
 
       {/* CARD 1 */}
       <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 group">
-
         <div className="relative h-48 overflow-hidden">
           <img src="/images/living2.webp"
             className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-
           <div className="absolute bottom-4 left-4 text-white font-semibold text-lg">
             Full Home Interiors
           </div>
         </div>
-
         <div className="p-4 text-sm text-gray-600">
           Complete design and execution for your entire home.
         </div>
-
       </div>
 
       {/* CARD 2 */}
       <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 group">
-
         <div className="relative h-48 overflow-hidden">
           <img src="/images/kitchen3.webp"
             className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-
           <div className="absolute bottom-4 left-4 text-white font-semibold text-lg">
             Modular Kitchen
           </div>
         </div>
-
         <div className="p-4 text-sm text-gray-600">
           Functional and stylish kitchen solutions.
         </div>
-
       </div>
 
       {/* CARD 3 */}
       <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 group">
-
         <div className="relative h-48 overflow-hidden">
           <img src="/images/bedroom10.webp"
             className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-
           <div className="absolute bottom-4 left-4 text-white font-semibold text-lg">
             Wardrobes
           </div>
         </div>
-
         <div className="p-4 text-sm text-gray-600">
           Space-optimized storage with premium finishes.
         </div>
-
       </div>
 
       {/* CARD 4 */}
       <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 group">
-
         <div className="relative h-48 overflow-hidden">
           <img src="/images/kitchen1.webp"
             className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-
           <div className="absolute bottom-4 left-4 text-white font-semibold text-lg">
             Renovation
           </div>
         </div>
-
         <div className="p-4 text-sm text-gray-600">
           Transform your existing space into a modern home.
         </div>
-
       </div>
 
     </div>
+
+  </div>
+</section>
+
+{/* WHAT'S INCLUDED */}
+<section className="py-20 bg-white">
+  <div className="max-w-6xl mx-auto px-4 text-center">
+
+    {/* HEADING */}
+    <p className="text-sm text-[#C8A96A] tracking-wide mb-2">
+      WHAT’S INCLUDED
+    </p>
+
+    <h2 className="text-3xl font-bold mb-4">
+      Our Complete Package
+    </h2>
+
+    <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
+      Every project includes these essential elements for a hassle-free experience.
+    </p>
+
+    {/* GRID */}
+    <div className="grid md:grid-cols-4 gap-6">
+
+      {[
+        {
+          title: "Design Consultation",
+          desc: "Free initial consultation with our design experts"
+        },
+        {
+          title: "3D Visualization",
+          desc: "Detailed 3D renders to visualize your space"
+        },
+        {
+          title: "Material Selection",
+          desc: "Curated material options within your budget"
+        },
+        {
+          title: "Project Management",
+          desc: "Dedicated manager for seamless execution"
+        },
+        {
+          title: "Quality Assurance",
+          desc: "Rigorous quality checks at every stage"
+        },
+        {
+          title: "Timely Delivery",
+          desc: "Project completion within promised timeline"
+        },
+        {
+          title: "Warranty Coverage",
+          desc: "Comprehensive warranty on workmanship"
+        },
+        {
+          title: "After-Sales Support",
+          desc: "Continued support post project handover"
+        }
+      ].map((item, index) => (
+        <div
+          key={index}
+          className="bg-[#F8F5F0] p-6 rounded-xl text-left shadow-sm hover:shadow-md transition"
+        >
+
+          {/* NUMBER BADGE */}
+          <div className="w-10 h-10 flex items-center justify-center bg-[#C8A96A] text-white rounded-full mb-4 font-semibold">
+            {index + 1}
+          </div>
+
+          {/* TITLE */}
+          <h3 className="font-semibold text-lg mb-2">
+            {item.title}
+          </h3>
+
+          {/* DESC */}
+          <p className="text-sm text-gray-600">
+            {item.desc}
+          </p>
+
+        </div>
+      ))}
+
+    </div>
+
   </div>
 </section>
 
