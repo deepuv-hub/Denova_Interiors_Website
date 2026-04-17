@@ -85,7 +85,7 @@ const PrivacyPolicy = () => {
             <h2 className="font-semibold text-lg mb-2">9. Contact Us</h2>
             <p>
               Denova Creations <br />
-              Phone: +91 9591039597 <br />
+              Phone: +91 9164466606 <br />
               Email: admin@denovacreations.com
             </p>
           </section>

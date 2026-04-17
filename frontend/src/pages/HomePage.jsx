@@ -28,7 +28,7 @@ const handleSubmit = async (e) => {
   const msg = `Hi, I'm ${name}. My number is ${phone}. I need interior design service.`;
 
   window.open(
-    `https://wa.me/919591039597?text=${encodeURIComponent(msg)}`,
+    `https://wa.me/919164466606?text=${encodeURIComponent(msg)}`,
     "_blank"
   );
 

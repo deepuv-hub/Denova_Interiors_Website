@@ -54,7 +54,7 @@ const AdsLanding = () => {
       });
     } catch (err) {}
 
-    window.open(`https://wa.me/919591039597`);
+    window.open(`https://wa.me/919164466606`);
     window.location.href = "/thank-you";
   };
 
@@ -643,14 +643,14 @@ const AdsLanding = () => {
       </button>
 
       <a
-        href="tel:9591039597"
+        href="tel:9164466606"
         className="border px-8 py-3 rounded-lg font-semibold"
       >
         Call Now
       </a>
 
       <a
-        href="https://wa.me/919591039597"
+        href="https://wa.me/919164466606"
         className="bg-green-500 text-white px-8 py-3 rounded-lg font-semibold"
       >
         WhatsApp Us

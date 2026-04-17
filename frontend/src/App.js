@@ -6,6 +6,9 @@ import { Toaster } from "./components/ui/sonner";
 import CityLanding from "./pages/CityLanding";
 import AdsLanding from "./pages/AdsLanding";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Koramangala from "./pages/locations/Koramangala";
+import HSRLayout from "./pages/locations/HSRLayout";
+import Whitefield from "./pages/locations/Whitefield";
 
 // Layout Components
 import Header from "./components/layout/Header";
@@ -68,7 +71,16 @@ function App() {
                   <Route path="/process" element={<ProcessPage />} />
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="/estimate" element={<EstimatePage />} />
+                  <Route path="/interior-designers/koramangala" element={<Koramangala />} />
+                  <Route path="/interior-designers/hsr-layout" element={<HSRLayout />} />
+                  <Route path="/interior-designers/whitefield" element={<Whitefield />} />
+
+                  {/* ✅ EXISTING DYNAMIC ROUTE (KEEP THIS) */}
                   <Route path="/interior-designers/:city" element={<CityLanding />} />
+
+                  {/* ✅ NEW STATIC SEO ROUTES (VERY IMPORTANT) */}
+                  
+
                   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 </Routes>
               </Layout>

@@ -6,23 +6,26 @@ import { Helmet } from "react-helmet";
 
 const BASE_URL = "https://denovacreations.com";
 
-const CityLanding = () => {
-  const { city } = useParams();
+const CityLanding = (props) => {
+  const params = useParams();
+
+  // ✅ SUPPORT BOTH STATIC + DYNAMIC ROUTES
+  const cityKey = props.city || params.city;
 
   const location = locations.find(
-    (loc) => loc.slug.toLowerCase() === city?.toLowerCase()
+    (loc) => loc.slug.toLowerCase() === (cityKey && cityKey.toLowerCase())
   );
 
   if (!location) {
     return (
       <div style={{ padding: "50px", textAlign: "center" }}>
         <h2>City Not Found</h2>
-        <p>{city}</p>
+        <p>{cityKey}</p>
       </div>
     );
   }
 
-  const pageUrl = `${BASE_URL}/interior-designers/${location.slug}`;
+  const pageUrl = `${BASE_URL}/interior-designers-${location.slug}`;
 
   return (
     <>

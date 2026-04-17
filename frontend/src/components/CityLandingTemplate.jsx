@@ -39,7 +39,7 @@ const CityLandingTemplate = ({ location }) => {
     const msg = `Hi, I'm ${name}. My number is ${phone}. I need interior design service in ${location.name}.`;
 
     window.open(
-      `https://wa.me/919591039597?text=${encodeURIComponent(msg)}`,
+      `https://wa.me/919164466606?text=${encodeURIComponent(msg)}`,
       "_blank"
     );
 
@@ -64,7 +64,7 @@ const CityLandingTemplate = ({ location }) => {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             name: "Denova Creations",
-            telephone: "+91-9591039597",
+            telephone: "+91-9164466606",
             areaServed: location.name,
           })}
         </script>
@@ -110,7 +110,7 @@ const CityLandingTemplate = ({ location }) => {
 </button>
 
               <a
-                href="https://wa.me/919591039597"
+                href="https://wa.me/919164466606"
                 className="bg-green-500 text-white px-6 py-3 rounded"
               >
                 WhatsApp Now
