@@ -36,6 +36,7 @@ const Footer = () => {
                 <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#C8A35F] transition-colors">
                   <Youtube className="w-5 h-5" />
                 </a>
+                
               </div>
             </div>
 
@@ -45,7 +46,7 @@ const Footer = () => {
                 Quick Links
               </h4>
               <ul className="space-y-3">
-                {['Home', 'About Us', 'Services', 'Projects', 'Testimonials', 'Contact'].map((link) => (
+                {['Home', 'About Us', 'Services', 'Projects', 'Testimonials', 'Contact' , 'Privacy Policy'].map((link) => (
                   <li key={link}>
                     <Link
                       to={`/${link.toLowerCase().replace(' ', '-')}`}

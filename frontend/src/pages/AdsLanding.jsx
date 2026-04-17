@@ -158,7 +158,17 @@ const AdsLanding = () => {
             <button className="bg-[#C8A96A] py-3 rounded-lg font-semibold">
               {loading ? "Submitting..." : "Get Quote"}
             </button>
+
+            {/* ✅ RIGHT HERE */}
+  <p className="text-xs text-gray-500 mt-3 text-center">
+    By submitting this form, you agree to our{" "}
+    <a href="/privacy-policy" className="underline font-medium">
+      Privacy Policy
+    </a>.
+  </p>
+
           </form>
+        
         </div>
       </section>
 

@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "./components/ui/sonner";
 import CityLanding from "./pages/CityLanding";
 import AdsLanding from "./pages/AdsLanding";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 // Layout Components
 import Header from "./components/layout/Header";
@@ -68,6 +69,7 @@ function App() {
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="/estimate" element={<EstimatePage />} />
                   <Route path="/interior-designers/:city" element={<CityLanding />} />
+                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 </Routes>
               </Layout>
             }
