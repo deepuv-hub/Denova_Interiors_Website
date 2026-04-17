@@ -46,14 +46,14 @@ const ThankYou = () => {
       <div className="mt-8 flex gap-4">
 
         <a
-          href="tel:9591039597"
+          href="tel:9164466606"
           className="bg-black text-white px-6 py-3 rounded"
         >
           Call Now
         </a>
 
         <a
-          href="https://wa.me/919591039597"
+          href="https://wa.me/919164466606"
           className="bg-green-500 text-white px-6 py-3 rounded"
         >
           WhatsApp
