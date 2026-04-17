@@ -392,7 +392,7 @@ const AdsLanding = () => {
 </section>
 
       {/* TESTIMONIALS */}
-      <section className="py-20 bg-[#F8F5F0]">
+     <section className="py-20 bg-[#F8F5F0]">
   <div className="max-w-6xl mx-auto px-4 text-center">
 
     <h2 className="text-3xl font-bold mb-4">
@@ -408,14 +408,15 @@ const AdsLanding = () => {
       {/* CARD 1 */}
       <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
 
-        <div className="relative">
+        <div className="relative h-48 overflow-hidden">
           <img
-            src="/images/client1.webp"
-            className="w-full h-48 object-cover"
-            alt="Client"
+            src={`${process.env.PUBLIC_URL}/images/client1.webp`}
+            onError={(e) => (e.target.src = `${process.env.PUBLIC_URL}/images/fallback.webp`)}
+            className="w-full h-full object-cover"
+            alt="Vinod Home"
           />
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center">
+            <div className="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center text-sm">
               ▶
             </div>
           </div>
@@ -440,14 +441,15 @@ const AdsLanding = () => {
       {/* CARD 2 */}
       <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
 
-        <div className="relative">
+        <div className="relative h-48 overflow-hidden">
           <img
-            src="/images/client2.webp"
-            className="w-full h-48 object-cover"
-            alt="Client"
+            src={`${process.env.PUBLIC_URL}/images/client2.webp`}
+            onError={(e) => (e.target.src = `${process.env.PUBLIC_URL}/images/fallback.webp`)}
+            className="w-full h-full object-cover"
+            alt="Harish Home"
           />
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center">
+            <div className="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center text-sm">
               ▶
             </div>
           </div>
@@ -472,14 +474,15 @@ const AdsLanding = () => {
       {/* CARD 3 */}
       <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
 
-        <div className="relative">
+        <div className="relative h-48 overflow-hidden">
           <img
-            src="/images/client3.webp"
-            className="w-full h-48 object-cover"
-            alt="Client"
+            src={`${process.env.PUBLIC_URL}/images/client3.webp`}
+            onError={(e) => (e.target.src = `${process.env.PUBLIC_URL}/images/fallback.webp`)}
+            className="w-full h-full object-cover"
+            alt="Srinath Home"
           />
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center">
+            <div className="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center text-sm">
               ▶
             </div>
           </div>
