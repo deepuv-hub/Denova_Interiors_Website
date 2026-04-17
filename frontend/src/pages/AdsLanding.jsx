@@ -405,106 +405,73 @@ const AdsLanding = () => {
 
     <div className="grid md:grid-cols-3 gap-8">
 
-      {/* CARD 1 */}
-      <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
-
-        <div className="relative h-48 overflow-hidden">
-          <img
-            src={`${process.env.PUBLIC_URL}/images/client1.webp`}
-            onError={(e) => (e.target.src = `${process.env.PUBLIC_URL}/images/fallback.webp`)}
-            className="w-full h-full object-cover"
-            alt="Vinod Home"
-          />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center text-sm">
-              ▶
-            </div>
-          </div>
-        </div>
-
-        <div className="p-5 text-left">
-          <p className="text-sm text-gray-600 mb-3">
-            “Exceeded expectations. The execution quality was excellent and on time.”
-          </p>
-
-          <p className="font-semibold">
-            Vinod’s Home
-          </p>
-
-          <p className="text-xs text-gray-500">
-            2BHK • Bangalore
-          </p>
-        </div>
-
-      </div>
-
-      {/* CARD 2 */}
-      <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
-
-        <div className="relative h-48 overflow-hidden">
-          <img
-            src={`${process.env.PUBLIC_URL}/images/client2.webp`}
-            onError={(e) => (e.target.src = `${process.env.PUBLIC_URL}/images/fallback.webp`)}
-            className="w-full h-full object-cover"
-            alt="Harish Home"
-          />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center text-sm">
-              ▶
-            </div>
-          </div>
-        </div>
-
-        <div className="p-5 text-left">
-          <p className="text-sm text-gray-600 mb-3">
-            “Very transparent process and premium materials used.”
-          </p>
-
-          <p className="font-semibold">
-            Harish’s Home
-          </p>
-
-          <p className="text-xs text-gray-500">
-            3BHK • Bangalore
-          </p>
-        </div>
-
-      </div>
-
-      {/* CARD 3 */}
-      <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
-
-        <div className="relative h-48 overflow-hidden">
-          <img
-            src={`${process.env.PUBLIC_URL}/images/client3.webp`}
-            onError={(e) => (e.target.src = `${process.env.PUBLIC_URL}/images/fallback.webp`)}
-            className="w-full h-full object-cover"
-            alt="Srinath Home"
-          />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center text-sm">
-              ▶
-            </div>
-          </div>
-        </div>
-
-        <div className="p-5 text-left">
-          <p className="text-sm text-gray-600 mb-3">
-            “Smooth renovation and exactly what we expected.”
-          </p>
-
-          <p className="font-semibold">
-            Srinath’s Home
-          </p>
-
-          <p className="text-xs text-gray-500">
-            Renovation • Bangalore
-          </p>
-        </div>
-
-      </div>
-
+  {/* CARD 1 */}
+  <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition duration-300 group">
+    <div className="relative h-48 overflow-hidden">
+      <img
+        src={`${process.env.PUBLIC_URL}/images/client1.webp`}
+        onError={(e) => (e.target.src = `${process.env.PUBLIC_URL}/images/fallback.webp`)}
+        className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+        alt="Vinod Home"
+      />
+      <div className="absolute inset-0 bg-black/20"></div>
     </div>
+
+    <div className="p-5 text-left">
+      <p className="text-[#C8A96A] text-sm mb-2">★★★★★</p>
+      <p className="text-sm text-gray-600 mb-3 leading-relaxed">
+        “Exceeded expectations. The execution quality was excellent and delivered on time.”
+      </p>
+      <p className="font-semibold">Vinod’s Home</p>
+      <p className="text-xs text-gray-500">2BHK • Bangalore</p>
+    </div>
+  </div>
+
+  {/* CARD 2 */}
+  <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition duration-300 group">
+    <div className="relative h-48 overflow-hidden">
+      <img
+        src={`${process.env.PUBLIC_URL}/images/client2.webp`}
+        onError={(e) => (e.target.src = `${process.env.PUBLIC_URL}/images/fallback.webp`)}
+        className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+        alt="Harish Home"
+      />
+      <div className="absolute inset-0 bg-black/20"></div>
+    </div>
+
+    <div className="p-5 text-left">
+      <p className="text-[#C8A96A] text-sm mb-2">★★★★★</p>
+      <p className="text-sm text-gray-600 mb-3 leading-relaxed">
+        “Very transparent process and premium materials used.”
+      </p>
+      <p className="font-semibold">Harish’s Home</p>
+      <p className="text-xs text-gray-500">3BHK • Bangalore</p>
+    </div>
+  </div>
+
+  {/* CARD 3 */}
+  <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition duration-300 group">
+    <div className="relative h-48 overflow-hidden">
+      <img
+        src={`${process.env.PUBLIC_URL}/images/client3.webp`}
+        onError={(e) => (e.target.src = `${process.env.PUBLIC_URL}/images/fallback.webp`)}
+        className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+        alt="Srinath Home"
+      />
+      <div className="absolute inset-0 bg-black/20"></div>
+    </div>
+
+    <div className="p-5 text-left">
+      <p className="text-[#C8A96A] text-sm mb-2">★★★★★</p>
+      <p className="text-sm text-gray-600 mb-3 leading-relaxed">
+        “Smooth renovation and exactly what we expected.”
+      </p>
+      <p className="font-semibold">Srinath’s Home</p>
+      <p className="text-xs text-gray-500">Renovation • Bangalore</p>
+    </div>
+  </div>
+
+</div>
 
   </div>
 </section>
