@@ -409,8 +409,8 @@ const AdsLanding = () => {
   <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition duration-300 group">
     <div className="relative h-48 overflow-hidden">
       <img
-        src={`${process.env.PUBLIC_URL}/images/client1.webp`}
-        onError={(e) => (e.target.src = `${process.env.PUBLIC_URL}/images/fallback.webp`)}
+        src="/images/client1.webp"
+        onError={(e) => (e.target.src = "/images/fallback.webp")}
         className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
         alt="Vinod Home"
       />
@@ -431,8 +431,8 @@ const AdsLanding = () => {
   <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition duration-300 group">
     <div className="relative h-48 overflow-hidden">
       <img
-        src={`${process.env.PUBLIC_URL}/images/client2.webp`}
-        onError={(e) => (e.target.src = `${process.env.PUBLIC_URL}/images/fallback.webp`)}
+        src="/images/client2.webp"
+        onError={(e) => (e.target.src = "/images/fallback.webp")}
         className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
         alt="Harish Home"
       />
@@ -453,8 +453,8 @@ const AdsLanding = () => {
   <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition duration-300 group">
     <div className="relative h-48 overflow-hidden">
       <img
-        src={`${process.env.PUBLIC_URL}/images/client3.webp`}
-        onError={(e) => (e.target.src = `${process.env.PUBLIC_URL}/images/fallback.webp`)}
+       src="/images/client3.webp"
+        onError={(e) => (e.target.src = "/images/fallback.webp")}
         className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
         alt="Srinath Home"
       />
