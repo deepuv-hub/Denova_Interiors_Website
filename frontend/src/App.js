@@ -9,6 +9,12 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Koramangala from "./pages/locations/Koramangala";
 import HSRLayout from "./pages/locations/HSRLayout";
 import Whitefield from "./pages/locations/Whitefield";
+import Marathahalli from "./pages/locations/Marathahalli";
+import Indiranagar from "./pages/locations/Indiranagar";
+import SarjapurRoad from "./pages/locations/SarjapurRoad";
+import Hebbal from "./pages/locations/Hebbal";
+import Yelahanka from "./pages/locations/Yelahanka";
+import JPNagar from "./pages/locations/JPNagar";
 
 // Layout Components
 import Header from "./components/layout/Header";
@@ -74,6 +80,12 @@ function App() {
                   <Route path="/interior-designers/koramangala" element={<Koramangala />} />
                   <Route path="/interior-designers/hsr-layout" element={<HSRLayout />} />
                   <Route path="/interior-designers/whitefield" element={<Whitefield />} />
+                  <Route path="/interior-designers/marathahalli" element={<Marathahalli />} />
+                  <Route path="/interior-designers/indiranagar" element={<Indiranagar />} />
+                  <Route path="/interior-designers/sarjapur-road" element={<SarjapurRoad />} />
+                  <Route path="/interior-designers/hebbal" element={<Hebbal />} />
+                  <Route path="/interior-designers/yelahanka" element={<Yelahanka />} />
+                  <Route path="/interior-designers/jp-nagar" element={<JPNagar />} />
 
                   {/* ✅ EXISTING DYNAMIC ROUTE (KEEP THIS) */}
                   <Route path="/interior-designers/:city" element={<CityLanding />} />

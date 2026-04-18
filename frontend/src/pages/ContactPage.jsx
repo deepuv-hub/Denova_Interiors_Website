@@ -1,21 +1,23 @@
-import { SCRIPT_URL } from "../utils/api";
-import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
-import { Button } from '../components/ui/button';
-import { Input } from '../components/ui/input';
-import { Textarea } from '../components/ui/textarea';
-import { Label } from '../components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
-import { companyInfo } from '../data/mock';
+import React, { useState } from "react";
+import { Input } from "../components/ui/input";
+import { Textarea } from "../components/ui/textarea";
+import { Button } from "../components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../components/ui/select";
+import { submitLead } from "../utils/submitLead";
 
 const ContactPage = () => {
-
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    propertyType: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    propertyType: "",
+    message: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -23,48 +25,57 @@ const ContactPage = () => {
   // ✅ Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   // ✅ Handle select change
   const handleSelectChange = (value) => {
-    setFormData(prev => ({ ...prev, propertyType: value }));
+    setFormData((prev) => ({ ...prev, propertyType: value }));
   };
 
-  // ✅ Handle submit
-  const handleSubmit = (e) => {
+  // ✅ Handle submit (FIXED)
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const cleanedPhone = formData.phone.replace(/\D/g, "");
 
-    if (!formData.name || cleanedPhone.length !== 10) {
-      alert("Enter valid details");
+    // 🔒 Validation
+    if (!formData.name) {
+      alert("Please enter your name");
+      return;
+    }
+
+    if (cleanedPhone.length !== 10) {
+      alert("Enter valid 10-digit phone number");
       return;
     }
 
     setIsSubmitting(true);
 
-    fetch(SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors",
-      body: JSON.stringify({
+    try {
+      const result = await submitLead({
         name: formData.name,
         phone: cleanedPhone,
         location: "Contact Page",
-        source: "Website",
-      }),
-    });
+        requirement:
+          formData.propertyType + " | " + formData.message,
+      });
 
-    // ✅ Redirect to thank you
-    window.location.href = "/thank-you?source=contact";
+      if (result.status === "success") {
+        window.location.href = "/thank-you?source=contact";
+      } else {
+        alert("Something went wrong. Please try again.");
+        setIsSubmitting(false);
+      }
+    } catch (error) {
+      console.error("Submit error:", error);
+      alert("Error submitting form");
+      setIsSubmitting(false);
+    }
   };
-
-  const whatsappNumber = companyInfo.primaryPhone.replace(/[^0-9]/g, '');
-  const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=Hi, I'm interested in your interior design services.`;
 
   return (
     <div>
-      {/* Contact Form */}
       <form onSubmit={handleSubmit} className="space-y-6">
 
         <Input
@@ -88,8 +99,9 @@ const ContactPage = () => {
             <SelectValue placeholder="Select property type" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="1bhk">1 BHK</SelectItem>
-            <SelectItem value="2bhk">2 BHK</SelectItem>
+            <SelectItem value="1BHK">1 BHK</SelectItem>
+            <SelectItem value="2BHK">2 BHK</SelectItem>
+            <SelectItem value="3BHK">3 BHK</SelectItem>
           </SelectContent>
         </Select>
 
@@ -97,7 +109,7 @@ const ContactPage = () => {
           name="message"
           value={formData.message}
           onChange={handleChange}
-          placeholder="Your message"
+          placeholder="Your requirement"
         />
 
         <Button type="submit" disabled={isSubmitting}>
