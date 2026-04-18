@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://denovacreations.com/</loc>
+  </url>
+
+  <!-- Core Pages -->
+  <url>
+    <loc>https://denovacreations.com/about</loc>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/projects</loc>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/gallery</loc>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/materials</loc>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/contact</loc>
+  </url>
+
+  <!-- Location Pages -->
+  <url>
+    <loc>https://denovacreations.com/interior-designers/whitefield</loc>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/interior-designers/indiranagar</loc>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/interior-designers/marathahalli</loc>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/interior-designers/sarjapur-road</loc>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/interior-designers/hsr-layout</loc>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/interior-designers/koramangala</loc>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/interior-designers/electronic-city</loc>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/interior-designers/hebbal</loc>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/interior-designers/yelahanka</loc>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/interior-designers/jp-nagar</loc>
+  </url>
+
+</urlset>
