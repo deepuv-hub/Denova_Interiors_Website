@@ -80,7 +80,7 @@ const AdsLanding = () => {
   width="1200"
   height="1193"
   style={{ aspectRatio: "1200 / 1193" }}
-  className="w-full h-full object-cover"
+  className="absolute inset-0 w-full h-full object-cover"
 />
 </picture>
 
