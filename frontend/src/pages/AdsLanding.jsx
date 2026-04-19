@@ -66,7 +66,7 @@ const AdsLanding = () => {
     <div className="bg-white text-gray-800 font-sans">
 
       {/* HERO */}
-      <section className="relative min-h-[70vh] md:min-h-[85vh] flex items-center">
+      <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center">
 
         {/* ✅ IMAGE CONTAINER */}
         <picture>
@@ -75,7 +75,7 @@ const AdsLanding = () => {
   <img
     src="/images/hero2.webp"
     alt="Premium Home Interiors in Bangalore"
-    loading="eager"
+    loading="lazy"
     fetchPriority="high"
     width="1200"
     height="1193"
@@ -89,7 +89,7 @@ const AdsLanding = () => {
         <div className="relative z-10 max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 text-white">
 
           <div>
-            <h1 className="text-5xl font-bold leading-tight">
+            <h1 className="text-4xl font-bold">
               Premium Home Interiors in Bangalore
               <span className="block text-[#C8A96A]">
                 Starting at ₹3.5 Lakhs
