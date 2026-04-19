@@ -67,11 +67,19 @@ const AdsLanding = () => {
 
       {/* HERO */}
       <section className="relative h-[90vh] flex items-center">
-        <img
-          src="/images/hero.webp"
-          alt="Interior Design"
-          className="absolute w-full h-full object-cover"
-        />
+        <picture>
+  <source media="(max-width: 768px)" srcSet="/images/hero-mobile.webp" />
+  
+  <img
+    src="/images/hero2.webp"
+    alt="Premium Home Interiors in Bangalore"
+    loading="eager"
+    fetchPriority="high"
+    width="1200"
+    height="1193"
+    className="absolute w-full h-full object-cover"
+  />
+</picture>
 
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30"></div>
 
