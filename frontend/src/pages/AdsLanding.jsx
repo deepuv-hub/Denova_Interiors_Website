@@ -70,8 +70,7 @@ const AdsLanding = () => {
 
         {/* ✅ IMAGE CONTAINER */}
         <picture>
-      <source media="(max-width: 768px)" srcSet="/images/hero-mobile.webp" />
-  
+        
  <img
   src="/images/hero2.webp"
   alt="Premium Home Interiors in Bangalore"
