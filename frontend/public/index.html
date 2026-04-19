@@ -3,17 +3,14 @@
     <head>
         <!-- ✅ GOOGLE ADS GLOBAL TAG (ADD THIS ABOVE GTM) -->
 <script>
-window.addEventListener("load", function() {
+setTimeout(function () {
+
   var gtagScript = document.createElement("script");
   gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=AW-11303451952";
   gtagScript.async = true;
   document.head.appendChild(gtagScript);
 
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-11303451952');
-});
+}, 3000);
 </script>
 
 <!-- Google Tag Manager -->
@@ -30,35 +27,35 @@ window.addEventListener("load", function() {
 
         <!-- WhatsApp Click Tracking for GTM/GA4 -->
         <script>
-window.addEventListener("load", function () {
+setTimeout(function () {
 
-    document.body.addEventListener('click', function (e) {
-        var link = e.target.closest('a');
-        if (!link) return;
+  document.body.addEventListener('click', function (e) {
+      var link = e.target.closest('a');
+      if (!link) return;
 
-        var href = link.getAttribute('href') || '';
+      var href = link.getAttribute('href') || '';
 
-        if (
-            href.includes('api.whatsapp.com') ||
-            href.includes('wa.me')
-        ) {
-            e.preventDefault();
-            e.stopPropagation();
+      if (
+          href.includes('api.whatsapp.com') ||
+          href.includes('wa.me')
+      ) {
+          e.preventDefault();
+          e.stopPropagation();
 
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                event: 'whatsapp_click',
-                link_url: href,
-                link_text: link.innerText || link.getAttribute('aria-label') || 'WhatsApp'
-            });
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+              event: 'whatsapp_click',
+              link_url: href,
+              link_text: link.innerText || link.getAttribute('aria-label') || 'WhatsApp'
+          });
 
-            setTimeout(function () {
-                window.location.href = href;
-            }, 500);
-        }
-    }, true);
+          setTimeout(function () {
+              window.location.href = href;
+          }, 500);
+      }
+  }, true);
 
-});
+}, 3000);
 </script>
 
 
@@ -158,46 +155,49 @@ window.addEventListener("load", function () {
     -->
         <!-- Denova Interiors -->
         <script>
-window.addEventListener("load", function () {
+setTimeout(function () {
 
-!(function (t, e) {
-    var o, n, p, r;
-    e.__SV ||
-        ((window.posthog = e),
-        (e._i = []),
-        (e.init = function (i, s, a) {
-            function g(t, e) {
-                var o = e.split(".");
-                2 == o.length && ((t = t[o[0]]), (e = o[1])),
-                    (t[e] = function () {
-                        t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
-                    });
-            }
-            ((p = t.createElement("script")).type = "text/javascript"),
-                (p.crossOrigin = "anonymous"),
-                (p.async = !0),
-                (p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js"),
-                (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r);
-            var u = e;
-            for (
-                void 0 !== a ? (u = e[a] = []) : (a = "posthog"),
-                u.people = u.people || [],
-                o = ["capture","identify","set_config"],
-                n = 0;
-                n < o.length;
-                n++
-            ) g(u, o[n]);
-            e._i.push([i, s, a]);
-        }),
-        (e.__SV = 1));
-})(document, window.posthog || []);
+  !(function (t, e) {
+      var o, n, p, r;
+      e.__SV ||
+          ((window.posthog = e),
+          (e._i = []),
+          (e.init = function (i, s, a) {
+              function g(t, e) {
+                  var o = e.split(".");
+                  2 == o.length && ((t = t[o[0]]), (e = o[1])),
+                      (t[e] = function () {
+                          t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
+                      });
+              }
+              ((p = t.createElement("script")).type = "text/javascript"),
+                  (p.crossOrigin = "anonymous"),
+                  (p.async = !0),
+                  (p.src =
+                      s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") +
+                      "/static/array.js"),
+                  (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r);
+              var u = e;
+              for (
+                  void 0 !== a ? (u = e[a] = []) : (a = "posthog"),
+                      u.people = u.people || [],
+                      o = ["capture", "identify", "set_config"],
+                      n = 0;
+                  n < o.length;
+                  n++
+              )
+                  g(u, o[n]);
+              e._i.push([i, s, a]);
+          }),
+          (e.__SV = 1));
+  })(document, window.posthog || []);
 
-posthog.init("phc_yJW1VjHGGwmCbbrtczfqqNxgBDbhlhOWcdzcIJEOTFE", {
-    api_host: "https://us.i.posthog.com",
-    person_profiles: "identified_only",
-});
+  posthog.init("phc_yJW1VjHGGwmCbbrtczfqqNxgBDbhlhOWcdzcIJEOTFE", {
+      api_host: "https://us.i.posthog.com",
+      person_profiles: "identified_only",
+  });
 
-});
+}, 4000); // 🔥 delay execution
 </script>
     </body>
 </html>
