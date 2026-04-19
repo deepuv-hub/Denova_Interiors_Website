@@ -66,9 +66,11 @@ const AdsLanding = () => {
     <div className="bg-white text-gray-800 font-sans">
 
       {/* HERO */}
-      <section className="relative h-[90vh] flex items-center">
+      <section className="relative min-h-[70vh] md:min-h-[85vh] flex items-center">
+
+        {/* ✅ IMAGE CONTAINER */}
         <picture>
-  <source media="(max-width: 768px)" srcSet="/images/hero-mobile.webp" />
+      <source media="(max-width: 768px)" srcSet="/images/hero-mobile.webp" />
   
   <img
     src="/images/hero2.webp"
@@ -77,7 +79,7 @@ const AdsLanding = () => {
     fetchPriority="high"
     width="1200"
     height="1193"
-    className="absolute w-full h-full object-cover"
+     className="w-full h-full object-cover"
   />
 </picture>
 
