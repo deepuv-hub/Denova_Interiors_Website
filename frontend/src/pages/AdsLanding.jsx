@@ -66,22 +66,23 @@ const AdsLanding = () => {
     <div className="bg-white text-gray-800 font-sans">
 
       {/* HERO */}
-      <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center">
+      <section className="relative min-h-[45vh] md:min-h-[55vh] flex items-center">
 
         {/* ✅ IMAGE CONTAINER */}
         <picture>
       <source media="(max-width: 768px)" srcSet="/images/hero-mobile.webp" />
   
-  <img
-    src="/images/hero2.webp"
-    alt="Premium Home Interiors in Bangalore"
-    loading="lazy"
-    fetchPriority="high"
-    width="1200"
-    height="1193"
-    style={{ aspectRatio: "1200 / 1193" }}
-     className="w-full h-full object-cover"
-  />
+ <img
+  src="/images/hero2.webp"
+  alt="Premium Home Interiors in Bangalore"
+  loading="eager"
+  fetchPriority="high"
+  decoding="async"
+  width="1200"
+  height="1193"
+  style={{ aspectRatio: "1200 / 1193" }}
+  className="w-full h-full object-cover"
+/>
 </picture>
 
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30"></div>
