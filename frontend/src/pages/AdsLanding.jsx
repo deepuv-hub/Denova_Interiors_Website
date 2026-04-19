@@ -79,6 +79,7 @@ const AdsLanding = () => {
     fetchPriority="high"
     width="1200"
     height="1193"
+    style={{ aspectRatio: "1200 / 1193" }}
      className="w-full h-full object-cover"
   />
 </picture>

@@ -10,25 +10,40 @@ setTimeout(function () {
   gtagScript.async = true;
   document.head.appendChild(gtagScript);
 
-}, 3000);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-11303451952');
+
+}, 4000);
 </script>
 
 <!-- Google Tag Manager -->
 <script>
-window.addEventListener("load", function() {
+setTimeout(function() {
+
   (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+
   })(window,document,'script','dataLayer','GTM-59NLP9MV');
-});
+
+}, 6000); // 🔥 delay properly
 </script>
+
 <!-- End Google Tag Manager -->
 
         <!-- WhatsApp Click Tracking for GTM/GA4 -->
         <script>
-setTimeout(function () {
+if ('requestIdleCallback' in window) {
+  requestIdleCallback(initWhatsApp);
+} else {
+  setTimeout(initWhatsApp, 5000);
+}
 
+function initWhatsApp() {
   document.body.addEventListener('click', function (e) {
       var link = e.target.closest('a');
       if (!link) return;
@@ -54,13 +69,18 @@ setTimeout(function () {
           }, 500);
       }
   }, true);
-
-}, 3000);
+}
 </script>
 
 
         <!-- End WhatsApp Click Tracking -->
+       
         <meta charset="utf-8" />
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          
+         <link rel="preload" as="image" href="/images/hero2.webp" fetchpriority="high">
+
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#1F1F1F" />
         <meta name="description" content="Denova Interiors - Premium interior design solutions for homes, apartments, villas & commercial spaces in Bengaluru. 150+ projects delivered with 4.9 rating. Get free estimate today!" />
@@ -69,7 +89,10 @@ setTimeout(function () {
         <meta name="robots" content="index, follow" />
 
         <!-- 🔥 HERO IMAGE PRELOAD (CRITICAL FOR LCP) -->
-        <link rel="preload" as="image" href="/images/hero2.webp">
+        
+
+       
+       
         
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
@@ -110,9 +133,7 @@ setTimeout(function () {
         
         <title>Denova Interiors | Premium Interior Design in Bengaluru</title>
         <script defer src="https://assets.emergent.sh/scripts/emergent-main.js"></script>
-        <!--
-        These two scripts have been added for the Visual Edits, please do not edit or remove them
-        -->
+        
         <script>
             // Only load visual edit scripts when inside an iframe
             if (window.self !== window.top) {
@@ -143,16 +164,7 @@ setTimeout(function () {
         <!-- End Google Tag Manager (noscript) -->
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root"></div>
-        <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+        
         <!-- Denova Interiors -->
         <script>
 setTimeout(function () {
@@ -197,7 +209,7 @@ setTimeout(function () {
       person_profiles: "identified_only",
   });
 
-}, 4000); // 🔥 delay execution
+}, 6000); // 🔥 delay execution
 </script>
     </body>
 </html>
