@@ -84,7 +84,7 @@ const AdsLanding = () => {
 
         <img
           src="/images/hero2.webp"
-          alt="Premium Home Interiors in Bangalore"
+          alt="Premium Home Interiors in Bangalore by Denova Creations"
           loading="eager"
           fetchPriority="high"
           decoding="async"
@@ -167,41 +167,251 @@ const AdsLanding = () => {
       </section>
 
       {/* SHOWCASE */}
-      <section className="py-20 max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-10">Our Work</h2>
+<section className="py-20 max-w-6xl mx-auto px-4">
 
-        <div className="grid md:grid-cols-3 gap-6">
-          <SafeImage src="/images/living1.webp" alt="Living Room Interior Whitefield Bangalore" priority />
-          <SafeImage src="/images/kitchen1.webp" alt="Modular Kitchen Sarjapur Bangalore" />
-          <SafeImage src="/images/bedroom1.webp" alt="Bedroom Interior Bangalore" />
-          <SafeImage src="/images/living2.webp" alt="Luxury Living Room HSR Layout" />
-          <SafeImage src="/images/kitchen2.webp" alt="Kitchen Interior Electronic City" />
-          <SafeImage src="/images/bedroom2.webp" alt="Minimal Bedroom Bangalore" />
+  <h2 className="text-3xl font-bold text-center mb-4">
+    Our Work
+  </h2>
+
+  <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+    Real homes designed and executed across Bangalore — tailored to different budgets and lifestyles.
+  </p>
+
+  <div className="grid md:grid-cols-3 gap-6">
+
+    {/* CARD 1 */}
+    <div className="cursor-pointer" onClick={() => window.open("https://wa.me/919164466606")}>
+      <SafeImage 
+        src="/images/living1.webp" 
+        alt="2BHK Living Room Interior Whitefield Bangalore"
+        priority
+      />
+      <p className="mt-2 text-sm text-gray-600">
+        2BHK Living Room • Whitefield • ₹4–5 Lakhs
+      </p>
+    </div>
+
+    {/* CARD 2 */}
+    <div className="cursor-pointer" onClick={() => window.open("https://wa.me/919164466606")}>
+      <SafeImage 
+        src="/images/kitchen1.webp" 
+        alt="Modular Kitchen Interior Sarjapur Bangalore"
+      />
+      <p className="mt-2 text-sm text-gray-600">
+        Modular Kitchen • Sarjapur • ₹2–3 Lakhs
+      </p>
+    </div>
+
+    {/* CARD 3 */}
+    <div className="cursor-pointer" onClick={() => window.open("https://wa.me/919164466606")}>
+      <SafeImage 
+        src="/images/bedroom1.webp" 
+        alt="Bedroom Interior Bangalore Apartment"
+      />
+      <p className="mt-2 text-sm text-gray-600">
+        Bedroom Interior • Bangalore • ₹1.5–2 Lakhs
+      </p>
+    </div>
+
+    {/* CARD 4 */}
+    <div className="cursor-pointer" onClick={() => window.open("https://wa.me/919164466606")}>
+      <SafeImage 
+        src="/images/living2.webp" 
+        alt="Luxury Living Room HSR Layout Bangalore"
+      />
+      <p className="mt-2 text-sm text-gray-600">
+        3BHK Living Room • HSR Layout • ₹6–8 Lakhs
+      </p>
+    </div>
+
+    {/* CARD 5 */}
+    <div className="cursor-pointer" onClick={() => window.open("https://wa.me/919164466606")}>
+      <SafeImage 
+        src="/images/kitchen2.webp" 
+        alt="Contemporary Kitchen Electronic City Bangalore"
+      />
+      <p className="mt-2 text-sm text-gray-600">
+        Contemporary Kitchen • Electronic City • ₹3.5–5 Lakhs
+      </p>
+    </div>
+
+    {/* CARD 6 */}
+    <div className="cursor-pointer" onClick={() => window.open("https://wa.me/919164466606")}>
+      <SafeImage 
+        src="/images/bedroom2.webp" 
+        alt="Minimal Bedroom Bangalore Apartment"
+      />
+      <p className="mt-2 text-sm text-gray-600">
+        Minimal Bedroom • Apartment • ₹1.8–3 Lakhs
+      </p>
+    </div>
+
+  </div>
+
+  {/* CTA */}
+  <div className="text-center mt-12">
+    <button
+      onClick={() => window.open("https://wa.me/919164466606")}
+      className="bg-[#C8A96A] px-6 py-3 rounded-lg font-semibold"
+    >
+      Get Similar Design for Your Home
+    </button>
+  </div>
+
+</section>
+
+      {/* SERVICES */}
+<section className="py-20 bg-[#F8F5F0]">
+  <div className="max-w-6xl mx-auto px-4">
+
+    <h2 className="text-3xl font-bold text-center mb-4">
+      Interior Design Services in Bangalore
+    </h2>
+
+    <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+      End-to-end interior solutions tailored for apartments, villas, and modern homes.
+    </p>
+
+    <div className="grid md:grid-cols-4 gap-8">
+
+      {/* CARD 1 */}
+      <div className="bg-white rounded-xl overflow-hidden shadow-lg">
+        <SafeImage 
+          src="/images/living2.webp" 
+          alt="Full Home Interior Design Bangalore"
+        />
+        <div className="p-4 text-center">
+          <h3 className="font-semibold text-lg mb-2">
+            Full Home Interiors
+          </h3>
+          <p className="text-sm text-gray-600">
+            Complete design and execution for your entire home within budget.
+          </p>
         </div>
-      </section>
+      </div>
 
-      {/* SERVICES (IMAGES FIXED) */}
-      <section className="py-20 bg-[#F8F5F0]">
-        <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-4 gap-8">
-
-          <SafeImage src="/images/living2.webp" alt="Full Home Interiors Bangalore" />
-          <SafeImage src="/images/kitchen3.webp" alt="Modular Kitchen Design Bangalore" />
-          <SafeImage src="/images/bedroom10.webp" alt="Wardrobe Interior Design Bangalore" />
-          <SafeImage src="/images/kitchen1.webp" alt="Renovation Interior Bangalore" />
-
+      {/* CARD 2 */}
+      <div className="bg-white rounded-xl overflow-hidden shadow-lg">
+        <SafeImage 
+          src="/images/kitchen3.webp" 
+          alt="Modular Kitchen Interior Design Bangalore"
+        />
+        <div className="p-4 text-center">
+          <h3 className="font-semibold text-lg mb-2">
+            Modular Kitchen
+          </h3>
+          <p className="text-sm text-gray-600">
+            Functional and stylish kitchen solutions designed for daily living.
+          </p>
         </div>
-      </section>
+      </div>
+
+      {/* CARD 3 */}
+      <div className="bg-white rounded-xl overflow-hidden shadow-lg">
+        <SafeImage 
+          src="/images/bedroom10.webp" 
+          alt="Wardrobe Interior Design Bangalore"
+        />
+        <div className="p-4 text-center">
+          <h3 className="font-semibold text-lg mb-2">
+            Wardrobes & Storage
+          </h3>
+          <p className="text-sm text-gray-600">
+            Space-optimized storage solutions with premium finishes.
+          </p>
+        </div>
+      </div>
+
+      {/* CARD 4 */}
+      <div className="bg-white rounded-xl overflow-hidden shadow-lg">
+        <SafeImage 
+          src="/images/kitchen1.webp" 
+          alt="Home Renovation Interior Bangalore"
+        />
+        <div className="p-4 text-center">
+          <h3 className="font-semibold text-lg mb-2">
+            Renovation Projects
+          </h3>
+          <p className="text-sm text-gray-600">
+            Upgrade your existing space into a modern and functional home.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
       {/* TESTIMONIALS */}
-      <section className="py-20 bg-[#F8F5F0]">
-        <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+<section className="py-20 bg-[#F8F5F0]">
+  <div className="max-w-6xl mx-auto px-4">
 
-          <SafeImage src="/images/client1.webp" alt="Client Review Bangalore" />
-          <SafeImage src="/images/client2.webp" alt="Interior Client Bangalore" />
-          <SafeImage src="/images/client3.webp" alt="Home Interior Testimonial Bangalore" />
+    <h2 className="text-3xl font-bold text-center mb-4">
+      What Our Clients Say
+    </h2>
 
+    <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+      Real experiences from homeowners across Bangalore who trusted Denova Creations.
+    </p>
+    <p className="text-center mt-10 text-sm text-gray-500">
+  Trusted by 100+ homeowners across Bangalore
+</p>
+
+    <div className="grid md:grid-cols-3 gap-8">
+
+      {/* CARD 1 */}
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <SafeImage 
+          src="/images/client1.webp" 
+          alt="2BHK Interior Project Bangalore"
+        />
+        <div className="p-5 text-left">
+          <p className="text-[#C8A96A] text-sm mb-2">★★★★★</p>
+          <p className="text-sm text-gray-600 mb-3">
+            “The execution was smooth and the final output exceeded our expectations. Everything was delivered on time.”
+          </p>
+          <p className="font-semibold">Vinod</p>
+          <p className="text-xs text-gray-500">2BHK • Bangalore</p>
         </div>
-      </section>
+      </div>
+
+      {/* CARD 2 */}
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <SafeImage 
+          src="/images/client2.webp" 
+          alt="3BHK Interior Project Bangalore"
+        />
+        <div className="p-5 text-left">
+          <p className="text-[#C8A96A] text-sm mb-2">★★★★★</p>
+          <p className="text-sm text-gray-600 mb-3">
+            “Very transparent pricing and great material quality. The team was professional throughout.”
+          </p>
+          <p className="font-semibold">Harish</p>
+          <p className="text-xs text-gray-500">3BHK • Bangalore</p>
+        </div>
+      </div>
+
+      {/* CARD 3 */}
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <SafeImage 
+          src="/images/client3.webp" 
+          alt="Home Renovation Bangalore"
+        />
+        <div className="p-5 text-left">
+          <p className="text-[#C8A96A] text-sm mb-2">★★★★★</p>
+          <p className="text-sm text-gray-600 mb-3">
+            “Our renovation was handled perfectly. The design matched exactly what we had in mind.”
+          </p>
+          <p className="font-semibold">Srinath</p>
+          <p className="text-xs text-gray-500">Renovation • Bangalore</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
     </div>
   );
