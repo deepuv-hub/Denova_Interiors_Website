@@ -99,7 +99,7 @@ const AdsLanding = () => {
 
           <div>
             <h1 className="text-4xl font-bold">
-              Premium Home Interiors in Bangalore
+              Premium Home Interiors in Bangalore by Denova Creations
               <span className="block text-[#C8A96A]">
                 Starting at ₹3.5 Lakhs
               </span>
@@ -165,6 +165,75 @@ const AdsLanding = () => {
           </form>
         </div>
       </section>
+
+      {/* PRICING SECTION */}
+<section className="py-20 bg-white">
+  <div className="max-w-6xl mx-auto px-4 text-center">
+
+    <h2 className="text-3xl font-bold mb-4">
+      Interior Design Cost in Bangalore
+    </h2>
+
+    <p className="text-gray-600 mb-10 max-w-2xl mx-auto">
+      Get a clear idea of interior pricing based on your home type and requirements.
+    </p>
+
+    <div className="grid md:grid-cols-3 gap-6">
+
+      {/* CARD 1 */}
+      <div className="border rounded-xl p-6 shadow-sm hover:shadow-md transition">
+        <h3 className="font-semibold text-lg mb-2">1 BHK Interiors</h3>
+        <p className="text-2xl font-bold text-[#C8A96A] mb-3">₹2.5L – ₹4L</p>
+        <p className="text-sm text-gray-600 mb-4">
+          Ideal for compact homes with essential design and storage solutions.
+        </p>
+        <button
+          onClick={scrollToForm}
+          className="bg-[#C8A96A] px-4 py-2 rounded-lg font-semibold"
+        >
+          Get Exact Quote
+        </button>
+      </div>
+
+      {/* CARD 2 */}
+      <div className="border rounded-xl p-6 shadow-md">
+        <h3 className="font-semibold text-lg mb-2">2 BHK Interiors</h3>
+        <p className="text-2xl font-bold text-[#C8A96A] mb-3">₹3.5L – ₹6L</p>
+        <p className="text-sm text-gray-600 mb-4">
+          Complete home interiors with kitchen, wardrobes & living space design.
+        </p>
+        <button
+          onClick={scrollToForm}
+          className="bg-[#C8A96A] px-4 py-2 rounded-lg font-semibold"
+        >
+          Get Exact Quote
+        </button>
+      </div>
+
+      {/* CARD 3 */}
+      <div className="border rounded-xl p-6 shadow-sm hover:shadow-md transition">
+        <h3 className="font-semibold text-lg mb-2">3 BHK & Villas</h3>
+        <p className="text-2xl font-bold text-[#C8A96A] mb-3">₹6L – ₹12L+</p>
+        <p className="text-sm text-gray-600 mb-4">
+          Premium interiors with customized design, materials & finishes.
+        </p>
+        <button
+          onClick={scrollToForm}
+          className="bg-[#C8A96A] px-4 py-2 rounded-lg font-semibold"
+        >
+          Get Exact Quote
+        </button>
+      </div>
+
+    </div>
+
+    {/* TRUST LINE */}
+    <p className="text-sm text-gray-500 mt-8">
+      Transparent pricing • No hidden costs • Free consultation
+    </p>
+
+  </div>
+</section>
 
       {/* SHOWCASE */}
 <section className="py-20 max-w-6xl mx-auto px-4">
