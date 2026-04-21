@@ -249,7 +249,7 @@ const AdsLanding = () => {
   <div className="grid md:grid-cols-3 gap-6">
 
     {/* CARD 1 */}
-    <div className="cursor-pointer" onClick={() => window.open("https://wa.me/919164466606")}>
+    <div className="cursor-pointer" onClick={scrollToForm}>
       <SafeImage 
         src="/images/living1.webp" 
         alt="2BHK Living Room Interior Whitefield Bangalore"
@@ -261,7 +261,7 @@ const AdsLanding = () => {
     </div>
 
     {/* CARD 2 */}
-    <div className="cursor-pointer" onClick={() => window.open("https://wa.me/919164466606")}>
+    <div className="cursor-pointer" onClick={scrollToForm}>
       <SafeImage 
         src="/images/kitchen1.webp" 
         alt="Modular Kitchen Interior Sarjapur Bangalore"
@@ -272,7 +272,7 @@ const AdsLanding = () => {
     </div>
 
     {/* CARD 3 */}
-    <div className="cursor-pointer" onClick={() => window.open("https://wa.me/919164466606")}>
+    <div className="cursor-pointer" onClick={scrollToForm}>
       <SafeImage 
         src="/images/bedroom1.webp" 
         alt="Bedroom Interior Bangalore Apartment"
@@ -283,7 +283,7 @@ const AdsLanding = () => {
     </div>
 
     {/* CARD 4 */}
-    <div className="cursor-pointer" onClick={() => window.open("https://wa.me/919164466606")}>
+    <div className="cursor-pointer" onClick={scrollToForm}>
       <SafeImage 
         src="/images/living2.webp" 
         alt="Luxury Living Room HSR Layout Bangalore"
@@ -294,7 +294,7 @@ const AdsLanding = () => {
     </div>
 
     {/* CARD 5 */}
-    <div className="cursor-pointer" onClick={() => window.open("https://wa.me/919164466606")}>
+    <div className="cursor-pointer" onClick={scrollToForm}>
       <SafeImage 
         src="/images/kitchen2.webp" 
         alt="Contemporary Kitchen Electronic City Bangalore"
@@ -305,7 +305,7 @@ const AdsLanding = () => {
     </div>
 
     {/* CARD 6 */}
-    <div className="cursor-pointer" onClick={() => window.open("https://wa.me/919164466606")}>
+    <div className="cursor-pointer" onClick={scrollToForm}>
       <SafeImage 
         src="/images/bedroom2.webp" 
         alt="Minimal Bedroom Bangalore Apartment"
@@ -320,10 +320,10 @@ const AdsLanding = () => {
   {/* CTA */}
   <div className="text-center mt-12">
     <button
-      onClick={() => window.open("https://wa.me/919164466606")}
+      onClick={scrollToForm}
       className="bg-[#C8A96A] px-6 py-3 rounded-lg font-semibold"
     >
-      Get Similar Design for Your Home
+      Get Your Design Quote
     </button>
   </div>
 
