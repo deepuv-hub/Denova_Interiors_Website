@@ -3,20 +3,25 @@ import React, { useEffect } from "react";
 const ThankYou = () => {
 
   useEffect(() => {
-    // ✅ Get source safely inside component
-    const params = new URLSearchParams(window.location.search);
-    const source = params.get("source");
+  const params = new URLSearchParams(window.location.search);
+  const source = params.get("source");
 
-    console.log("Lead Source:", source); // 🔥 Debug (optional)
+  console.log("Lead Source:", source);
 
-    // ✅ Google Ads conversion
+  // Wait until gtag is available
+  const interval = setInterval(() => {
     if (window.gtag) {
       window.gtag("event", "conversion", {
         send_to: "AW-11303451952/zBhUCM29o5QcELD6840q",
       });
+      clearInterval(interval);
     }
+  }, 500);
 
-  }, []);
+  // Safety stop after 5 sec
+  setTimeout(() => clearInterval(interval), 5000);
+
+}, []);
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center text-center px-4">

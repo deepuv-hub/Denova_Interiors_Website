@@ -88,17 +88,17 @@ const AdsLanding = () => {
           loading="eager"
           fetchPriority="high"
           decoding="async"
-          width="1200"
-          height="700"
+          width="800"
+          height="600"
           className="absolute inset-0 w-full h-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-black/50"></div>
+       <div className="absolute inset-0 bg-black/50"></div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 text-white">
 
           <div>
-            <h1 className="text-4xl font-bold">
+            <h1 className="text-3xl md:text-4xl font-semibold leading-tight">
               Premium Home Interiors in Bangalore by Denova Creations
               <span className="block text-[#C8A96A]">
                 Starting at ₹3.5 Lakhs
