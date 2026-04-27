@@ -206,3 +206,7 @@ html {
     padding-bottom: 120px;
   }
 }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+}

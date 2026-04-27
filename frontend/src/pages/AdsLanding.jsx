@@ -93,7 +93,7 @@ const AdsLanding = () => {
           className="absolute inset-0 w-full h-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30"></div>
+        <div className="absolute inset-0 bg-black/50"></div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 text-white">
 
