@@ -43,44 +43,33 @@
 
   <!-- 🚀 SMART SCRIPT LOADING (CRITICAL FIX) -->
   <script>
-    function loadTrackingScripts() {
-      if (window.scriptsLoaded) return;
-      window.scriptsLoaded = true;
+function loadTrackingScripts() {
+  if (window.scriptsLoaded) return;
+  window.scriptsLoaded = true;
 
-      // Google Tag Manager
-      (function(w,d,s,l,i){
-        w[l]=w[l]||[];
-        w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
-        var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s);
-        j.async=true;
-        j.src='https://www.googletagmanager.com/gtm.js?id=GTM-59NLP9MV';
-        f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer');
+  // Initialize dataLayer
+  window.dataLayer = window.dataLayer || [];
 
-      // Google Ads
-      var gtagScript = document.createElement("script");
-      gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=AW-11303451952";
-      gtagScript.async = true;
-      document.head.appendChild(gtagScript);
+  // 🔥 THIS IS THE IMPORTANT LINE (CONNECTS GTM)
+  window.dataLayer.push({
+    event: "user_interaction"
+  });
 
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-11303451952');
+  // Load GTM AFTER interaction
+  (function(w,d,s,l,i){
+    var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s);
+    j.async=true;
+    j.src='https://www.googletagmanager.com/gtm.js?id=GTM-59NLP9MV';
+    f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer');
+}
 
-      // PostHog (optional – can disable if not critical)
-      var ph = document.createElement("script");
-      ph.src = "https://us.i.posthog.com/static/array.js";
-      ph.async = true;
-      document.head.appendChild(ph);
-    }
-
-    // Load only after real user interaction
-    ['click','scroll','mousemove','touchstart'].forEach(event => {
-      window.addEventListener(event, loadTrackingScripts, { once: true });
-    });
-  </script>
+// Trigger only once on interaction
+['click','scroll','mousemove','touchstart'].forEach(event => {
+  window.addEventListener(event, loadTrackingScripts, { once: true });
+});
+</script>
 
 </body>
 </html>
