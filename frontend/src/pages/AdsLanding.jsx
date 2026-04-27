@@ -89,7 +89,7 @@ const AdsLanding = () => {
           fetchPriority="high"
           decoding="async"
           width="1200"
-          height="1193"
+          height="700"
           className="absolute inset-0 w-full h-full object-cover"
         />
 
