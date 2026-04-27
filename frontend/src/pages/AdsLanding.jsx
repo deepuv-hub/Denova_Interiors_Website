@@ -19,16 +19,23 @@ const SafeImage = ({
     >
       {!error ? (
         <img
-          src={src}
-          alt={alt}
-          width={width}
-          height={height}
-          loading={priority ? "eager" : "lazy"}
-          decoding="async"
-          fetchPriority={priority ? "high" : "auto"}
-          onError={() => setError(true)}
-          className="w-full h-full object-cover hover:scale-105 transition duration-500"
-        />
+  src={src}
+  alt={alt}
+  width={width}
+  height={height}
+  loading={priority ? "eager" : "lazy"}
+  decoding="async"
+  fetchpriority={priority ? "high" : "auto"}
+  sizes="(max-width: 768px) 100vw, 400px"
+  onError={() => setError(true)}
+  className="w-full h-full object-cover hover:scale-105 transition duration-500"
+  style={{
+    width: "100%",
+    height: "100%",
+    objectFit: "cover"
+  }}
+  className="w-full h-full object-cover hover:scale-105 transition duration-500"
+/>
       ) : (
         <div className="flex items-center justify-center h-full text-gray-400 text-sm">
           Image coming soon
