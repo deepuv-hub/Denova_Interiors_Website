@@ -2,12 +2,63 @@
 <html lang="en">
 <head>
 
-    <!-- 🔥 HERO IMAGE PRELOAD (FIXED - NOW WORKS) -->
-    <link rel="preload" as="image" href="/images/hero2.webp">
+  <!-- 🔥 HERO IMAGE PRELOAD (CRITICAL FOR LCP) -->
+  <link rel="preload" as="image" href="/images/hero2.webp">
 
-    <!-- ✅ GOOGLE ADS (DELAYED) -->
-    <script>
-    setTimeout(function () {
+  <!-- META -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#1F1F1F" />
+
+  <!-- SEO -->
+  <meta name="description" content="Denova Interiors - Premium interior design solutions in Bengaluru. 150+ projects delivered." />
+  <meta name="keywords" content="interior design Bengaluru, home interiors, modular kitchen" />
+
+  <!-- ✅ NON-BLOCKING GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+    media="print"
+    onload="this.onload=null;this.media='all';"
+  >
+
+  <title>Denova Interiors | Premium Interior Design in Bengaluru</title>
+
+</head>
+
+<body>
+
+  <!-- GTM NOSCRIPT -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59NLP9MV"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+
+  <div id="root"></div>
+
+  <!-- 🚀 SMART SCRIPT LOADING (CRITICAL FIX) -->
+  <script>
+    function loadTrackingScripts() {
+      if (window.scriptsLoaded) return;
+      window.scriptsLoaded = true;
+
+      // Google Tag Manager
+      (function(w,d,s,l,i){
+        w[l]=w[l]||[];
+        w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s);
+        j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id=GTM-59NLP9MV';
+        f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer');
+
+      // Google Ads
       var gtagScript = document.createElement("script");
       gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=AW-11303451952";
       gtagScript.async = true;
@@ -17,141 +68,19 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'AW-11303451952');
-    }, 3000);
-    </script>
 
-    <!-- ✅ GOOGLE TAG MANAGER (DELAYED) -->
-    <script>
-    setTimeout(function() {
-      (function(w,d,s,l,i){
-        w[l]=w[l]||[];
-        w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
-        var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
-        j.async=true;
-        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-        f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-59NLP9MV');
-    }, 6000);
-    </script>
-
-    <!-- WhatsApp Tracking (NON-BLOCKING) -->
-    <script>
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(initWhatsApp);
-    } else {
-      setTimeout(initWhatsApp, 5000);
+      // PostHog (optional – can disable if not critical)
+      var ph = document.createElement("script");
+      ph.src = "https://us.i.posthog.com/static/array.js";
+      ph.async = true;
+      document.head.appendChild(ph);
     }
 
-    function initWhatsApp() {
-      document.body.addEventListener('click', function (e) {
-          var link = e.target.closest('a');
-          if (!link) return;
-
-          var href = link.getAttribute('href') || '';
-
-          if (href.includes('api.whatsapp.com') || href.includes('wa.me')) {
-              e.preventDefault();
-              e.stopPropagation();
-
-              window.dataLayer = window.dataLayer || [];
-              window.dataLayer.push({
-                  event: 'whatsapp_click',
-                  link_url: href
-              });
-
-              setTimeout(function () {
-                  window.location.href = href;
-              }, 500);
-          }
-      }, true);
-    }
-    </script>
-
-    <!-- META -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#1F1F1F" />
-
-    <!-- SEO -->
-    <meta name="description" content="Denova Interiors - Premium interior design solutions in Bengaluru. 150+ projects delivered." />
-    <meta name="keywords" content="interior design Bengaluru, home interiors, modular kitchen" />
-
-    <!-- ✅ OPTIMIZED GOOGLE FONTS (NON-BLOCKING) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-      media="print"
-      onload="this.onload=null;this.media='all';"
-    >
-
-    <title>Denova Interiors | Premium Interior Design in Bengaluru</title>
-
-    <!-- ❌ REMOVED EMERGENT SCRIPT (PERFORMANCE BOOST) -->
-
-</head>
-
-<body>
-
-    <!-- GTM NOSCRIPT -->
-    <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59NLP9MV"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>
-
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-
-    <div id="root"></div>
-
-    <!-- ✅ POSTHOG (DELAYED - SAFE) -->
-    <script>
-    setTimeout(function () {
-
-      !(function (t, e) {
-          var o, n, p, r;
-          e.__SV ||
-              ((window.posthog = e),
-              (e._i = []),
-              (e.init = function (i, s, a) {
-                  function g(t, e) {
-                      var o = e.split(".");
-                      2 == o.length && ((t = t[o[0]]), (e = o[1])),
-                          (t[e] = function () {
-                              t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
-                          });
-                  }
-                  ((p = t.createElement("script")).type = "text/javascript"),
-                      (p.crossOrigin = "anonymous"),
-                      (p.async = !0),
-                      (p.src =
-                          s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") +
-                          "/static/array.js"),
-                      (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r);
-                  var u = e;
-                  for (
-                      void 0 !== a ? (u = e[a] = []) : (a = "posthog"),
-                          u.people = u.people || [],
-                          o = ["capture", "identify", "set_config"],
-                          n = 0;
-                      n < o.length;
-                      n++
-                  )
-                      g(u, o[n]);
-                  e._i.push([i, s, a]);
-              }),
-              (e.__SV = 1));
-      })(document, window.posthog || []);
-
-      posthog.init("YOUR_POSTHOG_KEY", {
-          api_host: "https://us.i.posthog.com",
-          person_profiles: "identified_only",
-      });
-
-    }, 6000);
-    </script>
+    // Load only after real user interaction
+    ['click','scroll','mousemove','touchstart'].forEach(event => {
+      window.addEventListener(event, loadTrackingScripts, { once: true });
+    });
+  </script>
 
 </body>
 </html>
