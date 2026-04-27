@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+ import React, { useState } from "react";
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzNJ8sIocwARx549U8iAn-RYxwiNj0kMPxDQ6io8Wmby_Kc2VMBHyV9A5hLuRJa_gZB/exec";
 
@@ -165,6 +165,8 @@ const AdsLanding = () => {
           </form>
         </div>
       </section>
+                    {/* FORM */}
+       {/* HERO */}
 
       {/* PRICING SECTION */}
 <section className="py-20 bg-white">
@@ -226,6 +228,7 @@ const AdsLanding = () => {
       </div>
 
     </div>
+    {/* PRICING SECTION */}
 
     {/* TRUST LINE */}
     <p className="text-sm text-gray-500 mt-8">
@@ -234,6 +237,7 @@ const AdsLanding = () => {
 
   </div>
 </section>
+{/* TRUST LINE */}
 
       {/* SHOWCASE */}
 <section className="py-20 max-w-6xl mx-auto px-4">
@@ -317,6 +321,10 @@ const AdsLanding = () => {
 
   </div>
 
+  {/* SHOWCASE */}
+
+
+
   {/* CTA */}
   <div className="text-center mt-12">
     <button
@@ -328,6 +336,11 @@ const AdsLanding = () => {
   </div>
 
 </section>
+
+
+  {/* CTA */}
+
+
 
       {/* SERVICES */}
 <section className="py-20 bg-[#F8F5F0]">
@@ -411,6 +424,8 @@ const AdsLanding = () => {
 
   </div>
 </section>
+ {/* SERVICES */}
+
 
       {/* TESTIMONIALS */}
 <section className="py-20 bg-[#F8F5F0]">
@@ -481,6 +496,7 @@ const AdsLanding = () => {
 
   </div>
 </section>
+ {/* TESTIMONIALS */}
 
     </div>
   );
