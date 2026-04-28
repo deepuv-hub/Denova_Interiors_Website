@@ -170,48 +170,60 @@ return (
       </h2>
 
       {/* INPUTS */}
-      <input 
-        type="text" 
-        name="name" 
-        placeholder="Your Name" 
-        required 
-        onChange={handleChange} 
-        className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]" 
-      />
 
-      <input 
-        type="tel" 
-        name="phone" 
-        placeholder="Phone Number" 
-        required 
-        onChange={handleChange} 
-        className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]" 
-      />
+<label htmlFor="name" className="sr-only">Your Name</label>
+<input 
+  type="text" 
+  id="name"
+  name="name" 
+  placeholder="Your Name" 
+  required 
+  onChange={handleChange} 
+  className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]" 
+/>
 
-      {/* DROPDOWNS */}
-      <select 
-        name="property" 
-        onChange={handleChange} 
-        className="p-3 border rounded-lg"
-      >
-        <option>Property Type</option>
-        <option>1 BHK</option>
-        <option>2 BHK</option>
-        <option>3 BHK</option>
-        <option>3+ BHK</option>
-        <option>Villa</option>
-      </select>
+<label htmlFor="phone" className="sr-only">Phone Number</label>
+<input 
+  type="tel" 
+  id="phone"
+  name="phone" 
+  placeholder="Phone Number" 
+  required 
+  onChange={handleChange} 
+  className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]" 
+/>
 
-      <select 
-        name="budget" 
-        onChange={handleChange} 
-        className="p-3 border rounded-lg"
-      >
-        <option>Budget</option>
-        <option>3L - 5L</option>
-        <option>5L - 10L</option>
-        <option>10L+</option>
-      </select>
+{/* DROPDOWNS */}
+
+<label htmlFor="property" className="sr-only">Property Type</label>
+<select 
+  id="property"
+  name="property" 
+  onChange={handleChange} 
+  className="p-3 border rounded-lg"
+  required
+>
+  <option value="">Property Type</option>
+  <option value="1 BHK">1 BHK</option>
+  <option value="2 BHK">2 BHK</option>
+  <option value="3 BHK">3 BHK</option>
+  <option value="3+ BHK">3+ BHK</option>
+  <option value="Villa">Villa</option>
+</select>
+
+<label htmlFor="budget" className="sr-only">Budget</label>
+<select 
+  id="budget"
+  name="budget" 
+  onChange={handleChange} 
+  className="p-3 border rounded-lg"
+  required
+>
+  <option value="">Budget</option>
+  <option value="3L - 5L">3L - 5L</option>
+  <option value="5L - 10L">5L - 10L</option>
+  <option value="10L+">10L+</option>
+</select>
 
       {/* CTA BUTTON */}
       <button 
