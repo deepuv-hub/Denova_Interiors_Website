@@ -22,6 +22,16 @@ const FloatingCTA = () => {
       >
         <Phone className="w-6 h-6" />
       </a>
+      <a
+  href="https://wa.me/919164466606?text=Hi%20Denova%20Creations,%20I%20am%20interested%20in%20interior%20design%20services."
+  target="_blank"
+  rel="noopener noreferrer"
+  className="fixed bottom-20 right-5 z-50"
+>
+  <div className="bg-green-500 text-white px-4 py-3 rounded-full shadow-lg hover:scale-105 transition">
+    WhatsApp
+  </div>
+</a>
     </div>
   );
 };

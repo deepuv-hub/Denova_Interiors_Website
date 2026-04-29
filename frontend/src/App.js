@@ -18,6 +18,8 @@ const GalleryPage = React.lazy(() => import("./pages/GalleryPage"));
 const ThankYou = React.lazy(() => import("./pages/ThankYou"));
 const CityLanding = React.lazy(() => import("./pages/CityLanding"));
 const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy"));
+const CategoryPage = React.lazy(() => import("./pages/CategoryPage"));
+const ProjectPage = React.lazy(() => import("./pages/ProjectPage"));
 
 // Optional: location pages lazy
 const Koramangala = React.lazy(() => import("./pages/locations/Koramangala"));
@@ -54,20 +56,25 @@ function App() {
               element={
                 <Layout>
                   <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/about" element={<AboutPage />} />
-                    <Route path="/services" element={<ServicesPage />} />
-                    <Route path="/projects" element={<ProjectsPage />} />
-                    <Route path="/gallery" element={<GalleryPage />} />
-                    <Route path="/materials" element={<MaterialsPage />} />
-                    <Route path="/testimonials" element={<TestimonialsPage />} />
-                    <Route path="/process" element={<ProcessPage />} />
-                    <Route path="/contact" element={<ContactPage />} />
-                    <Route path="/estimate" element={<EstimatePage />} />
-                    <Route path="/interior-designers/koramangala" element={<Koramangala />} />
-                    <Route path="/interior-designers/:city" element={<CityLanding />} />
-                    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                  </Routes>
+  <Route path="/" element={<HomePage />} />
+  <Route path="/about" element={<AboutPage />} />
+  <Route path="/services" element={<ServicesPage />} />
+  <Route path="/projects" element={<ProjectsPage />} />
+
+  {/* ✅ GALLERY SYSTEM (NEW) */}
+  <Route path="/gallery" element={<GalleryPage />} />
+  <Route path="/gallery/:type/:category" element={<CategoryPage />} />
+  <Route path="/gallery/:type/:category/:projectId" element={<ProjectPage />} />
+
+  <Route path="/materials" element={<MaterialsPage />} />
+  <Route path="/testimonials" element={<TestimonialsPage />} />
+  <Route path="/process" element={<ProcessPage />} />
+  <Route path="/contact" element={<ContactPage />} />
+  <Route path="/estimate" element={<EstimatePage />} />
+  <Route path="/interior-designers/koramangala" element={<Koramangala />} />
+  <Route path="/interior-designers/:city" element={<CityLanding />} />
+  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+</Routes>
                 </Layout>
               }
             />

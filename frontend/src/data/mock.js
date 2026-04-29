@@ -385,60 +385,87 @@ export const clientLogoBanner = "https://customer-assets.emergentagent.com/job_l
 
 // Factory & Facility Gallery (from Alpha Interiors Profile - excluding CMS Interiors photos)
 export const factoryGallery = [
-  {
-    id: 1,
-    title: "Modern Reception Area",
-    category: "Reception",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
-    description: "Elegant reception with green wall feature"
-  },
-  {
-    id: 2,
-    title: "Open Plan Office",
-    category: "Office",
-    image: "https://images.unsplash.com/photo-1497215842964-222b430dc094?w=800&q=80",
-    description: "Modern open-plan workspace with modular furniture"
-  },
-  {
-    id: 3,
-    title: "Conference Room",
-    category: "Meeting Room",
-    image: "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?w=800&q=80",
-    description: "Professional conference room setup"
-  },
-  {
-    id: 4,
-    title: "Collaborative Space",
-    category: "Lounge",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80",
-    description: "Breakout area with comfortable seating"
-  },
-  {
-    id: 5,
-    title: "Workstation Setup",
-    category: "Office",
-    image: "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=800&q=80",
-    description: "Ergonomic workstation design with partitions"
-  },
-  {
-    id: 6,
-    title: "Cafeteria Design",
-    category: "Cafeteria",
-    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80",
-    description: "Modern cafeteria with artistic murals"
-  },
-  {
-    id: 7,
-    title: "Glass Partition Offices",
-    category: "Office",
-    image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80",
-    description: "Transparent office spaces with glass partitions"
-  },
-  {
-    id: 8,
-    title: "Executive Cabin",
-    category: "Office",
-    image: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=800&q=80",
-    description: "Premium executive cabin design"
-  }
+  // ================= KITCHEN PROJECT =================
+
+{
+  id: 101,
+  title: "Modern Kitchen Design",
+  category: "Kitchen",
+  type: "residential",
+  image: "/images/projects/kitchen-modern-white-1/1.webp",
+  projectId: "kitchen-modern-white-1"
+},
+{
+  id: 102,
+  title: "Modular Kitchen Storage",
+  category: "Kitchen",
+  type: "residential",
+  image: "/images/projects/kitchen-modern-white-1/2.webp",
+  projectId: "kitchen-modern-white-1"
+},
+{
+  id: 103,
+  title: "Kitchen Cabinet Design",
+  category: "Kitchen",
+  type: "residential",
+  image: "/images/projects/kitchen-modern-white-1/3.webp",
+  projectId: "kitchen-modern-white-1"
+},
+{
+  id: 104,
+  title: "Kitchen Lighting Setup",
+  category: "Kitchen",
+  type: "residential",
+  image: "/images/projects/kitchen-modern-white-1/4.webp",
+  projectId: "kitchen-modern-white-1"
+},
+{
+  id: 105,
+  title: "Kitchen Interior Finish",
+  category: "Kitchen",
+  type: "residential",
+  image: "/images/projects/kitchen-modern-white-1/5.webp",
+  projectId: "kitchen-modern-white-1"
+},
+{
+  id: 106,
+  title: "Kitchen Corner Design",
+  category: "Kitchen",
+  type: "residential",
+  image: "/images/projects/kitchen-modern-white-1/6.webp",
+  projectId: "kitchen-modern-white-1"
+},
+{
+  id: 107,
+  title: "Kitchen Storage Units",
+  category: "Kitchen",
+  type: "residential",
+  image: "/images/projects/kitchen-modern-white-1/7.webp",
+  projectId: "kitchen-modern-white-1"
+},
+{
+  id: 108,
+  title: "Kitchen Cabinet Finish",
+  category: "Kitchen",
+  type: "residential",
+  image: "/images/projects/kitchen-modern-white-1/8.webp",
+  projectId: "kitchen-modern-white-1"
+},
+{
+  id: 109,
+  title: "Kitchen Interior Detailing",
+  category: "Kitchen",
+  type: "residential",
+  image: "/images/projects/kitchen-modern-white-1/9.webp",
+  projectId: "kitchen-modern-white-1"
+},
+{
+  id: 110,
+  title: "Modern Kitchen Styling",
+  category: "Kitchen",
+  type: "residential",
+  image: "/images/projects/kitchen-modern-white-1/10.webp",
+  projectId: "kitchen-modern-white-1"
+}
+  
 ];
