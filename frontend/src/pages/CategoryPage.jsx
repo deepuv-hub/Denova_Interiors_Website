@@ -24,7 +24,7 @@ const CategoryPage = () => {
             key={project.id}
             className="cursor-pointer group"
             onClick={() =>
-              navigate(`/gallery/${type}/${category}/${project.id}`)
+              navigate(`/portfolio/${type}/${category}/${project.id}`)
             }
           >
             <img

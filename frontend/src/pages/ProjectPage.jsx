@@ -51,7 +51,7 @@ const ProjectPage = () => {
     }
     link.setAttribute(
       "href",
-      `https://denovacreations.com/gallery/${project.type}/${project.category}/${project.id}`
+      `https://denovacreations.com/portfolio/${project.type}/${project.category}/${project.id}`
     );
 
     // Schema
@@ -68,7 +68,7 @@ const ProjectPage = () => {
         url: "https://denovacreations.com"
       },
       category: project.category,
-      url: `https://denovacreations.com/gallery/${project.type}/${project.category}/${project.id}`
+      url: `https://denovacreations.com/portfolio/${project.type}/${project.category}/${project.id}`
     };
 
     let script = document.querySelector("script[type='application/ld+json']");
