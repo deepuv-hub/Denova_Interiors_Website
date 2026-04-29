@@ -52,11 +52,10 @@ const ContactPage = () => {
         name: formData.name,
         phone: cleanedPhone,
         location: "Contact Page",
-        requirement:
-          formData.propertyType + " | " + formData.message,
+        requirement: `${formData.propertyType || "NA"} | ${formData.message || "NA"}`,
       });
 
-      if (result.status === "success") {
+      if (result.result === "success") {
         window.location.href = "/thank-you?source=contact";
       } else {
         alert("Something went wrong. Please try again.");
@@ -64,7 +63,7 @@ const ContactPage = () => {
       }
     } catch (error) {
       console.error("Submit error:", error);
-      alert("Error submitting form");
+      alert("Error: " + error.message);
       setIsSubmitting(false);
     }
   };

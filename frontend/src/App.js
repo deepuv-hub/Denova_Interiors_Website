@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "./components/ui/sonner";
@@ -42,6 +42,14 @@ const Layout = ({ children }) => (
 );
 
 function App() {
+  useEffect(() => {
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wj9mkjr37f");
+  }, []);
+  
   return (
     <div className="App">
       <BrowserRouter>

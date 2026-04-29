@@ -1,6 +1,6 @@
  import React, { useState } from "react";
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzNJ8sIocwARx549U8iAn-RYxwiNj0kMPxDQ6io8Wmby_Kc2VMBHyV9A5hLuRJa_gZB/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby9SBHZXrLYiKlvRxaM8TaqICwB7VkWy_6T8B1WTkz_CXEBNTNYo9B_J1WxZlA9Ebxa/exec";
 
 /* SAFE IMAGE - OPTIMIZED */
 const SafeImage = ({ 
@@ -56,34 +56,38 @@ const AdsLanding = () => {
   const handleSubmit = async (e) => {
   e.preventDefault();
 
-  const cleanedPhone = form.phone.replace(/\D/g, "");
+  const cleanedPhone = form.phone.replace(/\D/g, "").slice(0, 10);
+
   if (cleanedPhone.length !== 10) {
     alert("Enter valid number");
     return;
   }
 
-  setLoading(true);
-
   try {
+    setLoading(true);
+
     await fetch(SCRIPT_URL, {
       method: "POST",
-       headers: {
-    "Content-Type": "application/json",
-  },
-      body: JSON.stringify({ ...form, phone: cleanedPhone }),
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: form.name,
+        phone: cleanedPhone,
+        location: form.property,
+        requirement: form.budget,
+        source: "Ads Landing Page"
+      }),
     });
 
     window.location.href = "/thank-you";
 
-    setTimeout(() => {
-      window.open(
-        "https://wa.me/919164011181?text=Hi%2C%20I%20want%20interior%20consultation",
-        "_blank"
-      );
-    }, 1200);
-
   } catch (err) {
+    console.error(err);
     alert("Something went wrong. Try again.");
+  } finally {
+    setLoading(false);
   }
 
   setLoading(false);
@@ -226,7 +230,7 @@ return (
 </select>
 
       {/* CTA BUTTON */}
-      <button 
+      <button type="submit"
         disabled={loading} 
         className="bg-[#C8A96A] py-3 rounded-lg font-semibold hover:opacity-90 transition"
       >
