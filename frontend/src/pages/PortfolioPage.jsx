@@ -6,14 +6,14 @@ import { companyInfo } from "../data/mock";
 import { projects } from "../data/projects";
 import { useNavigate } from 'react-router-dom';
 
-const GalleryPage = () => {
+const PortfolioPage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [activeCategory, setActiveCategory] = useState('All');
   const [activeType, setActiveType] = useState('all');
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const galleryItems = projects.flatMap((project) =>
+  const portfolioItems = projects.flatMap((project) =>
   project.images.map((img, index) => ({
     id: `${project.id}-${index}`,
     image: img,
@@ -47,7 +47,7 @@ const GalleryPage = () => {
 
 
 // ================= FILTER LOGIC =================
-  const filteredGallery = galleryItems.filter((item) => {
+  const filteredPortfolio = portfolioItems.filter((item) => {
     const matchCategory =
       activeCategory === "All" || item.category === activeCategory;
 
@@ -59,15 +59,15 @@ const GalleryPage = () => {
 
 const handleNext = useCallback(() => {
   setCurrentIndex((prev) =>
-    prev === filteredGallery.length - 1 ? 0 : prev + 1
+    prev === filteredPortfolio.length - 1 ? 0 : prev + 1
   );
-}, [filteredGallery.length]);
+}, [filteredPortfolio.length]);
 
 const handlePrev = useCallback(() => {
   setCurrentIndex((prev) =>
-    prev === 0 ? filteredGallery.length - 1 : prev - 1
+    prev === 0 ? filteredPortfolio.length - 1 : prev - 1
   );
-}, [filteredGallery.length]);
+}, [filteredPortfolio.length]);
 
 useEffect(() => {
   const handleKey = (e) => {
@@ -167,7 +167,7 @@ const getCategoryCount = (category) => {
     {/* ================= GRID ================= */}
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6">
 
-      {filteredGallery.map((item, index) => (
+      {filteredPortfolio.map((item, index) => (
         <React.Fragment key={item.id}>
 
           {/* IMAGE CARD */}
@@ -198,7 +198,7 @@ const getCategoryCount = (category) => {
                     {item.category}
                   </p>
                   <Link
-  to={`/gallery/${item.type}/${item.category}/${item.projectId}`}
+  to={`/portfolio/${item.type}/${item.category}/${item.projectId}`}
   onClick={(e) => e.stopPropagation()}
   className="text-white text-xs underline mt-2 block"
 >
@@ -268,7 +268,7 @@ const getCategoryCount = (category) => {
     </div>
 
     {/* ================= EMPTY STATE ================= */}
-    {filteredGallery.length === 0 && (
+    {filteredPortfolio.length === 0 && (
       <div className="text-center py-16">
         <p className="text-[#777777] text-base">
           No designs found in this category.
@@ -322,8 +322,8 @@ const getCategoryCount = (category) => {
     >
       {/* Image */}
       <img
-        src={filteredGallery[currentIndex].image}
-        alt={filteredGallery[currentIndex].title}        
+        src={filteredPortfolio[currentIndex].image}
+        alt={filteredPortfolio[currentIndex].title}        
         className="w-full h-auto max-h-[80vh] object-contain rounded-md mt-6"
       />
       
@@ -332,24 +332,24 @@ const getCategoryCount = (category) => {
 
   {/* Title */}
   <p className="text-white text-xl font-semibold mb-2">
-    {filteredGallery[currentIndex].title}
+    {filteredPortfolio[currentIndex].title}
   </p>
 
   <p className="text-[#C8A35F] text-xs uppercase tracking-wide mb-1">
-  {filteredGallery[currentIndex].category} • {filteredGallery[currentIndex].type}
+  {filteredPortfolio[currentIndex].category} • {filteredPortfolio[currentIndex].type}
 </p>
 
   <p className="text-white/60 text-sm mb-2">
-  {projects.find(p => p.id === filteredGallery[currentIndex].projectId)?.location} • 
-  {projects.find(p => p.id === filteredGallery[currentIndex].projectId)?.propertyType}
+  {projects.find(p => p.id === filteredPortfolio[currentIndex].projectId)?.location} • 
+  {projects.find(p => p.id === filteredPortfolio[currentIndex].projectId)?.propertyType}
 </p>
 <p className="text-white/70 text-sm mb-3 max-w-md mx-auto">
-  {projects.find(p => p.id === filteredGallery[currentIndex].projectId)?.description}
+  {projects.find(p => p.id === filteredPortfolio[currentIndex].projectId)?.description}
 </p>
 
   {/* Category + Counter */}
   <p className="text-white/60 text-sm mb-4">
-    {filteredGallery[currentIndex].category} • {currentIndex + 1} / {filteredGallery.length}
+    {filteredPortfolio[currentIndex].category} • {currentIndex + 1} / {filteredPortfolio.length}
   </p>
 
   {/* Trust */}
@@ -386,7 +386,8 @@ const getCategoryCount = (category) => {
       Chat on WhatsApp
     </button>
   </a>
-  <Link to={`/projects/${filteredGallery[currentIndex].projectId}`}>
+  <Link to={`/projects/${filteredPortfolio
+    [currentIndex].projectId}`}>
   <button className="text-white/80 text-sm underline mt-3">
     View Full Project →
   </button>
@@ -414,4 +415,4 @@ const getCategoryCount = (category) => {
   );
 };
 
-export default GalleryPage;
+export default PortfolioPage;

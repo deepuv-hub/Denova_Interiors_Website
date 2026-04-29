@@ -14,7 +14,7 @@ const ProcessPage = React.lazy(() => import("./pages/ProcessPage"));
 const ContactPage = React.lazy(() => import("./pages/ContactPage"));
 const EstimatePage = React.lazy(() => import("./pages/EstimatePage"));
 const MaterialsPage = React.lazy(() => import("./pages/MaterialsPage"));
-const GalleryPage = React.lazy(() => import("./pages/GalleryPage"));
+const PortfolioPage = React.lazy(() => import("./pages/PortfolioPage"));
 const ThankYou = React.lazy(() => import("./pages/ThankYou"));
 const CityLanding = React.lazy(() => import("./pages/CityLanding"));
 const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy"));
@@ -61,10 +61,10 @@ function App() {
   <Route path="/services" element={<ServicesPage />} />
   <Route path="/projects" element={<ProjectsPage />} />
 
-  {/* ✅ GALLERY SYSTEM (NEW) */}
-  <Route path="/gallery" element={<GalleryPage />} />
-  <Route path="/gallery/:type/:category" element={<CategoryPage />} />
-  <Route path="/gallery/:type/:category/:projectId" element={<ProjectPage />} />
+  {/* ✅ PORTFOLIO SYSTEM (NEW) */}
+  <Route path="/portfolio" element={<PortfolioPage />} />
+  <Route path="/portfolio/:type/:category" element={<CategoryPage />} />
+  <Route path="/portfolio/:type/:category/:projectId" element={<ProjectPage />} />
 
   <Route path="/materials" element={<MaterialsPage />} />
   <Route path="/testimonials" element={<TestimonialsPage />} />
