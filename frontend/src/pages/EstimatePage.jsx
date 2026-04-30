@@ -62,18 +62,28 @@ const EstimatePage = () => {
           {/* Property */}
           <select
             className="w-full p-3 border rounded mb-4"
-            onChange={(e) =>
-              setForm({ ...form, property: e.target.value })
-            }
+            value={formData.propertyType}
+  onChange={(e) => setFormData({...formData, propertyType: e.target.value})}
+            
           >
-            <option value="">Select property type</option>
-            <option>1 BHK Apartment</option>
-            <option>2 BHK Apartment</option>
-            <option>3 BHK Apartment</option>
-            <option>4+ BHK Apartment</option>
-            <option>Villa / Independent House</option>
-            <option>Commercial / Office</option>
-          </select>
+            <option value="">Property Type</option>
+  <option value="1 BHK">1 BHK</option>
+  <option value="2 BHK">2 BHK</option>
+  <option value="3 BHK">3 BHK</option>
+  <option value="Villa">Villa</option>
+  <option value="Commercial">Commercial</option>
+</select>
+
+<select
+  value={formData.possession}
+  onChange={(e) => setFormData({...formData, possession: e.target.value})}
+>
+  <option value="">Possession</option>
+  <option value="Immediate">Immediate</option>
+  <option value="0-3 Months">0-3 Months</option>
+  <option value="3-6 Months">3-6 Months</option>
+  <option value="6+ Months">6+ Months</option>
+</select>
 
           {/* Area */}
           <div className="mb-4">

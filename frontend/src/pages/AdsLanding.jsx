@@ -73,10 +73,12 @@ const AdsLanding = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: form.name,
-        phone: cleanedPhone,
-        location: form.property,
-        requirement: form.budget,
+  name: formData.name,
+  phone: formData.phone,
+  email: formData.email,
+  propertyType: formData.propertyType,
+  location: formData.location,
+  possession: formData.possession,
         source: "Ads Landing Page"
       }),
     });

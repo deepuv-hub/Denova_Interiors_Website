@@ -130,9 +130,9 @@ const CityLandingTemplate = ({ location }) => {
 
             <input
               type="text"
-              placeholder="Your Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              placeholder="Full Name"
+              value={formData.name}
+              onChange={(e) => setFormData({...formData, name: e.target.value})}
               required
               className="p-3 border rounded"
             />
@@ -140,14 +140,21 @@ const CityLandingTemplate = ({ location }) => {
             <input
   type="tel"
   placeholder="Phone Number"
-  value={phone}
-  onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
+ value={formData.phone}
+  onChange={(e) => setFormData({...formData, phone: e.target.value})}
   maxLength="10"
   pattern="[0-9]{10}"
   required
   className="p-3 border rounded"
 />
-
+<input
+  type="email"
+  placeholder="Email ID"
+  value={formData.email}
+  onChange={(e) => setFormData({...formData, email: e.target.value})}
+  required
+              className="p-3 border rounded"
+/>
             <button
               type="submit"
               className="bg-black text-white py-3 rounded"

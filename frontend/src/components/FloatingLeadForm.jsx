@@ -12,10 +12,13 @@ const FloatingLeadForm = () => {
   const [showCount, setShowCount] = useState(0);
 
   const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    propertyType: "",
-  });
+  name: "",
+  phone: "",
+  email: "",
+  propertyType: "",
+  location: "",
+  possession: "",
+});
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 

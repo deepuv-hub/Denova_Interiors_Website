@@ -13,11 +13,13 @@ import { submitLead } from "../utils/submitLead";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    propertyType: "",
-    message: "",
-  });
+  name: "",
+  phone: "",
+  email: "",
+  propertyType: "",
+  location: "",
+  possession: "",
+});
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
