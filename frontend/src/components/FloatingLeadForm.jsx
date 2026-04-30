@@ -11,13 +11,10 @@ const FloatingLeadForm = () => {
   const [isDismissed, setIsDismissed] = useState(false);
   const [showCount, setShowCount] = useState(0);
 
-  const [formData, setFormData] = useState({
+ const [formData, setFormData] = useState({
   name: "",
   phone: "",
-  email: "",
-  propertyType: "",
-  location: "",
-  possession: "",
+  pincode: "",
 });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -79,11 +76,14 @@ const FloatingLeadForm = () => {
 
     try {
       const result = await submitLead({
-        name: formData.name,
-        phone: cleanedPhone,
-        location: "Floating Form",
-        requirement: formData.propertyType || "Quick Enquiry",
-      });
+  name: formData.name,
+  phone: cleanedPhone,
+  email: "",
+  propertyType: "",
+  location: formData.pincode || "",
+  possession: "",
+  source: "Floating Form",
+});
 
       if (result.status === "success") {
         toast.success("Thank you! We will contact you shortly.");
@@ -108,10 +108,11 @@ const FloatingLeadForm = () => {
   };
 
   if (!isVisible) return null;
+  
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-      <div className="relative bg-white rounded-sm shadow-2xl max-w-md w-full overflow-hidden">
+      <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden border border-gray-100">
 
         {/* CLOSE BUTTON */}
         <button
@@ -122,43 +123,89 @@ const FloatingLeadForm = () => {
         </button>
 
         {/* HEADER */}
-        <div className="bg-[#1F1F1F] text-white p-6">
-          <h3 className="text-xl font-bold">
-            Get Your <span className="text-[#C8A35F]">Free Quote</span>
-          </h3>
-        </div>
+        <div className="bg-gradient-to-r from-[#1F1F1F] to-[#2a2a2a] text-white p-6 text-center">
+          
+  <p className="text-xs text-red-400 mb-1">
+    Limited slots available this week
+  </p>
+
+  <h3 className="text-xl font-bold">
+    Get Your <span className="text-[#C8A35F]">Free Design Consultation</span>
+  </h3>
+
+  <p className="text-xs text-gray-300 mt-1">
+    Our expert will call you within 30 minutes
+  </p>
+</div>
 
         {/* FORM */}
+        
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
+          
 
-          <Input
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Your Name"
-          />
+  <Input
+    name="name"
+    value={formData.name}
+    onChange={handleChange}
+    placeholder="Your Name"
+      className="focus:ring-2 focus:ring-[#C8A96A]"
 
-          <Input
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            placeholder="Phone Number"
-          />
+  />
 
-          <Button type="submit" disabled={isSubmitting} className="w-full">
-            {isSubmitting ? "Submitting..." : "Get Free Consultation"}
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
+  <Input
+    name="phone"
+    value={formData.phone}
+    onChange={handleChange}
+    placeholder="Phone Number"
+      className="focus:ring-2 focus:ring-[#C8A96A]"
 
-        </form>
+  />
 
+  <Input
+    name="pincode"
+    value={formData.pincode}
+    onChange={(e) =>
+      setFormData({
+        ...formData,
+        pincode: e.target.value.replace(/\D/g, ""),
+      })
+    }
+    placeholder="Pincode"
+    maxLength={6}
+      className="focus:ring-2 focus:ring-[#C8A96A]"
+
+  />
+
+  
+
+  {/* TRUST LINE */}
+  <p className="text-xs text-center text-gray-500">
+    Takes less than 30 seconds • No spam
+  </p>
+
+  <Button type="submit" disabled={isSubmitting} className="w-full bg-[#C8A96A] text-white hover:bg-[#b89655] active:scale-95 transition-all">
+    {isSubmitting ? "Submitting..." : "Book My Free Design Call"}
+    <ArrowRight className="w-4 h-4 ml-2" />
+  </Button>
+
+  <p className="text-[11px] text-center text-red-400 mt-2">
+  Only 3 slots left for today
+</p>
+
+</form>
+
+<div className="text-center pb-4 text-xs text-gray-500">
+  ✔ Free consultation • ✔ No obligation • ✔ 30 min callback
+</div>
         {/* CALL CTA */}
         <div className="text-center pb-4">
-          <a href={`tel:${companyInfo.primaryPhone}`}>
-            <Phone className="inline w-4 h-4 mr-1" />
-            {companyInfo.primaryPhone}
-          </a>
-        </div>
+  <a
+    href={`tel:${companyInfo.primaryPhone}`}
+    className="inline-flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-black"
+  >
+    📞 Call Now: {companyInfo.primaryPhone}
+  </a>
+</div>
 
       </div>
     </div>

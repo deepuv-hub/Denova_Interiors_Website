@@ -41,20 +41,27 @@ const SafeImage = ({
 
 const AdsLanding = () => {
   const [form, setForm] = useState({
-    name: "",
-    phone: "",
-    property: "",
-    budget: "",
+  name: "",
+  phone: "",
+  email: "",
+  propertyType: "",
+  pincode: "",        
+  possession: "",
   });
 
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  setForm({
+    ...form,
+    [e.target.name]: e.target.value
+  });
+};
 
   const handleSubmit = async (e) => {
   e.preventDefault();
+
+  console.log("FORM DATA:", form); 
 
   const cleanedPhone = form.phone.replace(/\D/g, "").slice(0, 10);
 
@@ -62,6 +69,7 @@ const AdsLanding = () => {
     alert("Enter valid number");
     return;
   }
+
 
   try {
     setLoading(true);
@@ -73,14 +81,15 @@ const AdsLanding = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-  name: formData.name,
-  phone: formData.phone,
-  email: formData.email,
-  propertyType: formData.propertyType,
-  location: formData.location,
-  possession: formData.possession,
-        source: "Ads Landing Page"
-      }),
+  name: form.name,
+  phone: form.phone,
+  email: form.email || "",
+  propertyType: form.propertyType || "",
+    location: form.pincode || "",  
+  possession: form.possession || "",
+  requirement: form.propertyType || "", // fallback (IMPORTANT)
+  source: "Ads Landing Page",
+}),
     });
 
     window.location.href = "/thank-you";
@@ -177,6 +186,7 @@ return (
 
       {/* INPUTS */}
 
+{/* NAME */}
 <label htmlFor="name" className="sr-only">Your Name</label>
 <input 
   type="text" 
@@ -188,6 +198,8 @@ return (
   className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]" 
 />
 
+
+{/* PHONE */}
 <label htmlFor="phone" className="sr-only">Phone Number</label>
 <input 
   type="tel" 
@@ -199,12 +211,26 @@ return (
   className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]" 
 />
 
-{/* DROPDOWNS */}
 
-<label htmlFor="property" className="sr-only">Property Type</label>
+{/* EMAIL */}
+<label htmlFor="email" className="sr-only">Email</label>
+<input
+  type="email"
+  id="email"
+  name="email"
+  placeholder="Email ID"
+  required
+  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+  onChange={handleChange}
+  className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]"
+/>
+
+
+{/* PROPERTY TYPE */}
+<label htmlFor="propertyType" className="sr-only">Property Type</label>
 <select 
-  id="property"
-  name="property" 
+  id="propertyType"
+  name="propertyType" 
   onChange={handleChange} 
   className="p-3 border rounded-lg"
   required
@@ -217,18 +243,33 @@ return (
   <option value="Villa">Villa</option>
 </select>
 
-<label htmlFor="budget" className="sr-only">Budget</label>
-<select 
-  id="budget"
-  name="budget" 
-  onChange={handleChange} 
+
+{/* PINCODE */}
+<label htmlFor="pincode" className="sr-only">Pincode</label>
+<input
+  type="tel"
+  id="pincode"
+  name="pincode"   
+  placeholder="Pincode"
+  maxLength={6}
+  onChange={handleChange}   
+  className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]"
+/>  
+
+
+{/* POSSESSION */}
+<label htmlFor="possession" className="sr-only">Possession</label>
+<select
+  id="possession"
+  name="possession"
+  onChange={handleChange}
   className="p-3 border rounded-lg"
-  required
 >
-  <option value="">Budget</option>
-  <option value="3L - 5L">3L - 5L</option>
-  <option value="5L - 10L">5L - 10L</option>
-  <option value="10L+">10L+</option>
+  <option value="">Possession</option>
+  <option value="Immediate">Immediate</option>
+  <option value="0-3 Months">0-3 Months</option>
+  <option value="3-6 Months">3-6 Months</option>
+  <option value="6+ Months">6+ Months</option>
 </select>
 
       {/* CTA BUTTON */}

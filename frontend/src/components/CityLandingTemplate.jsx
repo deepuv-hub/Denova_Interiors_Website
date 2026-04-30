@@ -16,18 +16,18 @@ const CityLandingTemplate = ({ location }) => {
 }
 
     setLoading(true);
-
-    
-
     // Save Lead
     try {
       await fetch(SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
         body: JSON.stringify({
-          name,
-          phone,
-          location: location.name,
+  name: formData.name,
+  phone: formData.phone,
+  email: formData.email,
+  propertyType: formData.propertyType,
+  location: formData.location,
+  possession: formData.possession,
           source: "Landing Page",
         }),
       });

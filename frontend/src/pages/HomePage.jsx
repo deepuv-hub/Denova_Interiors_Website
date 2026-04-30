@@ -37,11 +37,15 @@ const handleSubmit = async (e) => {
   method: "POST",
   mode: "no-cors",
   body: JSON.stringify({
-    name,
-    phone,
-    location: "Estimate Page",
-    source: "Website",
-  }),
+  name: form.name,
+  phone: form.phone,
+  email: form.email || "",
+  propertyType: form.propertyType || "",
+  location: form.pincode || "",   // mapping
+  possession: form.possession || "",
+  requirement: form.propertyType || "", // backward safety
+  source: "Website",
+}),
 });
 
     setName("");
