@@ -1,7 +1,6 @@
  import React, { useState } from "react";
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby9SBHZXrLYiKlvRxaM8TaqICwB7VkWy_6T8B1WTkz_CXEBNTNYo9B_J1WxZlA9Ebxa/exec";
-
 /* SAFE IMAGE - OPTIMIZED */
 const SafeImage = ({ 
   src, 
@@ -11,25 +10,24 @@ const SafeImage = ({
   priority = false 
 }) => {
   const [error, setError] = useState(false);
-
-  return (
+   return (
     <div
       className="w-full h-56 rounded-xl overflow-hidden bg-gray-100"
       style={{ aspectRatio: `${width}/${height}`, minHeight: "200px" }}
     >
       {!error ? (
-        <img
+  <img
   src={src}
   alt={alt}
   width={width}
   height={height}
   loading={priority ? "eager" : "lazy"}
   decoding="async"
-  fetchpriority={priority ? "high" : "auto"}
+  fetchPriority={priority ? "high" : "auto"}
   sizes="(max-width: 768px) 100vw, 400px"
   onError={() => setError(true)}
   className="w-full h-full object-cover hover:scale-105 transition duration-500"
-  />
+/>
       ) : (
         <div className="flex items-center justify-center h-full text-gray-400 text-sm">
           Image coming soon
@@ -38,81 +36,134 @@ const SafeImage = ({
     </div>
   );
 };
+// safe image component to handle loading and errors gracefully
+
 
 const AdsLanding = () => {
+
   const [form, setForm] = useState({
-  name: "",
-  phone: "",
-  email: "",
-  propertyType: "",
-  pincode: "",        
-  possession: "",
+    name: "",
+    phone: "",
+    email: "",
+    propertyType: "",
+    pincode: "",
+    possession: "",
+    budget: "",
   });
 
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  
+const isFormValid =
+  form.name?.trim() &&
+  /^[6-9]\d{9}$/.test(form.phone) &&
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email) &&
+  form.propertyType &&
+  /^[0-9]{6}$/.test(form.pincode) &&
+  form.possession &&
+  form.budget;
 
   const handleChange = (e) => {
   setForm({
     ...form,
-    [e.target.name]: e.target.value
+    [e.target.name]: e.target.value,
+  });
+
+  // Clear error when user types
+  setErrors({
+    ...errors,
+    [e.target.name]: "",
   });
 };
 
-  const handleSubmit = async (e) => {
+  const validateForm = () => {
+  let newErrors = {};
+
+  if (!form.name?.trim()) newErrors.name = "Name is required";
+  if (!form.budget) newErrors.budget = "Select budget";
+
+  if (!form.phone.trim()) {
+    newErrors.phone = "Phone is required";
+  } else if (!/^[6-9]\d{9}$/.test(form.phone)) {
+    newErrors.phone = "Enter valid 10-digit number";
+  }
+
+  if (!form.email.trim()) {
+    newErrors.email = "Email is required";
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+    newErrors.email = "Enter valid email";
+  }
+
+  if (!form.propertyType) {
+    newErrors.propertyType = "Select property type";
+  }
+
+  if (!form.pincode.trim()) {
+    newErrors.pincode = "Pincode is required";
+  } else if (!/^[0-9]{6}$/.test(form.pincode)) {
+    newErrors.pincode = "Enter valid 6-digit pincode";
+  }
+
+  if (!form.possession) {
+    newErrors.possession = "Select possession";
+  }
+
+  setErrors(newErrors);
+  return Object.keys(newErrors).length === 0;
+};
+
+const scrollToForm = () => {
+  const formEl = document.getElementById("leadForm");
+  if (formEl) formEl.scrollIntoView({ behavior: "smooth" });
+};
+  //handleSubmit
+const handleSubmit = async (e) => {
   e.preventDefault();
 
-  console.log("FORM DATA:", form); 
+  const isValid = validateForm();
+  if (!isValid) return;
 
   const cleanedPhone = form.phone.replace(/\D/g, "").slice(0, 10);
-
   if (cleanedPhone.length !== 10) {
     alert("Enter valid number");
     return;
   }
-
 
   try {
     setLoading(true);
 
     await fetch(SCRIPT_URL, {
       method: "POST",
-      mode: "no-cors",
+      mode: "no-cors", // IMPORTANT
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-  name: form.name,
-  phone: form.phone,
-  email: form.email || "",
-  propertyType: form.propertyType || "",
-    location: form.pincode || "",  
-  possession: form.possession || "",
-  requirement: form.propertyType || "", // fallback (IMPORTANT)
-  source: "Ads Landing Page",
-}),
+        name: form.name,
+        phone: form.phone,
+        email: form.email,
+        propertyType: form.propertyType,
+        location: form.pincode,
+        possession: form.possession,
+        budget: form.budget,
+        source: "Ads Landing Page",
+      }),
     });
 
+    // Assume success
     window.location.href = "/thank-you";
 
   } catch (err) {
-    console.error(err);
-    alert("Something went wrong. Try again.");
+    console.error("Submission issue:", err);
   } finally {
     setLoading(false);
   }
-
-  setLoading(false);
 };
-const scrollToForm = () => {
-  const form = document.getElementById("leadForm");
-  if (form) {
-    form.scrollIntoView({ behavior: "smooth" });
-  }
-};
-return (
-  <div className="bg-white text-gray-800 font-sans">
+ //handleSubmit
 
-      
+  return (
+    <>
 {/* HERO SECTION */}
 <section className="relative min-h-[70vh] md:min-h-[85vh] flex items-center">
 
@@ -123,10 +174,12 @@ return (
     loading="eager"
     fetchPriority="high"
     decoding="async"
-    width="1200"
-    height="800"
+    width={(1200)}
+    height={(800)}
     className="absolute inset-0 w-full h-full object-cover"
   />
+
+
 
   {/* DARK OVERLAY */}
   <div className="absolute inset-0 bg-black/60"></div>
@@ -145,7 +198,7 @@ return (
       </p>
 
       <p className="mt-4 text-lg text-gray-200">
-        End-to-End Interior Solutions for Flats & Villas
+        End-to-End Interior Solutions for Premium Flats & Villas
       </p>
 
       {/* TRUST LINE */}
@@ -163,7 +216,7 @@ return (
 
       {/* SECONDARY CTA */}
       <a 
-        href="https://wa.me/919164011181?text=Hi%2C%20I%20want%20interior%20design%20consultation"
+        href="https://wa.me/919164011181?text=Hi, I am looking for interior design for my home in Bangalore. My budget is above ₹3L. Please share details."
         target="_blank"
         rel="noopener noreferrer"
         className="block mt-3 text-sm text-green-400 hover:text-green-300 transition"
@@ -193,10 +246,14 @@ return (
   id="name"
   name="name" 
   placeholder="Your Name" 
+  value={form.name}
   required 
   onChange={handleChange} 
-  className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]" 
+  className={`p-3 border rounded-lg focus:outline-none focus:ring-2 ${
+    errors.name ? 'border-red-500 focus:ring-red-500' : 'focus:ring-[#C8A96A]'
+  }`}
 />
+{errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
 
 
 {/* PHONE */}
@@ -206,10 +263,15 @@ return (
   id="phone"
   name="phone" 
   placeholder="Phone Number" 
+  value={form.phone}
+  maxLength={10}
   required 
   onChange={handleChange} 
-  className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]" 
+  className={`p-3 border rounded-lg focus:outline-none focus:ring-2 ${
+    errors.phone ? 'border-red-500 focus:ring-red-500' : 'focus:ring-[#C8A96A]'
+  }`}
 />
+{errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
 
 
 {/* EMAIL */}
@@ -219,23 +281,27 @@ return (
   id="email"
   name="email"
   placeholder="Email ID"
+  value={form.email}
   required
-  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
   onChange={handleChange}
-  className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]"
+  className={`p-3 border rounded-lg focus:outline-none focus:ring-2 ${
+    errors.email ? 'border-red-500 focus:ring-red-500' : 'focus:ring-[#C8A96A]'
+  }`}
 />
+{errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
 
 
 {/* PROPERTY TYPE */}
 <label htmlFor="propertyType" className="sr-only">Property Type</label>
 <select 
   id="propertyType"
-  name="propertyType" 
+  name="propertyType"
+  value={form.propertyType}
   onChange={handleChange} 
   className="p-3 border rounded-lg"
   required
 >
-  <option value="">Property Type</option>
+  <option value="">Select Property Type</option>
   <option value="1 BHK">1 BHK</option>
   <option value="2 BHK">2 BHK</option>
   <option value="3 BHK">3 BHK</option>
@@ -251,10 +317,15 @@ return (
   id="pincode"
   name="pincode"   
   placeholder="Pincode"
+  value={form.pincode}
+  required
   maxLength={6}
   onChange={handleChange}   
-  className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]"
-/>  
+  className={`p-3 border rounded-lg focus:outline-none focus:ring-2 ${
+    errors.pincode ? 'border-red-500 focus:ring-red-500' : 'focus:ring-[#C8A96A]'
+  }`}
+/>
+{errors.pincode && <p className="text-red-500 text-xs mt-1">{errors.pincode}</p>}  
 
 
 {/* POSSESSION */}
@@ -262,21 +333,42 @@ return (
 <select
   id="possession"
   name="possession"
+  value={form.possession}
   onChange={handleChange}
   className="p-3 border rounded-lg"
+  required
 >
-  <option value="">Possession</option>
+  <option value="">Select Possession</option>
   <option value="Immediate">Immediate</option>
   <option value="0-3 Months">0-3 Months</option>
   <option value="3-6 Months">3-6 Months</option>
   <option value="6+ Months">6+ Months</option>
 </select>
 
+<select
+  name="budget"
+  value={form.budget}
+  onChange={handleChange}
+  className="p-3 border rounded-lg"
+  required
+>
+  <option value="">Select Budget</option>
+  <option value="3-5L">₹3–5 Lakhs</option>
+  <option value="5-10L">₹5–10 Lakhs</option>
+  <option value="10-20L">₹10–20 Lakhs</option>
+  <option value="20L+">₹20 Lakhs+</option>
+</select>
+
       {/* CTA BUTTON */}
-      <button type="submit"
-        disabled={loading} 
-        className="bg-[#C8A96A] py-3 rounded-lg font-semibold hover:opacity-90 transition"
-      >
+      <button
+  type="submit"
+  disabled={!isFormValid || loading}
+  className={`py-3 rounded-lg font-semibold transition ${
+    !isFormValid
+      ? "bg-gray-400 cursor-not-allowed"
+      : "bg-[#C8A96A] hover:opacity-90"
+  }`}
+>
         {loading ? "Submitting..." : "Get Quote"}
       </button>
 
@@ -319,6 +411,9 @@ return (
     <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
       Get a clear idea of interior pricing based on your home type and requirements.
     </p>
+    <p className="text-sm text-gray-500 mb-6">
+  Our projects typically start from ₹3 Lakhs onwards
+</p>
 
     {/* GRID */}
     <div className="grid md:grid-cols-3 gap-8">
@@ -328,7 +423,7 @@ return (
         <h3 className="font-semibold text-lg mb-2">1 BHK Interiors</h3>
 
         <p className="text-2xl font-bold text-[#C8A96A] mb-3">
-          ₹2.5L – ₹4L
+          ₹3L – ₹4.5L
         </p>
 
         <p className="text-sm text-gray-600 mb-5">
@@ -339,7 +434,7 @@ return (
           onClick={scrollToForm}
           className="bg-[#C8A96A] px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition"
         >
-          Get Exact Quote
+          Get Exact Quote for Your Home
         </button>
       </div>
 
@@ -406,7 +501,7 @@ return (
 
     {/* HEADING */}
     <h2 className="text-3xl font-bold text-center mb-4">
-      Our Work
+      Our Completed Interior Projects in Bangalore
     </h2>
 
     <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
@@ -445,7 +540,7 @@ return (
           Modular Kitchen • Sarjapur
         </p>
         <p className="text-sm text-[#C8A96A] font-semibold">
-          ₹2–3 Lakhs
+          ₹3–4 Lakhs
         </p>
       </div>
 
@@ -461,7 +556,7 @@ return (
           Bedroom Interior • Bangalore
         </p>
         <p className="text-sm text-[#C8A96A] font-semibold">
-          ₹1.5–2 Lakhs
+          ₹2.5–3.5 Lakhs
         </p>
       </div>
 
@@ -540,7 +635,7 @@ return (
 
     {/* HEADING */}
     <h2 className="text-3xl font-bold text-center mb-4">
-      Complete Interior Solutions for Every Home Type
+     Premium Interior Solutions for Flats & Villas in Bangalore
     </h2>
 
     <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
@@ -567,8 +662,11 @@ return (
             Complete design and execution for your entire home within budget.
           </p>
           <p className="text-[#C8A96A] font-semibold text-sm">
-            Get Free Quote →
+            Get Quote for Your Home →
           </p>
+          <p className="text-xs text-[#C8A96A] font-semibold mb-1">
+  MOST REQUESTED
+</p>
         </div>
       </div>
 
@@ -673,6 +771,9 @@ return (
     <p className="text-center mt-6 mb-6 text-lg md:text-xl font-semibold text-[#1A1A1A]">
   Trusted by <span className="text-[#C8A96A] font-bold">100+</span> homeowners across Bangalore
 </p>
+<p className="text-sm text-gray-500 text-center mb-4">
+  ⭐ 4.8 Rating • Based on 100+ Projects
+</p>
 
     <div className="grid md:grid-cols-3 gap-6">
 
@@ -757,6 +858,9 @@ return (
     <p className="text-xs text-green-600 mt-1 leading-relaxed">
       ✔ Verified Client &nbsp;|&nbsp; ✔ Project Completed &nbsp;|&nbsp; ✔ On-Time Delivery
     </p>
+    <p className="text-xs text-gray-400 mt-2">
+  Limited slots available this month
+</p>
 
   </div>
 </div>
@@ -773,13 +877,13 @@ return (
     onClick={scrollToForm}
     className="bg-[#C8A96A] px-6 py-3 rounded-lg font-semibold"
   >
-    Get Similar Design for Your Home
+    Get Similar Interior Design for Your Home
   </button>
   <p className="text-sm text-gray-500 mt-2 mb-10">  
      Free consultation • No hidden costs • Bangalore based team  
      </p>
 </div>
-</div>
-);
+    </>
+  );  
 };
 export default AdsLanding;
