@@ -3,24 +3,17 @@ import React, { useEffect } from "react";
 const ThankYou = () => {
 
   useEffect(() => {
-  const params = new URLSearchParams(window.location.search);
-  const source = params.get("source");
+  if (window.dataLayer) {
+    window.dataLayer.push({
+      event: "lead_conversion",
+      value: 1.0,
+      currency: "INR"
+    });
 
-  console.log("Lead Source:", source);
-
-  // Wait until gtag is available
-  const interval = setInterval(() => {
-    if (window.gtag) {
-      window.gtag("event", "conversion", {
-        send_to: "AW-11303451952/zBhUCM29o5QcELD6840q",
-      });
-      clearInterval(interval);
-    }
-  }, 500);
-
-  // Safety stop after 5 sec
-  setTimeout(() => clearInterval(interval), 5000);
-
+    console.log("✅ GTM conversion event pushed");
+  } else {
+    console.warn("❌ dataLayer not available");
+  }
 }, []);
 
   return (
