@@ -3,17 +3,27 @@ import React, { useEffect } from "react";
 const ThankYou = () => {
 
   useEffect(() => {
-  if (window.dataLayer) {
-    window.dataLayer.push({
-      event: "lead_conversion",
-      value: 1.0,
-      currency: "INR"
-    });
+  const interval = setInterval(() => {
+    if (window.gtag) {
 
-    console.log("✅ GTM conversion event pushed");
-  } else {
-    console.warn("❌ dataLayer not available");
-  }
+      window.gtag("event", "conversion", {
+        send_to: "AW-11303451952/63-FCIP1rZ8cELD6840q",
+        value: 1.0,
+        currency: "INR"
+      });
+
+      // 🔥 ADD THIS
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "lead_conversion"
+      });
+
+      clearInterval(interval);
+    }
+  }, 500);
+
+  setTimeout(() => clearInterval(interval), 5000);
+
 }, []);
 
   return (
