@@ -151,8 +151,14 @@ const handleSubmit = async (e) => {
       }),
     });
 
-    // Assume success
-    window.location.href = "/thank-you";
+    // 🔥 Fire GTM event BEFORE redirect
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+  event: "lead_conversion"
+});
+
+// Then redirect
+window.location.href = "/thank-you";
 
   } catch (err) {
     console.error("Submission issue:", err);
