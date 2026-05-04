@@ -399,7 +399,7 @@ const handleSubmit = async (e) => {
 </section>
                     
             {/* PRICING SECTION */}
-<section className="py-20 bg-gradient-to-b from-[#F8F5F0] to-white">
+            <section id="pricing" className="py-20 bg-gradient-to-b from-[#F8F5F0] to-white">
 
   <div className="max-w-6xl mx-auto px-4 text-center">
 
@@ -495,7 +495,7 @@ const handleSubmit = async (e) => {
 {/* PRICING SECTION */}
 
       {/* SHOWCASE */}
-<section className="py-20 bg-gradient-to-b from-white to-[#F8F5F0]">
+<section id="portfolio" className="py-20 bg-gradient-to-b from-white to-[#F8F5F0]">
 
   <div className="max-w-6xl mx-auto px-4">
 
@@ -630,7 +630,7 @@ const handleSubmit = async (e) => {
 
 
       {/* SERVICES */}
-<section className="py-20 bg-gradient-to-b from-[#F8F5F0] to-white">
+<section id="services" className="py-20 bg-gradient-to-b from-[#F8F5F0] to-white">
   <div className="max-w-6xl mx-auto px-4">
 
     {/* HEADING */}
@@ -758,7 +758,7 @@ const handleSubmit = async (e) => {
 
 
       {/* TESTIMONIALS */}
-<section className="py-20 bg-[#F8F5F0]">
+<section id="testimonials" className="py-20 bg-[#F8F5F0]">
   <div className="max-w-6xl mx-auto px-4">
 
     <h2 className="text-3xl font-bold text-center mb-4">
