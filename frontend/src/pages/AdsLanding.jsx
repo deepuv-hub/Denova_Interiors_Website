@@ -1136,6 +1136,99 @@ window.location.href = "/thank-you";
 </section>
 {/* TESTIMONIALS ENDS */}
 
+{/* FAQ SECTION (SEO OPTIMIZED) */}
+<section className="py-20 bg-white">
+
+  <div className="max-w-4xl mx-auto px-4">
+
+    {/* HEADING */}
+    <h2 className="text-3xl font-bold text-center mb-6">
+      Interior Design FAQs — Bangalore Homes
+    </h2>
+
+    <p className="text-center text-gray-600 mb-12">
+      Answers to common questions about interior design cost, process, and execution in Bangalore.
+    </p>
+
+    {/* FAQ LIST */}
+    <div className="space-y-6 text-left">
+
+      {/* Q1 */}
+      <div>
+        <h3 className="font-semibold text-lg">
+          What is the cost of home interiors in Bangalore?
+        </h3>
+        <p className="text-sm text-gray-600 mt-2">
+          Interior design cost in Bangalore depends on home size, materials, and customization. For most 2BHK and 3BHK homes, complete interiors typically start from ₹3.5 Lakhs and increase based on scope and design requirements.
+        </p>
+      </div>
+
+      {/* Q2 */}
+      <div>
+        <h3 className="font-semibold text-lg">
+          How much does a 2BHK interior cost in Bangalore?
+        </h3>
+        <p className="text-sm text-gray-600 mt-2">
+          A 2BHK interior in Bangalore usually costs between ₹4 Lakhs to ₹8 Lakhs depending on the level of customization, materials, and execution quality.
+        </p>
+      </div>
+
+      {/* Q3 */}
+      <div>
+        <h3 className="font-semibold text-lg">
+          Do you provide complete home interior execution in Bangalore?
+        </h3>
+        <p className="text-sm text-gray-600 mt-2">
+          Yes, we provide end-to-end interior solutions including design, planning, material selection, and full execution until final handover.
+        </p>
+      </div>
+
+      {/* Q4 */}
+      <div>
+        <h3 className="font-semibold text-lg">
+          How long does it take to complete interior work for a home?
+        </h3>
+        <p className="text-sm text-gray-600 mt-2">
+          Most home interior projects in Bangalore are completed within 30 to 60 days depending on the size of the home and the scope of work.
+        </p>
+      </div>
+
+      {/* Q5 */}
+      <div>
+        <h3 className="font-semibold text-lg">
+          Are there any hidden costs in interior design projects?
+        </h3>
+        <p className="text-sm text-gray-600 mt-2">
+          No, we follow a transparent pricing model where all costs are discussed and finalized before starting the project.
+        </p>
+      </div>
+
+      {/* Q6 */}
+      <div>
+        <h3 className="font-semibold text-lg">
+          Can I customize my interior design based on my budget?
+        </h3>
+        <p className="text-sm text-gray-600 mt-2">
+          Yes, every interior project is customized based on your budget, space, and lifestyle requirements to ensure the best balance between design and functionality.
+        </p>
+      </div>
+
+    </div>
+
+    {/* CTA */}
+    <div className="text-center mt-10">
+      <button
+        onClick={scrollToForm}
+        className="bg-[#C8A96A] px-6 py-3 rounded-lg font-semibold text-black hover:opacity-90 transition"
+      >
+        Get Free Interior Consultation
+      </button>
+    </div>
+
+  </div>
+</section>
+{/* FAQ SECTION (SEO OPTIMIZED)ENDS */}
+
 {/* FORM SECTION */}
 <section id="contact" className="py-20 bg-white">
 
