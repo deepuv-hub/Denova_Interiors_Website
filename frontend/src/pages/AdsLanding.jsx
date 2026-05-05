@@ -195,29 +195,31 @@ window.location.href = "/thank-you";
     {/* LEFT CONTENT */}
     <div>
 
-      <h1 className="text-3xl md:text-5xl font-bold leading-tight">
-        Premium Home Interiors in Bangalore
+      <h1 className="text-3xl md:text-5xl font-bold leading-tight max-w-3xl">
+        Premium Interior Design for Modern Homes in Bangalore
       </h1>
 
-      <p className="mt-3 text-xl font-semibold text-[#C8A96A]">
-        Starting at ₹3.5 Lakhs
+      <p className="mt-3 text-xl font-semibold text-[#C8A96A] max-w-2xl">
+       Complete home interiors designed for functionality, aesthetics, and long-term living.
       </p>
 
-      <p className="mt-4 text-lg text-gray-200">
-        End-to-End Interior Solutions for Premium Flats & Villas
+      <p className="mt-4 text-lg text-gray-200 max-w-2xl">
+        For homeowners planning quality interiors with structured execution.
       </p>
-
-      {/* TRUST LINE */}
-      <p className="mt-4 text-sm text-gray-300">
-        ✔ 100+ Homes Delivered &nbsp;•&nbsp; ✔ Free 3D Design &nbsp;•&nbsp; ✔ Transparent Pricing
-      </p>
+      
+     {/* TRUST LINE */}
+<p className="mt-4 text-sm text-gray-300">
+  Trusted by homeowners across Bangalore for complete interior design & execution, with 100+ homes delivered
+  <br />
+  End-to-End Execution &nbsp;•&nbsp; Quality Materials &nbsp;•&nbsp; On-Time Delivery
+</p>
 
       {/* CTA */}
       <button
         onClick={scrollToForm}
-        className="mt-6 bg-[#C8A96A] px-6 py-3 rounded-lg font-semibold text-black hover:opacity-90 transition"
+        className="mt-6 bg-[#C8A96A] px-8 py-3 rounded-lg font-semibold text-black hover:opacity-90 transition"
       >
-        Get Free Design Consultation
+        Get Free Interior Consultation
       </button>
 
       {/* SECONDARY CTA */}
@@ -227,20 +229,20 @@ window.location.href = "/thank-you";
         rel="noopener noreferrer"
         className="block mt-3 text-sm text-green-400 hover:text-green-300 transition"
       >
-        📞 Talk to Designer on WhatsApp
+        📞 Talk to a Designer on WhatsApp
       </a>
 
     </div>
 
-    {/* FORM */}
+    {/*HERO SECTION FORM SECTION STARTS*/}
     <form
       id="leadForm"
       onSubmit={handleSubmit}
-      className="bg-white p-6 md:p-7 rounded-xl shadow-xl text-black flex flex-col gap-4"
-    >
+      className="bg-white/95 backdrop-blur-lg p-6 md:p-7 rounded-xl shadow-2xl border border-white/30 text-black flex flex-col gap-4"
+      >
 
       <h2 className="text-lg font-semibold">
-        Get Free Consultation for Your Home
+        Get Free Interior Consultation for Your Home
       </h2>
 
       {/* INPUTS */}
@@ -255,9 +257,7 @@ window.location.href = "/thank-you";
   value={form.name}
   required 
   onChange={handleChange} 
-  className={`p-3 border rounded-lg focus:outline-none focus:ring-2 ${
-    errors.name ? 'border-red-500 focus:ring-red-500' : 'focus:ring-[#C8A96A]'
-  }`}
+  className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]"
 />
 {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
 
@@ -271,11 +271,10 @@ window.location.href = "/thank-you";
   placeholder="Phone Number" 
   value={form.phone}
   maxLength={10}
+  pattern="[6-9]{1}[0-9]{9}"
   required 
   onChange={handleChange} 
-  className={`p-3 border rounded-lg focus:outline-none focus:ring-2 ${
-    errors.phone ? 'border-red-500 focus:ring-red-500' : 'focus:ring-[#C8A96A]'
-  }`}
+  className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]"
 />
 {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
 
@@ -290,9 +289,7 @@ window.location.href = "/thank-you";
   value={form.email}
   required
   onChange={handleChange}
-  className={`p-3 border rounded-lg focus:outline-none focus:ring-2 ${
-    errors.email ? 'border-red-500 focus:ring-red-500' : 'focus:ring-[#C8A96A]'
-  }`}
+  className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]"
 />
 {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
 
@@ -304,7 +301,7 @@ window.location.href = "/thank-you";
   name="propertyType"
   value={form.propertyType}
   onChange={handleChange} 
-  className="p-3 border rounded-lg"
+  className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]"
   required
 >
   <option value="">Select Property Type</option>
@@ -327,9 +324,7 @@ window.location.href = "/thank-you";
   required
   maxLength={6}
   onChange={handleChange}   
-  className={`p-3 border rounded-lg focus:outline-none focus:ring-2 ${
-    errors.pincode ? 'border-red-500 focus:ring-red-500' : 'focus:ring-[#C8A96A]'
-  }`}
+  className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]"
 />
 {errors.pincode && <p className="text-red-500 text-xs mt-1">{errors.pincode}</p>}  
 
@@ -341,7 +336,7 @@ window.location.href = "/thank-you";
   name="possession"
   value={form.possession}
   onChange={handleChange}
-  className="p-3 border rounded-lg"
+  className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]"
   required
 >
   <option value="">Select Possession</option>
@@ -355,34 +350,39 @@ window.location.href = "/thank-you";
   name="budget"
   value={form.budget}
   onChange={handleChange}
-  className="p-3 border rounded-lg"
+  className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]"
   required
 >
   <option value="">Select Budget</option>
-  <option value="3-5L">₹3–5 Lakhs</option>
+  <option value="3.5-5L">₹3.5–5 Lakhs</option>
   <option value="5-10L">₹5–10 Lakhs</option>
   <option value="10-20L">₹10–20 Lakhs</option>
   <option value="20L+">₹20 Lakhs+</option>
 </select>
+
+{/* PREMIUM POSITIONING LINE */}
+<p className="text-xs text-gray-600 font-medium text-center">
+  Serving premium residential projects across Bangalore
+</p>
 
       {/* CTA BUTTON */}
       <button
   type="submit"
   disabled={!isFormValid || loading}
   className={`py-3 rounded-lg font-semibold transition ${
-    !isFormValid
-      ? "bg-gray-400 cursor-not-allowed"
-      : "bg-[#C8A96A] hover:opacity-90"
+   !isFormValid
+  ? "bg-gray-300 cursor-not-allowed text-black"
+  : "bg-[#C8A96A] text-black hover:brightness-90 shadow-md"
   }`}
 >
-        {loading ? "Submitting..." : "Get Quote"}
+        {loading ? "Submitting..." : "Get Free Interior Consultation"}
       </button>
 
       {/* TRUST TEXT */}
       <div className="mt-2 space-y-2 text-center">
 
   <p className="text-sm text-gray-700 font-medium">
-    Our designer will call you within 30 minutes
+    Our senior designer will call you within 30 minutes to understand your requirements.
   </p>
 
   <p className="text-xs text-gray-500">
@@ -403,249 +403,20 @@ window.location.href = "/thank-you";
   </div>
 
 </section>
-                    
-            {/* PRICING SECTION */}
-            <section id="pricing" className="py-20 bg-gradient-to-b from-[#F8F5F0] to-white">
 
-  <div className="max-w-6xl mx-auto px-4 text-center">
+ {/* HERO SECTION FORM SECTION ENDS */}
 
-    {/* HEADING */}
-    <h2 className="text-3xl font-bold mb-4">
-      Interior Design Cost in Bangalore
-    </h2>
-
-    <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
-      Get a clear idea of interior pricing based on your home type and requirements.
-    </p>
-    <p className="text-sm text-gray-500 mb-6">
-  Our projects typically start from ₹3 Lakhs onwards
-</p>
-
-    {/* GRID */}
-    <div className="grid md:grid-cols-3 gap-8">
-
-      {/* CARD 1 */}
-      <div className="border rounded-xl p-6 shadow-sm hover:shadow-md transition bg-white">
-        <h3 className="font-semibold text-lg mb-2">1 BHK Interiors</h3>
-
-        <p className="text-2xl font-bold text-[#C8A96A] mb-3">
-          ₹3L – ₹4.5L
-        </p>
-
-        <p className="text-sm text-gray-600 mb-5">
-          Ideal for compact homes with essential design and storage solutions.
-        </p>
-
-        <button
-          onClick={scrollToForm}
-          className="bg-[#C8A96A] px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition"
-        >
-          Get Exact Quote for Your Home
-        </button>
-      </div>
-
-      {/* CARD 2 - HIGHLIGHT */}
-      <div className="border-2 border-[#C8A96A] rounded-xl p-6 shadow-lg bg-white scale-105">
-
-        <p className="text-xs font-semibold text-[#C8A96A] mb-2">
-          MOST POPULAR
-        </p>
-
-        <h3 className="font-semibold text-lg mb-2">2 BHK Interiors</h3>
-
-        <p className="text-2xl font-bold text-[#C8A96A] mb-3">
-          ₹3.5L – ₹6L
-        </p>
-
-        <p className="text-sm text-gray-600 mb-5">
-          Complete home interiors with kitchen, wardrobes & living space design.
-        </p>
-
-        <button
-          onClick={scrollToForm}
-          className="bg-[#C8A96A] px-5 py-2 rounded-lg font-semibold hover:opacity-90 transition"
-        >
-          Get Exact Quote
-        </button>
-      </div>
-
-      {/* CARD 3 */}
-      <div className="border rounded-xl p-6 shadow-sm hover:shadow-md transition bg-white">
-        <h3 className="font-semibold text-lg mb-2">3 BHK & Villas</h3>
-
-        <p className="text-2xl font-bold text-[#C8A96A] mb-3">
-          ₹6L – ₹12L+
-        </p>
-
-        <p className="text-sm text-gray-600 mb-5">
-          Premium interiors with customized design, materials & finishes.
-        </p>
-
-        <button
-          onClick={scrollToForm}
-          className="bg-[#C8A96A] px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition"
-        >
-          Get Exact Quote
-        </button>
-      </div>
-
-    </div>
-
-    {/* TRUST LINE */}
-    <p className="text-sm text-gray-500 mt-10">
-      Transparent pricing • No hidden costs • Free consultation
-    </p>
-
-  </div>
-</section>
-{/* PRICING SECTION */}
-
-      {/* SHOWCASE */}
-<section id="portfolio" className="py-20 bg-gradient-to-b from-white to-[#F8F5F0]">
-
+ {/* SERVICES */}
+<section id="services" className="py-20 bg-gradient-to-b from-white to-[#F9F7F2]">
   <div className="max-w-6xl mx-auto px-4">
 
     {/* HEADING */}
     <h2 className="text-3xl font-bold text-center mb-4">
-      Our Completed Interior Projects in Bangalore
+    Complete Home Interior Execution for Flats & Villas in Bangalore
     </h2>
 
     <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-      Real homes designed and executed across Bangalore — tailored to different budgets and lifestyles.
-    </p>
-
-    {/* GRID */}
-    <div className="grid md:grid-cols-3 gap-8">
-
-      {/* CARD 1 */}
-      <div className="group cursor-pointer" onClick={scrollToForm}>
-        <div className="overflow-hidden rounded-xl shadow-md group-hover:shadow-xl transition duration-300">
-          <SafeImage 
-            src="/images/living1.webp" 
-            alt="2BHK Living Room Interior Whitefield Bangalore"
-            priority
-          />
-        </div>
-        <p className="mt-3 text-sm text-gray-700 font-medium">
-          2BHK Living Room • Whitefield
-        </p>
-        <p className="text-sm text-[#C8A96A] font-semibold">
-          ₹4–5 Lakhs
-        </p>
-      </div>
-
-      {/* CARD 2 */}
-      <div className="group cursor-pointer" onClick={scrollToForm}>
-        <div className="overflow-hidden rounded-xl shadow-md group-hover:shadow-xl transition duration-300">
-          <SafeImage 
-            src="/images/kitchen1.webp" 
-            alt="Modular Kitchen Interior Sarjapur Bangalore"
-          />
-        </div>
-        <p className="mt-3 text-sm text-gray-700 font-medium">
-          Modular Kitchen • Sarjapur
-        </p>
-        <p className="text-sm text-[#C8A96A] font-semibold">
-          ₹3–4 Lakhs
-        </p>
-      </div>
-
-      {/* CARD 3 */}
-      <div className="group cursor-pointer" onClick={scrollToForm}>
-        <div className="overflow-hidden rounded-xl shadow-md group-hover:shadow-xl transition duration-300">
-          <SafeImage 
-            src="/images/bedroom1.webp" 
-            alt="Bedroom Interior Bangalore Apartment"
-          />
-        </div>
-        <p className="mt-3 text-sm text-gray-700 font-medium">
-          Bedroom Interior • Bangalore
-        </p>
-        <p className="text-sm text-[#C8A96A] font-semibold">
-          ₹2.5–3.5 Lakhs
-        </p>
-      </div>
-
-      {/* CARD 4 */}
-      <div className="group cursor-pointer" onClick={scrollToForm}>
-        <div className="overflow-hidden rounded-xl shadow-md group-hover:shadow-xl transition duration-300">
-          <SafeImage 
-            src="/images/living2.webp" 
-            alt="Luxury Living Room HSR Layout Bangalore"
-          />
-        </div>
-        <p className="mt-3 text-sm text-gray-700 font-medium">
-          3BHK Living Room • HSR Layout
-        </p>
-        <p className="text-sm text-[#C8A96A] font-semibold">
-          ₹6–8 Lakhs
-        </p>
-      </div>
-
-      {/* CARD 5 */}
-      <div className="group cursor-pointer" onClick={scrollToForm}>
-        <div className="overflow-hidden rounded-xl shadow-md group-hover:shadow-xl transition duration-300">
-          <SafeImage 
-            src="/images/kitchen2.webp" 
-            alt="Contemporary Kitchen Electronic City Bangalore"
-          />
-        </div>
-        <p className="mt-3 text-sm text-gray-700 font-medium">
-          Contemporary Kitchen • Electronic City
-        </p>
-        <p className="text-sm text-[#C8A96A] font-semibold">
-          ₹3.5–5 Lakhs
-        </p>
-      </div>
-
-      {/* CARD 6 */}
-      <div className="group cursor-pointer" onClick={scrollToForm}>
-        <div className="overflow-hidden rounded-xl shadow-md group-hover:shadow-xl transition duration-300">
-          <SafeImage 
-            src="/images/bedroom2.webp" 
-            alt="Minimal Bedroom Bangalore Apartment"
-          />
-        </div>
-        <p className="mt-3 text-sm text-gray-700 font-medium">
-          Minimal Bedroom • Apartment
-        </p>
-        <p className="text-sm text-[#C8A96A] font-semibold">
-          ₹1.8–3 Lakhs
-        </p>
-      </div>
-
-    </div>
-
-    {/* CTA */}
-    <div className="text-center mt-16">
-      <button
-        onClick={scrollToForm}
-        className="bg-[#C8A96A] px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition"
-      >
-        Get Your Design Quote
-      </button>
-
-      <p className="text-sm text-gray-500 mt-2">
-        Free consultation • No hidden costs • Bangalore experts
-      </p>
-    </div>
-
-  </div>
-</section>
-{/* SHOWCASE */}
-
-
-      {/* SERVICES */}
-<section id="services" className="py-20 bg-gradient-to-b from-[#F8F5F0] to-white">
-  <div className="max-w-6xl mx-auto px-4">
-
-    {/* HEADING */}
-    <h2 className="text-3xl font-bold text-center mb-4">
-     Premium Interior Solutions for Flats & Villas in Bangalore
-    </h2>
-
-    <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-      From modular kitchens to full home interiors — designed, executed, and delivered on time.
+      End-to-end design, planning, and execution — built for homeowners seeking quality, clarity, and long-term value.
     </p>
 
     {/* GRID */}
@@ -662,16 +433,18 @@ window.location.href = "/thank-you";
         />
         <div className="p-4 text-center">
           <h3 className="font-semibold text-lg mb-2">
-            Full Home Interiors
+            Complete Home Interiors
           </h3>
           <p className="text-sm text-gray-600 mb-3">
-            Complete design and execution for your entire home within budget.
+            End-to-end interior design and execution — from layout planning to final handover with full accountability.
           </p>
-          <p className="text-[#C8A96A] font-semibold text-sm">
-            Get Quote for Your Home →
-          </p>
-          <p className="text-xs text-[#C8A96A] font-semibold mb-1">
-  MOST REQUESTED
+          <p className="text-xs text-[#C8A96A] font-semibold mt-2 tracking-wide">
+  TURNKEY EXECUTION
+</p>
+          
+            
+               <p className="text-[#C8A96A] font-semibold text-sm mt-2">
+  Explore This Execution →
 </p>
         </div>
       </div>
@@ -687,14 +460,14 @@ window.location.href = "/thank-you";
         />
         <div className="p-4 text-center">
           <h3 className="font-semibold text-lg mb-2">
-            Modular Kitchen
+            Kitchen & Storage Systems
           </h3>
           <p className="text-sm text-gray-600 mb-3">
-            Functional and stylish kitchen solutions designed for daily living.
+           Modular kitchens and storage solutions designed as part of a complete home interior plan.
           </p>
-          <p className="text-[#C8A96A] font-semibold text-sm">
-            Get Free Quote →
-          </p>
+          <p className="text-[#C8A96A] font-semibold text-sm mt-2">
+  Explore This Execution →
+</p>
         </div>
       </div>
 
@@ -709,14 +482,14 @@ window.location.href = "/thank-you";
         />
         <div className="p-4 text-center">
           <h3 className="font-semibold text-lg mb-2">
-            Wardrobes & Storage
+           Space Planning & Furniture
           </h3>
           <p className="text-sm text-gray-600 mb-3">
-            Space-optimized storage solutions with premium finishes.
+            Smart layouts and custom furniture tailored to your lifestyle and space requirements.
           </p>
-          <p className="text-[#C8A96A] font-semibold text-sm">
-            Get Free Quote →
-          </p>
+          <p className="text-[#C8A96A] font-semibold text-sm mt-2">
+  Explore This Execution →
+</p>
         </div>
       </div>
 
@@ -731,164 +504,825 @@ window.location.href = "/thank-you";
         />
         <div className="p-4 text-center">
           <h3 className="font-semibold text-lg mb-2">
-            Renovation Projects
+           Renovation & Upgrades
           </h3>
           <p className="text-sm text-gray-600 mb-3">
-            Upgrade your existing space into a modern and functional home.
+            Structured renovation solutions to transform existing spaces with modern design and functionality.
           </p>
-          <p className="text-[#C8A96A] font-semibold text-sm">
-            Get Free Quote →
-          </p>
+          <p className="text-[#C8A96A] font-semibold text-sm mt-2">
+  Explore This Execution →
+</p>
+
+          
         </div>
       </div>
 
     </div>
 
     {/* SECTION CTA */}
-    <div className="text-center mt-12">
+    <div className="text-center mt-16">
+      
       <button
         onClick={scrollToForm}
         className="bg-[#C8A96A] px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition"
       >
-        Get Your Interior Quote
+       Get Free Design Consultation
       </button>
+      <p className="text-sm text-gray-600 text-center mt-10">
+  Projects typically start from ₹5 Lakhs onwards
+</p>
 
-      <p className="text-sm text-gray-500 mt-2">
-        Free consultation • No hidden costs • Bangalore experts
+      <p className="text-sm text-gray-500 mt-3">
+       Trusted execution • Transparent pricing • Dedicated project handling
       </p>
     </div>
 
   </div>
 </section>
-{/* SERVICES */}
+{/* SERVICES END*/}
 
+{/* WHY CHOOSE US */}
+<section className="bg-gradient-to-b from-[#FAF7F2] to-white PY-20">
+  <div className="max-w-6xl mx-auto px-4 text-center">
 
-      {/* TESTIMONIALS */}
-<section id="testimonials" className="py-20 bg-[#F8F5F0]">
+    {/* HEADING */}
+    <h2 className="text-3xl md:text-4xl font-bold">
+      Why Homeowners Trust Denova Creations
+    </h2>
+
+    <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+      We focus on structured execution, transparent processes, and delivering interiors that are built to last — not just look good.
+    </p>
+
+    {/* GRID */}
+    <div className="mt-12 grid md:grid-cols-3 gap-8">
+
+      {/* CARD 1 */}
+      <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+        <h3 className="font-semibold text-lg mb-4">
+          End-to-End Project Responsibility
+        </h3>
+        <p className="text-sm text-gray-700">
+          From design to execution, everything is handled under one system — no multiple vendors, no confusion.
+        </p>
+      </div>
+
+      {/* CARD 2 */}
+      <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+        <h3 className="font-semibold text-lg mb-4">
+          Structured Planning & Execution
+        </h3>
+        <p className="text-sm text-gray-700">
+          Detailed planning, timelines, and execution flow ensure your project progresses smoothly without delays.
+        </p>
+      </div>
+
+      {/* CARD 3 */}
+      <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+        <h3 className="font-semibold text-lg mb-4">
+          Transparent Pricing System
+        </h3>
+        <p className="text-sm text-gray-700">
+          No hidden costs or last-minute surprises — you know exactly what you're investing in from the start.
+        </p>
+      </div>
+
+      {/* CARD 4 */}
+      <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+        <h3 className="font-semibold text-lg mb-4">
+          Dedicated Project Supervision
+        </h3>
+        <p className="text-sm text-gray-700">
+          Every project is monitored closely to maintain quality, timelines, and execution standards.
+        </p>
+      </div>
+
+      {/* CARD 5 */}
+      <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition text-left">
+        <h3 className="font-semibold text-lg mb-4">
+          Premium Materials & Finishing
+        </h3>
+        <p className="text-sm text-gray-700">
+          We use reliable materials and processes to ensure long-term durability and a refined finish.
+        </p>
+      </div>
+
+      {/* CARD 6 */}
+      <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition text-left">
+        <h3 className="font-semibold text-lg mb-4">
+          Designs That Work in Real Life
+        </h3>
+        <p className="text-sm text-gray-700">
+          Our interiors are built for everyday living — practical, functional, and aligned with your lifestyle.
+        </p>
+      </div>
+
+    </div>
+
+    {/* CTA */}
+    <div className="mt-16">
+      <button
+        onClick={scrollToForm}
+        className="bg-[#C8A96A] px-6 py-3 rounded-lg font-semibold text-black hover:opacity-90 transition shadow-md"
+      >
+        Get Free Design Consultation
+      </button>
+
+      
+
+      <p className="text-sm text-gray-500 mt-3">
+        Trusted by homeowners across Bangalore for complete interior execution
+      </p>
+      <p className="text-xs text-gray-500 mt-3">
+  100+ homes delivered • Transparent pricing • Bangalore-based execution team
+</p>
+    </div>
+
+  </div>
+</section>
+{/* WHY CHOOSE US ENDS */}
+
+ {/* SHOWCASE / PORTFOLIO */}
+<section id="portfolio" className="py-20 bg-gradient-to-b from-white to-[#F8F5F0]">
+
   <div className="max-w-6xl mx-auto px-4">
 
+    {/* HEADING */}
     <h2 className="text-3xl font-bold text-center mb-4">
-      What Our Clients Say
+      Our Completed Interior Projects in Bangalore
+    </h2>
+
+    <p className="text-center text-gray-700 mb-12 max-w-2xl mx-auto">
+      Real homes designed and executed across Bangalore — tailored for different budgets, layouts, and lifestyle needs.
+    </p>
+
+    {/* GRID */}
+    <div className="grid md:grid-cols-3 gap-8">
+
+      {/* CARD 1 */}
+      <div className="group cursor-pointer" onClick={scrollToForm}>
+        <div className="overflow-hidden rounded-xl shadow-lg hover:shadow-2xl group-hover:shadow-xl transition duration-300">
+          <SafeImage 
+            src="/images/living1.webp" 
+            alt="2BHK Full Home Interior Whitefield Bangalore"
+            priority
+          />
+        </div>
+        <div className="mt-3">
+          <p className="text-sm font-semibold text-gray-800">
+            2BHK Full Home Interior • Whitefield
+          </p>
+          <p className="text-sm text-gray-600">
+            Living room, kitchen, wardrobes & TV unit execution
+          </p>
+          <p className="text-xs text-gray-500 mt-1">
+            ₹4–5 Lakhs • 45 Days Delivery
+          </p>
+        </div>
+      </div>
+
+      {/* CARD 2 */}
+      <div className="group cursor-pointer" onClick={scrollToForm}>
+        <div className="overflow-hidden rounded-xl shadow-lg hover:shadow-2xl group-hover:shadow-xl transition duration-300">
+          <SafeImage 
+            src="/images/kitchen1.webp" 
+            alt="Modular Kitchen Interior Sarjapur Bangalore"
+          />
+        </div>
+        <div className="mt-3">
+          <p className="text-sm font-semibold text-gray-800">
+            Modular Kitchen • Sarjapur
+          </p>
+          <p className="text-sm text-gray-600">
+            Custom kitchen with storage optimization & premium finishes
+          </p>
+          <p className="text-xs text-gray-500 mt-1">
+            ₹3–4 Lakhs • 30 Days Delivery
+          </p>
+        </div>
+      </div>
+
+      {/* CARD 3 */}
+      <div className="group cursor-pointer" onClick={scrollToForm}>
+        <div className="overflow-hidden rounded-xl shadow-lg hover:shadow-2xl group-hover:shadow-xl transition duration-300">
+          <SafeImage 
+            src="/images/bedroom1.webp" 
+            alt="Bedroom Interior Bangalore Apartment"
+          />
+        </div>
+        <div className="mt-3">
+          <p className="text-sm font-semibold text-gray-800">
+            Bedroom + Wardrobe • Bangalore
+          </p>
+          <p className="text-sm text-gray-600">
+            Functional wardrobe design with optimized storage
+          </p>
+          <p className="text-xs text-gray-500 mt-1">
+            ₹2.5–3.5 Lakhs • 25 Days Delivery
+          </p>
+        </div>
+      </div>
+
+      {/* CARD 4 */}
+      <div className="group cursor-pointer" onClick={scrollToForm}>
+        <div className="overflow-hidden rounded-xl shadow-lg hover:shadow-2xl group-hover:shadow-xl transition duration-300">
+          <SafeImage 
+            src="/images/living2.webp" 
+            alt="3BHK Living Room HSR Layout Bangalore"
+          />
+        </div>
+        <div className="mt-3">
+          <p className="text-sm font-semibold text-gray-800">
+            3BHK Living Space • HSR Layout
+          </p>
+          <p className="text-sm text-gray-600">
+            Living room, false ceiling & TV unit execution
+          </p>
+          <p className="text-xs text-gray-500 mt-1">
+            ₹6–8 Lakhs • 50 Days Delivery
+          </p>
+        </div>
+      </div>
+
+      {/* CARD 5 */}
+      <div className="group cursor-pointer" onClick={scrollToForm}>
+        <div className="overflow-hidden rounded-xl shadow-lg hover:shadow-2xl group-hover:shadow-xl transition duration-300">
+          <SafeImage 
+            src="/images/kitchen2.webp" 
+            alt="Contemporary Kitchen Electronic City Bangalore"
+          />
+        </div>
+        <div className="mt-3">
+          <p className="text-sm font-semibold text-gray-800">
+            Contemporary Kitchen • Electronic City
+          </p>
+          <p className="text-sm text-gray-600">
+            Modern kitchen with durable materials & sleek finishes
+          </p>
+          <p className="text-xs text-gray-500 mt-1">
+            ₹3.5–5 Lakhs • 28 Days Delivery
+          </p>
+        </div>
+      </div>
+
+      {/* CARD 6 */}
+      <div className="group cursor-pointer" onClick={scrollToForm}>
+        <div className="overflow-hidden rounded-xl shadow-lg hover:shadow-2xl group-hover:shadow-xl transition duration-300">
+          <SafeImage 
+            src="/images/bedroom2.webp" 
+            alt="Minimal Bedroom Bangalore Apartment"
+          />
+        </div>
+        <div className="mt-3">
+          <p className="text-sm font-semibold text-gray-800">
+            Minimal Bedroom • Apartment
+          </p>
+          <p className="text-sm text-gray-600">
+            Clean, functional bedroom design with storage solutions
+          </p>
+          <p className="text-xs text-gray-500 mt-1">
+            ₹1.8–3 Lakhs • 20 Days Delivery
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    {/* CTA */}
+    <div className="text-center mt-16">
+      <button
+        onClick={scrollToForm}
+        className="bg-[#C8A96A] px-6 py-3 rounded-lg font-semibold text-black hover:opacity-90 transition shadow-md"
+      >
+        Get Free Design Consultation
+      </button>
+
+      <p className="text-sm text-gray-500 mt-2">
+        Real homes • Transparent execution • Trusted across Bangalore
+      </p>
+    </div>
+
+  </div>
+</section>
+{/* SHOWCASE /PORTFOLIO ENDS */}
+
+
+                    
+          {/* PRICING SECTION */}
+<section id="pricing" className="py-20 bg-gradient-to-b from-[#F8F5F0] to-white">
+
+  <div className="max-w-6xl mx-auto px-4 text-center">
+
+    {/* HEADING */}
+    <h2 className="text-3xl font-bold mb-4">
+      Interior Design Pricing Guide in Bangalore
+    </h2>
+
+    <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
+      Understand interior costs based on scope, customization level, and execution quality.
+    </p>
+
+    <p className="text-sm text-gray-500 mb-12">
+      Most projects typically start from ₹3.5 Lakhs onwards
+    </p>
+
+    {/* GRID */}
+    <div className="grid md:grid-cols-3 gap-8">
+
+      {/* CARD 1 */}
+      <div className="border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition bg-white">
+        <h3 className="font-semibold text-lg mb-2">
+          Essential Interiors
+        </h3>
+
+        <p className="text-2xl font-bold text-[#C8A96A] mb-3">
+          ₹3.5L – ₹5L
+        </p>
+
+        <p className="text-sm text-gray-600 mb-4">
+          Ideal for compact homes with essential interiors and functional design.
+        </p>
+
+        <ul className="text-sm text-gray-600 space-y-2 mb-6">
+          <li>• Modular kitchen</li>
+          <li>• Basic wardrobes</li>
+          <li>• Space-optimized layouts</li>
+        </ul>
+
+        <button
+          onClick={scrollToForm}
+          className="bg-[#C8A96A] px-4 py-2 rounded-lg font-semibold text-black hover:opacity-90 transition"
+        >
+          Get Free Consultation
+        </button>
+      </div>
+
+      {/* CARD 2 - HIGHLIGHT */}
+      <div className="border-2 border-[#C8A96A] rounded-xl p-6 shadow-lg bg-white scale-105">
+
+        <p className="text-xs font-semibold text-[#C8A96A] mb-2">
+          MOST POPULAR
+        </p>
+
+        <h3 className="font-semibold text-lg mb-2">
+          Complete Home Interiors
+        </h3>
+
+        <p className="text-2xl font-bold text-[#C8A96A] mb-3">
+          ₹5L – ₹10L
+        </p>
+
+        <p className="text-sm text-gray-600 mb-4">
+          Full home interior execution with balanced design and customization.
+        </p>
+
+        <ul className="text-sm text-gray-600 space-y-2 mb-6">
+          <li>• Kitchen + wardrobes</li>
+          <li>• TV unit & storage</li>
+          <li>• End-to-end execution</li>
+        </ul>
+
+        <button
+          onClick={scrollToForm}
+          className="bg-[#C8A96A] px-5 py-2 rounded-lg font-semibold text-black hover:opacity-90 transition"
+        >
+          Get Free Consultation
+        </button>
+      </div>
+
+      {/* CARD 3 */}
+      <div className="border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition bg-white">
+        <h3 className="font-semibold text-lg mb-2">
+          Premium Custom Interiors
+        </h3>
+
+        <p className="text-2xl font-bold text-[#C8A96A] mb-3">
+          ₹10L+
+        </p>
+
+        <p className="text-sm text-gray-600 mb-4">
+          High-end interiors with custom design, premium materials, and detailing.
+        </p>
+
+        <ul className="text-sm text-gray-600 space-y-2 mb-6">
+          <li>• Custom furniture</li>
+          <li>• Premium finishes</li>
+          <li>• Advanced detailing</li>
+        </ul>
+
+        <button
+          onClick={scrollToForm}
+          className="bg-[#C8A96A] px-4 py-2 rounded-lg font-semibold text-black hover:opacity-90 transition"
+        >
+          Get Free Consultation
+        </button>
+      </div>
+
+    </div>
+
+    {/* TRUST LINE */}
+    <p className="text-sm text-gray-500 mt-10">
+      Transparent pricing • No hidden costs • Designed for Bangalore homes
+    </p>
+
+  </div>
+</section>
+{/* PRICING SECTION ENDS */}
+
+     {/* PROCESS SECTION */}
+<section id="process" className="py-20 bg-gradient-to-b from-white to-[#F8F5F0]">
+
+  <div className="max-w-6xl mx-auto px-4 text-center">
+
+    {/* HEADING */}
+    <h2 className="text-3xl font-bold mb-4">
+      Our Interior Design Process — Simple, Structured & Transparent
+    </h2>
+
+    <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
+      From consultation to final handover, we follow a clear process to ensure quality, timelines, and complete execution without confusion.
+    </p>
+
+    {/* PROCESS STEPS */}
+    <div className="grid md:grid-cols-4 gap-8 text-left">
+
+      {/* STEP 1 */}
+      <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition">
+        <p className="text-[#C8A96A] font-bold text-lg mb-2">01</p>
+        <h3 className="font-semibold text-lg mb-2">
+          Consultation & Requirement Understanding
+        </h3>
+        <p className="text-sm text-gray-600">
+          We understand your space, budget, and requirements to plan the right design direction.
+        </p>
+      </div>
+
+      {/* STEP 2 */}
+      <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition">
+        <p className="text-[#C8A96A] font-bold text-lg mb-2">02</p>
+        <h3 className="font-semibold text-lg mb-2">
+          Design & Space Planning
+        </h3>
+        <p className="text-sm text-gray-600">
+          Layout planning, material selection, and design concepts tailored to your lifestyle and space.
+        </p>
+      </div>
+
+      {/* STEP 3 */}
+      <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition">
+        <p className="text-[#C8A96A] font-bold text-lg mb-2">03</p>
+        <h3 className="font-semibold text-lg mb-2">
+          Execution & Project Management
+        </h3>
+        <p className="text-sm text-gray-600">
+          End-to-end execution with site supervision, quality checks, and timeline tracking.
+        </p>
+      </div>
+
+      {/* STEP 4 */}
+      <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition">
+        <p className="text-[#C8A96A] font-bold text-lg mb-2">04</p>
+        <h3 className="font-semibold text-lg mb-2">
+          Final Delivery & Handover
+        </h3>
+        <p className="text-sm text-gray-600">
+          Complete project handover with finishing checks and ready-to-move-in interiors.
+        </p>
+      </div>
+
+    </div>
+
+    {/* CTA */}
+    <div className="text-center mt-12">
+      <button
+        onClick={scrollToForm}
+        className="bg-[#C8A96A] px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition"
+      >
+        Start Your Interior Design Journey
+      </button>
+
+      <p className="text-sm text-gray-500 mt-2">
+        Clear process • On-time delivery • Professional execution
+      </p>
+    </div>
+
+  </div>
+</section>
+{/* PROCESS SECTION ENDS */}
+
+
+      
+{/* TESTIMONIALS */}
+<section id="testimonials" className="py-20 bg-gradient-to-b from-[#F8F5F0] to-white">
+  <div className="max-w-6xl mx-auto px-4">
+
+    {/* HEADING */}
+    <h2 className="text-3xl font-bold text-center mb-4">
+      What Bangalore Homeowners Say About Our Work
     </h2>
 
     <p className="text-center text-gray-600 mb-6 max-w-2xl mx-auto">
       Real experiences from homeowners across Bangalore who trusted Denova Creations for their interiors.
     </p>
-    <p className="text-center mt-6 mb-6 text-lg md:text-xl font-semibold text-[#1A1A1A]">
-  Trusted by <span className="text-[#C8A96A] font-bold">100+</span> homeowners across Bangalore
-</p>
-<p className="text-sm text-gray-500 text-center mb-4">
-  ⭐ 4.8 Rating • Based on 100+ Projects
-</p>
 
+    {/* TRUST STATS */}
+    <p className="text-center mt-4 text-lg md:text-xl font-semibold text-[#1A1A1A]">
+      Trusted by <span className="text-[#C8A96A] font-bold">100+</span> homeowners across Bangalore
+    </p>
+
+    <p className="text-sm text-gray-500 text-center mb-12">
+      ⭐ 4.8 Rating • Based on 100+ Projects
+    </p>
+
+    {/* GRID */}
     <div className="grid md:grid-cols-3 gap-6">
 
       {/* CARD 1 */}
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl hover:-translate-y-1 transition duration-300">
+      <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-1 transition duration-300">
         <SafeImage 
           src="/images/client1.webp" 
-          alt="2BHK Interior Project Bangalore"
+          alt="2BHK Interior Project Whitefield Bangalore"
         />
         <div className="p-5 text-left">
           <p className="text-[#C8A96A] text-sm mb-2">★★★★★</p>
+
           <p className="text-xs text-gray-500 mb-1 tracking-wide">
             2BHK • Whitefield • ₹4.5 Lakhs
-            </p>
-          <p className="text-sm text-gray-600 mb-3 leading-relaxed">            
-            Completed in 40 days without any delays. Pricing was transparent and final result matched exactly what was promised.
           </p>
-          <p className="font-semibold">Vinod</p>
-<p className="text-xs text-green-600 mt-1 leading-relaxed">
-  ✔ Verified Client &nbsp;|&nbsp; ✔ Project Completed &nbsp;|&nbsp; ✔ On-Time Delivery
-</p>
+
+          <p className="text-sm text-gray-600 mb-3 leading-relaxed">
+            Completed in 40 days without delays. Pricing was transparent and the final result matched what was promised.
+          </p>
+
+          <p className="font-semibold">Rakesh</p>
+
+          <p className="text-xs text-green-600 mt-1 leading-relaxed">
+            ✔ Verified Client &nbsp;|&nbsp; ✔ Project Completed &nbsp;|&nbsp; ✔ On-Time Delivery
+          </p>
         </div>
       </div>
 
       {/* CARD 2 */}
-<div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl hover:-translate-y-1 transition duration-300">
-  <SafeImage 
-    src="/images/client2.webp" 
-    alt="3BHK Interior Project Bangalore"
-  />
-  <div className="p-5 text-left">
+      <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-1 transition duration-300">
+        <SafeImage 
+          src="/images/client2.webp" 
+          alt="3BHK Interior Project Sarjapur Bangalore"
+        />
+        <div className="p-5 text-left">
 
-    {/* Stars */}
-    <p className="text-[#C8A96A] text-sm mb-2">★★★★★</p>
+          <p className="text-[#C8A96A] text-sm mb-2">★★★★★</p>
 
-    {/* Project Details */}
-    <p className="text-xs text-gray-500 mb-1 tracking-wide">
-      3BHK • Sarjapur • ₹6.5 Lakhs
-    </p>
+          <p className="text-xs text-gray-500 mb-1 tracking-wide">
+            3BHK • Sarjapur • ₹6.5 Lakhs
+          </p>
 
-    {/* Testimonial */}
-    <p className="text-sm text-gray-600 mb-3 leading-relaxed">
-      Pricing was completely transparent with no hidden costs. The material quality was excellent and the team handled everything professionally from start to finish.
-    </p>
+          <p className="text-sm text-gray-600 mb-3 leading-relaxed">
+            Pricing was transparent with no hidden costs. Material quality was excellent and execution was handled professionally.
+          </p>
 
-    {/* Name */}
-    <p className="font-semibold">Harish</p>
+          <p className="font-semibold">Harish</p>
 
-    {/* Trust Badges */}
-    <p className="text-xs text-green-600 mt-1 leading-relaxed">
-      ✔ Verified Client &nbsp;|&nbsp; ✔ Project Completed &nbsp;|&nbsp; ✔ On-Time Delivery
-    </p>
+          <p className="text-xs text-green-600 mt-1 leading-relaxed">
+            ✔ Verified Client &nbsp;|&nbsp; ✔ Project Completed &nbsp;|&nbsp; ✔ On-Time Delivery
+          </p>
 
-  </div>
-</div>
+        </div>
+      </div>
 
       {/* CARD 3 */}
-<div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl hover:-translate-y-1 transition duration-300">
-  <SafeImage 
-    src="/images/client3.webp" 
-    alt="Home Renovation Bangalore"
-  />
-  <div className="p-5 text-left">
+      <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-1 transition duration-300">
+        <SafeImage 
+          src="/images/client3.webp" 
+          alt="Home Renovation Electronic City Bangalore"
+        />
+        <div className="p-5 text-left">
 
-    {/* Stars */}
-    <p className="text-[#C8A96A] text-sm mb-2">★★★★★</p>
+          <p className="text-[#C8A96A] text-sm mb-2">★★★★★</p>
 
-    {/* Project Details */}
-    <p className="text-xs text-gray-500 mb-1 tracking-wide">
-      Renovation • Electronic City • ₹3.8 Lakhs
-    </p>
+          <p className="text-xs text-gray-500 mb-1 tracking-wide">
+            Renovation • Electronic City • ₹3.8 Lakhs
+          </p>
 
-    {/* Testimonial */}
-    <p className="text-sm text-gray-600 mb-3 leading-relaxed">
-      The renovation was executed exactly as planned. Design matched our expectations and everything stayed within budget without any surprises.
-    </p>
+          <p className="text-sm text-gray-600 mb-3 leading-relaxed">
+            The renovation was executed exactly as planned. Design met expectations and everything stayed within budget.
+          </p>
 
-    {/* Name */}
-    <p className="font-semibold">Srinath</p>
+          <p className="font-semibold">Srinath</p>
 
-    {/* Trust Badges */}
-    <p className="text-xs text-green-600 mt-1 leading-relaxed">
-      ✔ Verified Client &nbsp;|&nbsp; ✔ Project Completed &nbsp;|&nbsp; ✔ On-Time Delivery
-    </p>
-    <p className="text-xs text-gray-400 mt-2">
-  Limited slots available this month
-</p>
+          <p className="text-xs text-green-600 mt-1 leading-relaxed">
+            ✔ Verified Client &nbsp;|&nbsp; ✔ Project Completed &nbsp;|&nbsp; ✔ On-Time Delivery
+          </p>
 
-  </div>
-</div>
+        </div>
+      </div>
 
+    </div>
+
+    {/* CTA */}
+    <div className="text-center mt-12">
+      <button
+        onClick={scrollToForm}
+        className="bg-[#C8A96A] px-6 py-3 rounded-lg font-semibold text-black hover:opacity-90 transition shadow-md"
+      >
+        Get Free Design Consultation
+      </button>
+
+      <p className="text-sm text-gray-500 mt-2">
+        Trusted by 100+ homeowners • Transparent pricing • On-time delivery
+      </p>
     </div>
 
   </div>
 </section>
- {/* TESTIMONIALS */}
+{/* TESTIMONIALS ENDS */}
 
- {/* CTA */}
-<div className="text-center mt-12">
-  <button
-    onClick={scrollToForm}
-    className="bg-[#C8A96A] px-6 py-3 rounded-lg font-semibold"
-  >
-    Get Similar Interior Design for Your Home
-  </button>
-  <p className="text-sm text-gray-500 mt-2 mb-10">  
-     Free consultation • No hidden costs • Bangalore based team  
-     </p>
-</div>
+{/* FORM SECTION */}
+<section id="contact" className="py-20 bg-white">
+
+  <div className="max-w-4xl mx-auto px-4 text-center">
+
+    {/* HEADING */}
+    <h2 className="text-3xl font-bold mb-3">
+      Get Free Interior Consultation for Your Home
+    </h2>
+
+    {/* SUBLINE */}
+    <p className="text-sm text-gray-600 mb-2">
+      Speak with our design expert to plan your home interiors with clarity on budget, design, and execution.
+    </p>
+
+    {/* FILTER LINE */}
+    <p className="text-xs text-gray-500 mb-8">
+      Suitable for homeowners planning interior projects starting from ₹3.5 Lakhs onwards
+    </p>
+
+    {/* FORM BOX */}
+    <form
+      id="leadForm"
+      onSubmit={handleSubmit}
+      className="bg-white border border-gray-200 p-6 md:p-8 rounded-xl shadow-md flex flex-col gap-4 max-w-md mx-auto text-left"
+    >
+
+      {/* NAME */}
+      <input 
+        type="text"
+        name="name"
+        placeholder="Your Name"
+        value={form.name}
+        required
+        onChange={handleChange}
+        className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]"
+      />
+
+      {/* PHONE */}
+      <input 
+        type="tel"
+        name="phone"
+        placeholder="Phone Number"
+        value={form.phone}
+        maxLength={10}
+        required
+        onChange={handleChange}
+        pattern="[6-9]{1}[0-9]{9}"
+        className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]"
+      />
+
+      {/* EMAIL */}
+      <input 
+        type="email"
+        name="email"
+        placeholder="Email ID"
+        value={form.email}
+        required
+        onChange={handleChange}
+        className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]"
+      />
+
+      {/* PROPERTY TYPE */}
+      <select
+        name="propertyType"
+        value={form.propertyType}
+        onChange={handleChange}
+        required
+        className="p-3 border border-gray-300 rounded-lg"
+      >
+        <option value="">Select Property Type</option>
+        <option value="1 BHK">1 BHK</option>
+        <option value="2 BHK">2 BHK</option>
+        <option value="3 BHK">3 BHK</option>
+        <option value="3+ BHK">3+ BHK</option>
+        <option value="Villa">Villa</option>
+      </select>
+
+      {/* PINCODE */}
+      <input
+        type="tel"
+        name="pincode"
+        placeholder="Pincode"
+        value={form.pincode}
+        maxLength={6}
+        required
+        onChange={handleChange}
+        className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A96A]"
+      />
+
+      {/* POSSESSION */}
+      <select
+        name="possession"
+        value={form.possession}
+        onChange={handleChange}
+        required
+        className="p-3 border border-gray-300 rounded-lg"
+      >
+        <option value="">Select Possession</option>
+        <option value="Immediate">Immediate</option>
+        <option value="0-3 Months">0-3 Months</option>
+        <option value="3-6 Months">3-6 Months</option>
+        <option value="6+ Months">6+ Months</option>
+      </select>
+
+      {/* BUDGET */}
+      <select
+        name="budget"
+        value={form.budget}
+        onChange={handleChange}
+        required
+        className="p-3 border border-gray-300 rounded-lg"
+      >
+        <option value="">Select Budget</option>
+        <option value="3.5-5L">₹3.5–5 Lakhs</option>
+        <option value="5-10L">₹5–10 Lakhs</option>
+        <option value="10-20L">₹10–20 Lakhs</option>
+        <option value="20L+">₹20 Lakhs+</option>
+      </select>
+
+      {/* TRUST LINE */}
+      <p className="text-xs text-gray-500 text-center">
+        Trusted by 100+ homeowners across Bangalore
+      </p>
+
+      {/* CTA BUTTON */}
+      <button
+        type="submit"
+        disabled={loading}
+        className={`py-3 rounded-lg font-semibold transition ${
+          loading
+            ? "bg-gray-400 cursor-not-allowed"
+            : "bg-[#C8A96A] text-black hover:opacity-90 shadow-md"
+        }`}
+      >
+        {loading ? "Submitting..." : "Get Free Interior Consultation"}
+      </button>
+
+      {/* MICROCOPY */}
+      <div className="text-center mt-2">
+        <p className="text-sm text-gray-700 font-medium">
+          Our senior designer will call you within 30 minutes to understand your requirements.
+        </p>
+
+        <p className="text-xs text-gray-500">
+          No spam • 100% confidential • Bangalore-based team
+        </p>
+      </div>
+
+    </form>
+
+  </div>
+</section>
+{/* FORM SECTION ENDS */}
+
+
+{/* FINAL CTA */}
+<section className="py-20 bg-[#1A1A1A] text-white text-center">
+
+  <div className="max-w-3xl mx-auto px-4">
+
+    {/* HEADLINE */}
+    <h2 className="text-3xl md:text-4xl font-bold mb-4">
+      Plan Your Home Interiors with Expert Guidance
+    </h2>
+
+    {/* SUBTEXT */}
+    <p className="text-gray-300 mb-6">
+      Get clarity on design, budget, and execution before you start your project — no guesswork, no confusion.
+    </p>
+
+    {/* TRUST LINE */}
+    <p className="text-sm text-gray-400 mb-8">
+      Trusted by 100+ homeowners across Bangalore • Transparent pricing • End-to-end execution
+    </p>
+
+    {/* BUTTON */}
+    <button
+      onClick={scrollToForm}
+      className="bg-[#C8A96A] px-8 py-3 rounded-lg font-semibold text-black hover:opacity-90 transition shadow-md"
+    >
+      Get Free Interior Consultation
+    </button>
+
+  </div>
+
+</section>
     </>
   );  
 };
