@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
 
   <!-- 🔥 HERO IMAGE PRELOAD (CRITICAL FOR LCP) -->
@@ -11,19 +12,49 @@
   <meta name="theme-color" content="#1F1F1F" />
 
   <!-- SEO -->
-  <meta name="description" content="Denova Interiors - Premium interior design solutions in Bengaluru. 150+ projects delivered." />
-  <meta name="keywords" content="interior design Bengaluru, home interiors, modular kitchen" />
+  <meta
+    name="description"
+    content="Denova Interiors - Premium interior design solutions in Bengaluru. 150+ projects delivered."
+  />
+
+  <meta
+    name="keywords"
+    content="interior design Bengaluru, home interiors, modular kitchen"
+  />
 
   <!-- ✅ NON-BLOCKING GOOGLE FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-  rel="stylesheet"
-  media="print"
-  onload="this.media='all'"
-/>
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet"
+    media="print"
+    onload="this.media='all'"
+  />
+
+  <!-- ✅ GTM PRODUCTION IMPLEMENTATION -->
+  <!-- Google Tag Manager -->
+  <script>
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event:'gtm.js'
+      });
+
+      var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),
+          dl=l!='dataLayer' ? '&l='+l : '';
+
+      j.async=true;
+      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+
+      f.parentNode.insertBefore(j,f);
+
+    })(window,document,'script','dataLayer','GTM-59NLP9MV');
+  </script>
+  <!-- End Google Tag Manager -->
 
   <title>Denova Interiors | Premium Interior Design in Bengaluru</title>
 
@@ -31,45 +62,23 @@
 
 <body>
 
-  <!-- GTM NOSCRIPT -->
+  <!-- Google Tag Manager (noscript) -->
   <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59NLP9MV"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    <iframe
+      src="https://www.googletagmanager.com/ns.html?id=GTM-59NLP9MV"
+      height="0"
+      width="0"
+      style="display:none;visibility:hidden"
+    ></iframe>
   </noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
-  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
 
   <div id="root"></div>
 
-  <!-- 🚀 SMART SCRIPT LOADING (CRITICAL FIX) -->
-  <script>
-function loadTrackingScripts() {
-  if (window.scriptsLoaded) return;
-  window.scriptsLoaded = true;
-
-  // Initialize dataLayer
-  window.dataLayer = window.dataLayer || [];
-
-  // 🔥 THIS IS THE IMPORTANT LINE (CONNECTS GTM)
-  window.dataLayer.push({
-    event: "user_interaction"
-  });
-
-  // Load GTM AFTER interaction
-  (function(w,d,s,l,i){
-    var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s);
-    j.async=true;
-    j.src='https://www.googletagmanager.com/gtm.js?id=GTM-59NLP9MV';
-    f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer');
-}
-
-// Trigger only once on interaction
-['click','scroll','mousemove','touchstart'].forEach(event => {
-  window.addEventListener(event, loadTrackingScripts, { once: true });
-});
-</script>
-
 </body>
+
 </html>
