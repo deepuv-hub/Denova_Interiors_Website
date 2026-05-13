@@ -1,4 +1,5 @@
  import React, { useState } from "react";
+ import { useEffect } from "react";
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby9SBHZXrLYiKlvRxaM8TaqICwB7VkWy_6T8B1WTkz_CXEBNTNYo9B_J1WxZlA9Ebxa/exec";
 /* SAFE IMAGE - OPTIMIZED */
@@ -49,7 +50,34 @@ const AdsLanding = () => {
     pincode: "",
     possession: "",
     budget: "",
+
+    // UTM TRACKING
+  utm_source: "",
+  utm_medium: "",
+  utm_campaign: "",
+  utm_content: "",
+  utm_term: "",
+  gclid: "",
+  landing_page: "",
+
   });
+
+  useEffect(() => {
+  const params = new URLSearchParams(window.location.search);
+
+  setForm((prev) => ({
+    ...prev,
+
+    utm_source: params.get("utm_source") || "",
+    utm_medium: params.get("utm_medium") || "",
+    utm_campaign: params.get("utm_campaign") || "",
+    utm_content: params.get("utm_content") || "",
+    utm_term: params.get("utm_term") || "",
+    gclid: params.get("gclid") || "",
+
+    landing_page: window.location.href,
+  }));
+}, []);
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -148,6 +176,17 @@ const handleSubmit = async (e) => {
         possession: form.possession,
         budget: form.budget,
         source: "Ads Landing Page",
+
+        // UTM TRACKING
+  utm_source: form.utm_source,
+  utm_medium: form.utm_medium,
+  utm_campaign: form.utm_campaign,
+  utm_content: form.utm_content,
+  utm_term: form.utm_term,
+  gclid: form.gclid,
+  landing_page: form.landing_page,
+
+  timestamp: new Date().toISOString(),
       }),
     });
 
