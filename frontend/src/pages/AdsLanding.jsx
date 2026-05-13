@@ -214,7 +214,7 @@ window.location.href = "/thank-you";
 
   {/* BACKGROUND IMAGE */}
   <img
-    src="/images/hero2.webp"
+    src="/images/landingpagehero.webp"
     alt="Premium Home Interiors in Bangalore by Denova Creations"
     loading="eager"
     fetchPriority="high"
