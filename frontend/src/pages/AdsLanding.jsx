@@ -63,18 +63,49 @@ const AdsLanding = () => {
   });
 
   useEffect(() => {
-  const params = new URLSearchParams(window.location.search);
+  const url = new URL(window.location.href);
+
+  const utmData = {
+    utm_source:
+      url.searchParams.get("utm_source") ||
+      localStorage.getItem("utm_source") ||
+      "",
+
+    utm_medium:
+      url.searchParams.get("utm_medium") ||
+      localStorage.getItem("utm_medium") ||
+      "",
+
+    utm_campaign:
+      url.searchParams.get("utm_campaign") ||
+      localStorage.getItem("utm_campaign") ||
+      "",
+
+    utm_content:
+      url.searchParams.get("utm_content") ||
+      localStorage.getItem("utm_content") ||
+      "",
+
+    utm_term:
+      url.searchParams.get("utm_term") ||
+      localStorage.getItem("utm_term") ||
+      "",
+
+    gclid:
+      url.searchParams.get("gclid") ||
+      localStorage.getItem("gclid") ||
+      "",
+  };
+
+  Object.entries(utmData).forEach(([key, value]) => {
+    if (value) {
+      localStorage.setItem(key, value);
+    }
+  });
 
   setForm((prev) => ({
     ...prev,
-
-    utm_source: params.get("utm_source") || "",
-    utm_medium: params.get("utm_medium") || "",
-    utm_campaign: params.get("utm_campaign") || "",
-    utm_content: params.get("utm_content") || "",
-    utm_term: params.get("utm_term") || "",
-    gclid: params.get("gclid") || "",
-
+    ...utmData,
     landing_page: window.location.href,
   }));
 }, []);
@@ -214,7 +245,8 @@ window.location.href = "/thank-you";
 
   {/* BACKGROUND IMAGE */}
   <img
-    src="/images/landingpagehero.webp"
+    src="/images/landingpagehero
+    .webp"
     alt="Premium Home Interiors in Bangalore by Denova Creations"
     loading="eager"
     fetchPriority="high"
