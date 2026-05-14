@@ -209,13 +209,13 @@ const handleSubmit = async (e) => {
         source: "Ads Landing Page",
 
         // UTM TRACKING
-  utm_source: form.utm_source,
-  utm_medium: form.utm_medium,
-  utm_campaign: form.utm_campaign,
-  utm_content: form.utm_content,
-  utm_term: form.utm_term,
-  gclid: form.gclid,
-  landing_page: form.landing_page,
+  utm_source: localStorage.getItem("utm_source") || "",
+utm_medium: localStorage.getItem("utm_medium") || "",
+utm_campaign: localStorage.getItem("utm_campaign") || "",
+utm_content: localStorage.getItem("utm_content") || "",
+utm_term: localStorage.getItem("utm_term") || "",
+gclid: localStorage.getItem("gclid") || "",
+landing_page: localStorage.getItem("landing_page") || window.location.href,
 
   timestamp: new Date().toISOString(),
       }),

@@ -49,6 +49,32 @@ function App() {
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "wj9mkjr37f");
   }, []);
+
+  useEffect(() => {
+  const params = new URLSearchParams(window.location.search);
+
+  const trackingParams = [
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_content",
+    "utm_term",
+    "gclid"
+  ];
+
+  trackingParams.forEach((param) => {
+    const value = params.get(param);
+
+    if (value) {
+      localStorage.setItem(param, value);
+    }
+  });
+
+  // Save first landing page
+  if (!localStorage.getItem("landing_page")) {
+    localStorage.setItem("landing_page", window.location.href);
+  }
+}, []);
   
   return (
     <div className="App">
@@ -93,6 +119,8 @@ function App() {
         <Toaster position="top-right" />
       </BrowserRouter>
     </div>
+
+    
   );
 }
 
