@@ -4,6 +4,8 @@ import { ArrowRight, Star, CheckCircle2, Home, Building2, Castle, Briefcase, Wre
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { companyInfo, services, projects, testimonials, processSteps, clients, clientLogoBanner } from '../data/mock';
+import { Helmet } from "react-helmet-async";
+
 
 const iconMap = {
   Home: Home,
@@ -56,6 +58,25 @@ const handleSubmit = async (e) => {
   }
 };
   return (
+
+    <>
+  <Helmet>
+    <title>
+      Premium Interior Designers in Bangalore | Denova Interiors
+    </title>
+
+    <meta
+      name="description"
+      content="Denova Interiors offers premium home interior design services in Bangalore including modular kitchens, wardrobes, living rooms, and complete home interiors."
+    />
+
+    <link
+      rel="canonical"
+      href="https://denovacreations.com/"
+    />
+  </Helmet>
+
+
     <div>
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center bg-[#1F1F1F] overflow-hidden">
@@ -378,6 +399,7 @@ const handleSubmit = async (e) => {
         </div>
       </section>
     </div>
+  </>
   );
 };
 
