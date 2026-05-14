@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "https://www.denovacreations.com/:path*",
+      "destination": "https://denovacreations.com/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/robots.txt",
