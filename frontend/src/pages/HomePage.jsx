@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, CheckCircle2, Home, Building2, Castle, Briefcase, Wrench, Key, ChevronRight } from 'lucide-react';
 import { Button } from '../components/ui/button';
@@ -17,54 +17,6 @@ const iconMap = {
 };
 
 const HomePage = () => {
-  const [name, setName] = useState("");
-const [phone, setPhone] = useState("");
-const [email, setEmail] = useState("");
-const [propertyType, setPropertyType] = useState("");
-const [pincode, setPincode] = useState("");
-const [possession, setPossession] = useState("");
-const handleSubmit = async (e) => {
-  e.preventDefault();
-
-  if (phone.length !== 10) {
-    alert("Enter valid phone number");
-    return;
-  }
-
-  const msg = `Hi, I'm ${name}. My number is ${phone}. I need interior design service.`;
-
-  window.open(
-    `https://wa.me/919164466606?text=${encodeURIComponent(msg)}`,
-    "_blank"
-  );
-
-  try {
-    await fetch("https://script.google.com/macros/s/AKfycby9SBHZXrLYiKlvRxaM8TaqICwB7VkWy_6T8B1WTkz_CXEBNTNYo9B_J1WxZlA9Ebxa/exec", {
-  method: "POST",
-  mode: "no-cors",
-  body: JSON.stringify({
-  name: name,
-  phone: phone,
-  email: email || "",
-  propertyType: propertyType || "",
-  location: pincode || "",   // mapping
-  possession: possession || "",
-  requirement:propertyType || "", // backward safety
-  source: "Website",
-}),
-});
-
-    setName("");
-    setPhone("");
-    setEmail("");
-setPropertyType("");
-setPincode("");
-setPossession("");
-
-  } catch (err) {
-    console.log("Lead error");
-  }
-};
   return (
 
     <>
@@ -140,96 +92,31 @@ setPossession("");
             <p className="text-lg md:text-xl text-white/80 mb-8 leading-relaxed animate-fade-in-up stagger-2">
               Premium interior design solutions for homes, apartments, villas & commercial spaces in Bengaluru. Quality craftsmanship delivered within {companyInfo.deliveryTimeline}.
             </p>
-            <form
-              onSubmit={handleSubmit}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6"
-            >
-
-              {/* Name */}
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Your Name"
-                className="px-4 py-3 rounded-sm border border-white/20 bg-white/10 text-white placeholder-white/60 focus:outline-none focus:border-[#C8A35F] transition-colors"
-                required
-              />
-
-              {/* Phone */}
-              <input
-                type="tel"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder="Phone Number"
-                className="px-4 py-3 rounded-sm border border-white/20 bg-white/10 text-white placeholder-white/60 focus:outline-none focus:border-[#C8A35F] transition-colors"
-                required
-              />
-
-              {/* Email */}
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email Address"
-                className="px-4 py-3 rounded-sm border border-white/20 bg-white/10 text-white placeholder-white/60 focus:outline-none focus:border-[#C8A35F] transition-colors"
-              />
-
-              {/* Property Type */}
-              <select
-                value={propertyType}
-                onChange={(e) => setPropertyType(e.target.value)}
-                className="px-4 py-3 rounded-sm border border-white/20 bg-[#1F1F1F]/80 text-white focus:outline-none focus:border-[#C8A35F] transition-colors"
-              >
-                <option value="">Property Type</option>
-                <option value="1BHK">1BHK</option>
-                <option value="2BHK">2BHK</option>
-                <option value="3BHK">3BHK</option>
-                <option value="4BHK">4BHK</option>
-                <option value="Villa">Villa</option>
-                <option value="Commercial">Commercial</option>
-              </select>
-
-              {/* Pincode */}
-              <input
-                type="text"
-                value={pincode}
-                onChange={(e) => setPincode(e.target.value)}
-                placeholder="Pincode"
-                className="px-4 py-3 rounded-sm border border-white/20 bg-white/10 text-white placeholder-white/60 focus:outline-none focus:border-[#C8A35F] transition-colors"
-              />
-
-              {/* Possession Timeline */}
-              <select
-                value={possession}
-                onChange={(e) => setPossession(e.target.value)}
-                className="px-4 py-3 rounded-sm border border-white/20 bg-[#1F1F1F]/80 text-white focus:outline-none focus:border-[#C8A35F] transition-colors"
-              >
-                <option value="">Possession Timeline</option>
-                <option value="Immediate">Immediate</option>
-                <option value="1-3 Months">1-3 Months</option>
-                <option value="3-6 Months">3-6 Months</option>
-                <option value="6+ Months">6+ Months</option>
-              </select>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                className="lg:col-span-3 px-6 py-4 bg-[#C8A35F] text-white rounded-sm font-semibold hover:bg-[#C8A35F]/90 transition-colors"
-                aria-label="Submit Contact Form for Interior Design Quote"
-              >
-                Get Free Consultation
-              </button>
-
-            </form>
             <div className="flex flex-wrap gap-4 animate-fade-in-up stagger-3">
-              <Link to="/estimate">
-                <Button className="btn-gold px-8 py-4 text-lg rounded-sm font-semibold flex items-center gap-2" aria-label="Get Free Interior Design Estimate">
-                  Get Free Estimate
+              <Link to="/contact">
+                <Button
+                  className="btn-gold px-8 py-4 text-lg rounded-sm font-semibold flex items-center gap-2"
+                  aria-label="Book Free Interior Design Consultation"
+                >
+                  Get Free Consultation
                   <ArrowRight className="w-5 h-5" />
                 </Button>
               </Link>
+
+              <Link to="/estimate">
+                <Button
+                  className="btn-outline border-white text-white hover:bg-white hover:text-[#1F1F1F] px-8 py-4 text-lg rounded-sm font-semibold"
+                  aria-label="Get Detailed Interior Design Estimate"
+                >
+                  Get Detailed Estimate
+                </Button>
+              </Link>
+
               <Link to="/projects">
-                <Button className="btn-outline border-white text-white hover:bg-white hover:text-[#1F1F1F] px-8 py-4 text-lg rounded-sm font-semibold" aria-label="View Our Interior Design Projects Portfolio">
+                <Button
+                  className="bg-white/10 border border-white/20 text-white hover:bg-white hover:text-[#1F1F1F] px-8 py-4 text-lg rounded-sm font-semibold"
+                  aria-label="View Interior Design Projects"
+                >
                   View Projects
                 </Button>
               </Link>
