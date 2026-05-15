@@ -1,13 +1,44 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 const HSRLayout = () => {
   return (
     <div className="bg-white">
 
       <Helmet>
-        <title>Interior Designers in HSR Layout | Denova Creations</title>
-        <meta name="description" content="Affordable interior designers in HSR Layout for 2BHK & 3BHK flats. Modular kitchen, wardrobes & complete home interiors." />
+        <title>
+          Interior Designers in HSR Layout Bangalore | Denova Creations
+        </title>
+        <meta
+          name="description"
+          content="Affordable interior designers in HSR Layout Bangalore for 2BHK and 3BHK apartments. Modular kitchens, wardrobes and complete home interiors by Denova Creations."
+        />
+        <link
+          rel="canonical"
+          href="https://denovacreations.com/interior-designers/hsr-layout"
+        />
+        <meta
+          property="og:title"
+          content="Interior Designers in HSR Layout Bangalore | Denova Creations"
+        />
+        <meta
+          property="og:description"
+          content="Affordable home interior designers in HSR Layout Bangalore for apartments and modern homes."
+        />
+        <meta
+          property="og:image"
+          content="https://denovacreations.com/images/hsr-hero.jpg"
+        />
+        <meta
+          property="og:url"
+          content="https://denovacreations.com/interior-designers/hsr-layout"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
+        />
       </Helmet>
 
       {/* HERO (Different Layout Style) */}
@@ -15,8 +46,11 @@ const HSRLayout = () => {
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
 
           <div>
-            <h1 className="text-4xl font-bold mb-4">
-              Interior Designers in HSR Layout
+            <h1
+              className="text-4xl md:text-5xl font-bold mb-4"
+              style={{ fontFamily: "Playfair Display, serif" }}
+            >
+              Interior Designers in HSR Layout Bangalore
             </h1>
             <p>
               Looking for affordable interior design in HSR Layout? We specialize in
@@ -28,7 +62,11 @@ const HSRLayout = () => {
             </button>
           </div>
 
-          <img src="/images/hsr-hero.jpg" className="rounded-lg" />
+          <img
+            src="/images/hsr-hero.jpg"
+            alt="Luxury apartment interior design in HSR Layout Bangalore"
+            className="rounded-lg"
+          />
 
         </div>
       </section>
@@ -83,9 +121,21 @@ const HSRLayout = () => {
         <h2 className="text-2xl font-semibold mb-6">Recent Projects</h2>
 
         <div className="grid md:grid-cols-3 gap-4">
-          <img src="/images/hsr1.jpg" className="h-60 object-cover w-full" />
-          <img src="/images/hsr2.jpg" className="h-60 object-cover w-full" />
-          <img src="/images/hsr3.jpg" className="h-60 object-cover w-full" />
+          <img
+            src="/images/hsr1.jpg"
+            alt="Modern apartment interior project in HSR Layout Bangalore"
+            className="h-60 object-cover w-full"
+          />
+          <img
+            src="/images/hsr2.jpg"
+            alt="Modular kitchen interior project in HSR Layout Bangalore"
+            className="h-60 object-cover w-full"
+          />
+          <img
+            src="/images/hsr3.jpg"
+            alt="Space-saving bedroom interior project in HSR Layout Bangalore"
+            className="h-60 object-cover w-full"
+          />
         </div>
       </section>
 
@@ -114,9 +164,12 @@ const HSRLayout = () => {
         </button>
 
         <div className="mt-4">
-          <a href="/interior-designers/koramangala" className="underline">
+          <Link
+            to="/interior-designers/koramangala"
+            className="underline"
+          >
             Explore Koramangala Interiors
-          </a>
+          </Link>
         </div>
       </section>
 

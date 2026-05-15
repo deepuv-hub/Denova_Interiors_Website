@@ -6,10 +6,32 @@ const Hebbal = () => {
     <div className="bg-white">
 
       <Helmet>
-        <title>Interior Designers in Hebbal | Premium Home Interiors</title>
+        <title>
+          Interior Designers in Hebbal Bangalore | Denova Creations
+        </title>
         <meta
           name="description"
           content="Interior designers in Hebbal for villas and premium apartments. Get elegant home interiors with quality materials and expert execution."
+        />
+        <link
+          rel="canonical"
+          href="https://denovacreations.com/interior-designers/hebbal"
+        />
+        <meta
+          property="og:title"
+          content="Interior Designers in Hebbal Bangalore | Denova Creations"
+        />
+        <meta
+          property="og:description"
+          content="Premium interior designers in Hebbal Bangalore for villas and apartments. Modular kitchens, wardrobes and full home interiors by Denova Creations."
+        />
+        <meta
+          property="og:image"
+          content="https://denovacreations.com/images/hebbal-hero.jpg"
+        />
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
         />
       </Helmet>
 
@@ -17,13 +39,17 @@ const Hebbal = () => {
       <section className="relative h-[550px] flex items-center">
         <img
           src="/images/hebbal-hero.jpg"
+          alt="Premium home interior design in Hebbal Bangalore by Denova Creations"
           className="absolute w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/50"></div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 text-white">
-          <h1 className="text-4xl font-semibold mb-4">
-            Interior Designers in Hebbal
+          <h1
+            className="text-4xl md:text-5xl font-bold mb-4"
+            style={{ fontFamily: "Playfair Display, serif" }}
+          >
+            Interior Designers in Hebbal Bangalore
           </h1>
 
           <p className="max-w-xl">
@@ -76,9 +102,21 @@ const Hebbal = () => {
         <h2 className="text-2xl font-semibold mb-6">Our Projects</h2>
 
         <div className="grid md:grid-cols-3 gap-4">
-          <img src="/images/h1.jpg" className="h-64 object-cover w-full" />
-          <img src="/images/h2.jpg" className="h-64 object-cover w-full" />
-          <img src="/images/h3.jpg" className="h-64 object-cover w-full" />
+          <img
+            src="/images/h1.jpg"
+            alt="Luxury apartment interior design project in Hebbal Bangalore"
+            className="h-64 object-cover w-full"
+          />
+          <img
+            src="/images/h2.jpg"
+            alt="Modern modular kitchen interior design in Hebbal Bangalore"
+            className="h-64 object-cover w-full"
+          />
+          <img
+            src="/images/h3.jpg"
+            alt="Premium living room interior design project in Hebbal Bangalore"
+            className="h-64 object-cover w-full"
+          />
         </div>
       </section>
 

@@ -6,21 +6,62 @@ const Koramangala = () => {
     <div className="bg-white">
 
       <Helmet>
-        <title>Interior Designers in Koramangala | Denova Creations</title>
-        <meta name="description" content="Premium interior designers in Koramangala for 2BHK & 3BHK homes. Get modern interiors with transparent pricing." />
+        <title>
+          Interior Designers in Koramangala Bangalore | Denova Creations
+        </title>
+        <meta
+          name="description"
+          content="Premium interior designers in Koramangala Bangalore for 2BHK and 3BHK apartments. Modular kitchens, wardrobes and complete home interiors by Denova Creations."
+        />
+        <link
+          rel="canonical"
+          href="https://denovacreations.com/interior-designers/koramangala"
+        />
+        <meta
+          property="og:title"
+          content="Interior Designers in Koramangala Bangalore | Denova Creations"
+        />
+        <meta
+          property="og:description"
+          content="Modern and premium interior designers in Koramangala Bangalore for apartments and urban homes."
+        />
+        <meta
+          property="og:image"
+          content="https://denovacreations.com/images/koramangala.jpg"
+        />
+        <meta
+          property="og:url"
+          content="https://denovacreations.com/interior-designers/koramangala"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
+        />
       </Helmet>
 
       {/* HERO */}
       <section className="relative h-[500px] flex items-center">
-        <img src="/images/koramangala.jpg" className="absolute w-full h-full object-cover" />
+        <img
+          src="/images/koramangala.jpg"
+          alt="Luxury apartment interior design in Koramangala Bangalore"
+          className="absolute w-full h-full object-cover"
+        />
         <div className="absolute inset-0 bg-black/60"></div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 text-white">
-          <h1 className="text-4xl font-bold mb-4">
-            Interior Designers in Koramangala
+          <h1
+            className="text-4xl md:text-5xl font-bold mb-4"
+            style={{ fontFamily: "Playfair Display, serif" }}
+          >
+            Interior Designers in Koramangala Bangalore
           </h1>
           <p className="max-w-xl">
             Transform your home with modern, functional interiors designed for 2BHK & 3BHK apartments.
+          </p>
+
+          <p className="max-w-2xl mt-4 text-white/80 leading-relaxed">
+            Denova Creations provides premium interior design services in Koramangala Bangalore for apartments and modern urban homes. From modular kitchens and wardrobes to turnkey home interiors, we create elegant and functional living spaces tailored for contemporary lifestyles.
           </p>
 
           <button className="mt-6 bg-yellow-600 px-6 py-3 font-semibold">
@@ -56,9 +97,21 @@ const Koramangala = () => {
         <h2 className="text-2xl font-semibold mb-6">Our Projects</h2>
 
         <div className="grid md:grid-cols-3 gap-4">
-          <img src="/images/p1.jpg" className="h-60 object-cover w-full" />
-          <img src="/images/p2.jpg" className="h-60 object-cover w-full" />
-          <img src="/images/p3.jpg" className="h-60 object-cover w-full" />
+          <img
+            src="/images/p1.jpg"
+            alt="Modern home interior project in Koramangala Bangalore"
+            className="h-60 object-cover w-full"
+          />
+          <img
+            src="/images/p2.jpg"
+            alt="Modular kitchen interior project in Koramangala Bangalore"
+            className="h-60 object-cover w-full"
+          />
+          <img
+            src="/images/p3.jpg"
+            alt="Premium living room interior project in Koramangala Bangalore"
+            className="h-60 object-cover w-full"
+          />
         </div>
       </section>
 
@@ -80,6 +133,30 @@ const Koramangala = () => {
           <div>Custom Designs</div>
           <div>End-to-End</div>
           <div>On-Time Delivery</div>
+        </div>
+      </section>
+
+      <section className="py-10 text-center">
+        <h2 className="text-2xl font-semibold mb-6">
+          Explore More Interior Solutions
+        </h2>
+
+        <div className="flex flex-wrap justify-center gap-4">
+          <a href="/services" className="underline">
+            Interior Services
+          </a>
+
+          <a href="/projects" className="underline">
+            View Projects
+          </a>
+
+          <a href="/estimate" className="underline">
+            Get Interior Estimate
+          </a>
+
+          <a href="/contact" className="underline">
+            Contact Denova Creations
+          </a>
         </div>
       </section>
 

@@ -1,15 +1,43 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 const Marathahalli = () => {
   return (
     <div className="bg-white">
 
       <Helmet>
-        <title>Interior Designers in Marathahalli | Budget Home Interiors</title>
+        <title>
+          Interior Designers in Marathahalli Bangalore | Denova Creations
+        </title>
         <meta
           name="description"
-          content="Affordable interior designers in Marathahalli for rental flats and apartments. Get budget-friendly 2BHK interiors with fast execution."
+          content="Affordable interior designers in Marathahalli Bangalore for apartments and rental homes. Modular kitchens, wardrobes and budget-friendly home interiors by Denova Creations."
+        />
+        <link
+          rel="canonical"
+          href="https://denovacreations.com/interior-designers/marathahalli"
+        />
+        <meta
+          property="og:title"
+          content="Interior Designers in Marathahalli Bangalore | Denova Creations"
+        />
+        <meta
+          property="og:description"
+          content="Affordable home interior designers in Marathahalli Bangalore for apartments and rental homes."
+        />
+        <meta
+          property="og:image"
+          content="https://denovacreations.com/images/marathahalli-hero.jpg"
+        />
+        <meta
+          property="og:url"
+          content="https://denovacreations.com/interior-designers/marathahalli"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
         />
       </Helmet>
 
@@ -18,14 +46,21 @@ const Marathahalli = () => {
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
 
           <div>
-            <h1 className="text-4xl font-bold mb-4">
-              Interior Designers in Marathahalli
+            <h1
+              className="text-4xl md:text-5xl font-bold mb-4"
+              style={{ fontFamily: "Playfair Display, serif" }}
+            >
+              Interior Designers in Marathahalli Bangalore
             </h1>
 
             <p>
               Looking for affordable interiors for your flat in Marathahalli?
               We specialize in budget-friendly designs perfect for rental homes
               and working professionals.
+            </p>
+
+            <p className="mt-4 text-white/80 leading-relaxed">
+              Denova Creations provides affordable and functional interior design services in Marathahalli Bangalore for apartments, rental homes and compact urban spaces. We specialize in modular kitchens, wardrobes and turnkey home interiors designed for practical modern living.
             </p>
 
             <button className="mt-6 bg-yellow-600 px-6 py-3 font-semibold">
@@ -35,6 +70,7 @@ const Marathahalli = () => {
 
           <img
             src="/images/marathahalli-hero.jpg"
+            alt="Affordable apartment interior design in Marathahalli Bangalore"
             className="rounded-lg object-cover"
           />
 
@@ -95,9 +131,21 @@ const Marathahalli = () => {
         </h2>
 
         <div className="grid md:grid-cols-3 gap-4">
-          <img src="/images/m1.jpg" className="h-60 object-cover w-full" />
-          <img src="/images/m2.jpg" className="h-60 object-cover w-full" />
-          <img src="/images/m3.jpg" className="h-60 object-cover w-full" />
+          <img
+            src="/images/m1.jpg"
+            alt="Modern apartment interior project in Marathahalli Bangalore"
+            className="h-60 object-cover w-full"
+          />
+          <img
+            src="/images/m2.jpg"
+            alt="Modular kitchen interior project in Marathahalli Bangalore"
+            className="h-60 object-cover w-full"
+          />
+          <img
+            src="/images/m3.jpg"
+            alt="Space-saving wardrobe interior project in Marathahalli Bangalore"
+            className="h-60 object-cover w-full"
+          />
         </div>
       </section>
 
@@ -128,9 +176,12 @@ const Marathahalli = () => {
         </button>
 
         <div className="mt-4">
-          <a href="/interior-design-cost-bangalore" className="underline">
+          <Link
+            to="/estimate"
+            className="underline"
+          >
             Check Interior Cost →
-          </a>
+          </Link>
         </div>
       </section>
 

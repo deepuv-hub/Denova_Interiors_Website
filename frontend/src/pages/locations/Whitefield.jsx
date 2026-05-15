@@ -1,31 +1,70 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 const Whitefield = () => {
   return (
     <div className="bg-white">
 
       <Helmet>
-        <title>Luxury Interior Designers in Whitefield | Denova Creations</title>
+        <title>
+          Luxury Interior Designers in Whitefield Bangalore | Denova Creations
+        </title>
         <meta
           name="description"
-          content="Luxury interior designers in Whitefield for villas and premium apartments. Get bespoke interiors with high-end finishes."
+          content="Luxury interior designers in Whitefield Bangalore for villas and premium apartments. Bespoke modular kitchens, wardrobes and turnkey luxury interiors by Denova Creations."
+        />
+        <link
+          rel="canonical"
+          href="https://denovacreations.com/interior-designers/whitefield"
+        />
+        <meta
+          property="og:title"
+          content="Luxury Interior Designers in Whitefield Bangalore | Denova Creations"
+        />
+        <meta
+          property="og:description"
+          content="Luxury interior designers in Whitefield Bangalore for villas and premium residences."
+        />
+        <meta
+          property="og:image"
+          content="https://denovacreations.com/images/whitefield-hero.jpg"
+        />
+        <meta
+          property="og:url"
+          content="https://denovacreations.com/interior-designers/whitefield"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
         />
       </Helmet>
 
       {/* HERO - LUXURY STYLE */}
       <section className="relative h-[600px] flex items-center">
-        <img src="/images/whitefield-hero.jpg" className="absolute w-full h-full object-cover" />
+        <img
+          src="/images/whitefield-hero.jpg"
+          alt="Luxury villa interior design in Whitefield Bangalore"
+          className="absolute w-full h-full object-cover"
+        />
         <div className="absolute inset-0 bg-black/50"></div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-white">
-          <h1 className="text-5xl font-light mb-6">
-            Luxury Interior Designers in Whitefield
+          <h1
+            className="text-5xl md:text-6xl font-light mb-6"
+            style={{ fontFamily: "Playfair Display, serif" }}
+          >
+            Luxury Interior Designers in Whitefield Bangalore
           </h1>
 
           <p className="text-lg max-w-xl">
             Bespoke interiors crafted for villas and premium apartments.
             Experience refined design, premium materials, and flawless execution.
+          </p>
+
+          <p className="text-white/80 leading-relaxed max-w-2xl mt-4">
+            Denova Creations specializes in luxury interior design services in Whitefield Bangalore for villas, penthouses and premium apartments. We create bespoke living spaces with elegant materials, sophisticated finishes and turnkey execution tailored for elevated urban lifestyles.
           </p>
 
           <button className="mt-8 border border-white px-8 py-3 hover:bg-white hover:text-black transition">
@@ -64,9 +103,21 @@ const Whitefield = () => {
         </h2>
 
         <div className="grid md:grid-cols-3 gap-4">
-          <img src="/images/w1.jpg" className="h-72 object-cover w-full" />
-          <img src="/images/w2.jpg" className="h-72 object-cover w-full" />
-          <img src="/images/w3.jpg" className="h-72 object-cover w-full" />
+          <img
+            src="/images/w1.jpg"
+            alt="Luxury apartment interior project in Whitefield Bangalore"
+            className="h-72 object-cover w-full"
+          />
+          <img
+            src="/images/w2.jpg"
+            alt="Premium villa interior project in Whitefield Bangalore"
+            className="h-72 object-cover w-full"
+          />
+          <img
+            src="/images/w3.jpg"
+            alt="Bespoke living room interior project in Whitefield Bangalore"
+            className="h-72 object-cover w-full"
+          />
         </div>
       </section>
 
@@ -109,12 +160,18 @@ const Whitefield = () => {
         </button>
 
         <div className="mt-6 space-x-4 text-sm">
-          <a href="/interior-designers/koramangala" className="underline">
+          <Link
+            to="/interior-designers/koramangala"
+            className="underline"
+          >
             Koramangala
-          </a>
-          <a href="/interior-designers/hsr-layout" className="underline">
+          </Link>
+          <Link
+            to="/interior-designers/hsr-layout"
+            className="underline"
+          >
             HSR Layout
-          </a>
+          </Link>
         </div>
       </section>
 
