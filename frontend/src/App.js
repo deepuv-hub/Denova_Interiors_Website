@@ -29,12 +29,14 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import FloatingCTA from "./components/FloatingCTA";
 import FloatingLeadForm from "./components/FloatingLeadForm";
+import InternalLinksCTA from "./components/InternalLinksCTA";
 
 // Layout wrapper
 const Layout = ({ children }) => (
   <>
     <Header />
     <main className="min-h-screen">{children}</main>
+    <InternalLinksCTA />
     <Footer />
     <FloatingCTA />
     <FloatingLeadForm />
