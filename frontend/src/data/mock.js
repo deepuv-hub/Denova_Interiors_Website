@@ -13,9 +13,11 @@ export const companyInfo = {
 };
 
 export const services = [
+  
   {
     id: 1,
     title: "Residential Interiors",
+    slug: "residential-interiors",
     description: "Transform your home into a personalized sanctuary with our comprehensive residential interior design solutions.",
     icon: "Home",
     features: ["Living Room Design", "Bedroom Interiors", "Kitchen Modular Solutions", "Bathroom Renovation"]
@@ -23,6 +25,7 @@ export const services = [
   {
     id: 2,
     title: "Apartment Interiors",
+    slug: "apartment-interiors",
     description: "Maximize space efficiency and style in your apartment with our smart design approaches.",
     icon: "Building2",
     features: ["Space Optimization", "Modern Aesthetics", "Storage Solutions", "Balcony Design"]
@@ -30,6 +33,7 @@ export const services = [
   {
     id: 3,
     title: "Villa Interiors",
+    slug: "villa-interiors",
     description: "Luxury villa interiors that reflect grandeur and sophisticated living standards.",
     icon: "Castle",
     features: ["Grand Living Spaces", "Premium Materials", "Custom Furniture", "Landscape Integration"]
@@ -37,6 +41,7 @@ export const services = [
   {
     id: 4,
     title: "Corporate & Commercial",
+    slug: "corporate-commercial",
     description: "Professional workspace designs that enhance productivity and brand identity.",
     icon: "Briefcase",
     features: ["Office Interiors", "Retail Spaces", "Conference Rooms", "Reception Areas"]
@@ -44,23 +49,53 @@ export const services = [
   {
     id: 5,
     title: "Renovation Projects",
+    slug: "renovation-projects",
     description: "Breathe new life into existing spaces with our expert renovation services.",
     icon: "Wrench",
     features: ["Complete Makeover", "Structural Changes", "Modern Upgrades", "Cost-Effective Solutions"]
   },
   {
     id: 6,
-    title: "Projects",
+    title: "End-to-End Projects",
+    slug: "end-to-end-projects",
     description: "End-to-end interior solutions from concept to completion, hassle-free.",
     icon: "Key",
     features: ["Design & Planning", "Material Procurement", "Execution", "Handover"]
+  },
+
+  {
+    id: 7,
+    title: "Modular Kitchen",
+    slug: "modular-kitchen",
+    description: "Premium modular kitchen interiors",
+    icon: "Home",
+    features: [
+      "Custom layouts",
+      "Premium finishes",
+      "Space optimization"
+    ]
+  },
+
+  {
+    id: 8,
+    title: "Wardrobe Design",
+    slug: "wardrobe-design",
+    description: "Elegant wardrobe interiors",
+    icon: "Building2",
+    features: [
+      "Sliding wardrobes",
+      "Loft storage",
+      "Soft-close systems"
+    ]
   }
+
 ];
 
 export const projects = [
   {
     id: 1,
     title: "Modern 3BHK Apartment",
+    slug: "modern-3bhk-apartment",
     category: "Apartment",
     location: "Whitefield, Bengaluru",
     area: "1650 sq.ft",
@@ -71,6 +106,7 @@ export const projects = [
   {
     id: 2,
     title: "Luxury Villa Interior",
+    slug: "luxury-villa-interior",
     category: "Villa",
     location: "Sarjapur Road, Bengaluru",
     area: "4200 sq.ft",
@@ -81,6 +117,7 @@ export const projects = [
   {
     id: 3,
     title: "Compact 2BHK Design",
+    slug: "compact-2bhk-design",
     category: "Apartment",
     location: "Electronic City, Bengaluru",
     area: "1100 sq.ft",
@@ -91,6 +128,7 @@ export const projects = [
   {
     id: 4,
     title: "Corporate Office Space",
+    slug: "corporate-office-space",
     category: "Commercial",
     location: "Koramangala, Bengaluru",
     area: "3500 sq.ft",
@@ -101,6 +139,7 @@ export const projects = [
   {
     id: 5,
     title: "Traditional Home Renovation",
+    slug: "traditional-home-renovation",
     category: "Renovation",
     location: "Jayanagar, Bengaluru",
     area: "2200 sq.ft",
@@ -111,6 +150,7 @@ export const projects = [
   {
     id: 6,
     title: "Premium 4BHK Apartment",
+    slug: "premium-4bhk-apartment",
     category: "Apartment",
     location: "HSR Layout, Bengaluru",
     area: "2400 sq.ft",

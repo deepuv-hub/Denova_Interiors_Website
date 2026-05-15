@@ -108,6 +108,7 @@ function App() {
   <Route path="/interior-designers/koramangala" element={<Koramangala />} />
   <Route path="/interior-designers/:city" element={<CityLanding />} />
   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+  
 </Routes>
                 </Layout>
               }

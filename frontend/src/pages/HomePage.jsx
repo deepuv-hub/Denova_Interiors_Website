@@ -19,6 +19,10 @@ const iconMap = {
 const HomePage = () => {
   const [name, setName] = useState("");
 const [phone, setPhone] = useState("");
+const [email, setEmail] = useState("");
+const [propertyType, setPropertyType] = useState("");
+const [pincode, setPincode] = useState("");
+const [possession, setPossession] = useState("");
 const handleSubmit = async (e) => {
   e.preventDefault();
 
@@ -39,19 +43,23 @@ const handleSubmit = async (e) => {
   method: "POST",
   mode: "no-cors",
   body: JSON.stringify({
-  name: form.name,
-  phone: form.phone,
-  email: form.email || "",
-  propertyType: form.propertyType || "",
-  location: form.pincode || "",   // mapping
-  possession: form.possession || "",
-  requirement: form.propertyType || "", // backward safety
+  name: name,
+  phone: phone,
+  email: email || "",
+  propertyType: propertyType || "",
+  location: pincode || "",   // mapping
+  possession: possession || "",
+  requirement:propertyType || "", // backward safety
   source: "Website",
 }),
 });
 
     setName("");
     setPhone("");
+    setEmail("");
+setPropertyType("");
+setPincode("");
+setPossession("");
 
   } catch (err) {
     console.log("Lead error");
@@ -74,6 +82,34 @@ const handleSubmit = async (e) => {
       rel="canonical"
       href="https://denovacreations.com/"
     />
+
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "InteriorDesigner",
+        name: "Denova Interiors",
+        url: "https://denovacreations.com",
+        logo: "https://denovacreations.com/logo.png",
+        image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&q=80",
+        telephone: "+91-9164466606",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Bangalore",
+          addressRegion: "Karnataka",
+          addressCountry: "IN"
+        },
+        areaServed: "Bangalore",
+        priceRange: "₹₹₹",
+        description:
+          "Premium interior designers in Bangalore specializing in modular kitchens, wardrobes, TV units, false ceilings, and complete home interiors."
+      })}
+    </script>
+
+    <meta property="og:title" content="Premium Interior Designers in Bangalore" />
+    <meta property="og:description" content="Luxury home interiors including modular kitchens, wardrobes, TV units and complete home interiors in Bangalore." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&q=80" />
+    <meta property="og:url" content="https://denovacreations.com/" />
+    <meta property="og:type" content="website" />
   </Helmet>
 
 
@@ -83,7 +119,7 @@ const handleSubmit = async (e) => {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1920&q=80"
-            alt="Luxury Interior Design"
+           alt="Luxury Home Interior Design in Bangalore"
             className="w-full h-full object-cover opacity-40"
           />
         </div>
@@ -98,24 +134,102 @@ const handleSubmit = async (e) => {
               <span className="text-white/80 text-sm">{companyInfo.rating} Rating • {companyInfo.projectsCompleted}+ Projects</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight animate-fade-in-up" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Transform Your Space Into
-              <span className="text-[#C8A35F]"> Extraordinary</span>
+              Premium Interior Designers in Bangalore
+              <span className="text-[#C8A35F]"> - Transform Your Space</span>
             </h1>
             <p className="text-lg md:text-xl text-white/80 mb-8 leading-relaxed animate-fade-in-up stagger-2">
               Premium interior design solutions for homes, apartments, villas & commercial spaces in Bengaluru. Quality craftsmanship delivered within {companyInfo.deliveryTimeline}.
             </p>
-            <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4 mb-6">
+            <form
+              onSubmit={handleSubmit}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6"
+            >
 
-</form>
+              {/* Name */}
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Your Name"
+                className="px-4 py-3 rounded-sm border border-white/20 bg-white/10 text-white placeholder-white/60 focus:outline-none focus:border-[#C8A35F] transition-colors"
+                required
+              />
+
+              {/* Phone */}
+              <input
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="Phone Number"
+                className="px-4 py-3 rounded-sm border border-white/20 bg-white/10 text-white placeholder-white/60 focus:outline-none focus:border-[#C8A35F] transition-colors"
+                required
+              />
+
+              {/* Email */}
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email Address"
+                className="px-4 py-3 rounded-sm border border-white/20 bg-white/10 text-white placeholder-white/60 focus:outline-none focus:border-[#C8A35F] transition-colors"
+              />
+
+              {/* Property Type */}
+              <select
+                value={propertyType}
+                onChange={(e) => setPropertyType(e.target.value)}
+                className="px-4 py-3 rounded-sm border border-white/20 bg-[#1F1F1F]/80 text-white focus:outline-none focus:border-[#C8A35F] transition-colors"
+              >
+                <option value="">Property Type</option>
+                <option value="1BHK">1BHK</option>
+                <option value="2BHK">2BHK</option>
+                <option value="3BHK">3BHK</option>
+                <option value="4BHK">4BHK</option>
+                <option value="Villa">Villa</option>
+                <option value="Commercial">Commercial</option>
+              </select>
+
+              {/* Pincode */}
+              <input
+                type="text"
+                value={pincode}
+                onChange={(e) => setPincode(e.target.value)}
+                placeholder="Pincode"
+                className="px-4 py-3 rounded-sm border border-white/20 bg-white/10 text-white placeholder-white/60 focus:outline-none focus:border-[#C8A35F] transition-colors"
+              />
+
+              {/* Possession Timeline */}
+              <select
+                value={possession}
+                onChange={(e) => setPossession(e.target.value)}
+                className="px-4 py-3 rounded-sm border border-white/20 bg-[#1F1F1F]/80 text-white focus:outline-none focus:border-[#C8A35F] transition-colors"
+              >
+                <option value="">Possession Timeline</option>
+                <option value="Immediate">Immediate</option>
+                <option value="1-3 Months">1-3 Months</option>
+                <option value="3-6 Months">3-6 Months</option>
+                <option value="6+ Months">6+ Months</option>
+              </select>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className="lg:col-span-3 px-6 py-4 bg-[#C8A35F] text-white rounded-sm font-semibold hover:bg-[#C8A35F]/90 transition-colors"
+                aria-label="Submit Contact Form for Interior Design Quote"
+              >
+                Get Free Consultation
+              </button>
+
+            </form>
             <div className="flex flex-wrap gap-4 animate-fade-in-up stagger-3">
               <Link to="/estimate">
-                <Button className="btn-gold px-8 py-4 text-lg rounded-sm font-semibold flex items-center gap-2">
+                <Button className="btn-gold px-8 py-4 text-lg rounded-sm font-semibold flex items-center gap-2" aria-label="Get Free Interior Design Estimate">
                   Get Free Estimate
                   <ArrowRight className="w-5 h-5" />
                 </Button>
               </Link>
               <Link to="/projects">
-                <Button className="btn-outline border-white text-white hover:bg-white hover:text-[#1F1F1F] px-8 py-4 text-lg rounded-sm font-semibold">
+                <Button className="btn-outline border-white text-white hover:bg-white hover:text-[#1F1F1F] px-8 py-4 text-lg rounded-sm font-semibold" aria-label="View Our Interior Design Projects Portfolio">
                   View Projects
                 </Button>
               </Link>
@@ -128,7 +242,7 @@ const handleSubmit = async (e) => {
       <section className="bg-[#F5F5F5] py-6">
         <div className="container-custom">
           <div className="flex flex-wrap justify-center md:justify-between items-center gap-6 md:gap-0">
-            <div className="flex items-center gap-3">
+            <Link to="/testimonials" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
               <div className="w-12 h-12 bg-[#C8A35F]/10 rounded-full flex items-center justify-center">
                 <Star className="w-6 h-6 text-[#C8A35F]" />
               </div>
@@ -136,9 +250,9 @@ const handleSubmit = async (e) => {
                 <p className="text-2xl font-bold text-[#1F1F1F]">{companyInfo.rating}/5</p>
                 <p className="text-sm text-[#777777]">Google Rating</p>
               </div>
-            </div>
+            </Link>
             <div className="hidden md:block w-px h-12 bg-gray-300"></div>
-            <div className="flex items-center gap-3">
+            <Link to="/projects" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
               <div className="w-12 h-12 bg-[#C8A35F]/10 rounded-full flex items-center justify-center">
                 <CheckCircle2 className="w-6 h-6 text-[#C8A35F]" />
               </div>
@@ -146,9 +260,9 @@ const handleSubmit = async (e) => {
                 <p className="text-2xl font-bold text-[#1F1F1F]">{companyInfo.projectsCompleted}+</p>
                 <p className="text-sm text-[#777777]">Projects Delivered</p>
               </div>
-            </div>
+            </Link>
             <div className="hidden md:block w-px h-12 bg-gray-300"></div>
-            <div className="flex items-center gap-3">
+            <Link to="/projects" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
               <div className="w-12 h-12 bg-[#C8A35F]/10 rounded-full flex items-center justify-center">
                 <Home className="w-6 h-6 text-[#C8A35F]" />
               </div>
@@ -156,7 +270,7 @@ const handleSubmit = async (e) => {
                 <p className="text-2xl font-bold text-[#1F1F1F]">Bengaluru</p>
                 <p className="text-sm text-[#777777]">All Zones Covered</p>
               </div>
-            </div>
+            </Link>
             <div className="hidden md:block w-px h-12 bg-gray-300"></div>
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-[#C8A35F]/10 rounded-full flex items-center justify-center">
@@ -171,55 +285,98 @@ const handleSubmit = async (e) => {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="section-padding">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <p className="text-[#C8A35F] font-medium mb-3 tracking-wide uppercase text-sm">What We Offer</p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A1A] mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Our Services
-            </h2>
-            <p className="text-[#4A4A4A] max-w-2xl mx-auto text-lg">
-              Comprehensive interior design solutions tailored to your needs and budget
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => {
-              const IconComponent = iconMap[service.icon];
-              return (
-                <Card key={service.id} className="service-card border border-gray-100 bg-white hover:border-[#C8A35F] rounded-sm">
-                  <CardContent className="p-8">
-                    <div className="w-14 h-14 bg-[#C8A35F]/10 rounded-lg flex items-center justify-center mb-6">
-                      <IconComponent className="w-7 h-7 text-[#C8A35F]" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-[#1A1A1A] mb-3" style={{ fontFamily: 'Playfair Display, serif' }}>
-                      {service.title}
-                    </h3>
-                    <p className="text-[#4A4A4A] mb-4 leading-relaxed">
-                      {service.description}
-                    </p>
-                    <ul className="space-y-2">
-                      {service.features.slice(0, 3).map((feature, idx) => (
-                        <li key={idx} className="flex items-center gap-2 text-sm text-[#777777]">
-                          <CheckCircle2 className="w-4 h-4 text-[#C8A35F]" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-          <div className="text-center mt-12">
-            <Link to="/services">
-              <Button className="btn-outline px-8 py-3 rounded-sm font-semibold">
-                View All Services
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+     {/* Services Section */}
+<section className="section-padding">
+  <div className="container-custom">
+
+    <div className="text-center mb-16">
+      <p className="text-[#C8A35F] font-medium mb-3 tracking-wide uppercase text-sm">
+        What We Offer
+      </p>
+
+      <h2
+        className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A1A] mb-4"
+        style={{ fontFamily: 'Playfair Display, serif' }}
+      >
+        Our Services
+      </h2>
+
+      <p className="text-[#4A4A4A] max-w-3xl mx-auto text-lg leading-relaxed">
+        We specialize in modular kitchens, wardrobes, TV units,
+        false ceilings, bedroom interiors, living room interiors,
+        and complete home interior design solutions in Bangalore.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      {services.map((service) => {
+        const IconComponent = iconMap[service.icon];
+
+        return (
+          <Link
+            key={service.id}
+            to={`/services/${service.slug}`}
+            className="block h-full"
+          >
+
+            <Card className="border border-gray-100 bg-white hover:border-[#C8A35F] rounded-sm hover:shadow-lg transition-all duration-300 h-full">
+
+              <CardContent className="p-8 h-full flex flex-col">
+
+                <div className="w-14 h-14 bg-[#C8A35F]/10 rounded-lg flex items-center justify-center mb-6">
+                  <IconComponent className="w-7 h-7 text-[#C8A35F]" />
+                </div>
+
+                <h3
+                  className="text-xl font-semibold text-[#1A1A1A] mb-3"
+                  style={{ fontFamily: 'Playfair Display, serif' }}
+                >
+                  {service.title}
+                </h3>
+
+                <p className="text-[#4A4A4A] mb-4 leading-relaxed">
+                  {service.description}
+                </p>
+
+                <ul className="space-y-2 mb-6">
+                  {service.features.slice(0, 3).map((feature, idx) => (
+                    <li
+                      key={idx}
+                      className="flex items-center gap-2 text-sm text-[#777777]"
+                    >
+                      <CheckCircle2 className="w-4 h-4 text-[#C8A35F]" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-auto inline-flex items-center gap-2 text-[#C8A35F] font-medium">
+                  Explore Service
+                  <ChevronRight className="w-4 h-4" />
+                </div>
+
+              </CardContent>
+
+            </Card>
+
+          </Link>
+        );
+      })}
+
+    </div>
+
+    <div className="text-center mt-12">
+      <Link to="/services">
+        <Button className="btn-outline px-8 py-3 rounded-sm font-semibold" aria-label="Explore All Our Interior Design Services">
+          View All Services
+        </Button>
+      </Link>
+    </div>
+
+  </div>
+</section>
+{/* Services Section */}
 
       {/* Featured Projects */}
       <section className="section-padding bg-[#F5F5F5]">
@@ -233,14 +390,20 @@ const handleSubmit = async (e) => {
               Explore our latest interior design projects across Bengaluru
             </p>
           </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.slice(0, 6).map((project) => (
-              <div key={project.id} className="project-card bg-white rounded-sm overflow-hidden shadow-sm">
+              <Link
+                key={project.id}
+                to={`/projects/${project.slug}`}
+                className="block bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300"
+              >
                 <div className="img-zoom aspect-[4/3]">
                   <img
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                 </div>
                 <div className="p-6">
@@ -256,12 +419,12 @@ const handleSubmit = async (e) => {
                     <span>{project.duration}</span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
           <div className="text-center mt-12">
             <Link to="/projects">
-              <Button className="btn-gold px-8 py-3 rounded-sm font-semibold flex items-center gap-2 mx-auto">
+              <Button className="btn-gold px-8 py-3 rounded-sm font-semibold flex items-center gap-2 mx-auto" aria-label="View Complete Interior Design Projects Portfolio">
                 View All Projects
                 <ArrowRight className="w-5 h-5" />
               </Button>
@@ -300,7 +463,7 @@ const handleSubmit = async (e) => {
           </div>
           <div className="text-center mt-12">
             <Link to="/process">
-              <Button className="btn-outline px-8 py-3 rounded-sm font-semibold">
+              <Button className="btn-outline px-8 py-3 rounded-sm font-semibold" aria-label="Learn About Our Interior Design Process">
                 Learn More About Our Process
               </Button>
             </Link>
@@ -319,7 +482,7 @@ const handleSubmit = async (e) => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {testimonials.slice(0, 2).map((testimonial) => (
-              <div key={testimonial.id} className="testimonial-card bg-white/5 backdrop-blur-sm p-8 rounded-sm border border-white/10">
+              <div key={testimonial.id} className="bg-white/5 backdrop-blur-sm p-8 rounded-sm border border-white/10">
                 <div className="flex items-center gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 fill-[#C8A35F] text-[#C8A35F]" />
@@ -333,6 +496,7 @@ const handleSubmit = async (e) => {
                     src={testimonial.image}
                     alt={testimonial.name}
                     className="w-14 h-14 rounded-full object-cover"
+                    loading="lazy"
                   />
                   <div>
                     <p className="text-white font-semibold">{testimonial.name}</p>
@@ -344,7 +508,7 @@ const handleSubmit = async (e) => {
           </div>
           <div className="text-center mt-12">
             <Link to="/testimonials">
-              <Button className="btn-gold px-8 py-3 rounded-sm font-semibold">
+              <Button className="btn-gold px-8 py-3 rounded-sm font-semibold" aria-label="Read More Customer Testimonials and Reviews">
                 Read More Reviews
               </Button>
             </Link>
@@ -364,12 +528,12 @@ const handleSubmit = async (e) => {
               We're proud to have worked with these esteemed organizations
             </p>
           </div>
-          {/* Client Logos Banner */}
           <div className="bg-[#F5F5F5] p-8 rounded-sm">
             <img 
               src={clientLogoBanner}
               alt="Our Clients"
               className="w-full max-w-4xl mx-auto object-contain"
+              loading="lazy"
             />
           </div>
         </div>
@@ -386,12 +550,12 @@ const handleSubmit = async (e) => {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/estimate">
-              <Button className="bg-[#1F1F1F] text-white hover:bg-[#333] px-8 py-4 text-lg rounded-sm font-semibold">
+              <Button className="bg-[#1F1F1F] text-white hover:bg-[#333] px-8 py-4 text-lg rounded-sm font-semibold" aria-label="Get Free Interior Design Estimate">
                 Get Free Estimate
               </Button>
             </Link>
             <a href={`tel:${companyInfo.primaryPhone}`}>
-              <Button className="bg-white text-[#1F1F1F] hover:bg-white/90 px-8 py-4 text-lg rounded-sm font-semibold">
+              <Button className="bg-white text-[#1F1F1F] hover:bg-white/90 px-8 py-4 text-lg rounded-sm font-semibold" aria-label="Call Denova Interiors for Free Consultation">
                 Call {companyInfo.primaryPhone}
               </Button>
             </a>
