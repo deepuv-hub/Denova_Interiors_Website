@@ -254,8 +254,7 @@ setTimeout(() => {
 
   {/* BACKGROUND IMAGE */}
   <img
-    src="/images/landingpagehero
-    .webp"
+    src="/images/landingpagehero.webp"
     alt="Premium Home Interiors in Bangalore by Denova Creations"
     loading="eager"
     fetchPriority="high"
