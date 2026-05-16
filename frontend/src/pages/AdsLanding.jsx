@@ -221,14 +221,23 @@ landing_page: localStorage.getItem("landing_page") || window.location.href,
       }),
     });
 
-    // 🔥 Fire GTM event BEFORE redirect
+// GTM EVENT
 window.dataLayer = window.dataLayer || [];
 window.dataLayer.push({
   event: "lead_conversion"
 });
 
-// Then redirect
-window.location.href = "/thank-you";
+// GOOGLE ADS DIRECT CONVERSION
+if (window.gtag) {
+  window.gtag('event', 'conversion', {
+    send_to: 'AW-11303451952/-zBhUCM29o5QcELD6840q'
+  });
+}
+
+// REDIRECT AFTER DELAY
+setTimeout(() => {
+  window.location.href = "/thank-you";
+}, 1200);
 
   } catch (err) {
     console.error("Submission issue:", err);
