@@ -1,5 +1,6 @@
  import React, { useState } from "react";
  import { useEffect } from "react";
+ import { Helmet } from "react-helmet-async";
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby9SBHZXrLYiKlvRxaM8TaqICwB7VkWy_6T8B1WTkz_CXEBNTNYo9B_J1WxZlA9Ebxa/exec";
 /* SAFE IMAGE - OPTIMIZED */
@@ -249,6 +250,9 @@ setTimeout(() => {
 
   return (
     <>
+    <Helmet>
+      <meta name="robots" content="noindex, follow" />
+    </Helmet>
 {/* HERO SECTION */}
 <section className="relative min-h-[70vh] md:min-h-[85vh] flex items-center">
 

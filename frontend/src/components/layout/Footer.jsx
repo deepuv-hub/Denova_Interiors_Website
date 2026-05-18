@@ -2,6 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
 import { companyInfo, services } from '../../data/mock';
+import locations from '../../data/locations';
+
+const quickLinks = [
+  { label: 'Home', path: '/' },
+  { label: 'About Us', path: '/about' },
+  { label: 'Services', path: '/services' },
+  { label: 'Projects', path: '/projects' },
+  { label: 'Portfolio', path: '/portfolio' },
+  { label: 'Testimonials', path: '/testimonials' },
+  { label: 'Contact', path: '/contact' },
+  { label: 'Privacy Policy', path: '/privacy-policy' },
+];
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -46,13 +58,13 @@ const Footer = () => {
                 Quick Links
               </h4>
               <ul className="space-y-3">
-                {['Home', 'About Us', 'Services', 'Projects', 'Testimonials', 'Contact' , 'Privacy Policy'].map((link) => (
-                  <li key={link}>
+                {quickLinks.map((link) => (
+                  <li key={link.path}>
                     <Link
-                      to={`/${link.toLowerCase().replace(' ', '-')}`}
+                      to={link.path}
                       className="footer-link text-gray-400 hover:text-[#C8A35F]"
                     >
-                      {link}
+                      {link.label}
                     </Link>
                   </li>
                 ))}
@@ -113,6 +125,23 @@ const Footer = () => {
               </ul>
             </div>
           </div>
+
+          <div className="mt-12 border-t border-white/10 pt-8">
+            <h4 className="text-xl font-semibold mb-5 text-white" style={{ fontFamily: 'Playfair Display, serif' }}>
+              Interior Designers in Bangalore Locations
+            </h4>
+            <div className="flex flex-wrap gap-x-6 gap-y-3">
+              {locations.map((location) => (
+                <Link
+                  key={location.slug}
+                  to={`/interior-designers/${location.slug}`}
+                  className="footer-link text-gray-400 hover:text-[#C8A35F] text-sm"
+                >
+                  {location.name}
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
@@ -123,8 +152,8 @@ const Footer = () => {
             © {currentYear} Denova Interiors. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-gray-500">
-            <Link to="/privacy" className="hover:text-[#C8A35F] transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-[#C8A35F] transition-colors">Terms of Service</Link>
+            <Link to="/privacy-policy" className="hover:text-[#C8A35F] transition-colors">Privacy Policy</Link>
+            <Link to="/contact" className="hover:text-[#C8A35F] transition-colors">Contact</Link>
           </div>
         </div>
       </div>

@@ -203,7 +203,7 @@ const HomePage = () => {
         return (
           <Link
             key={service.id}
-            to={`/services/${service.slug}`}
+            to="/services"
             className="block h-full"
           >
 
@@ -282,7 +282,7 @@ const HomePage = () => {
             {projects.slice(0, 6).map((project) => (
               <Link
                 key={project.id}
-                to={`/projects/${project.slug}`}
+                to="/projects"
                 className="block bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300"
               >
                 <div className="img-zoom aspect-[4/3]">

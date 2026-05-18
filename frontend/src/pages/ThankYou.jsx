@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 
 const ThankYou = () => {
 
@@ -27,6 +28,10 @@ const ThankYou = () => {
 }, []);
 
   return (
+    <>
+    <Helmet>
+      <meta name="robots" content="noindex, follow" />
+    </Helmet>
     <div className="min-h-screen flex flex-col justify-center items-center text-center px-4">
 
       <h1 className="text-3xl font-bold mb-4">
@@ -69,7 +74,20 @@ const ThankYou = () => {
 
       </div>
 
+      <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm">
+        <a href="/" className="underline text-gray-700 hover:text-black">
+          Back to Home
+        </a>
+        <a href="/projects" className="underline text-gray-700 hover:text-black">
+          View Projects
+        </a>
+        <a href="/contact" className="underline text-gray-700 hover:text-black">
+          Contact Us
+        </a>
+      </div>
+
     </div>
+    </>
   );
 };
 

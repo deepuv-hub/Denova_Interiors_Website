@@ -386,8 +386,7 @@ const getCategoryCount = (category) => {
       Chat on WhatsApp
     </button>
   </a>
-  <Link to={`/projects/${filteredPortfolio
-    [currentIndex].projectId}`}>
+  <Link to={`/portfolio/${filteredPortfolio[currentIndex].type}/${filteredPortfolio[currentIndex].category}/${filteredPortfolio[currentIndex].projectId}`}>
   <button className="text-white/80 text-sm underline mt-3">
     View Full Project →
   </button>

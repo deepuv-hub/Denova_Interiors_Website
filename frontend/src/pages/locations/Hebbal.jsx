@@ -158,7 +158,7 @@ const Hebbal = () => {
         </button>
 
         <div className="mt-4">
-          <a href="/interior-design-cost-bangalore" className="underline">
+          <a href="/estimate" className="underline">
             View Pricing Details →
           </a>
         </div>
