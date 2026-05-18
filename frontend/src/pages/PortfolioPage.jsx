@@ -7,6 +7,7 @@ import { projects } from "../data/projects";
 import { useNavigate } from 'react-router-dom';
 
 const slugify = (value) => value.toLowerCase().replace(/\s+/g, "-");
+const getCategoryType = (category) => category === "Office" ? "commercial" : "residential";
 
 const PortfolioPage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -163,6 +164,18 @@ const getCategoryCount = (category) => {
         >
           {category}
         </button>
+      ))}
+    </div>
+
+    <div className="flex flex-wrap justify-center gap-3 mb-10 text-sm">
+      {allCategories.filter((category) => category !== "All").map((category) => (
+        <Link
+          key={category}
+          to={`/portfolio/${getCategoryType(category)}/${slugify(category)}`}
+          className="text-[#4A4A4A] underline underline-offset-4 hover:text-[#C8A35F]"
+        >
+          {category} Projects
+        </Link>
       ))}
     </div>
 

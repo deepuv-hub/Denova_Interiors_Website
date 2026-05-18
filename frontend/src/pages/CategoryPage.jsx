@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { projects } from "../data/projects";
 import { Helmet } from "react-helmet-async";
 
@@ -7,7 +7,6 @@ const slugify = (value) => value.toLowerCase().replace(/\s+/g, "-");
 
 const CategoryPage = () => {
   const { type, category } = useParams();
-  const navigate = useNavigate();
 
   const filtered = projects.filter(
     (p) =>
@@ -42,12 +41,10 @@ const CategoryPage = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {filtered.map((project) => (
-          <div
+          <Link
             key={project.id}
             className="cursor-pointer group"
-            onClick={() =>
-              navigate(`/portfolio/${type}/${category}/${project.id}`)
-            }
+            to={`/portfolio/${type}/${category}/${project.id}`}
           >
             <img
               src={project.images[0]}
@@ -55,8 +52,17 @@ const CategoryPage = () => {
               className="w-full h-64 object-cover rounded-md group-hover:scale-105 transition"
             />
             <p className="mt-3 font-semibold">{project.title}</p>
-          </div>
+          </Link>
         ))}
+      </div>
+
+      <div className="mt-12 flex flex-wrap gap-4">
+        <Link to="/portfolio" className="underline text-[#4A4A4A] hover:text-[#C8A35F]">
+          Back to Portfolio
+        </Link>
+        <Link to="/contact" className="underline text-[#4A4A4A] hover:text-[#C8A35F]">
+          Discuss a Similar Project
+        </Link>
       </div>
     </div>
   );

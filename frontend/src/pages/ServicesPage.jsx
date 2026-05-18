@@ -75,7 +75,7 @@ const ServicesPage = () => {
                         alt={service.title}
                         className="w-full h-[400px] object-cover rounded-sm"
                         onError={(e) => {
-                          e.target.src = 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80';
+                          e.target.src = '/images/fallback.webp';
                         }}
                       />
                       <div className="absolute -bottom-6 -right-6 bg-[#1F1F1F] text-white p-6 rounded-sm hidden lg:block">

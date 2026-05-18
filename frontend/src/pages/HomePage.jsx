@@ -61,9 +61,13 @@ const HomePage = () => {
 
     <meta property="og:title" content="Premium Interior Designers in Bangalore" />
     <meta property="og:description" content="Luxury home interiors including modular kitchens, wardrobes, TV units and complete home interiors in Bangalore." />
-    <meta property="og:image" content="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&q=80" />
+    <meta property="og:image" content="https://denovacreations.com/images/hero2.webp" />
     <meta property="og:url" content="https://denovacreations.com/" />
     <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Premium Interior Designers in Bangalore | Denova Interiors" />
+    <meta name="twitter:description" content="Luxury home interiors including modular kitchens, wardrobes, TV units and complete home interiors in Bangalore." />
+    <meta name="twitter:image" content="https://denovacreations.com/images/hero2.webp" />
   </Helmet>
 
 
@@ -72,7 +76,7 @@ const HomePage = () => {
       <section className="relative min-h-[90vh] flex items-center bg-[#1F1F1F] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1920&q=80"
+            src="/images/hero2.webp"
            alt="Luxury Home Interior Design in Bangalore"
             className="w-full h-full object-cover opacity-40"
           />

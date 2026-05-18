@@ -29,10 +29,16 @@ import FloatingLeadForm from "./components/FloatingLeadForm";
 import InternalLinksCTA from "./components/InternalLinksCTA";
 import SEO from "./components/SEO";
 
+const withSEO = (Component) => (
+  <>
+    <SEO />
+    <Component />
+  </>
+);
+
 // Layout wrapper
 const Layout = ({ children }) => (
   <>
-    <SEO />
     <Header />
     <main className="min-h-screen">{children}</main>
     <InternalLinksCTA />
@@ -92,22 +98,22 @@ function App() {
                 <Layout>
                   <Routes>
   <Route path="/" element={<HomePage />} />
-  <Route path="/about" element={<AboutPage />} />
-  <Route path="/services" element={<ServicesPage />} />
-  <Route path="/projects" element={<ProjectsPage />} />
+  <Route path="/about" element={withSEO(AboutPage)} />
+  <Route path="/services" element={withSEO(ServicesPage)} />
+  <Route path="/projects" element={withSEO(ProjectsPage)} />
 
   {/* ✅ PORTFOLIO SYSTEM (NEW) */}
-  <Route path="/portfolio" element={<PortfolioPage />} />
+  <Route path="/portfolio" element={withSEO(PortfolioPage)} />
   <Route path="/portfolio/:type/:category" element={<CategoryPage />} />
   <Route path="/portfolio/:type/:category/:projectId" element={<ProjectPage />} />
 
-  <Route path="/materials" element={<MaterialsPage />} />
-  <Route path="/testimonials" element={<TestimonialsPage />} />
-  <Route path="/process" element={<ProcessPage />} />
-  <Route path="/contact" element={<ContactPage />} />
+  <Route path="/materials" element={withSEO(MaterialsPage)} />
+  <Route path="/testimonials" element={withSEO(TestimonialsPage)} />
+  <Route path="/process" element={withSEO(ProcessPage)} />
+  <Route path="/contact" element={withSEO(ContactPage)} />
   <Route path="/estimate" element={<EstimatePage />} />
   <Route path="/interior-designers/:city" element={<CityLanding />} />
-  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+  <Route path="/privacy-policy" element={withSEO(PrivacyPolicy)} />
   
 </Routes>
                 </Layout>

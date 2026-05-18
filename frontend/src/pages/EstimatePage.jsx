@@ -81,7 +81,7 @@ const EstimatePage = () => {
 
         <meta
           property="og:image"
-          content="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&q=80"
+          content="https://denovacreations.com/images/hero2.webp"
         />
 
         <meta
@@ -90,6 +90,19 @@ const EstimatePage = () => {
         />
 
         <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Interior Cost Calculator Bangalore | Denova Interiors"
+        />
+        <meta
+          name="twitter:description"
+          content="Get instant interior cost estimates for modular kitchens, wardrobes and complete home interiors in Bangalore."
+        />
+        <meta
+          name="twitter:image"
+          content="https://denovacreations.com/images/hero2.webp"
+        />
       </Helmet>
 
       <div className="bg-[#F5F5F5] min-h-screen">
@@ -98,7 +111,7 @@ const EstimatePage = () => {
         <section className="relative overflow-hidden bg-[#1F1F1F]">
           <div className="absolute inset-0">
             <img
-              src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1920&q=80"
+              src="/images/hero2.webp"
               alt="Luxury Interior Design"
               className="w-full h-full object-cover opacity-20"
             />
