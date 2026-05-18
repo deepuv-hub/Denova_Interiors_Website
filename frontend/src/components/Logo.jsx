@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 const Logo = ({ className = '', dark = false }) => {
   const logoSrc = dark 
-    ? '/assets/images/denova-logo-white.svg'
-    : '/assets/images/denova-logo.svg';
+    ? '/images/denova-logo.svg'
+    : '/images/denova-logo.svg';
 
   return (
     <Link to="/" className={`flex items-center ${className}`}>

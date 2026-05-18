@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const Hebbal = () => {
   return (
@@ -7,7 +7,7 @@ const Hebbal = () => {
 
       <Helmet>
         <title>
-          Interior Designers in Hebbal Bangalore | Denova Creations
+          Interior Designers in Hebbal | Denova
         </title>
         <meta
           name="description"
@@ -19,7 +19,7 @@ const Hebbal = () => {
         />
         <meta
           property="og:title"
-          content="Interior Designers in Hebbal Bangalore | Denova Creations"
+          content="Interior Designers in Hebbal | Denova"
         />
         <meta
           property="og:description"
@@ -27,7 +27,7 @@ const Hebbal = () => {
         />
         <meta
           property="og:image"
-          content="https://denovacreations.com/images/hebbal-hero.jpg"
+          content="https://denovacreations.com/images/hero2.webp"
         />
         <meta
           name="twitter:card"
@@ -38,7 +38,7 @@ const Hebbal = () => {
       {/* HERO */}
       <section className="relative h-[550px] flex items-center">
         <img
-          src="/images/hebbal-hero.jpg"
+          src="/images/hero2.webp"
           alt="Premium home interior design in Hebbal Bangalore by Denova Creations"
           className="absolute w-full h-full object-cover"
         />
@@ -103,17 +103,17 @@ const Hebbal = () => {
 
         <div className="grid md:grid-cols-3 gap-4">
           <img
-            src="/images/h1.jpg"
+            src="/images/project3.webp"
             alt="Luxury apartment interior design project in Hebbal Bangalore"
             className="h-64 object-cover w-full"
           />
           <img
-            src="/images/h2.jpg"
+            src="/images/project4.webp"
             alt="Modern modular kitchen interior design in Hebbal Bangalore"
             className="h-64 object-cover w-full"
           />
           <img
-            src="/images/h3.jpg"
+            src="/images/project5.webp"
             alt="Premium living room interior design project in Hebbal Bangalore"
             className="h-64 object-cover w-full"
           />
@@ -169,3 +169,7 @@ const Hebbal = () => {
 };
 
 export default Hebbal;
+
+
+
+

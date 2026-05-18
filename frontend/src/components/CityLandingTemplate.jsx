@@ -1,11 +1,14 @@
 import { SCRIPT_URL } from "../utils/api";
 import React, { useState } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const CityLandingTemplate = ({ location }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
+  const pageUrl = `https://denovacreations.com/interior-designers/${location.slug}`;
+  const ogImage = "https://denovacreations.com/images/hero2.webp";
+  const seoTitle = `Interior Designers in ${location.name} | Denova`;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,12 +54,18 @@ const CityLandingTemplate = ({ location }) => {
 
       {/* SEO */}
       <Helmet>
-        <title>{location.title}</title>
+        <title>{seoTitle}</title>
         <meta name="description" content={location.description} />
-        <link
-          rel="canonical"
-          href={`https://denovacreations.com/interior-designers/${location.slug}`}
-        />
+        <link rel="canonical" href={pageUrl} />
+        <meta property="og:title" content={seoTitle} />
+        <meta property="og:description" content={location.description} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={ogImage} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={seoTitle} />
+        <meta name="twitter:description" content={location.description} />
+        <meta name="twitter:image" content={ogImage} />
 
         {/* Local Business Schema */}
         <script type="application/ld+json">
@@ -64,8 +73,22 @@ const CityLandingTemplate = ({ location }) => {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             name: "Denova Creations",
+            image: ogImage,
+            url: pageUrl,
             telephone: "+91-9164466606",
-            areaServed: location.name,
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "373/2, Begur Hulimavu Road",
+              addressLocality: "Bengaluru",
+              addressRegion: "Karnataka",
+              postalCode: "560114",
+              addressCountry: "IN",
+            },
+            areaServed: {
+              "@type": "Place",
+              name: `${location.name}, Bangalore`,
+            },
+            priceRange: "INR 250000+",
           })}
         </script>
 
@@ -202,8 +225,8 @@ const CityLandingTemplate = ({ location }) => {
         </h2>
 
         <div className="grid md:grid-cols-3 gap-6">
-          <img src="/images/project1.webp" alt={`Interior project in ${location.name}`} />
-          <img src="/images/project2.webp" alt={`Interior project in ${location.name}`} />
+          <img src="/images/project3.webp" alt={`Interior project in ${location.name}`} />
+          <img src="/images/project4.webp" alt={`Interior project in ${location.name}`} />
           <img src="/images/project3.webp" alt={`Interior project in ${location.name}`} />
           <img src="/images/project4.webp" alt={`Interior project in ${location.name}`} />
           <img src="/images/project5.webp" alt={`Interior project in ${location.name}`} />

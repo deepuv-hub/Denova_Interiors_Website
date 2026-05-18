@@ -110,4 +110,68 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- Portfolio Category Pages -->
+  <url>
+    <loc>https://denovacreations.com/portfolio/residential/kitchen</loc>
+    <lastmod>2026-04-01</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/portfolio/residential/wardrobe</loc>
+    <lastmod>2026-04-01</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/portfolio/residential/living-room</loc>
+    <lastmod>2026-04-01</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/portfolio/residential/bedroom</loc>
+    <lastmod>2026-04-01</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/portfolio/residential/ceiling</loc>
+    <lastmod>2026-04-01</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/portfolio/commercial/office</loc>
+    <lastmod>2026-04-01</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Portfolio Detail Pages -->
+  <url>
+    <loc>https://denovacreations.com/portfolio/residential/kitchen/kitchen-modern-white-1</loc>
+    <lastmod>2026-04-01</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/portfolio/residential/wardrobe/wardrobe-sliding-bedroom-1</loc>
+    <lastmod>2026-04-01</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/portfolio/commercial/office/office-modern-setup-1</loc>
+    <lastmod>2026-04-01</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/portfolio/residential/living-room/living-room-modern-1</loc>
+    <lastmod>2026-04-01</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/portfolio/residential/bedroom/bedroom-modern-design-1</loc>
+    <lastmod>2026-04-01</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/portfolio/residential/ceiling/ceiling-false-design-1</loc>
+    <lastmod>2026-04-01</lastmod>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>

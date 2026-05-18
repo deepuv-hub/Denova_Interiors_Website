@@ -6,6 +6,8 @@ import { companyInfo } from "../data/mock";
 import { projects } from "../data/projects";
 import { useNavigate } from 'react-router-dom';
 
+const slugify = (value) => value.toLowerCase().replace(/\s+/g, "-");
+
 const PortfolioPage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [activeCategory, setActiveCategory] = useState('All');
@@ -97,7 +99,7 @@ useEffect(() => {
   const project = projects.find(
     (p) => p.category === category && p.type === "residential"
   );
-  return project?.images?.[0] || "/images/placeholder.jpg";
+  return project?.images?.[0] || "/images/fallback.webp";
 };
 
 const getCategoryCount = (category) => {
@@ -198,7 +200,7 @@ const getCategoryCount = (category) => {
                     {item.category}
                   </p>
                   <Link
-  to={`/portfolio/${item.type}/${item.category}/${item.projectId}`}
+  to={`/portfolio/${item.type}/${slugify(item.category)}/${item.projectId}`}
   onClick={(e) => e.stopPropagation()}
   className="text-white text-xs underline mt-2 block"
 >
@@ -386,7 +388,7 @@ const getCategoryCount = (category) => {
       Chat on WhatsApp
     </button>
   </a>
-  <Link to={`/portfolio/${filteredPortfolio[currentIndex].type}/${filteredPortfolio[currentIndex].category}/${filteredPortfolio[currentIndex].projectId}`}>
+  <Link to={`/portfolio/${filteredPortfolio[currentIndex].type}/${slugify(filteredPortfolio[currentIndex].category)}/${filteredPortfolio[currentIndex].projectId}`}>
   <button className="text-white/80 text-sm underline mt-3">
     View Full Project →
   </button>

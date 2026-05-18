@@ -41,13 +41,15 @@ const HomePage = () => {
         "@type": "InteriorDesigner",
         name: "Denova Interiors",
         url: "https://denovacreations.com",
-        logo: "https://denovacreations.com/logo.png",
-        image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&q=80",
+        logo: "https://denovacreations.com/images/denova-logo.svg",
+        image: "https://denovacreations.com/images/hero2.webp",
         telephone: "+91-9164466606",
         address: {
           "@type": "PostalAddress",
-          addressLocality: "Bangalore",
+          streetAddress: "373/2, Begur Hulimavu Road",
+          addressLocality: "Bengaluru",
           addressRegion: "Karnataka",
+          postalCode: "560114",
           addressCountry: "IN"
         },
         areaServed: "Bangalore",

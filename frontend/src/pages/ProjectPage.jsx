@@ -1,85 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { projects } from "../data/projects";
 import { Button } from "../components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Helmet } from "react-helmet-async";
+
+const slugify = (value) => value.toLowerCase().replace(/\s+/g, "-");
 
 const ProjectPage = () => {
   const { projectId } = useParams();
   const project = projects.find((p) => p.id === projectId);
-
-  // ================= SEO =================
-  useEffect(() => {
-    if (!project) return;
-
-    const title = `${project.title} | Interior Design in Bangalore | Denova Creations`;
-    const description = `${project.title} designed by Denova Creations in Bangalore. ${project.description}`;
-
-    document.title = title;
-
-    // Meta Description
-    let metaDesc = document.querySelector("meta[name='description']");
-    if (!metaDesc) {
-      metaDesc = document.createElement("meta");
-      metaDesc.name = "description";
-      document.head.appendChild(metaDesc);
-    }
-    metaDesc.content = description;
-
-    // Open Graph
-    const setMetaTag = (property, content) => {
-      let tag = document.querySelector(`meta[property='${property}']`);
-      if (!tag) {
-        tag = document.createElement("meta");
-        tag.setAttribute("property", property);
-        document.head.appendChild(tag);
-      }
-      tag.setAttribute("content", content);
-    };
-
-    setMetaTag("og:title", title);
-    setMetaTag("og:description", description);
-    setMetaTag("og:image", project.images?.[0]);
-    setMetaTag("og:type", "website");
-
-    // Canonical
-    let link = document.querySelector("link[rel='canonical']");
-    if (!link) {
-      link = document.createElement("link");
-      link.setAttribute("rel", "canonical");
-      document.head.appendChild(link);
-    }
-    link.setAttribute(
-      "href",
-      `https://denovacreations.com/portfolio/${project.type}/${project.category}/${project.id}`
-    );
-
-    // Schema
-    const schemaData = {
-      "@context": "https://schema.org",
-      "@type": "Project",
-      name: project.title,
-      description: project.description,
-      image: project.images,
-      areaServed: { "@type": "Place", name: "Bangalore" },
-      provider: {
-        "@type": "Organization",
-        name: "Denova Creations",
-        url: "https://denovacreations.com"
-      },
-      category: project.category,
-      url: `https://denovacreations.com/portfolio/${project.type}/${project.category}/${project.id}`
-    };
-
-    let script = document.querySelector("script[type='application/ld+json']");
-    if (!script) {
-      script = document.createElement("script");
-      script.type = "application/ld+json";
-      document.head.appendChild(script);
-    }
-    script.text = JSON.stringify(schemaData);
-
-  }, [project]);
 
   // ================= FALLBACK =================
   if (!project) {
@@ -90,8 +20,43 @@ const ProjectPage = () => {
     );
   }
 
+  const title = `${project.title} | Denova Interiors`;
+  const description = `${project.title} by Denova Interiors in Bangalore with project images, design details and execution highlights.`;
+  const pageUrl = `https://denovacreations.com/portfolio/${project.type}/${slugify(project.category)}/${project.id}`;
+  const toAbsoluteUrl = (path) =>
+    path?.startsWith("http") ? path : `https://denovacreations.com${path}`;
+  const image = toAbsoluteUrl(project.images?.[0]) || "https://denovacreations.com/images/hero2.webp";
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.title,
+    description,
+    image: project.images.map(toAbsoluteUrl),
+    provider: {
+      "@type": "Organization",
+      name: "Denova Interiors",
+      url: "https://denovacreations.com",
+    },
+    url: pageUrl,
+  };
+
   return (
     <div className="bg-white">
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={pageUrl} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content={image} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={image} />
+        <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
+      </Helmet>
 
       {/* ================= HERO ================= */}
       <section className="py-14 md:py-16 bg-[#FAF8F4] border-b border-[#E5DED3]">

@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const SarjapurRoad = () => {
@@ -8,7 +8,7 @@ const SarjapurRoad = () => {
 
       <Helmet>
         <title>
-          Interior Designers in Sarjapur Road Bangalore | Denova Creations
+          Interior Designers in Sarjapur Road | Denova
         </title>
         <meta
           name="description"
@@ -20,7 +20,7 @@ const SarjapurRoad = () => {
         />
         <meta
           property="og:title"
-          content="Interior Designers in Sarjapur Road Bangalore | Denova Creations"
+          content="Interior Designers in Sarjapur Road | Denova"
         />
         <meta
           property="og:description"
@@ -28,7 +28,7 @@ const SarjapurRoad = () => {
         />
         <meta
           property="og:image"
-          content="https://denovacreations.com/images/sarjapur-hero.jpg"
+          content="https://denovacreations.com/images/hero2.webp"
         />
         <meta
           property="og:url"
@@ -44,7 +44,7 @@ const SarjapurRoad = () => {
       {/* HERO */}
       <section className="relative h-[500px] flex items-center">
         <img
-          src="/images/sarjapur-hero.jpg"
+          src="/images/hero2.webp"
           alt="Luxury apartment interior design in Sarjapur Road Bangalore"
           className="absolute w-full h-full object-cover"
         />
@@ -128,17 +128,17 @@ const SarjapurRoad = () => {
 
         <div className="grid md:grid-cols-3 gap-4">
           <img
-            src="/images/s1.jpg"
+            src="/images/project3.webp"
             alt="Modern apartment interior project in Sarjapur Road Bangalore"
             className="h-60 object-cover w-full"
           />
           <img
-            src="/images/s2.jpg"
+            src="/images/project4.webp"
             alt="Modular kitchen interior project in Sarjapur Road Bangalore"
             className="h-60 object-cover w-full"
           />
           <img
-            src="/images/s3.jpg"
+            src="/images/project5.webp"
             alt="Premium bedroom interior project in Sarjapur Road Bangalore"
             className="h-60 object-cover w-full"
           />
@@ -186,3 +186,7 @@ const SarjapurRoad = () => {
 };
 
 export default SarjapurRoad;
+
+
+
+

@@ -251,6 +251,27 @@ setTimeout(() => {
   return (
     <>
     <Helmet>
+      <title>Interior Design Consultation in Bangalore | Denova</title>
+      <meta
+        name="description"
+        content="Book a free interior design consultation in Bangalore with Denova for modular kitchens, wardrobes and complete home interiors."
+      />
+      <link rel="canonical" href="https://denovacreations.com/lp/interior-design-bangalore" />
+      <meta property="og:title" content="Interior Design Consultation in Bangalore | Denova" />
+      <meta
+        property="og:description"
+        content="Book a free interior design consultation in Bangalore with Denova for modular kitchens, wardrobes and complete home interiors."
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://denovacreations.com/lp/interior-design-bangalore" />
+      <meta property="og:image" content="https://denovacreations.com/images/landingpagehero.webp" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Interior Design Consultation in Bangalore | Denova" />
+      <meta
+        name="twitter:description"
+        content="Book a free interior design consultation in Bangalore with Denova for modular kitchens, wardrobes and complete home interiors."
+      />
+      <meta name="twitter:image" content="https://denovacreations.com/images/landingpagehero.webp" />
       <meta name="robots" content="noindex, follow" />
     </Helmet>
 {/* HERO SECTION */}

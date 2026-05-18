@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const Yelahanka = () => {
@@ -8,7 +8,7 @@ const Yelahanka = () => {
 
       <Helmet>
         <title>
-          Interior Designers in Yelahanka Bangalore | Denova Creations
+          Interior Designers in Yelahanka | Denova
         </title>
         <meta
           name="description"
@@ -20,7 +20,7 @@ const Yelahanka = () => {
         />
         <meta
           property="og:title"
-          content="Interior Designers in Yelahanka Bangalore | Denova Creations"
+          content="Interior Designers in Yelahanka | Denova"
         />
         <meta
           property="og:description"
@@ -28,7 +28,7 @@ const Yelahanka = () => {
         />
         <meta
           property="og:image"
-          content="https://denovacreations.com/images/yelahanka-hero.jpg"
+          content="https://denovacreations.com/images/hero2.webp"
         />
         <meta
           property="og:url"
@@ -44,7 +44,7 @@ const Yelahanka = () => {
       {/* HERO */}
       <section className="relative h-[500px] flex items-center">
         <img
-          src="/images/yelahanka-hero.jpg"
+          src="/images/hero2.webp"
           alt="Affordable independent home interior design in Yelahanka Bangalore"
           className="absolute w-full h-full object-cover"
         />
@@ -127,17 +127,17 @@ const Yelahanka = () => {
 
         <div className="grid md:grid-cols-3 gap-4">
           <img
-            src="/images/y1.jpg"
+            src="/images/project3.webp"
             alt="Modern independent home interior project in Yelahanka Bangalore"
             className="h-60 object-cover w-full"
           />
           <img
-            src="/images/y2.jpg"
+            src="/images/project4.webp"
             alt="Modular kitchen interior project in Yelahanka Bangalore"
             className="h-60 object-cover w-full"
           />
           <img
-            src="/images/y3.jpg"
+            src="/images/project5.webp"
             alt="Family living room interior project in Yelahanka Bangalore"
             className="h-60 object-cover w-full"
           />
@@ -185,3 +185,7 @@ const Yelahanka = () => {
 };
 
 export default Yelahanka;
+
+
+
+

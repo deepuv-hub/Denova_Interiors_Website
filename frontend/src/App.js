@@ -21,19 +21,18 @@ const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy"));
 const CategoryPage = React.lazy(() => import("./pages/CategoryPage"));
 const ProjectPage = React.lazy(() => import("./pages/ProjectPage"));
 
-// Optional: location pages lazy
-const Koramangala = React.lazy(() => import("./pages/locations/Koramangala"));
-
 // Layout components (keep normal)
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import FloatingCTA from "./components/FloatingCTA";
 import FloatingLeadForm from "./components/FloatingLeadForm";
 import InternalLinksCTA from "./components/InternalLinksCTA";
+import SEO from "./components/SEO";
 
 // Layout wrapper
 const Layout = ({ children }) => (
   <>
+    <SEO />
     <Header />
     <main className="min-h-screen">{children}</main>
     <InternalLinksCTA />
@@ -107,7 +106,6 @@ function App() {
   <Route path="/process" element={<ProcessPage />} />
   <Route path="/contact" element={<ContactPage />} />
   <Route path="/estimate" element={<EstimatePage />} />
-  <Route path="/interior-designers/koramangala" element={<Koramangala />} />
   <Route path="/interior-designers/:city" element={<CityLanding />} />
   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
   

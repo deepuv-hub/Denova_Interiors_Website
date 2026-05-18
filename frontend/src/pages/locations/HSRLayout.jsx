@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const HSRLayout = () => {
@@ -8,7 +8,7 @@ const HSRLayout = () => {
 
       <Helmet>
         <title>
-          Interior Designers in HSR Layout Bangalore | Denova Creations
+          Interior Designers in HSR Layout | Denova
         </title>
         <meta
           name="description"
@@ -20,7 +20,7 @@ const HSRLayout = () => {
         />
         <meta
           property="og:title"
-          content="Interior Designers in HSR Layout Bangalore | Denova Creations"
+          content="Interior Designers in HSR Layout | Denova"
         />
         <meta
           property="og:description"
@@ -28,7 +28,7 @@ const HSRLayout = () => {
         />
         <meta
           property="og:image"
-          content="https://denovacreations.com/images/hsr-hero.jpg"
+          content="https://denovacreations.com/images/hero2.webp"
         />
         <meta
           property="og:url"
@@ -63,7 +63,7 @@ const HSRLayout = () => {
           </div>
 
           <img
-            src="/images/hsr-hero.jpg"
+            src="/images/hero2.webp"
             alt="Luxury apartment interior design in HSR Layout Bangalore"
             className="rounded-lg"
           />
@@ -122,17 +122,17 @@ const HSRLayout = () => {
 
         <div className="grid md:grid-cols-3 gap-4">
           <img
-            src="/images/hsr1.jpg"
+            src="/images/project3.webp"
             alt="Modern apartment interior project in HSR Layout Bangalore"
             className="h-60 object-cover w-full"
           />
           <img
-            src="/images/hsr2.jpg"
+            src="/images/project4.webp"
             alt="Modular kitchen interior project in HSR Layout Bangalore"
             className="h-60 object-cover w-full"
           />
           <img
-            src="/images/hsr3.jpg"
+            src="/images/project5.webp"
             alt="Space-saving bedroom interior project in HSR Layout Bangalore"
             className="h-60 object-cover w-full"
           />
@@ -178,3 +178,7 @@ const HSRLayout = () => {
 };
 
 export default HSRLayout;
+
+
+
+

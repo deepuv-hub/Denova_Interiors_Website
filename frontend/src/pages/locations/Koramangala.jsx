@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const Koramangala = () => {
   return (
@@ -7,7 +7,7 @@ const Koramangala = () => {
 
       <Helmet>
         <title>
-          Interior Designers in Koramangala Bangalore | Denova Creations
+          Interior Designers in Koramangala | Denova
         </title>
         <meta
           name="description"
@@ -19,7 +19,7 @@ const Koramangala = () => {
         />
         <meta
           property="og:title"
-          content="Interior Designers in Koramangala Bangalore | Denova Creations"
+          content="Interior Designers in Koramangala | Denova"
         />
         <meta
           property="og:description"
@@ -27,7 +27,7 @@ const Koramangala = () => {
         />
         <meta
           property="og:image"
-          content="https://denovacreations.com/images/koramangala.jpg"
+          content="https://denovacreations.com/images/hero2.webp"
         />
         <meta
           property="og:url"
@@ -43,7 +43,7 @@ const Koramangala = () => {
       {/* HERO */}
       <section className="relative h-[500px] flex items-center">
         <img
-          src="/images/koramangala.jpg"
+          src="/images/hero2.webp"
           alt="Luxury apartment interior design in Koramangala Bangalore"
           className="absolute w-full h-full object-cover"
         />
@@ -98,17 +98,17 @@ const Koramangala = () => {
 
         <div className="grid md:grid-cols-3 gap-4">
           <img
-            src="/images/p1.jpg"
+            src="/images/project3.webp"
             alt="Modern home interior project in Koramangala Bangalore"
             className="h-60 object-cover w-full"
           />
           <img
-            src="/images/p2.jpg"
+            src="/images/project4.webp"
             alt="Modular kitchen interior project in Koramangala Bangalore"
             className="h-60 object-cover w-full"
           />
           <img
-            src="/images/p3.jpg"
+            src="/images/project5.webp"
             alt="Premium living room interior project in Koramangala Bangalore"
             className="h-60 object-cover w-full"
           />
@@ -173,3 +173,7 @@ const Koramangala = () => {
 };
 
 export default Koramangala;
+
+
+
+

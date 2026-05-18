@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const JPNagar = () => {
@@ -7,7 +7,7 @@ const JPNagar = () => {
     <div className="bg-white">
       <Helmet>
         <title>
-          Interior Designers in JP Nagar Bangalore | Denova Creations
+          Interior Designers in JP Nagar | Denova
         </title>
         <meta
           name="description"
@@ -19,7 +19,7 @@ const JPNagar = () => {
         />
         <meta
           property="og:title"
-          content="Interior Designers in JP Nagar Bangalore | Denova Creations"
+          content="Interior Designers in JP Nagar | Denova"
         />
         <meta
           property="og:description"
@@ -27,7 +27,7 @@ const JPNagar = () => {
         />
         <meta
           property="og:image"
-          content="https://denovacreations.com/images/jpnagar-hero.jpg"
+          content="https://denovacreations.com/images/hero2.webp"
         />
         <meta
           property="og:url"
@@ -43,7 +43,7 @@ const JPNagar = () => {
       {/* HERO */}
       <section className="relative h-[500px] flex items-center">
         <img
-          src="/images/jpnagar-hero.jpg"
+          src="/images/hero2.webp"
           alt="Luxury family home interior in JP Nagar Bangalore"
           className="absolute w-full h-full object-cover"
         />
@@ -124,17 +124,17 @@ const JPNagar = () => {
 
         <div className="grid md:grid-cols-3 gap-4">
           <img
-            src="/images/j1.jpg"
+            src="/images/project3.webp"
             alt="Modern home interior project in JP Nagar Bangalore"
             className="h-60 object-cover w-full"
           />
           <img
-            src="/images/j2.jpg"
+            src="/images/project4.webp"
             alt="Modular kitchen interior project in JP Nagar Bangalore"
             className="h-60 object-cover w-full"
           />
           <img
-            src="/images/j3.jpg"
+            src="/images/project5.webp"
             alt="Family living room interior project in JP Nagar Bangalore"
             className="h-60 object-cover w-full"
           />
@@ -179,3 +179,7 @@ const JPNagar = () => {
 };
 
 export default JPNagar;
+
+
+
+

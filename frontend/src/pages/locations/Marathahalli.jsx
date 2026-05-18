@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const Marathahalli = () => {
@@ -8,7 +8,7 @@ const Marathahalli = () => {
 
       <Helmet>
         <title>
-          Interior Designers in Marathahalli Bangalore | Denova Creations
+          Interior Designers in Marathahalli | Denova
         </title>
         <meta
           name="description"
@@ -20,7 +20,7 @@ const Marathahalli = () => {
         />
         <meta
           property="og:title"
-          content="Interior Designers in Marathahalli Bangalore | Denova Creations"
+          content="Interior Designers in Marathahalli | Denova"
         />
         <meta
           property="og:description"
@@ -28,7 +28,7 @@ const Marathahalli = () => {
         />
         <meta
           property="og:image"
-          content="https://denovacreations.com/images/marathahalli-hero.jpg"
+          content="https://denovacreations.com/images/hero2.webp"
         />
         <meta
           property="og:url"
@@ -69,7 +69,7 @@ const Marathahalli = () => {
           </div>
 
           <img
-            src="/images/marathahalli-hero.jpg"
+            src="/images/hero2.webp"
             alt="Affordable apartment interior design in Marathahalli Bangalore"
             className="rounded-lg object-cover"
           />
@@ -132,17 +132,17 @@ const Marathahalli = () => {
 
         <div className="grid md:grid-cols-3 gap-4">
           <img
-            src="/images/m1.jpg"
+            src="/images/project3.webp"
             alt="Modern apartment interior project in Marathahalli Bangalore"
             className="h-60 object-cover w-full"
           />
           <img
-            src="/images/m2.jpg"
+            src="/images/project4.webp"
             alt="Modular kitchen interior project in Marathahalli Bangalore"
             className="h-60 object-cover w-full"
           />
           <img
-            src="/images/m3.jpg"
+            src="/images/project5.webp"
             alt="Space-saving wardrobe interior project in Marathahalli Bangalore"
             className="h-60 object-cover w-full"
           />
@@ -190,3 +190,7 @@ const Marathahalli = () => {
 };
 
 export default Marathahalli;
+
+
+
+

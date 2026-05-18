@@ -58,11 +58,9 @@ images: Array.from({ length: 10 }, (_, i) =>
   budget: "₹10–20 Lakhs",
 
   images: [
-  ...Array.from({ length: 20 }, (_, i) => 
+  ...Array.from({ length: 10 }, (_, i) => 
     `/images/projects/office-modern-setup-1/${i + 1}.webp`
-  ),
-  `/images/projects/office-modern-setup-1/21.jpeg`,
-  `/images/projects/office-modern-setup-1/22.webp`
+  )
 ],
   description: "Modern office designed for productivity and collaboration.",
 

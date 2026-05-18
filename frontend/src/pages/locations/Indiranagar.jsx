@@ -1,12 +1,12 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const Indiranagar = () => {
   return (
     <div className="bg-white">
       <Helmet>
         <title>
-          Interior Designers in Indiranagar Bangalore | Denova Creations
+          Interior Designers in Indiranagar | Denova
         </title>
         <meta
           name="description"
@@ -18,7 +18,7 @@ const Indiranagar = () => {
         />
         <meta
           property="og:title"
-          content="Interior Designers in Indiranagar Bangalore | Denova Creations"
+          content="Interior Designers in Indiranagar | Denova"
         />
         <meta
           property="og:description"
@@ -26,7 +26,7 @@ const Indiranagar = () => {
         />
         <meta
           property="og:image"
-          content="https://denovacreations.com/images/indiranagar-hero.jpg"
+          content="https://denovacreations.com/images/hero2.webp"
         />
         <meta
           property="og:url"
@@ -112,3 +112,6 @@ const Indiranagar = () => {
 };
 
 export default Indiranagar;
+
+
+
