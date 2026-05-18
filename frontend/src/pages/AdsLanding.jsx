@@ -230,7 +230,7 @@ window.dataLayer.push({
 // GOOGLE ADS DIRECT CONVERSION
 if (window.gtag) {
   window.gtag('event', 'conversion', {
-    send_to: 'AW-11303451952/-zBhUCM29o5QcELD6840q'
+    send_to: 'AW-11303451952/63-FCIP1rZ8cELD6840q'
   });
 }
 
