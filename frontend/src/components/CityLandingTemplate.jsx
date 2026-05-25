@@ -3,20 +3,40 @@ import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 
 const CityLandingTemplate = ({ location }) => {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+  });
   const [loading, setLoading] = useState(false);
   const pageUrl = `https://denovacreations.com/interior-designers/${location.slug}`;
   const ogImage = "https://denovacreations.com/images/hero2.webp";
   const seoTitle = `Interior Designers in ${location.name} | Denova`;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const scrollToLeadForm = () => {
+    const leadForm = document.getElementById("lead-form");
 
-    if (!/^[0-9]{10}$/.test(phone)) {
-  alert("Please enter a valid 10-digit phone number");
-  return;
-}
+    if (leadForm) {
+      leadForm.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const updateFormData = (field, value) => {
+    setFormData((currentFormData) => ({
+      ...currentFormData,
+      [field]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    if (e) {
+      e.preventDefault();
+    }
+
+    if (!/^[0-9]{10}$/.test(formData.phone)) {
+      alert("Please enter a valid 10-digit phone number");
+      return;
+    }
 
     setLoading(true);
     // Save Lead
@@ -25,12 +45,10 @@ const CityLandingTemplate = ({ location }) => {
         method: "POST",
         mode: "no-cors",
         body: JSON.stringify({
-  name: formData.name,
-  phone: formData.phone,
-  email: formData.email,
-  propertyType: formData.propertyType,
-  location: formData.location,
-  possession: formData.possession,
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          location: location.name,
           source: "Landing Page",
         }),
       });
@@ -39,7 +57,7 @@ const CityLandingTemplate = ({ location }) => {
     }
 
     // WhatsApp Redirect
-    const msg = `Hi, I'm ${name}. My number is ${phone}. I need interior design service in ${location.name}.`;
+    const msg = `Hi, I'm ${formData.name}. My number is ${formData.phone}. I need interior design service in ${location.name}.`;
 
     window.open(
       `https://wa.me/919164466606?text=${encodeURIComponent(msg)}`,
@@ -124,13 +142,11 @@ const CityLandingTemplate = ({ location }) => {
 
             <div className="mt-6 flex gap-4">
               <button
-  onClick={() => {
-    document.getElementById("lead-form").scrollIntoView({ behavior: "smooth" });
-  }}
-  className="bg-black text-white px-6 py-3 rounded"
->
-  Get Free Consultation
-</button>
+                onClick={scrollToLeadForm}
+                className="bg-black text-white px-6 py-3 rounded"
+              >
+                Get Free Consultation
+              </button>
 
               <a
                 href="https://wa.me/919164466606"
@@ -143,10 +159,10 @@ const CityLandingTemplate = ({ location }) => {
 
           {/* FORM */}
           <form
-  id="lead-form"
-  onSubmit={handleSubmit}
-  className="bg-white shadow-xl p-6 rounded flex flex-col gap-4"
->
+            id="lead-form"
+            onSubmit={handleSubmit}
+            className="bg-white shadow-xl p-6 rounded flex flex-col gap-4"
+          >
             <h2 className="text-lg font-semibold">
               Free Consultation (Limited Slots)
             </h2>
@@ -155,29 +171,30 @@ const CityLandingTemplate = ({ location }) => {
               type="text"
               placeholder="Full Name"
               value={formData.name}
-              onChange={(e) => setFormData({...formData, name: e.target.value})}
+              onChange={(e) => updateFormData("name", e.target.value)}
               required
               className="p-3 border rounded"
             />
 
             <input
-  type="tel"
-  placeholder="Phone Number"
- value={formData.phone}
-  onChange={(e) => setFormData({...formData, phone: e.target.value})}
-  maxLength="10"
-  pattern="[0-9]{10}"
-  required
-  className="p-3 border rounded"
-/>
-<input
-  type="email"
-  placeholder="Email ID"
-  value={formData.email}
-  onChange={(e) => setFormData({...formData, email: e.target.value})}
-  required
+              type="tel"
+              placeholder="Phone Number"
+              value={formData.phone}
+              onChange={(e) => updateFormData("phone", e.target.value)}
+              maxLength="10"
+              pattern="[0-9]{10}"
+              required
               className="p-3 border rounded"
-/>
+            />
+
+            <input
+              type="email"
+              placeholder="Email ID"
+              value={formData.email}
+              onChange={(e) => updateFormData("email", e.target.value)}
+              required
+              className="p-3 border rounded"
+            />
             <button
               type="submit"
               className="bg-black text-white py-3 rounded"
@@ -269,7 +286,7 @@ const CityLandingTemplate = ({ location }) => {
         </h2>
 
         <button
-          onClick={handleSubmit}
+          onClick={scrollToLeadForm}
           className="bg-black text-white px-6 py-3 rounded"
         >
           Get Free Consultation

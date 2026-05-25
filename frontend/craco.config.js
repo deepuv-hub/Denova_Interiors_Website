@@ -2,6 +2,13 @@
 const path = require("path");
 require("dotenv").config();
 
+const transpileDependencies = [
+  path.resolve(__dirname, "node_modules/@radix-ui"),
+  path.resolve(__dirname, "node_modules/react-helmet-async"),
+  path.resolve(__dirname, "node_modules/react-router"),
+  path.resolve(__dirname, "node_modules/react-router-dom"),
+];
+
 // Check if we're in development/preview mode (not production build)
 // Craco sets NODE_ENV=development for start, NODE_ENV=production for build
 const isDevServer = process.env.NODE_ENV !== "production";
@@ -47,6 +54,22 @@ const webpackConfig = {
       '@': path.resolve(__dirname, 'src'),
     },
     configure: (webpackConfig) => {
+      const oneOfRule = webpackConfig.module.rules.find((rule) => Array.isArray(rule.oneOf));
+      const babelLoader = oneOfRule?.oneOf.find(
+        (rule) => rule.loader && rule.loader.includes("babel-loader") && rule.include
+      );
+
+      if (babelLoader) {
+        babelLoader.include = Array.isArray(babelLoader.include)
+          ? [...babelLoader.include, ...transpileDependencies]
+          : [babelLoader.include, ...transpileDependencies];
+
+        babelLoader.options.plugins = [
+          ...(babelLoader.options.plugins || []),
+          require.resolve("@babel/plugin-transform-optional-chaining"),
+          require.resolve("@babel/plugin-transform-nullish-coalescing-operator"),
+        ];
+      }
 
       // Add ignored patterns to reduce watched directories
         webpackConfig.watchOptions = {
