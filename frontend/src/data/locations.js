@@ -6,8 +6,7 @@ const locations = [
   title: "Best Interior Designers in Whitefield Bangalore | Denova Creations",
 
   description:
-    description:
-  "Interior designers in Whitefield Bangalore offering modular kitchens, wardrobes, and modern home interiors by Denova Creations.",
+    "Interior designers in Whitefield Bangalore offering modular kitchens, wardrobes, and modern home interiors by Denova Creations.",
 
   intro: `Whitefield is one of Bangalore’s fastest-growing residential hubs with premium apartments and villas. Denova Creations provides customized interior design solutions in Whitefield tailored for modern families and professionals.`,
 
@@ -38,7 +37,7 @@ const locations = [
     },
     {
       q: "How long does interior design take?",
-      a: "Typically 4–8 weeks depending on project size."
+      a: "Typically 4-8 weeks depending on project size."
     }
   ]
 },
@@ -50,7 +49,6 @@ const locations = [
   title: "Best Interior Designers in Indiranagar Bangalore | Denova Creations",
 
   description:
-    description:
   "Interior designers in Indiranagar Bangalore offering luxury home interiors, modular kitchens, and modern apartment designs.",
 
   intro: `Indiranagar is one of Bangalore’s most premium residential and lifestyle areas, known for upscale apartments and independent homes. Denova Creations specializes in luxury and modern interior design solutions in Indiranagar, tailored for high-end living and stylish urban homes.`,
@@ -87,7 +85,7 @@ const locations = [
     },
     {
       q: "How long does a typical project take?",
-      a: "Most interior projects take between 4–8 weeks depending on scope."
+      a: "Most interior projects take between 4-8 weeks depending on scope."
     }
   ]
 },
@@ -98,7 +96,6 @@ const locations = [
   title: "Affordable Interior Designers in Marathahalli Bangalore | Denova Creations",
 
   description:
-    description:
   "Affordable interior designers in Marathahalli Bangalore for 2BHK, 3BHK, modular kitchens, and modern home interiors.",
 
   intro: `Marathahalli is a major residential hub in Bangalore, popular among working professionals and families living in apartments and gated communities. Denova Creations offers affordable and functional interior design solutions in Marathahalli, focusing on space optimization and modern living needs.`,
@@ -135,7 +132,7 @@ const locations = [
     },
     {
       q: "How long does a project take?",
-      a: "Most projects are completed within 4–6 weeks depending on scope."
+      a: "Most projects are completed within 4-6 weeks depending on scope."
     }
   ]
 },
@@ -147,7 +144,6 @@ const locations = [
   title: "Interior Designers in Sarjapur Road Bangalore | Modern Home Interiors by Denova Creations",
 
   description:
-    description:
   "Interior designers in Sarjapur Road Bangalore for modular kitchens, villa interiors, and modern apartment designs.",
 
   intro: `Sarjapur Road is one of Bangalore’s fastest-developing residential corridors, known for modern apartments, gated communities, and villa projects. Denova Creations offers customized interior design solutions in Sarjapur Road, focusing on functional layouts, modern aesthetics, and family-friendly living spaces.`,
@@ -184,7 +180,7 @@ const locations = [
     },
     {
       q: "How long does an interior project take?",
-      a: "Most projects are completed within 4–8 weeks depending on scope."
+      a: "Most projects are completed within 4-8 weeks depending on scope."
     }
   ]
 },
@@ -231,7 +227,7 @@ const locations = [
     },
     {
       q: "How long does an interior project take?",
-      a: "Most projects are completed within 4–8 weeks depending on scope."
+      a: "Most projects are completed within 4-8 weeks depending on scope."
     }
   ]
 },
@@ -279,7 +275,7 @@ const locations = [
     },
     {
       q: "How long does an interior project take?",
-      a: "Most projects are completed within 4–8 weeks depending on scope."
+      a: "Most projects are completed within 4-8 weeks depending on scope."
     }
   ]
 },
@@ -326,7 +322,7 @@ const locations = [
     },
     {
       q: "How long does an interior project take?",
-      a: "Most projects are completed within 4–6 weeks depending on scope."
+      a: "Most projects are completed within 4-6 weeks depending on scope."
     }
   ]
 },
@@ -374,7 +370,7 @@ const locations = [
     },
     {
       q: "How long does an interior project take?",
-      a: "Most projects are completed within 4–8 weeks depending on scope."
+      a: "Most projects are completed within 4-8 weeks depending on scope."
     }
   ]
 },
@@ -422,7 +418,7 @@ const locations = [
     },
     {
       q: "How long does an interior project take?",
-      a: "Most projects are completed within 4–8 weeks depending on scope."
+      a: "Most projects are completed within 4-8 weeks depending on scope."
     }
   ]
 },
@@ -434,7 +430,7 @@ const locations = [
 
   description:
   "Interior designers in JP Nagar Bangalore for modular kitchens and customized family home interiors.",
-  
+
   intro: `JP Nagar is one of Bangalore’s well-established residential areas, known for independent houses, apartments, and family-friendly neighborhoods. Denova Creations offers customized interior design solutions in JP Nagar, focusing on comfortable layouts, functional designs, and modern aesthetics tailored for family living.`,
 
   keywords: [
@@ -469,7 +465,7 @@ const locations = [
     },
     {
       q: "How long does an interior project take?",
-      a: "Most projects are completed within 4–8 weeks depending on scope."
+      a: "Most projects are completed within 4-8 weeks depending on scope."
     }
   ]
 },
