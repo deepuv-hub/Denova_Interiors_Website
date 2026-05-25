@@ -75,13 +75,25 @@ images: Array.from({ length: 10 }, (_, i) =>
   id: "living-room-modern-1",
   type: "residential",
   category: "Living Room",
-  title: "Modern Living Room Setup",
+  title: "Modern Living Room Interior Design",
   location: "Bangalore",
   propertyType: "3BHK Apartment",
+  budget: "₹3–6 Lakhs",
 
-  images: Array.from({ length: 10 }, (_, i) => 
+  images: Array.from({ length: 10 }, (_, i) =>
     `/images/projects/living-room-modern-1/${i + 1}.webp`
   ),
+
+  description:
+    "A premium modern living room interior designed for elegant family living with contemporary aesthetics, ambient lighting, optimized layouts, and luxury finishes tailored for modern urban homes.",
+
+  highlights: [
+    "Ambient lighting design",
+    "Premium TV unit setup",
+    "Modern false ceiling integration",
+    "Luxury seating layout",
+    "Contemporary wall finishes"
+  ]
 },
 
 {

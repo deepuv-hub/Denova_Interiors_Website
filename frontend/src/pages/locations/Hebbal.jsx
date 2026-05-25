@@ -89,7 +89,7 @@ const Hebbal = () => {
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "InteriorDesigner",
+            "@type": "ProfessionalService",
             name: "Denova Creations",
             url: pageUrl,
             image: imageUrl,

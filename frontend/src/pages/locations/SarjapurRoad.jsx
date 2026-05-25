@@ -91,11 +91,11 @@ const SarjapurRoad = () => {
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "InteriorDesigner",
+           "@type": "ProfessionalService",
             name: "Denova Creations",
             url: pageUrl,
             image: imageUrl,
-            telephone: "+91-9164011181",
+            telephone: "+91-9164466606",
             areaServed: [
               "Sarjapur Road",
               "Bangalore",
@@ -514,10 +514,10 @@ const SarjapurRoad = () => {
         <div className="flex flex-wrap justify-center gap-4">
 
           <a
-            href="tel:+919164011181"
+            href="tel:+919164466606"
             className="bg-yellow-600 hover:bg-yellow-700 transition px-8 py-4 font-semibold text-white"
           >
-            Call Now: 9164011181
+            Call Now: 9164466606
           </a>
 
           <a

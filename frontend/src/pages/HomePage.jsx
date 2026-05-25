@@ -38,7 +38,7 @@ const HomePage = () => {
     <script type="application/ld+json">
       {JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "InteriorDesigner",
+        "@type": "ProfessionalService",
         name: "Denova Creations",
         url: "https://denovacreations.com",
         logo: "https://denovacreations.com/images/denova-logo.svg",
