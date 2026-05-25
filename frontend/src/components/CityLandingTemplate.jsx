@@ -11,7 +11,7 @@ const CityLandingTemplate = ({ location }) => {
   const [loading, setLoading] = useState(false);
   const pageUrl = `https://denovacreations.com/interior-designers/${location.slug}`;
   const ogImage = "https://denovacreations.com/images/hero2.webp";
-  const seoTitle = `Interior Designers in ${location.name} | Denova`;
+  const seoTitle = `Interior Designers in ${location.name} | Denova Creations`;
 
   const scrollToLeadForm = () => {
     const leadForm = document.getElementById("lead-form");

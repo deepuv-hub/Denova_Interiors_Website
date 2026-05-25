@@ -7,7 +7,7 @@ const Hebbal = () => {
 
       <Helmet>
         <title>
-          Interior Designers in Hebbal | Denova
+          Interior Designers in Hebbal | Denova Creations
         </title>
         <meta
           name="description"
@@ -19,7 +19,7 @@ const Hebbal = () => {
         />
         <meta
           property="og:title"
-          content="Interior Designers in Hebbal | Denova"
+          content="Interior Designers in Hebbal | Denova Creations"
         />
         <meta
           property="og:description"

@@ -141,7 +141,7 @@ const locations = [
   name: "Sarjapur Road",
   slug: "sarjapur-road",
 
-  title: "Interior Designers in Sarjapur Road Bangalore | Modern Home Interiors by Denova",
+  title: "Interior Designers in Sarjapur Road Bangalore | Modern Home Interiors by Denova Creations",
 
   description:
     "Looking for interior designers in Sarjapur Road Bangalore? Get modern 2BHK & 3BHK interiors, modular kitchens and villa interiors with Denova Creations.",
@@ -188,7 +188,7 @@ const locations = [
   name: "HSR Layout",
   slug: "hsr-layout",
 
-  title: "Interior Designers in HSR Layout Bangalore | Modern Home Interiors by Denova",
+  title: "Interior Designers in HSR Layout Bangalore | Modern Home Interiors by Denova Creations",
 
   description:
     "Looking for interior designers in HSR Layout Bangalore? Get modern 2BHK & 3BHK interiors, modular kitchens and space-saving designs with Denova Creations.",
@@ -379,7 +379,7 @@ const locations = [
   name: "Yelahanka",
   slug: "yelahanka",
 
-  title: "Interior Designers in Yelahanka Bangalore | Villa & Home Interiors by Denova",
+  title: "Interior Designers in Yelahanka Bangalore | Villa & Home Interiors by Denova Creations",
 
   description:
     "Looking for interior designers in Yelahanka Bangalore? Get 2BHK, 3BHK and villa interiors, modular kitchens and customized home designs with Denova Creations.",
@@ -426,7 +426,7 @@ const locations = [
   name: "JP Nagar",
   slug: "jp-nagar",
 
-  title: "Interior Designers in JP Nagar Bangalore | Home Interiors by Denova",
+  title: "Interior Designers in JP Nagar Bangalore | Home Interiors by Denova Creations",
 
   description:
     "Looking for interior designers in JP Nagar Bangalore? Get 2BHK & 3BHK home interiors, modular kitchens and customized family home designs with Denova Creations.",

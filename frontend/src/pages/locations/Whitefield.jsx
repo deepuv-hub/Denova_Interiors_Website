@@ -8,7 +8,7 @@ const Whitefield = () => {
 
       <Helmet>
         <title>
-          Interior Designers in Whitefield | Denova
+          Interior Designers in Whitefield | Denova Creations
         </title>
         <meta
           name="description"
@@ -20,7 +20,7 @@ const Whitefield = () => {
         />
         <meta
           property="og:title"
-          content="Interior Designers in Whitefield | Denova"
+          content="Interior Designers in Whitefield | Denova Creations"
         />
         <meta
           property="og:description"

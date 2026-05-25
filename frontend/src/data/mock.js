@@ -1,7 +1,7 @@
-// Mock data for Denova Interiors Website
+// Mock data for Denova Creations Website
 
 export const companyInfo = {
-  name: "Denova Interiors",
+  name: "Denova Creations",
   tagline: "A division of Denova Creations",
   primaryPhone: "+91 9164466606",
   email: "admin@denovacreations.com",
@@ -166,7 +166,7 @@ export const testimonials = [
     name: "Rajesh Kumar",
     location: "Whitefield, Bengaluru",
     rating: 5,
-    text: "Exceptional work by Denova Interiors! They transformed our 3BHK into a dream home. The attention to detail and quality of materials exceeded our expectations.",
+    text: "Exceptional work by Denova Creations! They transformed our 3BHK into a dream home. The attention to detail and quality of materials exceeded our expectations.",
     projectType: "3BHK Apartment",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"
   },

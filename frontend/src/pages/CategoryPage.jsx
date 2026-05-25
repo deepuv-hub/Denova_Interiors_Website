@@ -14,8 +14,8 @@ const CategoryPage = () => {
       slugify(p.category) === category.toLowerCase()
   );
   const categoryName = category.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
-  const title = `${categoryName} Interior Designs | Denova Portfolio`;
-  const description = `Explore ${categoryName.toLowerCase()} interior design projects by Denova Interiors in Bangalore with photos and execution details.`;
+  const title = `${categoryName} Interior Designs Bangalore | Denova Creations`;
+  const description = `Explore ${categoryName.toLowerCase()} interior design projects by Denova Creations in Bangalore with photos and execution details.`;
   const pageUrl = `https://denovacreations.com/portfolio/${type}/${category}`;
   const image = filtered[0]?.images?.[0] || "https://denovacreations.com/images/hero2.webp";
 

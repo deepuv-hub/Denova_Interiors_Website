@@ -20,8 +20,8 @@ const ProjectPage = () => {
     );
   }
 
-  const title = `${project.title} | Denova Interiors`;
-  const description = `${project.title} by Denova Interiors in Bangalore with project images, design details and execution highlights.`;
+  const title = `${project.title} | Denova Creations`;
+  const description = `${project.title} by Denova Creations in Bangalore with project images, design details and execution highlights.`;
   const pageUrl = `https://denovacreations.com/portfolio/${project.type}/${slugify(project.category)}/${project.id}`;
   const toAbsoluteUrl = (path) =>
     path?.startsWith("http") ? path : `https://denovacreations.com${path}`;
@@ -34,7 +34,7 @@ const ProjectPage = () => {
     image: project.images.map(toAbsoluteUrl),
     provider: {
       "@type": "Organization",
-      name: "Denova Interiors",
+      name: "Denova Creations",
       url: "https://denovacreations.com",
     },
     url: pageUrl,

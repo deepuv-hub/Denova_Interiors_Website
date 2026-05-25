@@ -22,12 +22,12 @@ const HomePage = () => {
     <>
   <Helmet>
     <title>
-      Premium Interior Designers in Bangalore | Denova Interiors
+      Luxury Interior Designers in Bangalore | Denova Creations
     </title>
 
     <meta
       name="description"
-      content="Denova Interiors offers premium home interior design services in Bangalore including modular kitchens, wardrobes, living rooms, and complete home interiors."
+      content="Denova Creations offers premium home interior design services in Bangalore including modular kitchens, wardrobes, living rooms, and complete home interiors."
     />
 
     <link
@@ -39,7 +39,7 @@ const HomePage = () => {
       {JSON.stringify({
         "@context": "https://schema.org",
         "@type": "InteriorDesigner",
-        name: "Denova Interiors",
+        name: "Denova Creations",
         url: "https://denovacreations.com",
         logo: "https://denovacreations.com/images/denova-logo.svg",
         image: "https://denovacreations.com/images/hero2.webp",
@@ -59,13 +59,13 @@ const HomePage = () => {
       })}
     </script>
 
-    <meta property="og:title" content="Premium Interior Designers in Bangalore" />
+    <meta property="og:title" content="Luxury Interior Designers in Bangalore | Denova Creations" />
     <meta property="og:description" content="Luxury home interiors including modular kitchens, wardrobes, TV units and complete home interiors in Bangalore." />
     <meta property="og:image" content="https://denovacreations.com/images/hero2.webp" />
     <meta property="og:url" content="https://denovacreations.com/" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Premium Interior Designers in Bangalore | Denova Interiors" />
+    <meta name="twitter:title" content="Luxury Interior Designers in Bangalore | Denova Creations" />
     <meta name="twitter:description" content="Luxury home interiors including modular kitchens, wardrobes, TV units and complete home interiors in Bangalore." />
     <meta name="twitter:image" content="https://denovacreations.com/images/hero2.webp" />
   </Helmet>
@@ -448,7 +448,7 @@ const HomePage = () => {
               </Button>
             </Link>
             <a href={`tel:${companyInfo.primaryPhone}`}>
-              <Button className="bg-white text-[#1F1F1F] hover:bg-white/90 px-8 py-4 text-lg rounded-sm font-semibold" aria-label="Call Denova Interiors for Free Consultation">
+              <Button className="bg-white text-[#1F1F1F] hover:bg-white/90 px-8 py-4 text-lg rounded-sm font-semibold" aria-label="Call Denova Creations for Free Consultation">
                 Call {companyInfo.primaryPhone}
               </Button>
             </a>

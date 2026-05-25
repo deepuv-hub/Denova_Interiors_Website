@@ -8,7 +8,7 @@ const SarjapurRoad = () => {
 
       <Helmet>
         <title>
-          Interior Designers in Sarjapur Road | Denova
+          Interior Designers in Sarjapur Road | Denova Creations
         </title>
         <meta
           name="description"
@@ -20,7 +20,7 @@ const SarjapurRoad = () => {
         />
         <meta
           property="og:title"
-          content="Interior Designers in Sarjapur Road | Denova"
+          content="Interior Designers in Sarjapur Road | Denova Creations"
         />
         <meta
           property="og:description"

@@ -130,7 +130,7 @@ const getCategoryCount = (category) => {
         style={{ fontFamily: 'Playfair Display, serif' }}
       >
         Real Interior Projects{" "}
-        <span className="text-[#C8A35F]">by Denova</span>
+        <span className="text-[#C8A35F]">by Denova Creations</span>
       </h1>
 
       <p className="text-sm md:text-base text-[#4A4A4A] leading-relaxed max-w-xl mx-auto">

@@ -47,7 +47,7 @@ const AboutPage = () => {
               <span className="text-[#C8A35F]"> Inspire</span>
             </h1>
             <p className="text-lg md:text-xl text-[#4A4A4A] leading-relaxed">
-              Denova Interiors is a premium interior design firm based in Bengaluru, dedicated to transforming spaces into personalized sanctuaries that reflect your style and enhance your lifestyle.
+              Denova Creations is a premium interior design firm based in Bengaluru, dedicated to transforming spaces into personalized sanctuaries that reflect your style and enhance your lifestyle.
             </p>
           </div>
         </div>
@@ -64,7 +64,7 @@ const AboutPage = () => {
               </h2>
               <div className="space-y-4 text-[#4A4A4A] leading-relaxed">
                 <p>
-                  Founded with a passion for design excellence, Denova Interiors has grown to become one of Bengaluru's trusted names in interior design. As a division of Denova Creations, we bring together creativity, craftsmanship, and commitment to deliver exceptional spaces.
+                  Founded with a passion for design excellence, Denova Creations has grown to become one of Bengaluru's trusted names in interior design. As a division of Denova Creations, we bring together creativity, craftsmanship, and commitment to deliver exceptional spaces.
                 </p>
                 <p>
                   Our journey began with a simple belief: every space has the potential to be extraordinary. Today, we've helped over 150 families and businesses transform their environments into spaces that truly reflect their personality and needs.
@@ -149,7 +149,7 @@ const AboutPage = () => {
             <div className="order-1 lg:order-2">
               <p className="text-[#C8A35F] font-medium mb-4 tracking-wide uppercase text-sm">Why Denova</p>
               <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
-                Why Choose Denova Interiors?
+                Why Choose Denova Creations?
               </h2>
               <div className="space-y-4">
                 {[

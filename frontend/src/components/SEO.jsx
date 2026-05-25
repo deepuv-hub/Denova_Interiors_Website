@@ -7,59 +7,59 @@ const DEFAULT_IMAGE = `${SITE_URL}/images/hero2.webp`;
 
 const pageMeta = {
   "/": {
-    title: "Interior Designers in Bangalore | Denova Interiors",
+    title: "Luxury Interior Designers in Bangalore | Denova Creations",
     description:
-      "Denova Interiors designs modular kitchens, wardrobes and complete home interiors in Bangalore with quality materials and end-to-end execution.",
+      "Denova Creations designs modular kitchens, wardrobes and complete home interiors in Bangalore with quality materials and end-to-end execution.",
   },
   "/about": {
-    title: "About Denova Interiors | Bangalore Interior Designers",
+    title: "About Denova Creations | Interior Designers Bangalore",
     description:
-      "Learn about Denova Interiors, a Bangalore interior design team delivering home interiors, modular kitchens, wardrobes and turnkey execution.",
+      "Learn about Denova Creations, a Bangalore interior design team delivering home interiors, modular kitchens, wardrobes and turnkey execution.",
   },
   "/services": {
-    title: "Interior Design Services in Bangalore | Denova",
+    title: "Interior Design Services in Bangalore | Denova Creations",
     description:
       "Explore complete interior design services in Bangalore including modular kitchens, wardrobes, living rooms, bedrooms and commercial interiors.",
   },
   "/projects": {
-    title: "Interior Design Projects in Bangalore | Denova",
+    title: "Interior Design Projects Bangalore | Denova Creations",
     description:
-      "View completed interior design projects by Denova Interiors across Bangalore, including apartments, villas, offices and renovation work.",
+      "View completed interior design projects by Denova Creations across Bangalore, including apartments, villas, offices and renovation work.",
   },
   "/portfolio": {
-    title: "Interior Design Portfolio | Denova Bangalore",
+    title: "Interior Design Portfolio Bangalore | Denova Creations",
     description:
-      "Browse Denova Interiors portfolio with modular kitchen, wardrobe, bedroom, living room, ceiling and office interior design ideas.",
+      "Browse Denova Creations portfolio with modular kitchen, wardrobe, bedroom, living room, ceiling and office interior design ideas.",
   },
   "/materials": {
-    title: "Interior Materials Guide | Denova Interiors",
+    title: "Interior Materials Guide Bangalore | Denova Creations",
     description:
-      "Compare plywood, laminates, hardware and finishes used in durable Bangalore home interiors by Denova Interiors.",
+      "Compare plywood, laminates, hardware and finishes used in durable Bangalore home interiors by Denova Creations.",
   },
   "/testimonials": {
-    title: "Client Testimonials | Denova Interiors Bangalore",
+    title: "Client Testimonials | Denova Creations",
     description:
-      "Read client testimonials and reviews for Denova Interiors, trusted for home interior design and execution in Bangalore.",
+      "Read client testimonials and reviews for Denova Creations, trusted for home interior design and execution in Bangalore.",
   },
   "/process": {
-    title: "Interior Design Process | Denova Interiors",
+    title: "Interior Design Process Bangalore | Denova Creations",
     description:
-      "Understand Denova Interiors' design process from consultation and planning to material selection, execution and project handover.",
+      "Understand Denova Creations' design process from consultation and planning to material selection, execution and project handover.",
   },
   "/contact": {
-    title: "Contact Denova Interiors | Bangalore",
+    title: "Contact Denova Creations | Bangalore Interior Designers",
     description:
-      "Contact Denova Interiors for home interior design, modular kitchen, wardrobe and turnkey execution services in Bangalore.",
+      "Contact Denova Creations for home interior design, modular kitchen, wardrobe and turnkey execution services in Bangalore.",
   },
   "/estimate": {
-    title: "Get Interior Design Estimate | Denova Bangalore",
+    title: "Interior Design Estimate Bangalore | Denova Creations",
     description:
       "Request a free estimate for home interiors in Bangalore, including modular kitchens, wardrobes and complete interior execution.",
   },
   "/privacy-policy": {
-    title: "Privacy Policy | Denova Interiors",
+    title: "Privacy Policy | Denova Creations",
     description:
-      "Read the Denova Interiors privacy policy for details on how enquiry and contact information is collected and used.",
+      "Read the Denova Creations privacy policy for details on how enquiry and contact information is collected and used.",
   },
 };
 
@@ -70,16 +70,16 @@ const getMeta = (pathname) => {
     const area = pathname.split("/").pop().replace(/-/g, " ");
     const titleArea = area.replace(/\b\w/g, (char) => char.toUpperCase());
     return {
-      title: `Interior Designers in ${titleArea} | Denova`,
-      description: `Get complete home interiors, modular kitchens and wardrobes in ${titleArea}, Bangalore with Denova Interiors.`,
+      title: `Interior Designers in ${titleArea} | Denova Creations`,
+      description: `Get complete home interiors, modular kitchens and wardrobes in ${titleArea}, Bangalore with Denova Creations.`,
     };
   }
 
   if (pathname.startsWith("/portfolio/")) {
     return {
-      title: "Interior Design Project | Denova Portfolio",
+      title: "Interior Design Project Bangalore | Denova Creations",
       description:
-        "View this Denova Interiors project with design details, images and interior execution highlights from Bangalore.",
+        "View this Denova Creations project with design details, images and interior execution highlights from Bangalore.",
     };
   }
 

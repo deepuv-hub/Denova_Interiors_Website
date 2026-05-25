@@ -30,25 +30,25 @@ const ThankYou = () => {
   return (
     <>
     <Helmet>
-      <title>Thank You | Denova Interiors</title>
+      <title>Thank You | Denova Creations</title>
       <meta
         name="description"
-        content="Thank you for contacting Denova Interiors. Our design expert will call you shortly about your interior design enquiry."
+        content="Thank you for contacting Denova Creations. Our design expert will call you shortly about your interior design enquiry."
       />
       <link rel="canonical" href="https://denovacreations.com/thank-you" />
-      <meta property="og:title" content="Thank You | Denova Interiors" />
+      <meta property="og:title" content="Thank You | Denova Creations" />
       <meta
         property="og:description"
-        content="Thank you for contacting Denova Interiors. Our design expert will call you shortly about your interior design enquiry."
+        content="Thank you for contacting Denova Creations. Our design expert will call you shortly about your interior design enquiry."
       />
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://denovacreations.com/thank-you" />
       <meta property="og:image" content="https://denovacreations.com/images/hero2.webp" />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="Thank You | Denova Interiors" />
+      <meta name="twitter:title" content="Thank You | Denova Creations" />
       <meta
         name="twitter:description"
-        content="Thank you for contacting Denova Interiors. Our design expert will call you shortly about your interior design enquiry."
+        content="Thank you for contacting Denova Creations. Our design expert will call you shortly about your interior design enquiry."
       />
       <meta name="twitter:image" content="https://denovacreations.com/images/hero2.webp" />
       <meta name="robots" content="noindex, follow" />

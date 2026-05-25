@@ -7,7 +7,7 @@ const JPNagar = () => {
     <div className="bg-white">
       <Helmet>
         <title>
-          Interior Designers in JP Nagar | Denova
+          Interior Designers in JP Nagar | Denova Creations
         </title>
         <meta
           name="description"
@@ -19,7 +19,7 @@ const JPNagar = () => {
         />
         <meta
           property="og:title"
-          content="Interior Designers in JP Nagar | Denova"
+          content="Interior Designers in JP Nagar | Denova Creations"
         />
         <meta
           property="og:description"

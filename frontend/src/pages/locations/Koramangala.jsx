@@ -7,7 +7,7 @@ const Koramangala = () => {
 
       <Helmet>
         <title>
-          Interior Designers in Koramangala | Denova
+          Interior Designers in Koramangala | Denova Creations
         </title>
         <meta
           name="description"
@@ -19,7 +19,7 @@ const Koramangala = () => {
         />
         <meta
           property="og:title"
-          content="Interior Designers in Koramangala | Denova"
+          content="Interior Designers in Koramangala | Denova Creations"
         />
         <meta
           property="og:description"

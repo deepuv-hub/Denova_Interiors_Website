@@ -8,7 +8,7 @@ const HSRLayout = () => {
 
       <Helmet>
         <title>
-          Interior Designers in HSR Layout | Denova
+          Interior Designers in HSR Layout | Denova Creations
         </title>
         <meta
           name="description"
@@ -20,7 +20,7 @@ const HSRLayout = () => {
         />
         <meta
           property="og:title"
-          content="Interior Designers in HSR Layout | Denova"
+          content="Interior Designers in HSR Layout | Denova Creations"
         />
         <meta
           property="og:description"

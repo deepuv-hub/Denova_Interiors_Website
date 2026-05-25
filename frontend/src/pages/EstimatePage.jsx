@@ -56,12 +56,12 @@ const EstimatePage = () => {
     <>
       <Helmet>
         <title>
-          Interior Cost Calculator Bangalore | Denova Interiors
+          Interior Design Estimate Bangalore | Denova Creations
         </title>
 
         <meta
           name="description"
-          content="Estimate your home interior cost in Bangalore with Denova Interiors. Calculate modular kitchen, wardrobe and full home interior pricing instantly."
+          content="Estimate your home interior cost in Bangalore with Denova Creations. Calculate modular kitchen, wardrobe and full home interior pricing instantly."
         />
 
         <link
@@ -71,7 +71,7 @@ const EstimatePage = () => {
 
         <meta
           property="og:title"
-          content="Interior Cost Calculator Bangalore | Denova Interiors"
+          content="Interior Design Estimate Bangalore | Denova Creations"
         />
 
         <meta
@@ -93,7 +93,7 @@ const EstimatePage = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Interior Cost Calculator Bangalore | Denova Interiors"
+          content="Interior Design Estimate Bangalore | Denova Creations"
         />
         <meta
           name="twitter:description"
