@@ -311,6 +311,45 @@ const ProjectPage = () => {
         </section>
 
       )}
+      <section className="py-14 bg-[#FAF8F4]">
+
+  <div className="container-custom text-center">
+
+    <h2 className="text-2xl font-semibold mb-6">
+      Explore More Interior Categories
+    </h2>
+
+    <div className="flex flex-wrap justify-center gap-5">
+
+      <Link to="/portfolio/residential/kitchen">
+        Kitchen Interiors
+      </Link>
+
+      <Link to="/portfolio/residential/bedroom">
+        Bedroom Interiors
+      </Link>
+
+      <Link to="/portfolio/residential/living-room">
+        Living Room Interiors
+      </Link>
+
+      <Link to="/portfolio/residential/wardrobe">
+        Wardrobe Designs
+      </Link>
+
+      <Link to="/portfolio/residential/ceiling">
+        Ceiling Designs
+      </Link>
+
+      <Link to="/portfolio/commercial/office">
+        Office Interiors
+      </Link>
+
+    </div>
+
+  </div>
+
+</section>
 
       {/* ================= CTA ================= */}
       <section className="py-14 bg-[#1F1F1F]">
