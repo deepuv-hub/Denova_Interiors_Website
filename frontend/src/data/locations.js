@@ -6,7 +6,8 @@ const locations = [
   title: "Best Interior Designers in Whitefield Bangalore | Denova Creations",
 
   description:
-    "Looking for interior designers in Whitefield Bangalore? Get modern home interiors, modular kitchens & wardrobes with free consultation from Denova Creations.",
+    description:
+  "Interior designers in Whitefield Bangalore offering modular kitchens, wardrobes, and modern home interiors by Denova Creations.",
 
   intro: `Whitefield is one of Bangalore’s fastest-growing residential hubs with premium apartments and villas. Denova Creations provides customized interior design solutions in Whitefield tailored for modern families and professionals.`,
 
@@ -49,7 +50,8 @@ const locations = [
   title: "Best Interior Designers in Indiranagar Bangalore | Denova Creations",
 
   description:
-    "Looking for interior designers in Indiranagar Bangalore? Get premium, modern & luxury home interiors with modular kitchens and wardrobes. Free consultation by Denova Creations.",
+    description:
+  "Interior designers in Indiranagar Bangalore offering luxury home interiors, modular kitchens, and modern apartment designs.",
 
   intro: `Indiranagar is one of Bangalore’s most premium residential and lifestyle areas, known for upscale apartments and independent homes. Denova Creations specializes in luxury and modern interior design solutions in Indiranagar, tailored for high-end living and stylish urban homes.`,
 
@@ -96,7 +98,8 @@ const locations = [
   title: "Affordable Interior Designers in Marathahalli Bangalore | Denova Creations",
 
   description:
-    "Looking for interior designers in Marathahalli Bangalore? Get affordable 2BHK & 3BHK home interiors, modular kitchens and wardrobes with Denova Creations.",
+    description:
+  "Affordable interior designers in Marathahalli Bangalore for 2BHK, 3BHK, modular kitchens, and modern home interiors.",
 
   intro: `Marathahalli is a major residential hub in Bangalore, popular among working professionals and families living in apartments and gated communities. Denova Creations offers affordable and functional interior design solutions in Marathahalli, focusing on space optimization and modern living needs.`,
 
@@ -144,7 +147,8 @@ const locations = [
   title: "Interior Designers in Sarjapur Road Bangalore | Modern Home Interiors by Denova Creations",
 
   description:
-    "Looking for interior designers in Sarjapur Road Bangalore? Get modern 2BHK & 3BHK interiors, modular kitchens and villa interiors with Denova Creations.",
+    description:
+  "Interior designers in Sarjapur Road Bangalore for modular kitchens, villa interiors, and modern apartment designs.",
 
   intro: `Sarjapur Road is one of Bangalore’s fastest-developing residential corridors, known for modern apartments, gated communities, and villa projects. Denova Creations offers customized interior design solutions in Sarjapur Road, focusing on functional layouts, modern aesthetics, and family-friendly living spaces.`,
 
@@ -191,7 +195,7 @@ const locations = [
   title: "Interior Designers in HSR Layout Bangalore | Modern Home Interiors by Denova Creations",
 
   description:
-    "Looking for interior designers in HSR Layout Bangalore? Get modern 2BHK & 3BHK interiors, modular kitchens and space-saving designs with Denova Creations.",
+  "Interior designers in HSR Layout Bangalore for modular kitchens, smart storage, and modern home interiors.",
 
   intro: `HSR Layout is one of Bangalore’s most well-planned residential areas, known for modern apartments and family-friendly living. Denova Creations offers customized interior design solutions in HSR Layout, focusing on functional layouts, clean aesthetics, and efficient space utilization for contemporary homes.`,
 
@@ -239,7 +243,7 @@ const locations = [
   title: "Luxury Interior Designers in Koramangala Bangalore | Denova Creations",
 
   description:
-    "Looking for interior designers in Koramangala Bangalore? Get modern, luxury home interiors, modular kitchens and premium designs with Denova Creations.",
+  "Luxury interior designers in Koramangala Bangalore for premium home interiors and modular kitchen designs.",
 
   intro: `Koramangala is one of Bangalore’s most vibrant and premium residential areas, known for modern apartments, independent homes, and a strong startup culture. Denova Creations offers luxury and contemporary interior design solutions in Koramangala, tailored for stylish urban living and design-conscious homeowners.`,
 
@@ -286,7 +290,7 @@ const locations = [
   title: "Affordable Interior Designers in Electronic City Bangalore | Denova Creations",
 
   description:
-    "Looking for interior designers in Electronic City Bangalore? Get affordable 2BHK & 3BHK interiors, modular kitchens and smart home designs with Denova Creations.",
+  "Affordable interior designers in Electronic City Bangalore for modular kitchens and modern apartment interiors.",
 
   intro: `Electronic City is one of Bangalore’s largest IT hubs, home to working professionals and growing residential communities. Denova Creations offers affordable and smart interior design solutions in Electronic City, focusing on functional layouts, quick execution, and modern living needs for apartments and compact homes.`,
 
@@ -334,7 +338,7 @@ const locations = [
   title: "Premium Interior Designers in Hebbal Bangalore | Denova Creations",
 
   description:
-    "Looking for interior designers in Hebbal Bangalore? Get premium home interiors, modular kitchens and elegant designs for apartments and villas with Denova Creations.",
+  "Premium interior designers in Hebbal Bangalore for modular kitchens, luxury apartments, and elegant home interiors.",
 
   intro: `Hebbal is one of Bangalore’s premium residential areas, known for luxury apartments, lake-facing homes, and well-developed infrastructure. Denova Creations offers elegant and high-quality interior design solutions in Hebbal, focusing on spacious layouts, modern aesthetics, and comfortable family living.`,
 
@@ -382,7 +386,7 @@ const locations = [
   title: "Interior Designers in Yelahanka Bangalore | Villa & Home Interiors by Denova Creations",
 
   description:
-    "Looking for interior designers in Yelahanka Bangalore? Get 2BHK, 3BHK and villa interiors, modular kitchens and customized home designs with Denova Creations.",
+  "Interior designers in Yelahanka Bangalore for villa interiors, modular kitchens, and modern family homes.",
 
   intro: `Yelahanka is one of Bangalore’s most peaceful residential areas, known for spacious homes, villas, and well-planned communities. Denova Creations offers customized interior design solutions in Yelahanka, focusing on functional layouts, elegant designs, and comfortable family living for apartments and independent houses.`,
 
@@ -429,8 +433,8 @@ const locations = [
   title: "Interior Designers in JP Nagar Bangalore | Home Interiors by Denova Creations",
 
   description:
-    "Looking for interior designers in JP Nagar Bangalore? Get 2BHK & 3BHK home interiors, modular kitchens and customized family home designs with Denova Creations.",
-
+  "Interior designers in JP Nagar Bangalore for modular kitchens and customized family home interiors.",
+  
   intro: `JP Nagar is one of Bangalore’s well-established residential areas, known for independent houses, apartments, and family-friendly neighborhoods. Denova Creations offers customized interior design solutions in JP Nagar, focusing on comfortable layouts, functional designs, and modern aesthetics tailored for family living.`,
 
   keywords: [
