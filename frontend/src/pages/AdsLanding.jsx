@@ -328,7 +328,7 @@ setTimeout(() => {
 
       {/* SECONDARY CTA */}
       <a 
-        href="https://wa.me/919164011181?text=Hi, I am looking for interior design for my home in Bangalore. My budget is above ₹3L. Please share details."
+        href="https://wa.me/919164466606?text=Hi, I am looking for interior design for my home in Bangalore. My budget is above ₹3L. Please share details."
         target="_blank"
         rel="noopener noreferrer"
         className="block mt-3 text-sm text-green-400 hover:text-green-300 transition"
