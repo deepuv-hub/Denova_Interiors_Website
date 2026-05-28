@@ -82,6 +82,9 @@ const ContactPage = () => {
 
         {/* LEFT */}
         <div className="max-w-lg">
+
+          <h1>Contact Denova Creations – Interior Designers in Bangalore</h1>
+          
   <h2 className="text-4xl font-bold mb-4 leading-tight text-white">
     Get Premium Home Interiors in Bangalore — Starting ₹3.5L
   </h2>
