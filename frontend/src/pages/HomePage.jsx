@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, CheckCircle2, Home, Building2, Castle, Briefcase, Wrench, Key, ChevronRight, Sparkles, Compass, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Star, CheckCircle2, Home, Building2, Castle, Briefcase, Wrench, Key, ChevronRight, Sparkles, Compass, ShieldCheck, MapPin, PhoneCall } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { companyInfo, services, projects, testimonials, processSteps, clients, clientLogoBanner } from '../data/mock';
