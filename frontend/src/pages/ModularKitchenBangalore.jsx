@@ -1,4 +1,3 @@
-```jsx
 import React from "react";
 
 function ModularKitchenBangalore() {
@@ -40,6 +39,7 @@ function ModularKitchenBangalore() {
               >
                 WhatsApp Us
               </a>
+
             </div>
 
             {/* TRUST BAR */}
@@ -121,4 +121,3 @@ function ModularKitchenBangalore() {
 }
 
 export default ModularKitchenBangalore;
-```
