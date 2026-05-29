@@ -2,6 +2,7 @@ import React, { Suspense, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "./components/ui/sonner";
+import ModularKitchenBangalore from "./pages/ModularKitchenBangalore";
 
 // Lazy pages
 const AdsLanding = React.lazy(() => import("./pages/AdsLanding"));
@@ -114,6 +115,8 @@ function App() {
   <Route path="/estimate" element={<EstimatePage />} />
   <Route path="/interior-designers/:city" element={<CityLanding />} />
   <Route path="/privacy-policy" element={withSEO(PrivacyPolicy)} />
+  <Route path="/modular-kitchen-bangalore" element={<ModularKitchenBangalore />}
+/>
   
 </Routes>
                 </Layout>
@@ -126,6 +129,8 @@ function App() {
         <Toaster position="top-right" />
       </BrowserRouter>
     </div>
+
+    
 
     
   );
