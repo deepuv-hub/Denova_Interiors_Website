@@ -276,13 +276,13 @@ const HomePage = () => {
                   src={slide.image}
                   alt={`Luxury home interior design by Denova Creations - ${slide.heading}`}
                   className={`w-full h-full object-cover transition-transform ease-out ${
-                    currentSlide === idx ? 'scale-105 opacity-80' : 'scale-100 opacity-0'
+                    currentSlide === idx ? 'scale-105 opacity-100' : 'scale-100 opacity-0'
                   }`}
                   style={{ transitionDuration: '6500ms' }}
                   loading={idx === 0 ? "eager" : "lazy"}
                 />
                 {/* Premium left-to-right gradient to keep text readable while showcasing sharp details on the right */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[#051819]/95 via-[#051819]/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#051819]/95 via-[#051819]/65 to-transparent"></div>
               </div>
             ))}
           </div>

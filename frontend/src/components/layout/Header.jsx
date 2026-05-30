@@ -49,7 +49,7 @@ const Header = () => {
   return (
     <>
       {/* 1. TOP BAR (DESKTOP ONLY - ULTRA PREMIUM EMERALD) */}
-      <div className={`bg-[#0B2526] text-stone-300 py-2.5 hidden md:block border-b border-white/5 relative z-[999] transition-all duration-300 ${
+      <div className={`bg-[#0B2526] text-stone-300 py-2.5 hidden md:block border-b border-white/5 relative z-[99999] transition-all duration-300 ${
         isTransparent ? 'h-0 overflow-hidden py-0 border-none opacity-0' : 'opacity-100'
       }`}>
         <div className="container-custom flex justify-between items-center text-xs font-medium tracking-wide">
@@ -92,13 +92,16 @@ const Header = () => {
       </div>
 
       {/* 2. MAIN HEADER (STICKY LUXURY NAVIGATION) */}
-      <header className={`sticky top-0 z-[999] transition-all duration-500 ${
-        isScrolled 
-          ? 'bg-white shadow-[0_4px_30px_rgba(0,0,0,0.05)] py-3 border-b border-stone-100 text-stone-800' 
-          : isHomePage
-            ? 'bg-transparent py-5 border-b border-transparent text-white'
-            : 'bg-white/95 backdrop-blur-md py-4 border-b border-stone-100/40 text-stone-800'
-      }`}>
+      <header 
+        style={{ transform: 'translate3d(0, 0, 0)', willChange: 'transform' }}
+        className={`sticky top-0 z-[99999] transition-all duration-300 ${
+          isScrolled 
+            ? 'bg-white shadow-[0_4px_30px_rgba(0,0,0,0.05)] py-3 border-b border-stone-100 text-stone-800' 
+            : isHomePage
+              ? 'bg-transparent py-5 border-b border-transparent text-white'
+              : 'bg-white/95 backdrop-blur-md py-4 border-b border-stone-100/40 text-stone-800'
+        }`}
+      >
         <div className="container-custom">
           <div className="flex items-center justify-between">
             {/* Brand Logo */}
