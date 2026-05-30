@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import {
   Sparkles,
   Star,
@@ -19,46 +20,141 @@ import {
   Check,
   Zap,
   Info,
-  MessageSquare
+  MessageSquare,
+  User,
+  Mail,
+  Layers,
+  Activity
 } from "lucide-react";
 import { SCRIPT_URL } from "../utils/api";
+import { Button } from "../components/ui/button";
+import { Card, CardContent } from "../components/ui/card";
+import { companyInfo } from "../data/mock";
 
-/* CLS-Prevented Safe Image Component */
-const SafeImage = ({
-  src,
-  alt,
-  width = 800,
-  height = 600,
-  priority = false
-}) => {
-  const [error, setError] = useState(false);
-  return (
-    <div
-      className="w-full overflow-hidden bg-[#FAF7F2] border border-[#E8D8C4]/40 rounded-2xl shadow-sm relative group"
-      style={{ aspectRatio: `${width}/${height}`, minHeight: "150px" }}
-    >
-      {!error ? (
-        <img
-          src={src}
-          alt={alt}
-          width={width}
-          height={height}
-          loading={priority ? "eager" : "lazy"}
-          decoding="async"
-          fetchPriority={priority ? "high" : "auto"}
-          onError={() => setError(true)}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-        />
-      ) : (
-        <div className="flex items-center justify-center h-full text-[#0F3D3E]/60 text-xs font-serif italic bg-[#FAF7F2] p-4 text-center">
-          Luxury Kitchen Design Preview
-        </div>
-      )}
-    </div>
-  );
-};
+// Cinematic Slideshow Kitchen Projects
+const heroSlides = [
+  {
+    img: "/images/kitchen1.webp",
+    title: "Luxury Modular Kitchen Designs",
+    tagline: "German-precision edge-banding and space-optimized workflows."
+  },
+  {
+    img: "/images/kitchen2.webp",
+    title: "Sleek Handleless Gola Kitchens",
+    tagline: "Contemporary aesthetics with premium soft-close Blum hardware."
+  },
+  {
+    img: "/images/kitchen3.webp",
+    title: "Boiling Water Proof Core Cabinetry",
+    tagline: "100% BWP Marine Plywood built to withstand heavy Indian cooking."
+  },
+  {
+    img: "/images/landingpagehero.webp",
+    title: "Bespoke Island Prep Kitchens",
+    tagline: "Exquisite solid quartz countertops and custom tinted glass shutters."
+  }
+];
+
+// Interactive Kitchen Layouts Data
+const kitchenLayouts = [
+  {
+    title: "L-Shaped Modular Kitchen",
+    subtitle: "Classic Workspace Efficiency",
+    desc: "Maximizes corner storage using a natural, unbroken cooking triangle (Sink-Fridge-Hob). The absolute best layout for standard Bangalore apartment layouts.",
+    features: ["Highly efficient corners", "Ample counter workspace", "Seamless working workflow"],
+    img: "/images/kitchen1.webp",
+    val: "L-Shape"
+  },
+  {
+    title: "U-Shaped Modular Kitchen",
+    subtitle: "Spacious Multi-Chef Layout",
+    desc: "Surrounds you with three counters to offer maximum storage, continuous counter space, and separate zones for wet and dry preparation. Ideal for large family homes.",
+    features: ["Maximized drawer modules", "Multiple chefs workspace", "Perfect zone separation"],
+    img: "/images/kitchen2.webp",
+    val: "U-Shape"
+  },
+  {
+    title: "Parallel Modular Kitchen",
+    subtitle: "Professional Galley Workflow",
+    desc: "Splits wet washing and dry cooking zones across two parallel counters. Bypasses corner issues completely to coordinate a rapid, highly professional workflow.",
+    features: ["Professional cooking zone", "Zero wasted corners", "Separate wet & dry zones"],
+    img: "/images/kitchen3.webp",
+    val: "Parallel"
+  },
+  {
+    title: "Freestanding Island Kitchen",
+    subtitle: "Bespoke Architectural Centerpiece",
+    desc: "Fitted with a gorgeous freestanding center counter that functions as prep space, breakfast bar, and social dining hub. Yields a premium five-star look.",
+    features: ["Social gathering hub", "Luxury aesthetic appeal", "Extra storage & prep sink"],
+    img: "/images/landingpagehero.webp",
+    val: "Island"
+  }
+];
+
+// Curated Woods Data for Kitchen carcass
+const kitchenWoods = [
+  {
+    name: "BWP Marine Plywood (IS:710)",
+    bestFor: "Wet sink cabinets, bottom carcasses, utility areas",
+    benefit: "100% Boiling Water Proof synthetic resin bonding. Zero delamination or termite risk under heavy water exposure.",
+    rank: "Mandatory Core"
+  },
+  {
+    name: "BWR Moisture Plywood (IS:303)",
+    bestFor: "Dry upper cupboards, storage lofts, pantry shelves",
+    benefit: "Boiling Water Resistant resin structure. Highly durable and heat resilient for typical kitchen overhead boxes.",
+    rank: "Standard Core"
+  },
+  {
+    name: "German Precision Edge-Banding",
+    bestFor: "Carcass edges, drawer panels, shutter borders",
+    benefit: "Automated millimeter-accurate hotmelt bonding that leaves zero gaps. Prevents moisture ingress and panel swelling.",
+    rank: "Factory Shield"
+  }
+];
+
+// Curated Bangalore Customer Testimonials
+const kitchenReviews = [
+  {
+    name: "Vikram & Aditi Hegde",
+    location: "Godrej Eternity, Kanakapura Road",
+    quote: "Denova designed our U-shaped parallel kitchen. They mapped our kitchen triangle perfectly according to Vastu, and the BWP marine ply under the sink gives us absolute peace of mind. Exceptional factory edge-banding quality!",
+    rating: 5
+  },
+  {
+    name: "Rajesh Sekhar",
+    location: "Prestige Falcon City, Bangalore",
+    quote: "Outstanding experience. The 3D render matched the final installation exactly. The Blum soft-close tandem drawers are silent, and the quartz countertop feels bulletproof. They delivered exactly on day 45 as promised.",
+    rating: 5
+  }
+];
+
+// Interactive FAQ Coves
+const kitchenFaqs = [
+  {
+    q: "Why is BWP Plywood mandatory for modular kitchens?",
+    a: "BWP (Boiling Water Proof) marine-grade plywood (certified IS:710) uses premium synthetic phenol-formaldehyde resin. This allows the core wood to withstand direct water contact and boiling water up to 72 hours without swelling or delamination. We mandate BWP for all under-sink boxes and lower carcass modules."
+  },
+  {
+    q: "How are modular kitchen costs calculated in Bangalore?",
+    a: "Modular kitchen pricing is calculated based on Running Feet (R.Ft) of the horizontal space, separating the base cabinets, wall cabinets, and countertop quartz. The core carcass material (BWP vs BWR), selected surface finish (laminate vs acrylic), and tandem accessories (Hettich drawers, pantry pull-outs) determine the final estimate."
+  },
+  {
+    q: "What is the delivery turnaround timeline for Denova modular kitchens?",
+    a: "Our strict turnaround timeline is 45 days. Because all modular components are precision-cut, pre-drilled, and hotmelt edge-banded in our automated factory, onsite assembly at your Bangalore apartment takes only 5 to 7 days, ensuring a clean, dust-free installation."
+  },
+  {
+    q: "Do you design according to Vastu principles?",
+    a: "Yes, all our space layouts respect the Kitchen Triangle and Vastu guidelines. We coordinate the stove (Fire element) to face East/South-East and the washing sink (Water element) to face North-East, keeping them properly separated for balance and workflow."
+  }
+];
 
 const ModularKitchenBangalore = () => {
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [activeFaq, setActiveFaq] = useState(null);
+
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -76,16 +172,12 @@ const ModularKitchenBangalore = () => {
     landing_page: "",
   });
 
-  const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [activeFaq, setActiveFaq] = useState(null);
-
-  // Set UTM parameters on mount
+  // UTM parameters setup
   useEffect(() => {
     const url = new URL(window.location.href);
     const utmData = {
-      utm_source: url.searchParams.get("utm_source") || localStorage.getItem("utm_source") || "",
-      utm_medium: url.searchParams.get("utm_medium") || localStorage.getItem("utm_medium") || "",
+      utm_source: url.searchParams.get("utm_source") || localStorage.getItem("utm_source") || "GoogleAds",
+      utm_medium: url.searchParams.get("utm_medium") || localStorage.getItem("utm_medium") || "cpc",
       utm_campaign: url.searchParams.get("utm_campaign") || localStorage.getItem("utm_campaign") || "",
       utm_content: url.searchParams.get("utm_content") || localStorage.getItem("utm_content") || "",
       utm_term: url.searchParams.get("utm_term") || localStorage.getItem("utm_term") || "",
@@ -93,9 +185,7 @@ const ModularKitchenBangalore = () => {
     };
 
     Object.entries(utmData).forEach(([key, value]) => {
-      if (value) {
-        localStorage.setItem(key, value);
-      }
+      if (value) localStorage.setItem(key, value);
     });
 
     setForm((prev) => ({
@@ -105,71 +195,69 @@ const ModularKitchenBangalore = () => {
     }));
   }, []);
 
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
+  // Automatic slide cycle for Hero Background
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSlideIndex((prev) => (prev + 1) % heroSlides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
-    setErrors({
-      ...errors,
-      [e.target.name]: "",
-    });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
   };
 
   const validateForm = () => {
-    let newErrors = {};
-
-    if (!form.name?.trim()) newErrors.name = "Name is required";
+    const tempErrors = {};
+    if (!form.name.trim()) tempErrors.name = "Full Name is required";
     
+    const cleanedPhone = form.phone.replace(/\D/g, "");
     if (!form.phone.trim()) {
-      newErrors.phone = "Phone number is required";
-    } else if (!/^[6-9]\d{9}$/.test(form.phone)) {
-      newErrors.phone = "Enter a valid 10-digit number";
+      tempErrors.phone = "Phone number is required";
+    } else if (cleanedPhone.length !== 10) {
+      tempErrors.phone = "Must be a valid 10-digit number";
     }
 
     if (!form.email.trim()) {
-      newErrors.email = "Email is required";
+      tempErrors.email = "Email address is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      newErrors.email = "Enter a valid email address";
+      tempErrors.email = "Enter a valid email address";
     }
 
     if (!form.location.trim()) {
-      newErrors.location = "Pincode or service area is required";
+      tempErrors.location = "Bangalore location / pincode is required";
     }
 
     if (!form.kitchenType) {
-      newErrors.kitchenType = "Select kitchen layout";
+      tempErrors.kitchenType = "Please select a kitchen layout";
     }
 
     if (!form.budget) {
-      newErrors.budget = "Select budget range";
+      tempErrors.budget = "Please select a budget range";
     }
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
   };
 
   const scrollToForm = () => {
     const formEl = document.getElementById("kitchenLeadForm");
     if (formEl) {
-      formEl.scrollIntoView({ behavior: "smooth" });
+      formEl.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   };
 
   const handleSelectKitchenType = (type) => {
-    setForm((prev) => ({
-      ...prev,
-      kitchenType: type,
-    }));
+    setForm((prev) => ({ ...prev, kitchenType: type }));
     scrollToForm();
   };
 
   const handleSelectBudget = (budget) => {
-    setForm((prev) => ({
-      ...prev,
-      budget: budget,
-    }));
+    setForm((prev) => ({ ...prev, budget: budget }));
     scrollToForm();
   };
 
@@ -180,19 +268,13 @@ const ModularKitchenBangalore = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const isValid = validateForm();
-    if (!isValid) return;
+    if (!validateForm()) return;
 
     const cleanedPhone = form.phone.replace(/\D/g, "").slice(0, 10);
-    if (cleanedPhone.length !== 10) {
-      alert("Please enter a valid 10-digit phone number");
-      return;
-    }
+    setLoading(true);
 
     try {
-      setLoading(true);
-
-      // Save to Google Sheets
+      // Save details to Google Sheets App Script URL
       await fetch(SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
@@ -201,16 +283,16 @@ const ModularKitchenBangalore = () => {
         },
         body: JSON.stringify({
           name: form.name,
-          phone: form.phone,
+          phone: cleanedPhone,
           email: form.email,
           location: form.location,
           propertyType: `Modular Kitchen (${form.kitchenType})`,
-          possession: "Modular Kitchen Service",
+          possession: "Modular Kitchen Service Page",
           budget: form.budget,
           message: form.message || `Interested in ${form.kitchenType} modular kitchen.`,
           source: "Modular Kitchen Bangalore LP",
-          utm_source: localStorage.getItem("utm_source") || "",
-          utm_medium: localStorage.getItem("utm_medium") || "",
+          utm_source: localStorage.getItem("utm_source") || "GoogleAds",
+          utm_medium: localStorage.getItem("utm_medium") || "cpc",
           utm_campaign: localStorage.getItem("utm_campaign") || "",
           utm_content: localStorage.getItem("utm_content") || "",
           utm_term: localStorage.getItem("utm_term") || "",
@@ -220,1283 +302,863 @@ const ModularKitchenBangalore = () => {
         }),
       });
 
-      // GTM event push
+      // GTM custom conversion trigger
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: "lead_conversion",
         page: "modular_kitchen_bangalore"
       });
 
-      // Google Ads event tracking
+      // Direct Google Ads conversion script triggers
       if (window.gtag) {
         window.gtag("event", "conversion", {
           send_to: "AW-11303451952/63-FCIP1rZ8cELD6840q"
         });
       }
 
-      // WhatsApp Redirect Option on submission or immediate thank you
       setTimeout(() => {
         window.location.href = "/thank-you?source=kitchen";
       }, 1000);
 
     } catch (err) {
       console.error("Submission issue:", err);
+      alert("Something went wrong. Please check your network and try again.");
     } finally {
       setLoading(false);
     }
   };
 
-  const kitchenTypes = [
-    {
-      title: "L-Shape Modular Kitchen",
-      desc: "Maximizes corner efficiency with a natural cooking triangle, ideal for medium-sized apartments.",
-      features: ["Highly efficient corners", "Ample counter space", "Seamless working flow"],
-      img: "/images/kitchen1.webp",
-      val: "L-Shape"
-    },
-    {
-      title: "U-Shape Modular Kitchen",
-      desc: "Provides maximum storage and three spacious counters, perfect for large families.",
-      features: ["Maximized drawer modules", "Multiple chefs space", "Excellent zone separation"],
-      img: "/images/kitchen2.webp",
-      val: "U-Shape"
-    },
-    {
-      title: "Parallel Modular Kitchen",
-      desc: "Splits storage and appliances across two parallel counters for professional-grade workflow.",
-      features: ["Professional cooking zone", "Zero wasted corners", "Separate wet & dry zones"],
-      img: "/images/kitchen3.webp",
-      val: "Parallel"
-    },
-    {
-      title: "Island Modular Kitchen",
-      desc: "Includes a luxurious freestanding center unit that functions as prep space and a breakfast counter.",
-      features: ["Social gathering hub", "Luxury aesthetic appeal", "Extra storage & prep sink"],
-      img: "/images/landingpagehero.webp",
-      val: "Island"
-    },
-    {
-      title: "Straight Modular Kitchen",
-      desc: "A minimalist, space-saving linear setup perfect for studio apartments and compact homes.",
-      features: ["Ultra-compact design", "Cost-effective layout", "Perfect for micro-homes"],
-      img: "/images/kitchen1.webp",
-      val: "Straight"
-    },
-    {
-      title: "Open Concept Kitchen",
-      desc: "Flows seamlessly into living/dining areas for a modern, airy, and highly social lifestyle.",
-      features: ["Integrated living flow", "Modern premium look", "Fosters social cooking"],
-      img: "/images/kitchen2.webp",
-      val: "Open Concept"
-    },
-    {
-      title: "Contemporary Modular Kitchen",
-      desc: "Features flat slab handleless profiles, smart pull-out hardware, and minimalist luxury materials.",
-      features: ["Gola-profile handleless", "Built-in appliances slot", "Anti-fingerprint matte"],
-      img: "/images/kitchen3.webp",
-      val: "Contemporary"
-    },
-    {
-      title: "Luxury Modular Kitchen",
-      desc: "Crafted with custom tinted glass panels, integrated LED lighting, and premium German hardware.",
-      features: ["Blum servo-drive lifts", "High-end quartz tops", "State-of-the-art aesthetics"],
-      img: "/images/landingpagehero.webp",
-      val: "Luxury Premium"
-    }
-  ];
-
-  const valueProps = [
-    { title: "Custom Designs", desc: "100% personalized layouts tailored to your unique cooking habits and storage needs.", icon: Sparkles },
-    { title: "Factory Finish", desc: "Precision edge-banding and manufacturing on state-of-the-art German machinery.", icon: Award },
-    { title: "Premium Hardware", desc: "Equipped with authentic soft-close runners and hinges from Hettich and Blum.", icon: ShieldCheck },
-    { title: "Space Optimization", desc: "Intelligent corner solutions, tall pantry pulls, and smart organizers that maximize utility.", icon: Clock },
-    { title: "Vastu-Friendly Layouts", desc: "Expert placement of cooking stove (Fire) and washing sink (Water) according to Vastu.", icon: Compass },
-    { title: "Transparent Pricing", desc: "Detailed breakdown of pricing before order confirmation with absolutely no hidden costs.", icon: DollarSign },
-    { title: "End-to-End Execution", desc: "Seamless project management from preliminary measurements to final structural handover.", icon: Users },
-    { title: "3D Visualization", desc: "High-resolution, photorealistic virtual 3D drafts to preview finishes before production.", icon: Zap },
-    { title: "Experienced Designers", desc: "Designed by senior interior architects specializing specifically in premium kitchen ergonomics.", icon: CheckCircle }
-  ];
-
-  const processTimeline = [
-    { title: "Consultation", desc: "1-on-1 discussion with a senior modular kitchen specialist to discuss layout preferences and requirements." },
-    { title: "Design Planning", desc: "Our designer drafts a personalized structural layout optimization plan according to your kitchen size." },
-    { title: "3D Visualization", desc: "Review high-definition photorealistic 3D kitchen renders. Revise colors, cabinets, and appliances." },
-    { title: "Material Selection", desc: "Visit our Bangalore experience center to feel premium materials, hardware, and custom finishes." },
-    { title: "Manufacturing", desc: "Precision components are manufactured at our state-of-the-art facility to guarantee zero gaps." },
-    { title: "Installation", desc: "Our professional engineers assemble the modular kitchen on-site in a neat, dust-free process within 7 days." },
-    { title: "Final Handover", desc: "Strict quality check verification, deep cleaning, and formal structural handover with warranty certificates." }
-  ];
-
-  const premiumFinishes = [
-    { name: "Acrylic Finish", desc: "High-gloss, mirror-like premium surface that adds ultimate contemporary luxury and brightness.", resilience: "Extremely high gloss, easy to wipe down" },
-    { name: "Premium Laminate", desc: "Super durable, scratch-resistant surface available in exquisite woodgrains, solid colors, and textures.", resilience: "Highly impact resistant, perfect for heavy daily use" },
-    { name: "PU Finish", desc: "Seamless, sleek liquid spray-painted boards with immaculate details. Available in modern matte or high-gloss.", resilience: "Completely seamless edges, premium designer feel" },
-    { name: "Natural Veneer", desc: "Thin slices of authentic premium timber overlaid on sturdy boards, reflecting rich organic luxury.", resilience: "Unique natural wood textures, timeless classic value" },
-    { name: "Glass Finish", desc: "Tempered back-painted glass panels built inside aluminum frames for a futuristic, modern look.", resilience: "Completely heat and water resistant, sleek luxury style" },
-    { name: "Sleek Matte Finish", desc: "Anti-fingerprint, low-reflection surfaces offering a sophisticated, modern Scandinavian touch.", resilience: "Stain resistant, zero reflections, soft touch feel" },
-    { name: "High Gloss Finish", desc: "Highly reflective polymer coated boards that bounce light and make compact kitchens feel spacious.", resilience: "Bounces natural light, elevates visual depth" }
-  ];
-
-  const pricingPlans = [
-    {
-      name: "Basic Modular",
-      price: "₹1.5 Lakhs",
-      desc: "Perfect for rental homes or compact apartments requiring robust quality at an optimized price point.",
-      features: [
-        "Premium Marine Grade BWP Plywood",
-        "Durable Matte/Gloss Laminate Finish",
-        "Branded Soft-Close Hinges & Sliders",
-        "Standard Kitchen Layout Configuration",
-        "Includes Spice Pull-out & Cutlery Tray",
-        "5-Year Material Warranty"
-      ],
-      val: "Basic Plan"
-    },
-    {
-      name: "Premium Modular",
-      price: "₹2.5 Lakhs",
-      desc: "Our most popular choice. German-engineered hardware paired with high-gloss luxury finishes for modern families.",
-      features: [
-        "Moisture-Proof High Density HDMR/BWP",
-        "Anti-Scratch Acrylic or Sleek PU Finish",
-        "Premium Hettich Soft-Close Drawer Systems",
-        "Customized Space-Saving Corner Carousel",
-        "Dedicated Chimney & Built-In Hob Cabinets",
-        "10-Year Comprehensive Warranty",
-        "Free 3D Design & Site Measurement"
-      ],
-      val: "Premium Plan",
-      popular: true
-    },
-    {
-      name: "Luxury Modular",
-      price: "₹4.5 Lakhs",
-      desc: "The ultimate culinary masterpiece. Handleless Gola profiles, integrated lighting, and Blum electronic lift systems.",
-      features: [
-        "Premium BWP Plywood & Aluminum Profiles",
-        "Exquisite Lacquered Glass or Natural Veneer",
-        "Blum Legrabox & Servo-Drive Automation",
-        "Integrated LED Warm Profile Lighting",
-        "Tall Pantry Pullman Unit & Magic Corner",
-        "Premium Quartz/Granite Countertop Assist",
-        "Lifetime Hardware Warranty Support",
-        "VIP Priority Engineering & Handover"
-      ],
-      val: "Luxury Plan"
-    }
-  ];
-
-  const testimonials = [
-    {
-      quote: "Denova Creations transformed our kitchen in Whitefield into a functional masterpiece. The parallel layout optimizes every square inch, and the Hettich hardware feels absolutely seamless. Highly recommend their professional designers!",
-      name: "Shreya & Raghavan Swamy",
-      loc: "Whitefield, Bangalore",
-      rating: 5
-    },
-    {
-      quote: "We were skeptical about the 45-day delivery promise, but Denova completed our U-shape acrylic kitchen on the 41st day. The factory finish edge-banding is perfect—miles ahead of local carpenter work. Transparent pricing, highly satisfied.",
-      name: "Karthik Gowda",
-      loc: "HSR Layout, Bangalore",
-      rating: 5
-    },
-    {
-      quote: "The Blum lift-ups in our open island kitchen are a game changer. Denova's designers paid special attention to Vastu and custom pantry spacing. The Deep Emerald and Warm Beige accents match our living room aesthetics beautifully.",
-      name: "Meera Sen",
-      loc: "Indiranagar, Bangalore",
-      rating: 5
-    }
-  ];
-
-  const serviceAreas = [
-    "Whitefield", "Sarjapur Road", "Electronic City", "HSR Layout",
-    "Marathahalli", "Bellandur", "Indiranagar", "Jayanagar", "Koramangala"
-  ];
-
-  const faqs = [
-    {
-      q: "What is the average cost of a modular kitchen in Bangalore?",
-      a: "The cost depends on layout size, materials, and hardware. Typically, a standard straight modular kitchen starts at ₹1.5 Lakhs. Premium L-shape or Parallel kitchens with German hardware range from ₹2.5 Lakhs to ₹4 Lakhs, while high-end luxury kitchens with automated lifts and glass/veneer finishes range from ₹4.5 Lakhs upwards."
-    },
-    {
-      q: "What is the timeline for manufacturing and installing the kitchen?",
-      a: "We offer a strict 45-Day Delivery Guarantee. All cabinet modules are manufactured in our high-precision factory, which takes approximately 30-35 days. The actual on-site assembly and installation at your Bangalore home is completed within 5 to 7 days in a clean, dust-free environment."
-    },
-    {
-      q: "What kind of warranty does Denova Creations offer?",
-      a: "We offer a 10-Year Structural Warranty on our Boiling Water Proof (BWP) marine plywood boards and high-density materials against water ingress and delamination. Additionally, we provide a lifetime functional warranty on premium drawer runners and hinges from our hardware partners Hettich and Blum."
-    },
-    {
-      q: "Which materials are best suited for Indian cooking environments?",
-      a: "Indian cooking involves heavy moisture, spices, and heat. We highly recommend Boiling Water Proof (BWP) Marine Grade Plywood or high-density water-resistant HDMR for carcases. For shutters, Premium Acrylic or PU paint finishes are excellent choices because they are highly moisture-proof and easy to wipe clean."
-    },
-    {
-      q: "Can I fully customize the sizes of drawers and cabinets?",
-      a: "Yes. Unlike generic modular brands that only offer standard box sizes, Denova Creations custom-manufactures every module at our factory. We adapt drawer heights, cupboard depths, and pull-out systems specifically to your kitchen's dimensions and your appliance storage preferences."
-    },
-    {
-      q: "Are there No-Cost EMI or financing options available?",
-      a: "Yes, we partner with leading financial institutions to offer zero-percent interest EMI payment options for up to 12 months. Our design consultant will provide you with easy approval plans during the initial layout budgeting phase."
-    },
-    {
-      q: "Is the initial site measurement and design consultation free?",
-      a: "Yes, absolutely. Our initial package includes site measurement, 2D kitchen layout planning, material material showcase, and a transparent pricing quote at zero cost or obligation."
-    },
-    {
-      q: "How does the pricing vary by kitchen layouts and dimensions?",
-      a: "Kitchen pricing is calculated based on running foot dimensions, selected shutter finishes, and internal hardware modules (e.g., plain shelves vs. wire baskets vs. Hettich InnoTech drawers). We provide a line-item estimate so you can selectively upgrade or downgrade to fit your budget."
-    }
-  ];
-
   return (
-    <div className="bg-[#FAF8F5] text-stone-800 antialiased min-h-screen">
+    <>
       <Helmet>
-        <title>Premium Modular Kitchen Designers in Bangalore | Denova Creations</title>
+        <title>Premium Modular Kitchen Designers Bangalore | Denova Creations</title>
         <meta
           name="description"
-          content="Premium modular kitchens in Bangalore by Denova Creations. Explore customizable L-shape, U-shape, parallel, and island layouts with 10-year warranty, factory finish, and soft-close German hardware."
+          content="Get a luxury modular kitchen in Bangalore. BWP waterproof marine plywood, German precision edge-banding, Hettich soft-close hardware & 45-day guaranteed delivery."
         />
         <link rel="canonical" href="https://denovacreations.com/modular-kitchen-bangalore" />
-        <meta property="og:title" content="Premium Modular Kitchen Designers in Bangalore | Denova Creations" />
-        <meta
-          property="og:description"
-          content="Transform your cooking space with premium modular kitchens in Bangalore. Get customized factory-finish layouts, 10-year warranty, and premium soft-close hardware. Book a free consultation!"
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://denovacreations.com/modular-kitchen-bangalore" />
-        <meta property="og:image" content="https://denovacreations.com/images/kitchen1.webp" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Premium Modular Kitchen Designers in Bangalore | Denova Creations" />
-        <meta
-          name="twitter:description"
-          content="Premium modular kitchens in Bangalore with 45-day delivery guarantee. Get customized, factory-finished setups with Blum & Hettich fittings. Book your free consultation now!"
-        />
-        <meta name="twitter:image" content="https://denovacreations.com/images/kitchen1.webp" />
-        {/* Local Business Schema */}
+        
+        {/* Product schema mapping for modular kitchens */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            name: "Denova Creations",
-            image: "https://denovacreations.com/images/kitchen1.webp",
-            url: "https://denovacreations.com/modular-kitchen-bangalore",
-            telephone: "+91-9164466606",
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: "373/2, Begur Hulimavu Road",
-              addressLocality: "Bengaluru",
-              addressRegion: "Karnataka",
-              postalCode: "560114",
-              addressCountry: "IN",
+            "@type": "Product",
+            "name": "Luxury Modular Kitchen Interiors Bangalore",
+            "image": "https://denovacreations.com/images/kitchen1.webp",
+            "description": "Bespoke modular kitchens designed with 100% waterproof BWP marine plywood, Gola profiles, and German precision automation.",
+            "brand": {
+              "@type": "Brand",
+              "name": "Denova Creations"
             },
-            areaServed: {
-              "@type": "Place",
-              name: "Bangalore",
-            },
-            priceRange: "INR 150000+",
-          })}
-        </script>
-        {/* FAQ Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: faqs.map((faq) => ({
-              "@type": "Question",
-              name: faq.q,
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: faq.a,
-              },
-            })),
+            "offers": {
+              "@type": "AggregateOffer",
+              "priceCurrency": "INR",
+              "lowPrice": "150000",
+              "highPrice": "1200000",
+              "offerCount": "150"
+            }
           })}
         </script>
       </Helmet>
 
-      {/* 1. HERO SECTION (SPLIT SCREEN DESKTOP - HIGH CONVERTING) */}
-      <section className="relative bg-gradient-to-b from-[#FAF7F2] to-white pt-8 pb-16 lg:py-24 overflow-hidden border-b border-stone-100">
-        <div className="max-w-7xl mx-auto px-4 w-full grid lg:grid-cols-12 gap-12 items-center">
+      <div className="bg-[#FAF8F5] text-stone-850 antialiased min-h-screen relative pb-16 md:pb-0">
+
+        {/* 1. AUTO-SLIDING CINEMATIC HERO & GLASSMORPHIC LEAD CAPTURE FORM */}
+        <section className="relative min-h-[92vh] flex items-center bg-[#071F20] pt-24 pb-16 overflow-hidden select-none">
           
-          {/* LEFT CONTENT */}
-          <div className="lg:col-span-7 text-left">
-            {/* LUXURY TRUST TAG */}
-            <div className="inline-flex items-center gap-2 bg-[#E8D8C4]/20 border border-[#E8D8C4] px-4 py-1.5 rounded-full text-[#0F3D3E] text-xs font-semibold uppercase tracking-wider mb-6">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Bangalore's Premier Kitchen Architects</span>
-            </div>
-
-            {/* HIGHLY OPTIMIZED H1 */}
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold font-serif leading-tight text-stone-900 tracking-tight">
-              Premium Modular Kitchen Designers in <span className="text-[#0F3D3E] underline decoration-[#E8D8C4] decoration-4 underline-offset-4">Bangalore</span>
-            </h1>
-
-            {/* EMOTIONAL PERSUASIVE SUBTITLE */}
-            <p className="mt-6 text-lg md:text-xl font-medium text-stone-700 max-w-2xl leading-relaxed">
-              Crafting state-of-the-art culinary spaces optimized for space, beauty, and Indian cooking ergonomics. Custom-built with water-proof marine ply and German-engineered soft-close hardware.
-            </p>
-
-            <p className="mt-4 text-base text-stone-600 max-w-xl leading-relaxed">
-              Why settle for generic carpenter installations when you can have customized, machine-perfect precision from Bangalore's premium luxury interior brand?
-            </p>
-
-            {/* KEY METRIC BADGES ROW */}
-            <div className="mt-8 pt-8 border-t border-stone-200/60 grid grid-cols-3 gap-4 text-left">
-              <div>
-                <p className="text-2xl md:text-3xl font-bold text-[#0F3D3E] font-serif">150+</p>
-                <p className="text-[10px] md:text-xs text-stone-500 uppercase tracking-widest font-semibold mt-1">Kitchens Delivered</p>
-              </div>
-              <div>
-                <p className="text-2xl md:text-3xl font-bold text-[#0F3D3E] font-serif">4.8★</p>
-                <p className="text-[10px] md:text-xs text-stone-500 uppercase tracking-widest font-semibold mt-1">Google Rating</p>
-              </div>
-              <div>
-                <p className="text-2xl md:text-3xl font-bold text-[#0F3D3E] font-serif">10 Yr</p>
-                <p className="text-[10px] md:text-xs text-stone-500 uppercase tracking-widest font-semibold mt-1">Material Warranty</p>
-              </div>
-            </div>
-
-            {/* TRUST SIGNALS LIST */}
-            <div className="mt-6 flex flex-wrap items-center gap-y-2 gap-x-4 text-xs text-stone-500 italic">
-              <span className="flex items-center gap-1"><Check className="w-3.5 h-3.5 text-[#0F3D3E]" /> 45 Days Delivery Guarantee</span>
-              <span className="flex items-center gap-1">•</span>
-              <span className="flex items-center gap-1"><Check className="w-3.5 h-3.5 text-[#0F3D3E]" /> Factory-Finished Precision</span>
-              <span className="flex items-center gap-1">•</span>
-              <span className="flex items-center gap-1"><Check className="w-3.5 h-3.5 text-[#0F3D3E]" /> Blum & Hettich Hardware</span>
-            </div>
-
-            {/* CTAS FOR MOBILE INSTEAD OF SCROLLING DOWN */}
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 lg:hidden">
-              <button
-                onClick={scrollToForm}
-                className="bg-[#0F3D3E] hover:bg-[#0B2C2D] text-white px-8 py-3.5 rounded-full font-semibold text-sm uppercase tracking-wider shadow-md hover:shadow-lg transition duration-300 w-full sm:w-auto text-center"
-              >
-                Get Free Consultation
-              </button>
-              <a
-                href="#gallery-section"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("gallery-section")?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="border-2 border-[#0F3D3E] text-[#0F3D3E] hover:bg-[#0F3D3E] hover:text-white px-8 py-3 rounded-full font-semibold text-sm uppercase tracking-wider transition duration-300 w-full sm:w-auto text-center"
-              >
-                View Kitchen Designs
-              </a>
-            </div>
-          </div>
-
-          {/* RIGHT SIDE FORM (HERO CONVERSIONS CONSOLE) */}
-          <div className="lg:col-span-5 w-full">
-            <form
-              id="kitchenLeadForm"
-              onSubmit={handleSubmit}
-              className="bg-white p-6 md:p-8 rounded-3xl shadow-[0_15px_40px_rgba(0,0,0,0.06)] border border-[#E8D8C4]/60 text-stone-800 flex flex-col gap-4 w-full"
-            >
-              <div>
-                <span className="text-[#0F3D3E] text-xs font-bold uppercase tracking-wider">High-Converting Offer</span>
-                <h2 className="text-xl md:text-2xl font-bold font-serif leading-tight text-stone-900 mt-0.5">
-                  Request Free Design Plan
-                </h2>
-                <p className="text-xs text-stone-500 mt-1">
-                  Get a custom 2D layout planning & transparent estimate from our senior architect.
-                </p>
-              </div>
-
-              {/* INPUT FIELDS */}
-              <div className="flex flex-col gap-3">
-                {/* NAME */}
-                <div>
-                  <label htmlFor="name" className="sr-only">Your Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Your Name"
-                    value={form.name}
-                    required
-                    onChange={handleChange}
-                    className="w-full p-3 border border-stone-200 rounded-xl bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#0F3D3E] focus:border-transparent text-sm transition duration-200 text-stone-800 placeholder-stone-400"
-                  />
-                  {errors.name && <p className="text-red-600 text-xs mt-1 font-medium">{errors.name}</p>}
-                </div>
-
-                {/* PHONE */}
-                <div>
-                  <label htmlFor="phone" className="sr-only">Phone Number</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    placeholder="10-Digit Mobile Number"
-                    maxLength="10"
-                    value={form.phone}
-                    required
-                    onChange={handleChange}
-                    className="w-full p-3 border border-stone-200 rounded-xl bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#0F3D3E] focus:border-transparent text-sm transition duration-200 text-stone-800 placeholder-stone-400"
-                  />
-                  {errors.phone && <p className="text-red-600 text-xs mt-1 font-medium">{errors.phone}</p>}
-                </div>
-
-                {/* EMAIL */}
-                <div>
-                  <label htmlFor="email" className="sr-only">Email Address</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Email Address"
-                    value={form.email}
-                    required
-                    onChange={handleChange}
-                    className="w-full p-3 border border-stone-200 rounded-xl bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#0F3D3E] focus:border-transparent text-sm transition duration-200 text-stone-800 placeholder-stone-400"
-                  />
-                  {errors.email && <p className="text-red-600 text-xs mt-1 font-medium">{errors.email}</p>}
-                </div>
-
-                {/* LOCATION */}
-                <div>
-                  <label htmlFor="location" className="sr-only">Pincode or Service Area in Bangalore</label>
-                  <input
-                    type="text"
-                    id="location"
-                    name="location"
-                    placeholder="E.g., Whitefield, HSR Layout, 560066"
-                    value={form.location}
-                    required
-                    onChange={handleChange}
-                    className="w-full p-3 border border-stone-200 rounded-xl bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#0F3D3E] focus:border-transparent text-sm transition duration-200 text-stone-800 placeholder-stone-400"
-                  />
-                  {errors.location && <p className="text-red-600 text-xs mt-1 font-medium">{errors.location}</p>}
-                </div>
-
-                {/* KITCHEN LAYOUT SELECT */}
-                <div>
-                  <label htmlFor="kitchenType" className="sr-only">Select Kitchen Layout</label>
-                  <select
-                    id="kitchenType"
-                    name="kitchenType"
-                    value={form.kitchenType}
-                    required
-                    onChange={handleChange}
-                    className="w-full p-3 border border-stone-200 rounded-xl bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#0F3D3E] focus:border-transparent text-sm transition duration-200 text-stone-600"
-                  >
-                    <option value="">Select Kitchen Layout</option>
-                    <option value="L-Shape">L-Shape Kitchen</option>
-                    <option value="U-Shape">U-Shape Kitchen</option>
-                    <option value="Parallel">Parallel Kitchen</option>
-                    <option value="Island">Island Kitchen</option>
-                    <option value="Straight">Straight Kitchen</option>
-                    <option value="Open Concept">Open Layout Kitchen</option>
-                    <option value="Contemporary">Contemporary Design</option>
-                    <option value="Luxury Custom">Luxury Modular Kitchen</option>
-                  </select>
-                  {errors.kitchenType && <p className="text-red-600 text-xs mt-1 font-medium">{errors.kitchenType}</p>}
-                </div>
-
-                {/* BUDGET RANGE SELECT */}
-                <div>
-                  <label htmlFor="budget" className="sr-only">Select Budget Range</label>
-                  <select
-                    id="budget"
-                    name="budget"
-                    value={form.budget}
-                    required
-                    onChange={handleChange}
-                    className="w-full p-3 border border-stone-200 rounded-xl bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#0F3D3E] focus:border-transparent text-sm transition duration-200 text-stone-600"
-                  >
-                    <option value="">Select Budget Range</option>
-                    <option value="₹1.5L - ₹2.5L">₹1.5 Lakhs - ₹2.5 Lakhs (Basic)</option>
-                    <option value="₹2.5L - ₹4.5L">₹2.5 Lakhs - ₹4.5 Lakhs (Premium - Recommended)</option>
-                    <option value="₹4.5L+">₹4.5 Lakhs+ (Luxury Bespoke)</option>
-                  </select>
-                  {errors.budget && <p className="text-red-600 text-xs mt-1 font-medium">{errors.budget}</p>}
-                </div>
-
-                {/* CUSTOM MESSAGE */}
-                <div>
-                  <label htmlFor="message" className="sr-only">Custom Message (Optional)</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows="2"
-                    placeholder="Any specific requests? E.g., parallel layout, Hettich fittings, quartz countertop..."
-                    value={form.message}
-                    onChange={handleChange}
-                    className="w-full p-3 border border-stone-200 rounded-xl bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#0F3D3E] focus:border-transparent text-sm transition duration-200 text-stone-800 placeholder-stone-400 resize-none"
-                  ></textarea>
-                </div>
-              </div>
-
-              {/* ACTION BUTTON */}
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-[#0F3D3E] hover:bg-[#0B2C2D] text-[#E8D8C4] hover:text-white font-bold py-3.5 px-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 text-center text-sm uppercase tracking-wider flex items-center justify-center gap-2 mt-2"
-              >
-                {loading ? (
-                  <>
-                    <svg className="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    <span>Saving Slot...</span>
-                  </>
-                ) : (
-                  <>
-                    <span>Book Free Consultation</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </>
-                )}
-              </button>
-
-              <div className="flex items-center justify-center gap-4 text-xs text-stone-500 mt-2">
-                <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 text-[#0F3D3E]" /> Secure Connection</span>
-                <span>•</span>
-                <span>No obligation quote</span>
-              </div>
-            </form>
-          </div>
-
-        </div>
-      </section>
-
-      {/* 2. TRUST INDICATORS (HORIZONTAL VALUE STREAM) */}
-      <section className="bg-white py-12 border-y border-stone-100 shadow-sm relative z-10">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center divide-x divide-stone-100">
-            <div className="px-2">
-              <span className="inline-block p-2 bg-[#FAF7F2] rounded-full text-[#0F3D3E] mb-2">
-                <ShieldCheck className="w-5 h-5" />
-              </span>
-              <h3 className="text-xs font-bold uppercase tracking-wider text-stone-900">10-Yr Warranty</h3>
-              <p className="text-[10px] text-stone-500 mt-1">Waterproof Marine Ply</p>
-            </div>
-            
-            <div className="px-2 border-l border-stone-100 md:border-l">
-              <span className="inline-block p-2 bg-[#FAF7F2] rounded-full text-[#0F3D3E] mb-2">
-                <Clock className="w-5 h-5" />
-              </span>
-              <h3 className="text-xs font-bold uppercase tracking-wider text-stone-900">45-Day Delivery</h3>
-              <p className="text-[10px] text-stone-500 mt-1">Delayed Compensation</p>
-            </div>
-            
-            <div className="px-2 border-l border-stone-100">
-              <span className="inline-block p-2 bg-[#FAF7F2] rounded-full text-[#0F3D3E] mb-2">
-                <Award className="w-5 h-5" />
-              </span>
-              <h3 className="text-xs font-bold uppercase tracking-wider text-stone-900">German Quality</h3>
-              <p className="text-[10px] text-stone-500 mt-1">Blum & Hettich Hardware</p>
-            </div>
-            
-            <div className="px-2 border-l border-stone-100">
-              <span className="inline-block p-2 bg-[#FAF7F2] rounded-full text-[#0F3D3E] mb-2">
-                <Compass className="w-5 h-5" />
-              </span>
-              <h3 className="text-xs font-bold uppercase tracking-wider text-stone-900">Vastu Friendly</h3>
-              <p className="text-[10px] text-stone-500 mt-1">Fire & Water Planning</p>
-            </div>
-            
-            <div className="px-2 border-l border-stone-100">
-              <span className="inline-block p-2 bg-[#FAF7F2] rounded-full text-[#0F3D3E] mb-2">
-                <Users className="w-5 h-5" />
-              </span>
-              <h3 className="text-xs font-bold uppercase tracking-wider text-stone-900">100% Customized</h3>
-              <p className="text-[10px] text-stone-500 mt-1">Perfect Fit Guarantee</p>
-            </div>
-
-            <div className="px-2 border-l border-stone-100">
-              <span className="inline-block p-2 bg-[#FAF7F2] rounded-full text-[#0F3D3E] mb-2">
-                <DollarSign className="w-5 h-5" />
-              </span>
-              <h3 className="text-xs font-bold uppercase tracking-wider text-stone-900">Zero Hidden Cost</h3>
-              <p className="text-[10px] text-stone-500 mt-1">Fixed Price Guarantee</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. MODULAR KITCHEN TYPES SECTION */}
-      <section className="py-20 bg-stone-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-[#0F3D3E] text-xs font-bold uppercase tracking-widest">Aesthetic Adaptations</span>
-            <h2 className="text-3xl md:text-5xl font-bold font-serif text-stone-900 mt-2">
-              Explore Modular Kitchen Layouts
-            </h2>
-            <p className="text-stone-600 mt-4">
-              Select a foundational structural shape. Every layout is mathematically adjusted to optimize your kitchen workspace triangle (Stove, Sink, and Refrigerator).
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {kitchenTypes.map((kt, index) => (
+          {/* Background Slider */}
+          <div className="absolute inset-0 z-0">
+            {heroSlides.map((slide, idx) => (
               <div
-                key={index}
-                className="bg-white rounded-3xl overflow-hidden border border-stone-100 shadow-[0_8px_30px_rgb(0,0,0,0.015)] hover:shadow-[0_20px_45px_rgba(15,61,62,0.05)] transition-all duration-500 hover:-translate-y-1 flex flex-col group"
+                key={idx}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  idx === slideIndex ? "opacity-100 scale-102" : "opacity-0 scale-100"
+                }`}
+                style={{ transition: "opacity 1000ms ease-in-out, transform 5000ms ease-out" }}
               >
-                <div className="p-3 relative">
-                  <SafeImage src={kt.img} alt={kt.title} width={400} height={300} />
-                  <span className="absolute top-6 right-6 bg-[#0F3D3E] text-[#E8D8C4] text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
-                    {kt.val}
-                  </span>
-                </div>
-                
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="font-serif text-lg font-bold text-[#0F3D3E] mb-2 group-hover:text-stone-900 transition-colors">
-                    {kt.title}
-                  </h3>
-                  
-                  <p className="text-xs text-stone-500 leading-relaxed mb-4 flex-grow">
-                    {kt.desc}
-                  </p>
-                  
-                  {/* FEATURES LIST */}
-                  <ul className="space-y-1.5 mb-6 border-t border-stone-50 pt-4">
-                    {kt.features.map((feat, fIdx) => (
-                      <li key={fIdx} className="flex items-center gap-2 text-xs text-stone-600 font-medium">
-                        <Check className="w-3.5 h-3.5 text-[#0F3D3E] flex-shrink-0" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* ACTION CTA BUTTON */}
-                  <button
-                    onClick={() => handleSelectKitchenType(kt.title)}
-                    className="w-full text-center py-2.5 bg-[#FAF7F2] hover:bg-[#0F3D3E] text-[#0F3D3E] hover:text-[#E8D8C4] font-semibold rounded-xl text-xs uppercase tracking-wider transition-all duration-300"
-                  >
-                    Select & Enquire
-                  </button>
-                </div>
+                <img
+                  src={slide.img}
+                  alt={slide.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 4. WHY CHOOSE DENOVA CREATIONS */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-[#0F3D3E] text-xs font-bold uppercase tracking-widest">Engineering Excellence</span>
-            <h2 className="text-3xl md:text-5xl font-bold font-serif text-stone-900 mt-2">
-              Why Homeowners Choose Denova
-            </h2>
-            <p className="text-stone-600 mt-4">
-              We approach kitchen interiors with the precision of an architectural firm. No gaps, no misalignments, just clean premium luxury.
-            </p>
+            {/* Elegant deep gradient and composition overlays */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#051819]/95 via-[#051819]/80 to-[#051819]/55"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(5,24,25,0.7)_100%)]"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {valueProps.map((vp, index) => {
-              const IconComp = vp.icon;
-              return (
-                <div
-                  key={index}
-                  className="p-6 md:p-8 rounded-3xl bg-[#FAF8F5] border border-stone-100 hover:border-[#E8D8C4] transition-all duration-500 flex items-start gap-4 shadow-sm group hover:bg-[#0F3D3E] hover:text-white"
-                >
-                  <span className="p-3 rounded-2xl bg-white text-[#0F3D3E] group-hover:bg-[#E8D8C4] group-hover:text-[#0F3D3E] shadow-sm flex-shrink-0 transition-colors duration-500">
-                    <IconComp className="w-6 h-6" />
+          <div className="relative z-10 w-full container-custom">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              
+              {/* LEFT: HEADING HIERARCHY & PRIMARY ASSURANCES */}
+              <div className="lg:col-span-6 text-left space-y-6 lg:max-w-xl animate-fade-in-up">
+                
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E8D8C4]/15 border border-[#E8D8C4]/20 backdrop-blur-xs">
+                  <Sparkles className="w-3.5 h-3.5 text-[#E8D8C4]" />
+                  <span className="text-[#E8D8C4] font-bold text-[9px] uppercase tracking-widest leading-none">
+                    Google Ads Special Offer
                   </span>
-                  
-                  <div>
-                    <h3 className="font-serif text-lg font-bold text-stone-900 group-hover:text-[#E8D8C4] mb-2 transition-colors duration-500">
-                      {vp.title}
-                    </h3>
-                    <p className="text-xs text-stone-600 group-hover:text-stone-300 leading-relaxed transition-colors duration-500">
-                      {vp.desc}
-                    </p>
+                </div>
+
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-serif tracking-tight leading-tight">
+                  Luxury Modular Kitchens <span className="text-[#E8D8C4]">Crafted for Elegant Living.</span>
+                </h1>
+
+                <p className="text-stone-300 text-xs md:text-sm leading-relaxed">
+                  German precision edge-banding, Vastu-friendly cooking triangle zones, and 100% water-proof BWP marine plywood carcass shields built for Indian homes.
+                </p>
+
+                {/* Core trust matrix */}
+                <div className="grid grid-cols-2 gap-4 border-t border-stone-700/50 pt-6 text-white text-xs font-semibold">
+                  <div className="flex items-start gap-2.5">
+                    <Check className="w-4 h-4 text-[#E8D8C4] mt-0.5" />
+                    <div>
+                      <span className="text-white block">10-Year Warranty</span>
+                      <span className="text-stone-400 font-normal text-[10px]">Millimeter factory precision</span>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-2.5">
+                    <Check className="w-4 h-4 text-[#E8D8C4] mt-0.5" />
+                    <div>
+                      <span className="text-white block">150+ Kitchens Built</span>
+                      <span className="text-stone-400 font-normal text-[10px]">Zero middleman markups</span>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-2.5">
+                    <Check className="w-4 h-4 text-[#E8D8C4] mt-0.5" />
+                    <div>
+                      <span className="text-white block">100% Waterproof</span>
+                      <span className="text-stone-400 font-normal text-[10px]">BWP Marine Ply wet cabinet base</span>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-2.5">
+                    <Check className="w-4 h-4 text-[#E8D8C4] mt-0.5" />
+                    <div>
+                      <span className="text-white block">45-Day Turnaround</span>
+                      <span className="text-stone-400 font-normal text-[10px]">Neat, dustless onsite assembly</span>
+                    </div>
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
-      {/* 5. PROCESS SECTION (MODERN TIMELINE) */}
-      <section className="py-20 bg-stone-50 overflow-hidden">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-[#0F3D3E] text-xs font-bold uppercase tracking-widest">Structured Execution</span>
-            <h2 className="text-3xl md:text-5xl font-bold font-serif text-stone-900 mt-2">
-              Our Precise 7-Step Process
-            </h2>
-            <p className="text-stone-600 mt-4">
-              From the initial measurements to the final handover, our structured methodology ensures your kitchen is delivered on-time, matching the approved 3D design renders exactly.
-            </p>
-          </div>
+                <div className="pt-4 flex flex-wrap gap-4 items-center">
+                  <a href="#layouts">
+                    <Button className="bg-[#E8D8C4] hover:bg-white text-[#0F3D3E] font-bold px-6 py-5 rounded-lg text-xs md:text-sm uppercase tracking-wider transition-all duration-300">
+                      Explore Kitchen Layouts
+                    </Button>
+                  </a>
+                  <a href="tel:+919164466606" className="inline-flex items-center gap-2 text-stone-300 hover:text-white text-xs font-semibold transition-colors duration-300">
+                    <PhoneCall className="w-4.5 h-4.5 text-[#E8D8C4]" />
+                    <span>Call Expert: +91 91644 66606</span>
+                  </a>
+                </div>
 
-          {/* TIMELINE DESIGN */}
-          <div className="relative pt-8">
-            {/* Horizontal timeline line for desktop */}
-            <div className="hidden lg:block absolute top-[120px] left-[5%] right-[5%] h-1 bg-[#E8D8C4]/60 z-0"></div>
-            
-            <div className="grid lg:grid-cols-7 gap-8 relative z-10">
-              {processTimeline.map((step, idx) => (
-                <div key={idx} className="flex flex-col items-center lg:items-start text-center lg:text-left group">
-                  {/* Step bubble */}
-                  <div className="w-16 h-16 rounded-full bg-white border-2 border-[#E8D8C4] flex items-center justify-center shadow-md mb-6 relative group-hover:border-[#0F3D3E] group-hover:bg-[#0F3D3E] transition-all duration-300">
-                    <span className="text-[#0F3D3E] font-serif text-lg font-bold group-hover:text-[#E8D8C4] transition-colors duration-300">
-                      0{idx + 1}
+              </div>
+
+              {/* RIGHT: PREMIUM GLASSMORPHIC LEAD CARD */}
+              <div className="lg:col-span-6 lg:ml-auto w-full max-w-lg">
+                <Card 
+                  id="kitchenLeadForm" 
+                  className="border-0 bg-white/95 shadow-[0_30px_60px_rgba(5,24,25,0.3)] rounded-3xl overflow-hidden backdrop-blur-md relative"
+                >
+                  {/* Warning ticker */}
+                  <div className="bg-[#FAF7F2] py-2.5 px-6 border-b border-[#E8D8C4]/20 flex justify-between items-center text-[10px] font-bold text-[#0F3D3E] uppercase tracking-wider">
+                    <span className="text-red-600 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping"></span>
+                      Google Ads Direct Booking Discount Active
                     </span>
+                    <span>Free Quote</span>
+                  </div>
+
+                  <CardContent className="p-8 space-y-5">
+                    <div className="text-center space-y-1">
+                      <h2 className="text-2xl font-bold font-serif text-[#0F3D3E]">
+                        Get Free Kitchen Estimate
+                      </h2>
+                      <p className="text-stone-500 text-xs font-medium">
+                        Receive a detailed itemized costing estimate within 30 minutes.
+                      </p>
+                    </div>
+
+                    <form onSubmit={handleSubmit} className="space-y-3.5 text-left">
+                      
+                      {/* Name input */}
+                      <div className="space-y-1">
+                        <label className="text-[10px] uppercase tracking-wider font-bold text-stone-500 block">Full Name *</label>
+                        <div className="relative">
+                          <User className="absolute left-3 top-3 w-4 h-4 text-stone-400" />
+                          <input
+                            type="text"
+                            name="name"
+                            value={form.name}
+                            onChange={handleChange}
+                            placeholder="Rahul Sharma"
+                            className={`w-full pl-10 pr-4 py-3 bg-[#FAF8F5] border rounded-xl text-xs font-semibold focus:outline-none focus:border-[#0F3D3E] transition-all ${
+                              errors.name ? "border-red-500 bg-red-50/20" : "border-stone-200/60"
+                            }`}
+                          />
+                        </div>
+                        {errors.name && <span className="text-[10px] text-red-500 font-bold block">{errors.name}</span>}
+                      </div>
+
+                      {/* Grid for phone and email */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                        
+                        {/* Phone input */}
+                        <div className="space-y-1">
+                          <label className="text-[10px] uppercase tracking-wider font-bold text-stone-500 block">Phone Number *</label>
+                          <div className="relative">
+                            <PhoneCall className="absolute left-3 top-3 w-4 h-4 text-stone-400" />
+                            <input
+                              type="tel"
+                              name="phone"
+                              value={form.phone}
+                              onChange={handleChange}
+                              placeholder="9876543210"
+                              className={`w-full pl-10 pr-4 py-3 bg-[#FAF8F5] border rounded-xl text-xs font-semibold focus:outline-none focus:border-[#0F3D3E] transition-all ${
+                                errors.phone ? "border-red-500 bg-red-50/20" : "border-stone-200/60"
+                              }`}
+                            />
+                          </div>
+                          {errors.phone && <span className="text-[10px] text-red-500 font-bold block">{errors.phone}</span>}
+                        </div>
+
+                        {/* Email input */}
+                        <div className="space-y-1">
+                          <label className="text-[10px] uppercase tracking-wider font-bold text-stone-500 block">Email Address *</label>
+                          <div className="relative">
+                            <Mail className="absolute left-3 top-3 w-4 h-4 text-stone-400" />
+                            <input
+                              type="email"
+                              name="email"
+                              value={form.email}
+                              onChange={handleChange}
+                              placeholder="rahul@gmail.com"
+                              className={`w-full pl-10 pr-4 py-3 bg-[#FAF8F5] border rounded-xl text-xs font-semibold focus:outline-none focus:border-[#0F3D3E] transition-all ${
+                                errors.email ? "border-red-500 bg-red-50/20" : "border-stone-200/60"
+                              }`}
+                            />
+                          </div>
+                          {errors.email && <span className="text-[10px] text-red-500 font-bold block">{errors.email}</span>}
+                        </div>
+
+                      </div>
+
+                      {/* Location and layout selection */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                        
+                        {/* Location */}
+                        <div className="space-y-1">
+                          <label className="text-[10px] uppercase tracking-wider font-bold text-stone-500 block">Bangalore Location *</label>
+                          <div className="relative">
+                            <MapPin className="absolute left-3 top-3 w-4 h-4 text-stone-400" />
+                            <input
+                              type="text"
+                              name="location"
+                              value={form.location}
+                              onChange={handleChange}
+                              placeholder="Whitefield, HSR, Pincode"
+                              className={`w-full pl-10 pr-4 py-3 bg-[#FAF8F5] border rounded-xl text-xs font-semibold focus:outline-none focus:border-[#0F3D3E] transition-all ${
+                                errors.location ? "border-red-500 bg-red-50/20" : "border-stone-200/60"
+                              }`}
+                            />
+                          </div>
+                          {errors.location && <span className="text-[10px] text-red-500 font-bold block">{errors.location}</span>}
+                        </div>
+
+                        {/* Kitchen layout selection */}
+                        <div className="space-y-1">
+                          <label className="text-[10px] uppercase tracking-wider font-bold text-stone-500 block">Kitchen Layout *</label>
+                          <div className="relative">
+                            <Layers className="absolute left-3 top-3 w-4 h-4 text-stone-400" />
+                            <select
+                              name="kitchenType"
+                              value={form.kitchenType}
+                              onChange={handleChange}
+                              className={`w-full pl-10 pr-4 py-3 bg-[#FAF8F5] border rounded-xl text-xs font-semibold focus:outline-none focus:border-[#0F3D3E] transition-all appearance-none cursor-pointer ${
+                                errors.kitchenType ? "border-red-500 bg-red-50/20" : "border-stone-200/60"
+                              }`}
+                            >
+                              <option value="">Select Layout</option>
+                              <option value="L-Shape">L-Shape Kitchen</option>
+                              <option value="U-Shape">U-Shape Kitchen</option>
+                              <option value="Parallel">Parallel Kitchen</option>
+                              <option value="Island">Freestanding Island</option>
+                              <option value="Straight">Linear Straight</option>
+                              <option value="Open Concept">Open Concept Layout</option>
+                            </select>
+                            <ChevronDown className="absolute right-3 top-3.5 w-4 h-4 text-stone-400 pointer-events-none" />
+                          </div>
+                          {errors.kitchenType && <span className="text-[10px] text-red-500 font-bold block">{errors.kitchenType}</span>}
+                        </div>
+
+                      </div>
+
+                      {/* Budget Range Dropdown */}
+                      <div className="space-y-1">
+                        <label className="text-[10px] uppercase tracking-wider font-bold text-stone-500 block">Budget Tier *</label>
+                        <div className="relative">
+                          <DollarSign className="absolute left-3 top-3 w-4 h-4 text-stone-400" />
+                          <select
+                            name="budget"
+                            value={form.budget}
+                            onChange={handleChange}
+                            className={`w-full pl-10 pr-4 py-3 bg-[#FAF8F5] border rounded-xl text-xs font-semibold focus:outline-none focus:border-[#0F3D3E] transition-all appearance-none cursor-pointer ${
+                              errors.budget ? "border-red-500 bg-red-50/20" : "border-stone-200/60"
+                            }`}
+                          >
+                            <option value="">Select Budget</option>
+                            <option value="₹1.5L - ₹2.5L">₹1.5L - ₹2.5L (Essential Smart)</option>
+                            <option value="₹3.0L - ₹5.5L">₹3.0L - ₹5.5L (Premium Elite)</option>
+                            <option value="₹6.0L - ₹12.0L+">₹6.0L - ₹12.0L+ (Signature Luxury)</option>
+                          </select>
+                          <ChevronDown className="absolute right-3 top-3.5 w-4 h-4 text-stone-400 pointer-events-none" />
+                        </div>
+                        {errors.budget && <span className="text-[10px] text-red-500 font-bold block">{errors.budget}</span>}
+                      </div>
+
+                      {/* Optional requirement notes */}
+                      <div className="space-y-1">
+                        <label className="text-[10px] uppercase tracking-wider font-bold text-stone-500 block">Additional Notes / Appliance Requirements</label>
+                        <textarea
+                          name="message"
+                          value={form.message}
+                          onChange={handleChange}
+                          rows={2}
+                          placeholder="e.g. Inbuilt oven slot, profile handles, quartz tops..."
+                          className="w-full p-3 bg-[#FAF8F5] border border-stone-200/60 rounded-xl text-xs font-semibold focus:outline-none focus:border-[#0F3D3E] transition-all"
+                        />
+                      </div>
+
+                      {/* Submit button */}
+                      <Button
+                        type="submit"
+                        disabled={loading}
+                        className="w-full py-6 rounded-xl bg-[#0F3D3E] hover:bg-[#0A2526] text-[#E8D8C4] hover:text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 hover:scale-[1.01]"
+                      >
+                        <span>{loading ? "Submitting..." : "Get Free Custom Estimate"}</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
+
+                    </form>
+
+                    <div className="border-t border-stone-100 pt-4 flex justify-center gap-5 text-[10px] font-semibold text-stone-400">
+                      <span className="flex items-center gap-1">✔ Free consultation</span>
+                      <span className="flex items-center gap-1">✔ 3D design coves</span>
+                      <span className="flex items-center gap-1">✔ Zero obligation</span>
+                    </div>
+
+                  </CardContent>
+                </Card>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* 2. DUSTLESS TRUST STATS STRIP */}
+        <section className="py-8 bg-white border-b border-stone-150 select-none">
+          <div className="container-custom">
+            <div className="flex flex-wrap justify-center lg:justify-between items-center gap-6 lg:gap-0 max-w-5xl mx-auto text-xs font-bold text-stone-600">
+              <span className="flex items-center gap-2">
+                <CheckCircle className="w-4.5 h-4.5 text-[#0F3D3E]" />
+                150+ Modular Kitchens Completed
+              </span>
+              <span className="flex items-center gap-2">
+                <CheckCircle className="w-4.5 h-4.5 text-[#0F3D3E]" />
+                German Precision Edge-banding
+              </span>
+              <span className="flex items-center gap-2">
+                <CheckCircle className="w-4.5 h-4.5 text-[#0F3D3E]" />
+                Century/Kitply IS:710 certified BWP Ply
+              </span>
+              <span className="flex items-center gap-2">
+                <CheckCircle className="w-4.5 h-4.5 text-[#0F3D3E]" />
+                Blum & Hettich soft-close systems
+              </span>
+            </div>
+          </div>
+        </section>
+
+        {/* 3. INTERACTIVE DESIGN CATEGORIES */}
+        <section id="layouts" className="py-20 md:py-24 bg-[#FAF8F5]">
+          <div className="container-custom">
+            
+            <div className="text-center mb-16 max-w-2xl mx-auto space-y-3">
+              <span className="text-[#0F3D3E] font-bold tracking-widest uppercase text-xs block">
+                Shape Collections
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#0F3D3E] tracking-tight">
+                Modular Kitchen Design Layouts
+              </h2>
+              <p className="text-stone-500 text-xs md:text-sm">
+                Each kitchen shape maps specific spatial guidelines and working triangles. Select a layout to configure inside your estimate form.
+              </p>
+            </div>
+
+            {/* Layout categories grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto text-left">
+              {kitchenLayouts.map((layout, idx) => (
+                <div 
+                  key={idx} 
+                  className="bg-white rounded-3xl overflow-hidden border border-stone-100 hover:border-[#E8D8C4] shadow-[0_10px_35px_rgba(0,0,0,0.015)] hover:shadow-lg transition-all duration-300 group flex flex-col"
+                >
+                  <div className="h-60 overflow-hidden relative">
+                    <img
+                      src={layout.img}
+                      alt={layout.title}
+                      className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-stone-900/10"></div>
                   </div>
                   
-                  {/* Content */}
-                  <h3 className="font-serif text-md font-bold text-stone-900 mb-2 group-hover:text-[#0F3D3E] transition-colors">
-                    {step.title}
-                  </h3>
-                  <p className="text-xs text-stone-500 leading-relaxed max-w-[200px] lg:max-w-none">
-                    {step.desc}
-                  </p>
+                  <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div className="space-y-2">
+                      <span className="text-[#E8D8C4] font-bold text-[9px] uppercase tracking-widest block">
+                        {layout.subtitle}
+                      </span>
+                      <h3 className="text-xl font-bold font-serif text-[#0F3D3E] leading-tight">
+                        {layout.title}
+                      </h3>
+                      <p className="text-stone-500 text-xs md:text-sm leading-relaxed">
+                        {layout.desc}
+                      </p>
+                    </div>
+
+                    <div className="border-t border-stone-50 pt-4 flex flex-wrap gap-2 text-[10px] font-bold text-[#0F3D3E] uppercase tracking-wide">
+                      {layout.features.map((f, i) => (
+                        <span key={i} className="bg-[#FAF7F2] px-2.5 py-1 rounded-full">
+                          {f}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="pt-2">
+                      <Button
+                        onClick={() => handleSelectKitchenType(layout.val)}
+                        className="w-full bg-[#0F3D3E] hover:bg-[#FAF7F2] hover:text-[#0F3D3E] text-white border border-[#0F3D3E] font-bold text-xs uppercase tracking-wider py-4 rounded-xl transition-all"
+                      >
+                        Select This Layout
+                      </Button>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
+
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* 6. PREMIUM GALLERY SECTION */}
-      <section id="gallery-section" className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-[#0F3D3E] text-xs font-bold uppercase tracking-widest">Our Signature Portfolios</span>
-            <h2 className="text-3xl md:text-5xl font-bold font-serif text-stone-900 mt-2">
-              Kitchen Transformation Showcase
-            </h2>
-            <p className="text-stone-600 mt-4">
-              Explore actual modular kitchens completed by Denova Creations across major high-end apartments and villas in Bengaluru.
-            </p>
-          </div>
-
-          {/* MASONRY/MODULAR GRID */}
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="md:col-span-2 relative overflow-hidden group rounded-3xl border border-stone-100 shadow-sm">
-              <SafeImage src="/images/kitchen1.webp" alt="Luxury Open Modular Kitchen in Sarjapur, Bangalore" width={800} height={500} priority={false} />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8 text-white">
-                <span className="text-[#E8D8C4] text-[10px] font-bold uppercase tracking-widest">Completed Project</span>
-                <h3 className="text-xl font-serif font-bold mt-1">Premium Parallel Kitchen</h3>
-                <p className="text-xs text-stone-300 mt-1">Sobha Royal Pavilion, Sarjapur Road</p>
-              </div>
-            </div>
-
-            <div className="relative overflow-hidden group rounded-3xl border border-stone-100 shadow-sm">
-              <SafeImage src="/images/kitchen2.webp" alt="Minimalist L-Shape Kitchen HSR Layout" width={400} height={500} priority={false} />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8 text-white">
-                <span className="text-[#E8D8C4] text-[10px] font-bold uppercase tracking-widest">Completed Project</span>
-                <h3 className="text-lg font-serif font-bold mt-1">Sleek Acrylic L-Shape Kitchen</h3>
-                <p className="text-xs text-stone-300 mt-1">Luxury Apartment, HSR Layout</p>
-              </div>
-            </div>
-
-            <div className="relative overflow-hidden group rounded-3xl border border-stone-100 shadow-sm">
-              <SafeImage src="/images/kitchen3.webp" alt="Contemporary Island Kitchen Whitefield" width={400} height={500} priority={false} />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8 text-white">
-                <span className="text-[#E8D8C4] text-[10px] font-bold uppercase tracking-widest">Completed Project</span>
-                <h3 className="text-lg font-serif font-bold mt-1">Luxury Island Kitchen</h3>
-                <p className="text-xs text-stone-300 mt-1">Prestige Shantiniketan, Whitefield</p>
-              </div>
-            </div>
-
-            <div className="md:col-span-2 relative overflow-hidden group rounded-3xl border border-stone-100 shadow-sm">
-              <SafeImage src="/images/landingpagehero.webp" alt="Bespoke PU Finish Kitchen Indiranagar" width={800} height={500} priority={false} />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8 text-white">
-                <span className="text-[#E8D8C4] text-[10px] font-bold uppercase tracking-widest">Completed Project</span>
-                <h3 className="text-xl font-serif font-bold mt-1">Bespoke Matte PU Open Kitchen</h3>
-                <p className="text-xs text-stone-300 mt-1">Bungalow Home, Indiranagar</p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="text-center mt-12">
-            <button
-              onClick={scrollToForm}
-              className="bg-[#0F3D3E] hover:bg-[#0B2C2D] text-[#E8D8C4] hover:text-white px-8 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider transition shadow-md hover:shadow-lg"
-            >
-              Get Free Consultation for Your Space
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* 7. MATERIALS & FINISHES SECTION */}
-      <section className="py-20 bg-stone-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-[#0F3D3E] text-xs font-bold uppercase tracking-widest">Immaculate Selection</span>
-            <h2 className="text-3xl md:text-5xl font-bold font-serif text-stone-900 mt-2">
-              Premium Cabinet Finishes & Materials
-            </h2>
-            <p className="text-stone-600 mt-4">
-              We exclusively use Boiling Water Proof (BWP) Marine Grade Plywood and highly stable core boards to resist extreme Bangalore humidity and temperature fluctuations.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {premiumFinishes.map((pf, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 rounded-3xl border border-stone-100 shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:border-[#E8D8C4] transition-all duration-500 hover:-translate-y-0.5"
-              >
-                <div className="w-10 h-10 rounded-2xl bg-[#FAF7F2] text-[#0F3D3E] flex items-center justify-center font-serif font-bold text-sm mb-4">
-                  0{index + 1}
-                </div>
-                
-                <h3 className="font-serif text-lg font-bold text-stone-900 mb-2">
-                  {pf.name}
-                </h3>
-                
-                <p className="text-xs text-stone-500 leading-relaxed mb-4">
-                  {pf.desc}
-                </p>
-                
-                <div className="bg-[#FAF8F5] p-3.5 rounded-2xl border border-stone-50">
-                  <span className="text-[10px] uppercase font-bold text-[#0F3D3E] block tracking-wide">Key Advantage</span>
-                  <p className="text-[11px] font-medium text-stone-700 mt-0.5">{pf.resilience}</p>
-                </div>
-              </div>
-            ))}
+        {/* 4. WHY CHOOSE DENOVA FOR MODULAR KITCHENS */}
+        <section className="py-20 bg-white border-y border-stone-150 select-none">
+          <div className="container-custom">
             
-            {/* Callout box for Plywood core */}
-            <div className="bg-[#0F3D3E] text-white p-6 rounded-3xl flex flex-col justify-between border border-[#0F3D3E]">
-              <div>
-                <span className="text-[#E8D8C4] text-[10px] font-bold uppercase tracking-widest flex items-center gap-1">
-                  <Info className="w-3.5 h-3.5" /> High Moisture Core
-                </span>
-                <h3 className="font-serif text-xl font-bold text-white mt-2 leading-tight">
-                  Marine Grade BWP Plywood Base
-                </h3>
-                <p className="text-xs text-stone-300 mt-2 leading-relaxed">
-                  Every kitchen we install features a Boiling Water Proof (BWP) marine plywood core, treated against termites, guaranteeing lifelong structural stability.
-                </p>
-              </div>
-              <button
-                onClick={scrollToForm}
-                className="w-full text-center py-2 bg-[#E8D8C4] text-[#0F3D3E] hover:bg-white hover:text-stone-900 font-bold rounded-xl text-xs uppercase tracking-wider transition-colors duration-300 mt-6"
-              >
-                Request Material Catalog
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. COST / PRICING SECTION */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-[#0F3D3E] text-xs font-bold uppercase tracking-widest">Transparent Estimates</span>
-            <h2 className="text-3xl md:text-5xl font-bold font-serif text-stone-900 mt-2">
-              Predictable, Direct Kitchen Packages
-            </h2>
-            <p className="text-stone-600 mt-4">
-              Select a package tier corresponding to your requirements. We provide complete itemized transparency with zero post-agreement budget inflation.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-8 items-stretch max-w-5xl mx-auto">
-            {pricingPlans.map((plan, index) => (
-              <div
-                key={index}
-                className={`bg-white rounded-3xl overflow-hidden border transition-all duration-500 flex flex-col relative ${
-                  plan.popular
-                    ? "border-2 border-[#0F3D3E] shadow-[0_15px_40px_rgba(15,61,62,0.08)] scale-105 z-10"
-                    : "border-stone-200/80 shadow-[0_8px_30px_rgb(0,0,0,0.01)] hover:border-[#E8D8C4] z-0"
-                }`}
-              >
-                {/* POPULAR BADGE */}
-                {plan.popular && (
-                  <span className="absolute top-0 right-0 bg-[#0F3D3E] text-[#E8D8C4] text-[10px] font-bold px-4 py-1.5 rounded-bl-3xl uppercase tracking-widest">
-                    Most Popular Choice
-                  </span>
-                )}
-                
-                <div className="p-8 border-b border-stone-100 bg-[#FAF7F2]">
-                  <span className="text-xs uppercase font-bold text-stone-500 tracking-widest">{plan.name}</span>
-                  <div className="flex items-baseline gap-1 mt-2">
-                    <span className="text-4xl font-serif font-bold text-stone-950">{plan.price}</span>
-                    <span className="text-xs text-stone-500 font-medium">starting</span>
-                  </div>
-                  <p className="text-xs text-stone-600 leading-relaxed mt-4">
-                    {plan.desc}
-                  </p>
-                </div>
-                
-                <div className="p-8 flex flex-col flex-grow">
-                  <span className="text-[10px] uppercase font-bold text-[#0F3D3E] tracking-widest block mb-4">Included Specifications:</span>
-                  <ul className="space-y-3 flex-grow mb-8">
-                    {plan.features.map((feat, fIdx) => (
-                      <li key={fIdx} className="flex items-start gap-2.5 text-xs text-stone-700 leading-tight">
-                        <CheckCircle className="w-4 h-4 text-[#0F3D3E] flex-shrink-0 mt-0.5" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <button
-                    onClick={() => handleSelectBudget(plan.price)}
-                    className={`w-full py-3.5 rounded-xl text-xs uppercase font-bold tracking-widest transition-all duration-300 ${
-                      plan.popular
-                        ? "bg-[#0F3D3E] hover:bg-[#0B2C2D] text-white shadow-md hover:shadow-lg"
-                        : "bg-[#FAF7F2] hover:bg-[#0F3D3E] text-[#0F3D3E] hover:text-white"
-                    }`}
-                  >
-                    Select & Enquire
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-          
-          <p className="text-center text-xs text-stone-500 italic mt-8 max-w-lg mx-auto">
-            *Pricing estimates are for baseline linear configuration sizes. Actual custom quotes are calculated by running foot size, layout selections, and internal module upgrades.
-          </p>
-        </div>
-      </section>
-
-      {/* 9. CUSTOMER TESTIMONIALS */}
-      <section className="py-20 bg-stone-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-[#0F3D3E] text-xs font-bold uppercase tracking-widest">Verified Customer Reviews</span>
-            <h2 className="text-3xl md:text-5xl font-bold font-serif text-stone-900 mt-2">
-              Loved by Bangalore Homeowners
-            </h2>
-            <p className="text-stone-600 mt-4">
-              Real reviews from families who upgraded their lifestyles with our custom premium modular kitchens.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((test, index) => (
-              <div
-                key={index}
-                className="bg-white p-8 rounded-3xl border border-stone-100 shadow-[0_8px_30px_rgb(0,0,0,0.01)] hover:shadow-md transition-all duration-300 flex flex-col justify-between"
-              >
-                <div>
-                  {/* GOOGLE RATING STAR DISPLAY */}
-                  <div className="flex gap-1 text-amber-500 mb-6">
-                    {[...Array(test.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-current" />
-                    ))}
-                  </div>
-                  
-                  <p className="text-xs text-stone-600 leading-relaxed font-medium italic">
-                    "{test.quote}"
-                  </p>
-                </div>
-                
-                <div className="border-t border-stone-100 pt-6 mt-6 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#FAF7F2] text-[#0F3D3E] font-serif font-bold flex items-center justify-center text-sm shadow-inner">
-                    {test.name.charAt(0)}
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-stone-900">{test.name}</h4>
-                    <span className="text-[10px] text-stone-400 font-medium tracking-wide flex items-center gap-1">
-                      <MapPin className="w-3 h-3 text-[#0F3D3E]" /> {test.loc}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 10. SERVICE AREAS SECTION */}
-      <section className="py-16 bg-white border-b border-stone-100">
-        <div className="max-w-5xl mx-auto px-4 text-center">
-          <span className="text-[#0F3D3E] text-xs font-bold uppercase tracking-widest">Local Reach</span>
-          <h2 className="text-2xl md:text-4xl font-bold font-serif text-stone-900 mt-2">
-            Serving Major Areas in Bangalore
-          </h2>
-          <p className="text-xs text-stone-500 max-w-xl mx-auto mt-2 leading-relaxed">
-            We provide fast on-site consultation, digital measurement, and seamless installation across premium residential zones in Bengaluru.
-          </p>
-          
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-8 max-w-3xl mx-auto">
-            {serviceAreas.map((area, index) => (
-              <span
-                key={index}
-                className="bg-[#FAF7F2] border border-[#E8D8C4]/60 text-[#0F3D3E] px-4 py-2 rounded-2xl text-xs font-semibold shadow-sm hover:border-[#0F3D3E] transition-colors cursor-default"
-              >
-                {area}
+            <div className="text-center mb-16 max-w-2xl mx-auto space-y-3">
+              <span className="text-[#0F3D3E] font-bold tracking-widest uppercase text-xs block">
+                The Denova Standard
               </span>
-            ))}
-          </div>
-        </div>
-      </section>
+              <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#0F3D3E] tracking-tight">
+                Designed for Reliability & Elegance
+              </h2>
+              <p className="text-stone-500 text-xs md:text-sm">
+                We eliminate sub-contracting and field carpentry errors with automated factory precision edge finishes.
+              </p>
+            </div>
 
-      {/* 11. FAQ SECTION (SEO ACCORDION) */}
-      <section className="py-20 bg-stone-50">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-[#0F3D3E] text-xs font-bold uppercase tracking-widest">Got Questions?</span>
-            <h2 className="text-3xl md:text-5xl font-bold font-serif text-stone-900 mt-2">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-stone-600 mt-4 text-sm">
-              Read transparent answers on cost, specifications, manufacturing, and timelines for planning custom modular kitchens.
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            {faqs.map((faq, index) => {
-              const isOpen = activeFaq === index;
-              return (
-                <div
-                  key={index}
-                  className="bg-white rounded-2xl border border-stone-100 overflow-hidden shadow-sm transition-all duration-300"
-                >
-                  <button
-                    onClick={() => toggleFaq(index)}
-                    className="w-full flex items-center justify-between p-5 md:p-6 text-left focus:outline-none transition-colors duration-200"
-                  >
-                    <span className="font-serif font-bold text-stone-900 text-sm md:text-base pr-4">
-                      {faq.q}
-                    </span>
-                    <span className={`p-1.5 rounded-full bg-[#FAF7F2] text-[#0F3D3E] transition-transform duration-300 flex-shrink-0 ${
-                      isOpen ? "rotate-180 bg-[#0F3D3E] text-[#E8D8C4]" : ""
-                    }`}>
-                      <ChevronDown className="w-4 h-4" />
-                    </span>
-                  </button>
-                  
-                  {/* EXPANDABLE ANSWER BODY */}
-                  <div
-                    className={`transition-all duration-500 ease-in-out overflow-hidden ${
-                      isOpen ? "max-h-[300px] border-t border-stone-50" : "max-h-0"
-                    }`}
-                  >
-                    <div className="p-5 md:p-6 text-xs md:text-sm text-stone-600 leading-relaxed bg-[#FAF8F5]/40">
-                      {faq.a}
-                    </div>
-                  </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto text-left">
+              
+              {/* Point 1 */}
+              <div className="p-8 bg-[#FAF8F5] rounded-3xl border border-stone-100/60 space-y-3.5 hover:border-[#E8D8C4] hover:bg-white transition-all duration-300">
+                <div className="w-9 h-9 bg-white text-[#0F3D3E] border border-stone-100 flex items-center justify-center rounded-lg shadow-xs">
+                  <ShieldCheck className="w-5 h-5 text-[#E8D8C4]" />
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* 12. LEAD FORM SECTION (EXPANDED OPT-IN PANEL) */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="bg-[#0F3D3E] rounded-3xl p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#0B2526] to-[#0F3D3E]/40 z-0"></div>
-            
-            <div className="relative z-10 grid md:grid-cols-12 gap-8 items-center">
-              <div className="md:col-span-5 text-left">
-                <span className="text-[#E8D8C4] text-[10px] font-bold uppercase tracking-widest">Lead Console</span>
-                <h2 className="text-2xl md:text-4xl font-bold font-serif leading-tight mt-2 text-white">
-                  Let's Build Your Dream Kitchen
-                </h2>
-                <p className="text-xs text-stone-300 mt-4 leading-relaxed">
-                  Provide your dimensions and requirements. Our senior design specialist will contact you to draft your free photorealistic 3D kitchen design layout.
+                <h3 className="font-serif font-bold text-base text-[#0F3D3E]">100% Waterproof Carcass</h3>
+                <p className="text-stone-500 text-xs md:text-sm leading-relaxed">
+                  We use IS:710 Boiling Water Proof (BWP) marine plywood exclusively under sinks and washing zones to prevent structural rot or termite nesting.
                 </p>
+              </div>
+
+              {/* Point 2 */}
+              <div className="p-8 bg-[#FAF8F5] rounded-3xl border border-stone-100/60 space-y-3.5 hover:border-[#E8D8C4] hover:bg-white transition-all duration-300">
+                <div className="w-9 h-9 bg-white text-[#0F3D3E] border border-stone-100 flex items-center justify-center rounded-lg shadow-xs">
+                  <Award className="w-5 h-5 text-[#E8D8C4]" />
+                </div>
+                <h3 className="font-serif font-bold text-base text-[#0F3D3E]">German Edge-Banding Precision</h3>
+                <p className="text-stone-500 text-xs md:text-sm leading-relaxed">
+                  All board borders undergo automated factory edge-binding with PUR hotmelt technology, sealing boards 100% from water entry and swelling.
+                </p>
+              </div>
+
+              {/* Point 3 */}
+              <div className="p-8 bg-[#FAF8F5] rounded-3xl border border-stone-100/60 space-y-3.5 hover:border-[#E8D8C4] hover:bg-white transition-all duration-300">
+                <div className="w-9 h-9 bg-white text-[#0F3D3E] border border-stone-100 flex items-center justify-center rounded-lg shadow-xs">
+                  <Clock className="w-5 h-5 text-[#E8D8C4]" />
+                </div>
+                <h3 className="font-serif font-bold text-base text-[#0F3D3E]">Soft-Close Hardware Only</h3>
+                <p className="text-stone-500 text-xs md:text-sm leading-relaxed">
+                  Fitted with premium soft-close tandem drawers and hydraulic clip-on hinges from Hettich and Blum to provide completely silent, long-lasting closures.
+                </p>
+              </div>
+
+              {/* Point 4 */}
+              <div className="p-8 bg-[#FAF8F5] rounded-3xl border border-stone-100/60 space-y-3.5 hover:border-[#E8D8C4] hover:bg-white transition-all duration-300">
+                <div className="w-9 h-9 bg-white text-[#0F3D3E] border border-stone-100 flex items-center justify-center rounded-lg shadow-xs">
+                  <Compass className="w-5 h-5 text-[#E8D8C4]" />
+                </div>
+                <h3 className="font-serif font-bold text-base text-[#0F3D3E]">Vastu-Optimized Placement</h3>
+                <p className="text-stone-500 text-xs md:text-sm leading-relaxed">
+                  Our layouts strictly map Vastu principles, placing the cooking stove in the South-East zone and keeping the washing sink completely separate.
+                </p>
+              </div>
+
+              {/* Point 5 */}
+              <div className="p-8 bg-[#FAF8F5] rounded-3xl border border-stone-100/60 space-y-3.5 hover:border-[#E8D8C4] hover:bg-white transition-all duration-300">
+                <div className="w-9 h-9 bg-white text-[#0F3D3E] border border-stone-100 flex items-center justify-center rounded-lg shadow-xs">
+                  <DollarSign className="w-5 h-5 text-[#E8D8C4]" />
+                </div>
+                <h3 className="font-serif font-bold text-base text-[#0F3D3E]">Zero Cost Deviations</h3>
+                <p className="text-stone-500 text-xs md:text-sm leading-relaxed">
+                  Once your 3D kitchen layout is approved, your itemized cost quotation is locked. Zero extra charges, zero mid-project price changes.
+                </p>
+              </div>
+
+              {/* Point 6 */}
+              <div className="p-8 bg-[#FAF8F5] rounded-3xl border border-stone-100/60 space-y-3.5 hover:border-[#E8D8C4] hover:bg-white transition-all duration-300">
+                <div className="w-9 h-9 bg-white text-[#0F3D3E] border border-stone-100 flex items-center justify-center rounded-lg shadow-xs">
+                  <Users className="w-5 h-5 text-[#E8D8C4]" />
+                </div>
+                <h3 className="font-serif font-bold text-base text-[#0F3D3E]">Dedicated Structural Supervision</h3>
+                <p className="text-stone-500 text-xs md:text-sm leading-relaxed">
+                  A certified civil engineer monitors your onsite module alignment and stone fittings directly, avoiding manual carpentry errors.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+        {/* 5. QUALITY & MATERIAL TRANSPARENCY HUB */}
+        <section className="py-20 md:py-24 bg-[#FAF8F5]">
+          <div className="container-custom">
+            
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center max-w-5xl mx-auto text-left">
+              
+              {/* Left text column */}
+              <div className="lg:col-span-6 space-y-6">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-8 h-[1px] bg-[#E8D8C4]"></span>
+                  <span className="text-[#0F3D3E] font-bold tracking-widest uppercase text-xs">Material Blueprint</span>
+                </div>
                 
-                <div className="mt-8 space-y-4 border-t border-white/10 pt-8">
-                  <a
-                    href="tel:+919164466606"
-                    className="flex items-center gap-3 text-xs font-semibold text-[#E8D8C4] hover:text-white transition"
-                  >
-                    <span className="p-2 bg-white/10 rounded-full">
-                      <PhoneCall className="w-4 h-4" />
-                    </span>
-                    <span>Call Direct: +91 91644 66606</span>
-                  </a>
-                  
-                  <a
-                    href="https://wa.me/919164466606?text=Hi,%20I'm%20interested%20in%20modular%20kitchen%20design%20services%20in%20Bangalore."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-xs font-semibold text-[#E8D8C4] hover:text-white transition"
-                  >
-                    <span className="p-2 bg-white/10 rounded-full">
-                      <MessageSquare className="w-4 h-4" />
-                    </span>
-                    <span>WhatsApp Chat Integration</span>
-                  </a>
+                <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#0F3D3E] tracking-tight leading-tight">
+                  Premium Sourcing. Total Transparency.
+                </h2>
+                
+                <p className="text-stone-500 text-xs md:text-sm leading-relaxed">
+                  We believe a luxury kitchen should last a generation. We only source certified, branded boards and authentic Hettich/Hafele hardware to guarantee lifetime performance.
+                </p>
+
+                {/* Woods data blocks */}
+                <div className="space-y-4 pt-4 border-t border-stone-200/50">
+                  {kitchenWoods.map((wood, idx) => (
+                    <div key={idx} className="flex gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-emerald-50 text-[#0F3D3E] border border-emerald-100 flex items-center justify-center flex-shrink-0 font-serif font-bold text-xs">
+                        0{idx + 1}
+                      </div>
+                      <div>
+                        <span className="text-[#0F3D3E] font-bold text-xs block">{wood.name}</span>
+                        <p className="text-stone-500 text-[11px] leading-relaxed mt-0.5">{wood.benefit}</p>
+                        <span className="text-[9px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full inline-block mt-1">{wood.rank}</span>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              {/* FORM FIELDS ON RIGHT */}
-              <div className="md:col-span-7 w-full bg-white text-stone-800 p-6 md:p-8 rounded-2xl shadow-lg border border-white/10">
-                <h3 className="font-serif text-lg font-bold text-[#0F3D3E] mb-4">Design Intake Console</h3>
-                
-                <div className="flex flex-col gap-3">
-                  <div>
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="Full Name"
-                      value={form.name}
-                      required
-                      onChange={handleChange}
-                      className="w-full p-3 border border-stone-200 rounded-xl bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#0F3D3E] text-xs"
-                    />
-                    {errors.name && <p className="text-red-600 text-[10px] mt-1 font-semibold">{errors.name}</p>}
+              {/* Right image column */}
+              <div className="lg:col-span-6 relative group">
+                <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-xl border-4 border-white z-10">
+                  <img
+                    src="/images/kitchen3.webp"
+                    alt="Premium edge-banded modular cabinets by Denova"
+                    className="w-full h-full object-cover transition-transform group-hover:scale-103 duration-500"
+                  />
+                  <div className="absolute inset-0 bg-stone-900/10"></div>
+                </div>
+                <div className="absolute -bottom-4 -right-4 w-40 h-40 border-r-4 border-b-4 border-[#E8D8C4] rounded-br-3xl z-0"></div>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+        {/* 6. MODULAR PRICING TRANSPARENCY SECTION */}
+        <section className="py-20 bg-white border-y border-stone-150 select-none">
+          <div className="container-custom">
+            
+            <div className="text-center mb-16 max-w-2xl mx-auto space-y-3">
+              <span className="text-[#0F3D3E] font-bold tracking-widest uppercase text-xs block">
+                Cost Tiers
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#0F3D3E] tracking-tight">
+                Modular Kitchen Costing Guide
+              </h2>
+              <p className="text-stone-500 text-xs md:text-sm">
+                Transparent ranges based on layout sizes, selected surface finishes, and hardware options.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto text-left">
+              
+              {/* Tier 1 */}
+              <div className="p-8 bg-[#FAF8F5] rounded-3xl border border-stone-100 flex flex-col justify-between hover:border-[#E8D8C4] transition-all duration-300">
+                <div className="space-y-4">
+                  <span className="text-[#E8D8C4] font-bold text-[9px] uppercase tracking-widest block">Core Essential</span>
+                  <h3 className="font-serif font-bold text-xl text-[#0F3D3E]">Smart L-Shape Basic</h3>
+                  <span className="text-2xl font-bold text-emerald-700 block bg-emerald-50/50 p-3 rounded-2xl text-center border border-emerald-100/50">
+                    ₹1.5L - ₹2.5L
+                  </span>
+                  <p className="text-stone-500 text-xs leading-relaxed">
+                    Perfect for compact standard apartments or rental homes requiring robust, waterproof modular cores at an optimized price point.
+                  </p>
+                  <ul className="space-y-2 pt-2 border-t border-stone-200/50 text-[11px] text-stone-600 font-semibold">
+                    <li className="flex items-center gap-2">✔ Moisture resistant BWR Plywood carcass</li>
+                    <li className="flex items-center gap-2">✔ Durable Matte/Gloss laminates</li>
+                    <li className="flex items-center gap-2">✔ Soft-close Hettich hinges</li>
+                    <li className="flex items-center gap-2">✔ standard wire baskets & cutlery</li>
+                  </ul>
+                </div>
+                <div className="pt-6">
+                  <Button onClick={() => handleSelectBudget("₹1.5L - ₹2.5L")} className="w-full bg-[#0F3D3E] hover:bg-[#0A2526] text-white font-bold text-xs uppercase tracking-wider py-4 rounded-xl">
+                    Select This Tier
+                  </Button>
+                </div>
+              </div>
+
+              {/* Tier 2 */}
+              <div className="p-8 bg-white rounded-3xl border-2 border-[#0F3D3E] shadow-xl flex flex-col justify-between relative">
+                <span className="absolute top-4 right-4 bg-emerald-700 text-white font-bold text-[8px] uppercase tracking-widest px-2.5 py-1 rounded-full">Best Seller</span>
+                <div className="space-y-4">
+                  <span className="text-[#E8D8C4] font-bold text-[9px] uppercase tracking-widest block">Premium Elite</span>
+                  <h3 className="font-serif font-bold text-xl text-[#0F3D3E]">Urban Parallel / U-Shape</h3>
+                  <span className="text-2xl font-bold text-emerald-700 block bg-emerald-50 p-3 rounded-2xl text-center border border-emerald-100">
+                    ₹3.0L - ₹5.5L
+                  </span>
+                  <p className="text-stone-500 text-xs leading-relaxed">
+                    Our signature tier for modern home owners. Full BWP marine ply cores matched with highly reflective contemporary surface finishes.
+                  </p>
+                  <ul className="space-y-2 pt-2 border-t border-stone-200/50 text-[11px] text-stone-600 font-semibold">
+                    <li className="flex items-center gap-2 text-emerald-800">✔ 100% BWP Marine Plywood core</li>
+                    <li className="flex items-center gap-2">✔ Premium Gloss Acrylic shutters</li>
+                    <li className="flex items-center gap-2">✔ Hettich soft-close tandem drawers</li>
+                    <li className="flex items-center gap-2">✔ Custom modular bottle pull-outs</li>
+                  </ul>
+                </div>
+                <div className="pt-6">
+                  <Button onClick={() => handleSelectBudget("₹3.0L - ₹5.5L")} className="w-full bg-[#0F3D3E] hover:bg-[#0A2526] text-[#E8D8C4] hover:text-white font-bold text-xs uppercase tracking-wider py-4 rounded-xl">
+                    Select This Tier
+                  </Button>
+                </div>
+              </div>
+
+              {/* Tier 3 */}
+              <div className="p-8 bg-[#FAF8F5] rounded-3xl border border-stone-100 flex flex-col justify-between hover:border-[#E8D8C4] transition-all duration-300">
+                <div className="space-y-4">
+                  <span className="text-[#E8D8C4] font-bold text-[9px] uppercase tracking-widest block">Signature Luxury</span>
+                  <h3 className="font-serif font-bold text-xl text-[#0F3D3E]">Architectural Island Villa</h3>
+                  <span className="text-2xl font-bold text-emerald-700 block bg-emerald-50/50 p-3 rounded-2xl text-center border border-emerald-100/50">
+                    ₹6.0L - ₹12.0L+
+                  </span>
+                  <p className="text-stone-500 text-xs leading-relaxed">
+                    Custom modular masterpieces featuring state-of-the-art kitchen mechanics, custom fluted veneer panels, and quartz stone prep islands.
+                  </p>
+                  <ul className="space-y-2 pt-2 border-t border-stone-200/50 text-[11px] text-stone-600 font-semibold">
+                    <li className="flex items-center gap-2">✔ BWP Ply + PVC vanity waterproof</li>
+                    <li className="flex items-center gap-2">✔ Seamless automotive PU finishes</li>
+                    <li className="flex items-center gap-2">✔ Blum Servo-Drive motorized lifts</li>
+                    <li className="flex items-center gap-2">✔ Solid quartz worktops & tall pantries</li>
+                  </ul>
+                </div>
+                <div className="pt-6">
+                  <Button onClick={() => handleSelectBudget("₹6.0L - ₹12.0L+")} className="w-full bg-[#0F3D3E] hover:bg-[#0A2526] text-white font-bold text-xs uppercase tracking-wider py-4 rounded-xl">
+                    Select This Tier
+                  </Button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+        {/* 7. VERIFIED BANGALORE CUSTOMER TRUST COVES */}
+        <section className="py-20 bg-[#FAF8F5]">
+          <div className="container-custom">
+            
+            <div className="text-center mb-16 max-w-2xl mx-auto space-y-3">
+              <span className="text-[#0F3D3E] font-bold tracking-widest uppercase text-xs block">
+                Social Proof
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#0F3D3E] tracking-tight">
+                Google Verified Transformation Stories
+              </h2>
+              <p className="text-stone-500 text-xs md:text-sm">
+                Hear directly from Bangalore homeowners who upgraded to the Denova modular kitchen system.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left">
+              {kitchenReviews.map((review, idx) => (
+                <div key={idx} className="p-8 bg-white rounded-3xl border border-stone-100 space-y-4">
+                  <div className="flex gap-0.5 text-amber-500">
+                    {[...Array(review.rating)].map((_, i) => (
+                      <span key={i} className="text-lg">★</span>
+                    ))}
                   </div>
-
-                  <div className="grid grid-cols-2 gap-3">
+                  <p className="text-stone-600 text-xs md:text-sm leading-relaxed italic">
+                    "{review.quote}"
+                  </p>
+                  <div className="pt-2 border-t border-stone-100 flex items-center justify-between">
                     <div>
-                      <input
-                        type="tel"
-                        name="phone"
-                        placeholder="Mobile Number"
-                        maxLength="10"
-                        value={form.phone}
-                        required
-                        onChange={handleChange}
-                        className="w-full p-3 border border-stone-200 rounded-xl bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#0F3D3E] text-xs"
-                      />
-                      {errors.phone && <p className="text-red-600 text-[10px] mt-1 font-semibold">{errors.phone}</p>}
+                      <span className="font-serif font-bold text-stone-850 text-xs block">{review.name}</span>
+                      <span className="text-[10px] text-stone-400">{review.location}</span>
                     </div>
-
-                    <div>
-                      <input
-                        type="email"
-                        name="email"
-                        placeholder="Email Address"
-                        value={form.email}
-                        required
-                        onChange={handleChange}
-                        className="w-full p-3 border border-stone-200 rounded-xl bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#0F3D3E] text-xs"
-                      />
-                      {errors.email && <p className="text-red-600 text-[10px] mt-1 font-semibold">{errors.email}</p>}
-                    </div>
+                    <span className="text-[9px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full uppercase tracking-wider">Google Verified</span>
                   </div>
+                </div>
+              ))}
+            </div>
 
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <input
-                        type="text"
-                        name="location"
-                        placeholder="Service Area / Pincode"
-                        value={form.location}
-                        required
-                        onChange={handleChange}
-                        className="w-full p-3 border border-stone-200 rounded-xl bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#0F3D3E] text-xs"
-                      />
-                      {errors.location && <p className="text-red-600 text-[10px] mt-1 font-semibold">{errors.location}</p>}
-                    </div>
+          </div>
+        </section>
 
-                    <div>
-                      <select
-                        name="kitchenType"
-                        value={form.kitchenType}
-                        required
-                        onChange={handleChange}
-                        className="w-full p-3 border border-stone-200 rounded-xl bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#0F3D3E] text-xs text-stone-600"
-                      >
-                        <option value="">Layout Type</option>
-                        <option value="L-Shape">L-Shape Kitchen</option>
-                        <option value="U-Shape">U-Shape Kitchen</option>
-                        <option value="Parallel">Parallel Kitchen</option>
-                        <option value="Island">Island Kitchen</option>
-                        <option value="Straight">Straight Kitchen</option>
-                      </select>
-                      {errors.kitchenType && <p className="text-red-600 text-[10px] mt-1 font-semibold">{errors.kitchenType}</p>}
-                    </div>
-                  </div>
+        {/* 8. INTERACTIVE FAQ COVES */}
+        <section className="py-20 bg-white border-t border-stone-150">
+          <div className="container-custom">
+            
+            <div className="text-center mb-16 max-w-2xl mx-auto space-y-3">
+              <span className="text-[#0F3D3E] font-bold tracking-widest uppercase text-xs block">
+                Client Education
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#0F3D3E] tracking-tight">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-stone-500 text-xs md:text-sm">
+                Get clear, honest structural answers before commissioning your modular setup.
+              </p>
+            </div>
 
-                  <div>
-                    <select
-                      name="budget"
-                      value={form.budget}
-                      required
-                      onChange={handleChange}
-                      className="w-full p-3 border border-stone-200 rounded-xl bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#0F3D3E] text-xs text-stone-600"
+            {/* Accordion List */}
+            <div className="max-w-3xl mx-auto space-y-3 text-left">
+              {kitchenFaqs.map((faq, idx) => {
+                const isOpen = activeFaq === idx;
+                return (
+                  <div 
+                    key={idx} 
+                    className="bg-[#FAF8F5] rounded-2xl border border-stone-150 overflow-hidden transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.005)]"
+                  >
+                    <button
+                      onClick={() => toggleFaq(idx)}
+                      className="w-full p-5 flex justify-between items-center text-[#0F3D3E] hover:text-stone-950 font-serif font-bold text-sm md:text-base text-left transition-colors"
                     >
-                      <option value="">Approx Budget Range</option>
-                      <option value="₹1.5L - ₹2.5L">₹1.5 Lakhs - ₹2.5 Lakhs (Basic)</option>
-                      <option value="₹2.5L - ₹4.5L">₹2.5 Lakhs - ₹4.5 Lakhs (Premium)</option>
-                      <option value="₹4.5L+">₹4.5 Lakhs+ (Luxury Bespoke)</option>
-                    </select>
-                    {errors.budget && <p className="text-red-600 text-[10px] mt-1 font-semibold">{errors.budget}</p>}
+                      <span>{faq.q}</span>
+                      {isOpen ? (
+                        <ChevronUp className="w-4.5 h-4.5 text-[#E8D8C4] flex-shrink-0" />
+                      ) : (
+                        <ChevronDown className="w-4.5 h-4.5 text-[#E8D8C4] flex-shrink-0" />
+                      )}
+                    </button>
+                    
+                    {/* FAQ Answer Panel */}
+                    <div className={`transition-all duration-500 ease-in-out ${
+                      isOpen ? 'max-h-[300px] border-t border-stone-100 bg-white p-5 opacity-100' : 'max-h-0 opacity-0 p-0 overflow-hidden'
+                    }`}>
+                      <p className="text-stone-600 text-xs md:text-sm leading-relaxed">
+                        {faq.a}
+                      </p>
+                    </div>
                   </div>
+                );
+              })}
+            </div>
 
-                  <div>
-                    <textarea
-                      name="message"
-                      rows="2"
-                      placeholder="Describe your kitchen dimensions or custom requirements..."
-                      value={form.message}
-                      onChange={handleChange}
-                      className="w-full p-3 border border-stone-200 rounded-xl bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#0F3D3E] text-xs resize-none"
-                    ></textarea>
-                  </div>
+          </div>
+        </section>
 
-                  <button
-                    onClick={handleSubmit}
-                    disabled={loading}
-                    className="w-full bg-[#0F3D3E] hover:bg-[#0B2C2D] text-white font-bold py-3.5 rounded-xl shadow transition duration-300 text-xs uppercase tracking-widest flex items-center justify-center gap-2 mt-2"
-                  >
-                    {loading ? "Saving lead..." : "Get Free design layout plan"}
-                  </button>
-                </div>
-              </div>
+        {/* 9. PREMIUM CLOSING CTA */}
+        <section className="py-20 md:py-24 bg-gradient-to-b from-[#0F3D3E] to-[#0A2526] text-white relative z-10 select-none">
+          <div className="container-custom text-center max-w-3xl mx-auto space-y-6">
+            <span className="text-[#E8D8C4] font-bold tracking-widest uppercase text-xs block">
+              Start Designing Today
+            </span>
+            
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold leading-tight tracking-tight">
+              Ready to Build Your Dream Modular Kitchen?
+            </h2>
+            
+            <p className="text-stone-300 text-xs md:text-sm max-w-md mx-auto leading-relaxed">
+              Book a free private kitchen space planning session at our Bangalore studio or get a detailed structural quotation.
+            </p>
+
+            <div className="pt-4 flex flex-wrap justify-center gap-4">
+              <a href="#kitchenLeadForm">
+                <Button className="bg-[#E8D8C4] hover:bg-white text-[#0F3D3E] font-bold px-8 py-6 rounded-lg text-xs md:text-sm uppercase tracking-wider shadow-lg transition-transform hover:scale-[1.02] flex items-center gap-2">
+                  <span>Get Kitchen Quote</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </a>
+              <a 
+                href="https://wa.me/919164466606?text=Hi%20Denova%20Creations%2C%20I%20would%20like%20to%20get%20a%20modular%20kitchen%20quote%20estimate."
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <Button className="bg-transparent hover:bg-white/10 border border-white/20 text-white font-semibold px-8 py-6 rounded-lg text-xs md:text-sm uppercase tracking-wider transition-all duration-300">
+                  WhatsApp Expert
+                </Button>
+              </a>
+              <Link to="/portfolio">
+                <Button className="bg-transparent hover:bg-white/10 border border-white/20 text-white font-semibold px-8 py-6 rounded-lg text-xs md:text-sm uppercase tracking-wider transition-all duration-300">
+                  Explore Portfolio
+                </Button>
+              </Link>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* 13. FINAL CTA SECTION (EMOTIONAL DRIVER) */}
-      <section className="py-20 bg-stone-50 border-t border-stone-100">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <span className="text-[#0F3D3E] text-xs font-bold uppercase tracking-widest">Time-Sensitive Package Offer</span>
-          <h2 className="text-3xl md:text-5xl font-bold font-serif text-[#0F3D3E] mt-2 leading-tight">
-            Elevate Your Cooking Experience
-          </h2>
-          <p className="text-stone-600 max-w-xl mx-auto mt-4 text-sm leading-relaxed">
-            Reserve your complimentary design slot this week. Enjoy a **Free Consultation**, a **Free Site Dimension Audit**, and a comprehensive **3D Virtual Kitchen Draft Layout (Worth ₹15,000)** at absolutely no commitment.
-          </p>
-          
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={scrollToForm}
-              className="bg-[#0F3D3E] hover:bg-[#0B2C2D] text-white font-semibold px-8 py-4 rounded-full text-xs uppercase tracking-widest shadow-md hover:shadow-lg transition-all duration-300"
-            >
-              Get Free Design Draft
-            </button>
-            
-            <a
-              href="tel:+919164466606"
-              className="bg-white border-2 border-[#0F3D3E] text-[#0F3D3E] hover:bg-[#0F3D3E] hover:text-white font-semibold px-8 py-4 rounded-full text-xs uppercase tracking-widest transition duration-300 flex items-center justify-center gap-2"
-            >
-              <PhoneCall className="w-4 h-4" />
-              <span>Call Direct</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* 14. MOBILE BOTTOM STICKY CTA BAR (HIGH-CONVERTING CONVERSION DRIVER) */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-stone-100 shadow-[0_-8px_30px_rgba(0,0,0,0.05)] px-4 py-3 flex items-center justify-between gap-4">
-        <div>
-          <span className="text-[10px] text-stone-500 font-bold uppercase tracking-widest block">Premium Kitchens</span>
-          <span className="text-xs font-bold text-stone-900">Book Free 3D Design</span>
-        </div>
-        
-        <div className="flex gap-2">
+        {/* 10. STICKY MOBILE CTA BAR (CRITICAL FOR GOOGLE ADS MOBILE TRAFFIC) */}
+        <div className="md:hidden fixed bottom-0 left-0 right-0 z-[999] bg-white/95 border-t border-stone-200 px-4 py-2.5 shadow-2xl flex justify-between gap-3 items-center backdrop-blur-md">
           <a
-            href="https://wa.me/919164466606?text=Hi,%20I'm%20interested%20in%20modular%20kitchen%20design%20services%20in%20Bangalore."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 bg-[#E8D8C4] hover:bg-[#FAF7F2] text-[#0F3D3E] rounded-full transition shadow-sm flex items-center justify-center"
-            title="Chat on WhatsApp"
+            href="tel:+919164466606"
+            className="flex-1 flex items-center justify-center gap-1.5 py-3 rounded-xl border border-stone-300 text-stone-700 font-bold text-[10px] uppercase tracking-wider bg-white active:bg-stone-50 transition-all text-center"
           >
-            <MessageSquare className="w-4 h-4" />
+            <PhoneCall className="w-3.5 h-3.5 text-[#0F3D3E]" />
+            <span>Call Expert</span>
           </a>
           
-          <button
-            onClick={scrollToForm}
-            className="bg-[#0F3D3E] hover:bg-[#0B2C2D] text-white px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow"
+          <a
+            href="https://wa.me/919164466606?text=Hi%20Denova%20Creations%2C%20I%20would%20like%20to%20get%20a%20modular%20kitchen%20quote%20estimate."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 flex items-center justify-center gap-1.5 py-3 rounded-xl text-white font-bold text-[10px] uppercase tracking-wider bg-emerald-600 active:bg-emerald-700 transition-all text-center"
           >
-            Book Free Consult
-          </button>
+            <MessageSquare className="w-3.5 h-3.5 text-white" />
+            <span>WhatsApp Us</span>
+          </a>
+
+          <a
+            href="#kitchenLeadForm"
+            onClick={scrollToForm}
+            className="flex-1 flex items-center justify-center gap-1.5 py-3 rounded-xl text-[#0F3D3E] font-bold text-[10px] uppercase tracking-wider bg-[#E8D8C4] active:bg-[#e0cbb2] transition-all text-center"
+          >
+            <Zap className="w-3.5 h-3.5 text-[#0F3D3E]" />
+            <span>Get Quote</span>
+          </a>
         </div>
+
       </div>
-    </div>
+    </>
   );
 };
 
