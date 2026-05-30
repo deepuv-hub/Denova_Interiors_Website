@@ -28,10 +28,30 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isHomePage = location.pathname === '/';
+  const isTransparent = !isScrolled && isHomePage;
+
+  const logoTitleColor = isTransparent ? 'text-white' : 'text-[#0F3D3E]';
+  const logoSubColor = isTransparent ? 'text-stone-300' : 'text-stone-500';
+
+  const getLinkClass = (path) => {
+    const isActive = location.pathname === path;
+    if (isTransparent) {
+      return `relative py-1 text-sm font-semibold tracking-wide transition-all duration-300 ${
+        isActive ? 'text-white font-bold' : 'text-white/80 hover:text-[#E8D8C4]'
+      }`;
+    }
+    return `relative py-1 text-sm font-semibold tracking-wide transition-all duration-300 ${
+      isActive ? 'text-[#0F3D3E] font-bold' : 'text-stone-600 hover:text-[#0F3D3E]'
+    }`;
+  };
+
   return (
     <>
       {/* 1. TOP BAR (DESKTOP ONLY - ULTRA PREMIUM EMERALD) */}
-      <div className="bg-[#0B2526] text-stone-300 py-2.5 hidden md:block border-b border-white/5 relative z-50">
+      <div className={`bg-[#0B2526] text-stone-300 py-2.5 hidden md:block border-b border-white/5 relative z-50 transition-all duration-300 ${
+        isTransparent ? 'h-0 overflow-hidden py-0 border-none opacity-0' : 'opacity-100'
+      }`}>
         <div className="container-custom flex justify-between items-center text-xs font-medium tracking-wide">
           <div className="flex items-center gap-6">
             <a
@@ -74,17 +94,19 @@ const Header = () => {
       {/* 2. MAIN HEADER (STICKY LUXURY NAVIGATION) */}
       <header className={`sticky top-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'bg-white shadow-[0_4px_30px_rgba(0,0,0,0.03)] py-3 border-b border-stone-100' 
-          : 'bg-white/95 backdrop-blur-md py-4 border-b border-stone-100/40'
+          ? 'bg-white shadow-[0_4px_30px_rgba(0,0,0,0.05)] py-3 border-b border-stone-100 text-stone-800' 
+          : isHomePage
+            ? 'bg-transparent py-5 border-b border-transparent text-white'
+            : 'bg-white/95 backdrop-blur-md py-4 border-b border-stone-100/40 text-stone-800'
       }`}>
         <div className="container-custom">
           <div className="flex items-center justify-between">
             {/* Brand Logo */}
             <Link to="/" className="flex flex-col group select-none">
-              <span className="text-2xl md:text-3xl font-bold text-[#0F3D3E] tracking-tight leading-none" style={{ fontFamily: 'Playfair Display, serif' }}>
+              <span className={`text-2xl md:text-3xl font-bold tracking-tight leading-none transition-colors duration-300 ${logoTitleColor}`} style={{ fontFamily: 'Playfair Display, serif' }}>
                 Denova<span className="text-[#E8D8C4]">.</span>
               </span>
-              <span className="text-[10px] text-stone-500 font-bold uppercase tracking-widest mt-1 group-hover:text-[#0F3D3E] transition-colors">
+              <span className={`text-[10px] font-bold uppercase tracking-widest mt-1 transition-colors duration-300 ${logoSubColor}`}>
                 Creations
               </span>
             </Link>
@@ -97,11 +119,7 @@ const Header = () => {
                   <Link
                     key={link.path}
                     to={link.path}
-                    className={`relative py-1 text-sm font-semibold tracking-wide transition-all duration-300 ${
-                      isActive 
-                        ? 'text-[#0F3D3E]' 
-                        : 'text-stone-600 hover:text-[#0F3D3E]'
-                    }`}
+                    className={getLinkClass(link.path)}
                   >
                     {link.name}
                     {/* Underscore active indicator */}
@@ -120,7 +138,11 @@ const Header = () => {
                 href="https://wa.me/919164466606?text=Hi,%20I'd%20like%20to%20book%20a%20free%20design%20consultation%20meeting%20with%20your%20design%20specialists."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center p-2.5 bg-[#FAF7F2] hover:bg-[#E8D8C4]/20 border border-[#E8D8C4]/50 rounded-xl text-[#0F3D3E] transition duration-300"
+                className={`flex items-center justify-center p-2.5 rounded-xl transition duration-300 ${
+                  isTransparent
+                    ? 'bg-white/10 hover:bg-white/20 border border-white/20 text-white'
+                    : 'bg-[#FAF7F2] hover:bg-[#E8D8C4]/20 border border-[#E8D8C4]/50 text-[#0F3D3E]'
+                }`}
                 title="Chat with our architect on WhatsApp"
               >
                 <MessageSquare className="w-4 h-4" />
@@ -129,16 +151,24 @@ const Header = () => {
               {/* Phone Direct CTA */}
               <a
                 href="tel:+919164466606"
-                className="flex items-center gap-2 py-2 px-3.5 bg-[#FAF7F2] hover:bg-[#E8D8C4]/20 border border-[#E8D8C4]/50 rounded-xl text-xs font-semibold text-[#0F3D3E] transition duration-300"
+                className={`flex items-center gap-2 py-2 px-3.5 rounded-xl text-xs font-semibold transition duration-300 ${
+                  isTransparent
+                    ? 'bg-white/10 hover:bg-white/20 border border-white/20 text-white'
+                    : 'bg-[#FAF7F2] hover:bg-[#E8D8C4]/20 border border-[#E8D8C4]/50 text-[#0F3D3E]'
+                }`}
                 title="Call us direct"
               >
-                <PhoneCall className="w-3.5 h-3.5 text-[#0C3031]" />
+                <PhoneCall className={`w-3.5 h-3.5 ${isTransparent ? 'text-[#E8D8C4]' : 'text-[#0C3031]'}`} />
                 <span>Call Expert</span>
               </a>
 
               {/* Free Estimate Primary Button */}
               <Link to="/estimate">
-                <Button className="bg-[#0F3D3E] hover:bg-[#0B2C2D] text-[#E8D8C4] hover:text-white text-xs font-bold px-5 py-2.5 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 uppercase tracking-wider">
+                <Button className={`text-xs font-bold px-5 py-2.5 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 uppercase tracking-wider ${
+                  isTransparent
+                    ? 'bg-[#E8D8C4] hover:bg-white text-[#0F3D3E]'
+                    : 'bg-[#0F3D3E] hover:bg-[#0B2C2D] text-[#E8D8C4] hover:text-white'
+                }`}>
                   Get Free Estimate
                 </Button>
               </Link>
@@ -147,7 +177,11 @@ const Header = () => {
             {/* Mobile Sheet Trigger & Menu */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild className="lg:hidden">
-                <Button variant="ghost" size="icon" className="text-[#0F3D3E] hover:bg-[#FAF7F2] rounded-xl">
+                <Button variant="ghost" size="icon" className={`rounded-xl transition-colors duration-300 ${
+                  isTransparent 
+                    ? 'text-white hover:bg-white/10' 
+                    : 'text-[#0F3D3E] hover:bg-[#FAF7F2]'
+                }`}>
                   <Menu className="w-6 h-6" />
                 </Button>
               </SheetTrigger>
