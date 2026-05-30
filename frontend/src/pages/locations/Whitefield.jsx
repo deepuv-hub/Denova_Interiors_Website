@@ -116,6 +116,10 @@ const Whitefield = () => {
   const [errors, setErrors] = useState({});
   const [activeFaq, setActiveFaq] = useState(null);
 
+  const toggleFaq = (idx) => {
+    setActiveFaq(activeFaq === idx ? null : idx);
+  };
+
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -345,19 +349,22 @@ const Whitefield = () => {
               <div
                 key={idx}
                 className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                  idx === slideIndex ? "opacity-100 scale-102" : "opacity-0 scale-100"
+                  idx === slideIndex ? "opacity-100" : "opacity-0"
                 }`}
-                style={{ transition: "opacity 1000ms ease-in-out, transform 6000ms ease-out" }}
+                style={{ transition: "opacity 1000ms ease-in-out" }}
               >
                 <img
                   src={slide.img}
                   alt={slide.title}
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full object-cover blur-[1.5px] opacity-80 transition-all ${
+                    idx === slideIndex ? "scale-105" : "scale-100"
+                  }`}
+                  style={{ transition: "all 6000ms ease-in-out" }}
                 />
               </div>
             ))}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#051819]/95 via-[#051819]/80 to-[#051819]/55"></div>
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(5,24,25,0.7)_100%)]"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#051819]/95 via-[#051819]/85 to-[#051819]/65"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(5,24,25,0.75)_100%)]"></div>
           </div>
 
           <div className="relative z-10 w-full container-custom">
@@ -1125,8 +1132,17 @@ const Whitefield = () => {
         </section>
 
         {/* 10. FINAL CONVERSION DUSTLESS CTA */}
-        <section className="py-20 md:py-24 bg-gradient-to-b from-[#0F3D3E] to-[#0A2526] text-white relative z-10 select-none">
-          <div className="container-custom text-center max-w-3xl mx-auto space-y-6">
+        <section className="py-24 bg-[#071F20] text-white relative overflow-hidden select-none">
+          {/* Immersive Dark Background Image */}
+          <div className="absolute inset-0 z-0">
+            <img
+              src="/images/hero2.webp"
+              alt="Bespoke luxury interior"
+              className="w-full h-full object-cover blur-[2px] opacity-25 scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0F3D3E]/95 to-[#0A2526]/98"></div>
+          </div>
+          <div className="relative z-10 container-custom text-center max-w-3xl mx-auto space-y-6">
             <span className="text-[#E8D8C4] font-bold tracking-widest uppercase text-xs block">
               Bespoke Turnkey Curation
             </span>
