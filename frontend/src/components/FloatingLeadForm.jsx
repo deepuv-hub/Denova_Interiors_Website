@@ -193,10 +193,10 @@ const FloatingLeadForm = () => {
 
   return (
     <>
-      {/* 1. MOBILE BOTTOM DRAWER BACKDROP */}
+      {/* 1. GLOBAL BACKDROP */}
       {isExpanded && (
         <div 
-          className="md:hidden fixed inset-0 bg-black/40 backdrop-blur-xs z-[998] transition-opacity duration-300"
+          className="fixed inset-0 bg-black/45 backdrop-blur-xs z-[998] transition-opacity duration-300 animate-fade-in"
           onClick={() => setIsExpanded(false)}
         />
       )}
@@ -214,8 +214,8 @@ const FloatingLeadForm = () => {
           /* EXPANDED LUXURY CARD DISPLAY                                              */
           /* ========================================================================= */
           <>
-            {/* Desktop Card View */}
-            <div className="hidden md:block fixed bottom-[145px] right-6 w-[330px] bg-white/95 border border-[#E8D8C4]/40 rounded-2xl shadow-[0_20px_50px_rgba(15,61,62,0.15)] overflow-hidden backdrop-blur-md transition-all duration-500 ease-in-out hover:border-[#E8D8C4]/60 animate-fade-in-up">
+            {/* Desktop Card View - Placed perfectly in absolute center */}
+            <div className="hidden md:block fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] bg-white/95 border border-[#E8D8C4]/40 rounded-2xl shadow-[0_30px_60px_rgba(15,61,62,0.2)] overflow-hidden backdrop-blur-md transition-all duration-500 ease-in-out hover:border-[#E8D8C4]/60 animate-fade-in-up z-[999]">
               
               {/* Header */}
               <div className="bg-[#FAF7F2] p-4 border-b border-[#E8D8C4]/20 relative text-left">

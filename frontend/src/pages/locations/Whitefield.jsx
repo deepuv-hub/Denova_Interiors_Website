@@ -156,7 +156,7 @@ const Whitefield = () => {
   const validateStep1 = () => {
     const tempErrors = {};
     if (!form.name.trim()) tempErrors.name = "Full Name is required";
-    
+
     const cleanedPhone = form.phone.replace(/\D/g, "");
     if (!form.phone.trim()) {
       tempErrors.phone = "Phone number is required";
@@ -342,23 +342,21 @@ const Whitefield = () => {
 
         {/* 1. CINEMATIC HERO SLIDESHOW & 2-STEP STEPPER FORM */}
         <section className="relative min-h-[92vh] flex items-center bg-[#071F20] pt-24 pb-16 overflow-hidden select-none">
-          
+
           {/* Visual Background Slider */}
           <div className="absolute inset-0 z-0">
             {heroSlides.map((slide, idx) => (
               <div
                 key={idx}
-                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                  idx === slideIndex ? "opacity-100" : "opacity-0"
-                }`}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === slideIndex ? "opacity-100" : "opacity-0"
+                  }`}
                 style={{ transition: "opacity 1000ms ease-in-out" }}
               >
                 <img
                   src={slide.img}
                   alt={slide.title}
-                  className={`w-full h-full object-cover blur-[1.5px] opacity-80 transition-all ${
-                    idx === slideIndex ? "scale-105" : "scale-100"
-                  }`}
+                  className={`w-full h-full object-cover blur-[1.5px] opacity-80 transition-all ${idx === slideIndex ? "scale-105" : "scale-100"
+                    }`}
                   style={{ transition: "all 6000ms ease-in-out" }}
                 />
               </div>
@@ -369,10 +367,10 @@ const Whitefield = () => {
 
           <div className="relative z-10 w-full container-custom">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-              
+
               {/* LEFT COLUMN: LOCAL SEO COPY & TRUST KEYS */}
               <div className="lg:col-span-6 text-left space-y-6 lg:max-w-xl animate-fade-in-up">
-                
+
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E8D8C4]/15 border border-[#E8D8C4]/20 backdrop-blur-xs">
                   <Sparkles className="w-3.5 h-3.5 text-[#E8D8C4]" />
                   <span className="text-[#E8D8C4] font-bold text-[9px] uppercase tracking-widest leading-none">
@@ -422,8 +420,8 @@ const Whitefield = () => {
 
               {/* RIGHT COLUMN: GLASSMORPHIC STEPPER CARD */}
               <div className="lg:col-span-6 lg:ml-auto w-full max-w-lg">
-                <Card 
-                  id="whitefieldForm" 
+                <Card
+                  id="whitefieldForm"
                   className="border-0 bg-white/95 shadow-[0_30px_60px_rgba(5,24,25,0.3)] rounded-3xl overflow-hidden backdrop-blur-md relative"
                 >
                   <div className="bg-[#FAF7F2] py-2.5 px-6 border-b border-[#E8D8C4]/20 flex justify-between items-center text-[10px] font-bold text-[#0F3D3E] uppercase tracking-wider">
@@ -448,29 +446,27 @@ const Whitefield = () => {
                     <div className="flex justify-center items-center gap-3">
                       <button
                         onClick={() => setStep(1)}
-                        className={`w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center transition-all duration-300 ${
-                          step === 1 ? "bg-[#0F3D3E] text-white" : "bg-[#FAF7F2] text-[#0F3D3E] border border-[#E8D8C4]/40"
-                        }`}
+                        className={`w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center transition-all duration-300 ${step === 1 ? "bg-[#0F3D3E] text-white" : "bg-[#FAF7F2] text-[#0F3D3E] border border-[#E8D8C4]/40"
+                          }`}
                       >
                         1
                       </button>
                       <div className="w-12 h-[1px] bg-stone-200"></div>
                       <button
                         onClick={handleNextStep}
-                        className={`w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center transition-all duration-300 ${
-                          step === 2 ? "bg-[#0F3D3E] text-white" : "bg-[#FAF7F2] text-stone-400 border border-stone-100"
-                        }`}
+                        className={`w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center transition-all duration-300 ${step === 2 ? "bg-[#0F3D3E] text-white" : "bg-[#FAF7F2] text-stone-400 border border-stone-100"
+                          }`}
                       >
                         2
                       </button>
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-4 text-left">
-                      
+
                       {/* Step 1 */}
                       {step === 1 && (
                         <div className="space-y-4 animate-fadeIn">
-                          
+
                           <div className="space-y-1">
                             <label className="text-[10px] uppercase tracking-wider font-bold text-stone-500 block">Full Name *</label>
                             <div className="relative">
@@ -481,9 +477,8 @@ const Whitefield = () => {
                                 value={form.name}
                                 onChange={handleChange}
                                 placeholder="Rahul Sharma"
-                                className={`w-full pl-10 pr-4 py-3 bg-[#FAF8F5] border rounded-xl text-xs font-semibold focus:outline-none focus:border-[#0F3D3E] transition-all ${
-                                  errors.name ? "border-red-500 bg-red-50/20" : "border-stone-200/60"
-                                }`}
+                                className={`w-full pl-10 pr-4 py-3 bg-[#FAF8F5] border rounded-xl text-xs font-semibold focus:outline-none focus:border-[#0F3D3E] transition-all ${errors.name ? "border-red-500 bg-red-50/20" : "border-stone-200/60"
+                                  }`}
                               />
                             </div>
                             {errors.name && <span className="text-[10px] text-red-500 font-bold block">{errors.name}</span>}
@@ -499,9 +494,8 @@ const Whitefield = () => {
                                 value={form.phone}
                                 onChange={handleChange}
                                 placeholder="9876543210"
-                                className={`w-full pl-10 pr-4 py-3 bg-[#FAF8F5] border rounded-xl text-xs font-semibold focus:outline-none focus:border-[#0F3D3E] transition-all ${
-                                  errors.phone ? "border-red-500 bg-red-50/20" : "border-stone-200/60"
-                                }`}
+                                className={`w-full pl-10 pr-4 py-3 bg-[#FAF8F5] border rounded-xl text-xs font-semibold focus:outline-none focus:border-[#0F3D3E] transition-all ${errors.phone ? "border-red-500 bg-red-50/20" : "border-stone-200/60"
+                                  }`}
                               />
                             </div>
                             {errors.phone && <span className="text-[10px] text-red-500 font-bold block">{errors.phone}</span>}
@@ -537,9 +531,8 @@ const Whitefield = () => {
                                   if (errors.pincode) setErrors((prev) => ({ ...prev, pincode: "" }));
                                 }}
                                 placeholder="e.g. 560066"
-                                className={`w-full pl-10 pr-4 py-3 bg-[#FAF8F5] border rounded-xl text-xs font-semibold focus:outline-none focus:border-[#0F3D3E] transition-all ${
-                                  errors.pincode ? "border-red-500 bg-red-50/20" : "border-stone-200/60"
-                                }`}
+                                className={`w-full pl-10 pr-4 py-3 bg-[#FAF8F5] border rounded-xl text-xs font-semibold focus:outline-none focus:border-[#0F3D3E] transition-all ${errors.pincode ? "border-red-500 bg-red-50/20" : "border-stone-200/60"
+                                  }`}
                               />
                             </div>
                             {errors.pincode && <span className="text-[10px] text-red-500 font-bold block">{errors.pincode}</span>}
@@ -560,7 +553,7 @@ const Whitefield = () => {
                       {/* Step 2 */}
                       {step === 2 && (
                         <div className="space-y-4 animate-fadeIn">
-                          
+
                           <div className="space-y-1">
                             <label className="text-[10px] uppercase tracking-wider font-bold text-stone-500 block">Property Type</label>
                             <div className="relative">
@@ -697,7 +690,7 @@ const Whitefield = () => {
         {/* 2. WALKTHROUGH STEP 1: INTRODUCTION & WHITEFIELD LIFESTYLE */}
         <section className="py-20 bg-white border-b border-stone-150 select-none">
           <div className="container-custom text-center">
-            
+
             <div className="mb-16 max-w-2xl mx-auto space-y-3">
               <span className="text-[#0F3D3E] font-bold tracking-widest uppercase text-xs block">
                 Walkthrough Step 01
@@ -711,7 +704,7 @@ const Whitefield = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto text-left">
-              
+
               <div className="space-y-6">
                 <h3 className="text-2xl font-serif font-bold text-[#0F3D3E]">
                   Maximizing Gated Community Spatial Layouts
@@ -750,7 +743,7 @@ const Whitefield = () => {
         {/* 3. WALKTHROUGH STEP 2: ALTERNATING COMMUNITY CAPABILITIES */}
         <section id="services" className="py-20 md:py-24 bg-[#FAF8F5]">
           <div className="container-custom">
-            
+
             <div className="text-center mb-16 max-w-2xl mx-auto space-y-3">
               <span className="text-[#0F3D3E] font-bold tracking-widest uppercase text-xs block">
                 Walkthrough Step 02
@@ -768,13 +761,12 @@ const Whitefield = () => {
               {localServices.map((service, idx) => {
                 const isEven = idx % 2 === 0;
                 return (
-                  <div 
-                    key={idx} 
-                    className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center ${
-                      isEven ? "" : "lg:flex-row-reverse"
-                    }`}
+                  <div
+                    key={idx}
+                    className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center ${isEven ? "" : "lg:flex-row-reverse"
+                      }`}
                   >
-                    
+
                     {/* Visual */}
                     <div className={`lg:col-span-5 ${isEven ? "lg:order-1" : "lg:order-2"}`}>
                       <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-md border-4 border-white">
@@ -792,11 +784,11 @@ const Whitefield = () => {
                       <span className="text-[#E8D8C4] font-bold text-[9px] uppercase tracking-widest block leading-none">
                         Capability 0{idx + 1}
                       </span>
-                      
+
                       <h3 className="text-2xl font-bold font-serif text-[#0F3D3E]">
                         {service.title}
                       </h3>
-                      
+
                       <p className="text-stone-500 text-xs md:text-sm leading-relaxed">
                         {service.desc}
                       </p>
@@ -831,7 +823,7 @@ const Whitefield = () => {
         {/* 4. WALKTHROUGH STEP 3: MATERIALS & ERGONOMIC STANDARDS */}
         <section className="py-20 bg-white border-y border-stone-150 select-none">
           <div className="container-custom">
-            
+
             <div className="text-center mb-16 max-w-2xl mx-auto space-y-3">
               <span className="text-[#0F3D3E] font-bold tracking-widest uppercase text-xs block">
                 Walkthrough Step 03
@@ -845,7 +837,7 @@ const Whitefield = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto text-left">
-              
+
               {/* Card 1 */}
               <div className="p-6 bg-[#FAF8F5] rounded-3xl border border-stone-100 space-y-3.5 hover:border-[#E8D8C4] hover:bg-white transition-all duration-300">
                 <div className="w-9 h-9 bg-white text-[#0F3D3E] border border-stone-100 flex items-center justify-center rounded-lg shadow-xs">
@@ -864,7 +856,7 @@ const Whitefield = () => {
                 </div>
                 <h4 className="font-serif font-bold text-base text-[#0F3D3E]">Automated PUR Edges</h4>
                 <p className="text-stone-500 text-[11px] leading-relaxed">
-                   millmeter-precision German hotmelt edge-banding. Locks moisture entry permanently, avoiding typical panel swelling and wavy edge peeling.
+                  millmeter-precision German hotmelt edge-banding. Locks moisture entry permanently, avoiding typical panel swelling and wavy edge peeling.
                 </p>
               </div>
 
@@ -898,7 +890,7 @@ const Whitefield = () => {
         {/* 5. WALKTHROUGH STEP 4: BESPOKE TURNKEY PROCESS TIMELINE */}
         <section className="py-20 md:py-24 bg-[#FAF8F5] border-b border-stone-150">
           <div className="container-custom text-center">
-            
+
             <div className="mb-16 max-w-2xl mx-auto space-y-3">
               <span className="text-[#0F3D3E] font-bold tracking-widest uppercase text-xs block">
                 Walkthrough Step 04
@@ -927,7 +919,7 @@ const Whitefield = () => {
                   </div>
                   <h4 className="text-xs font-bold text-[#0F3D3E] font-serif tracking-tight">{step.t}</h4>
                   <p className="text-[11px] text-stone-500 leading-relaxed">{step.d}</p>
-                  
+
                   {i < 5 && (
                     <div className="hidden lg:block absolute top-4 left-[85%] w-full h-[1px] border-t border-dashed border-stone-300 -z-10"></div>
                   )}
@@ -941,15 +933,15 @@ const Whitefield = () => {
         {/* 6. WALKTHROUGH STEP 5: WHITEFIELD TRENDS EDITORIAL & LOCAL SEO */}
         <section className="py-20 bg-white select-none border-b border-stone-150">
           <div className="container-custom">
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start max-w-5xl mx-auto text-left">
-              
+
               {/* Editorial Left */}
               <div className="lg:col-span-7 space-y-6">
                 <span className="text-[#0F3D3E] font-bold tracking-widest uppercase text-xs block">
                   Walkthrough Step 05
                 </span>
-                
+
                 <h2 className="text-3xl font-bold font-serif text-[#0F3D3E] tracking-tight leading-tight">
                   Modern Interior Trends in Whitefield Bangalore
                 </h2>
@@ -970,7 +962,7 @@ const Whitefield = () => {
                 <h3 className="font-serif font-bold text-lg text-[#0F3D3E] border-b border-stone-200/50 pb-2">
                   Whitefield Planning parameters
                 </h3>
-                
+
                 <div className="space-y-4 text-xs">
                   <div className="space-y-1">
                     <span className="text-stone-400 block font-semibold text-[9px] uppercase">Best Color curations</span>
@@ -995,7 +987,7 @@ const Whitefield = () => {
         {/* 7. WALKTHROUGH STEP 6: NATURAL INTERNAL LINKING MATRIX */}
         <section className="py-16 bg-[#FAF8F5] border-b border-stone-150">
           <div className="container-custom text-center">
-            
+
             <div className="mb-10 max-w-xl mx-auto space-y-2">
               <span className="text-[#0F3D3E] font-bold tracking-widest uppercase text-xs block">
                 Walkthrough Step 06
@@ -1042,7 +1034,7 @@ const Whitefield = () => {
         {/* 8. VERIFIED LOCAL REVIEWS */}
         <section className="py-20 bg-white">
           <div className="container-custom">
-            
+
             <div className="text-center mb-16 max-w-2xl mx-auto space-y-3">
               <span className="text-[#0F3D3E] font-bold tracking-widest uppercase text-xs block">
                 Social Proof
@@ -1083,7 +1075,7 @@ const Whitefield = () => {
         {/* 9. FAQ ACCORDION PANEL */}
         <section className="py-20 bg-[#FAF8F5] border-t border-stone-150">
           <div className="container-custom">
-            
+
             <div className="text-center mb-16 max-w-2xl mx-auto space-y-3">
               <span className="text-[#0F3D3E] font-bold tracking-widest uppercase text-xs block">
                 FAQ
@@ -1100,8 +1092,8 @@ const Whitefield = () => {
               {localFaqs.map((faq, idx) => {
                 const isOpen = activeFaq === idx;
                 return (
-                  <div 
-                    key={idx} 
+                  <div
+                    key={idx}
                     className="bg-white rounded-2xl border border-stone-150 overflow-hidden transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.005)]"
                   >
                     <button
@@ -1115,10 +1107,9 @@ const Whitefield = () => {
                         <ChevronDown className="w-4.5 h-4.5 text-[#E8D8C4] flex-shrink-0" />
                       )}
                     </button>
-                    
-                    <div className={`transition-all duration-500 ease-in-out ${
-                      isOpen ? 'max-h-[300px] border-t border-stone-100 bg-white p-5 opacity-100' : 'max-h-0 opacity-0 p-0 overflow-hidden'
-                    }`}>
+
+                    <div className={`transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[300px] border-t border-stone-100 bg-white p-5 opacity-100' : 'max-h-0 opacity-0 p-0 overflow-hidden'
+                      }`}>
                       <p className="text-stone-600 text-xs md:text-sm leading-relaxed">
                         {faq.a}
                       </p>
@@ -1146,11 +1137,11 @@ const Whitefield = () => {
             <span className="text-[#E8D8C4] font-bold tracking-widest uppercase text-xs block">
               Bespoke Turnkey Curation
             </span>
-            
+
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold leading-tight tracking-tight">
               Let’s Design Your Dream Home in Whitefield.
             </h2>
-            
+
             <p className="text-stone-300 text-xs md:text-sm max-w-md mx-auto leading-relaxed">
               Connect with a senior spatial interior architect at our Bangalore curation coves studio today.
             </p>
@@ -1162,9 +1153,9 @@ const Whitefield = () => {
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </a>
-              <a 
+              <a
                 href="https://wa.me/919164466606?text=Hi%20Denova%20Creations%2C%20I%20would%20like%20to%20get%20a%20turnkey%20home%20interior%20estimate%20for%20my%20residence%20in%20Whitefield."
-                target="_blank" 
+                target="_blank"
                 rel="noopener noreferrer"
               >
                 <Button className="bg-transparent hover:bg-white/10 border border-white/20 text-white font-semibold px-8 py-6 rounded-lg text-xs md:text-sm uppercase tracking-wider transition-all duration-300">
