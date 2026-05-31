@@ -96,12 +96,12 @@ const Header = () => {
       {/* 2. MAIN HEADER (STICKY LUXURY NAVIGATION) */}
       <header 
         style={{ transform: 'translate3d(0, 0, 0)', willChange: 'transform' }}
-        className={`sticky top-0 z-[99999] transition-all duration-300 ${
+        className={`z-[99999] transition-all duration-300 ${
           isScrolled 
-            ? 'bg-white shadow-[0_4px_30px_rgba(0,0,0,0.05)] py-3 border-b border-stone-100 text-stone-800' 
+            ? 'sticky top-0 bg-white shadow-[0_4px_30px_rgba(0,0,0,0.05)] py-3 border-b border-stone-100 text-stone-800' 
             : isHomePage
-              ? 'bg-transparent py-5 border-b border-transparent text-white'
-              : 'bg-white/95 backdrop-blur-md py-4 border-b border-stone-100/40 text-stone-800'
+              ? 'absolute top-0 left-0 right-0 bg-transparent py-5 border-b border-transparent text-white'
+              : 'sticky top-0 bg-white/95 backdrop-blur-md py-4 border-b border-stone-100/40 text-stone-800'
         }`}
       >
         <div className="container-custom">
