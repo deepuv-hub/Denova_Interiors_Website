@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
+import logoPrimary from "@/assets/branding/logo-primary.png";
 import {
   Sparkles,
   Star,
@@ -267,7 +268,7 @@ const AdsLanding = () => {
         <div className="max-w-6xl mx-auto px-4 py-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <img
-              src="/images/denova-logo.svg"
+              src={logoPrimary}
               alt="Denova Creations Logo"
               className="h-9 md:h-11 w-auto object-contain brightness-0 invert"
               loading="eager"
@@ -1701,7 +1702,7 @@ const AdsLanding = () => {
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <img
-              src="/images/denova-logo.svg"
+              src={logoPrimary}
               alt="Denova Creations Signature Logo"
               className="h-6 w-auto object-contain brightness-0 invert opacity-45"
             />

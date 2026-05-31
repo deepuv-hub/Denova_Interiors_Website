@@ -230,7 +230,7 @@ const HomePage = () => {
             "@type": "ProfessionalService",
             name: "Denova Creations",
             url: "https://denovacreations.com",
-            logo: "https://denovacreations.com/images/denova-logo.svg",
+            logo: "https://denovacreations.com/images/logo-primary.png",
             image: "https://denovacreations.com/images/hero2.webp",
             telephone: "+91-9164466606",
             address: {

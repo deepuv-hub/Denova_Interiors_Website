@@ -4,6 +4,7 @@ import { Menu, X, Phone, MapPin, MessageSquare, PhoneCall } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
 import { companyInfo } from '../../data/mock';
+import logoPrimary from '@/assets/branding/logo-primary.png';
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -31,6 +32,7 @@ const Header = () => {
   const isHomePage = location.pathname === '/';
   const isTransparent = !isScrolled && isHomePage;
 
+  const logoFilterClass = isTransparent ? 'brightness-0 invert' : '';
   const logoTitleColor = isTransparent ? 'text-white' : 'text-[#0F3D3E]';
   const logoSubColor = isTransparent ? 'text-stone-300' : 'text-stone-500';
 
@@ -105,13 +107,13 @@ const Header = () => {
         <div className="container-custom">
           <div className="flex items-center justify-between">
             {/* Brand Logo */}
-            <Link to="/" className="flex flex-col group select-none">
-              <span className={`text-2xl md:text-3xl font-bold tracking-tight leading-none transition-colors duration-300 ${logoTitleColor}`} style={{ fontFamily: 'Playfair Display, serif' }}>
-                Denova<span className="text-[#E8D8C4]">.</span>
-              </span>
-              <span className={`text-[10px] font-bold uppercase tracking-widest mt-1 transition-colors duration-300 ${logoSubColor}`}>
-                Creations
-              </span>
+            <Link to="/" className="flex items-center select-none group">
+              <img
+                src={logoPrimary}
+                alt="Denova Creations Logo"
+                className={`h-11 lg:h-14 w-auto object-contain transition-all duration-300 ${logoFilterClass}`}
+                loading="eager"
+              />
             </Link>
 
             {/* Desktop Center Navigation */}
@@ -191,12 +193,14 @@ const Header = () => {
               <SheetContent side="right" className="w-[300px] sm:w-[350px] bg-white border-l border-stone-100 rounded-l-3xl p-6">
                 <div className="flex flex-col h-full py-2">
                   <div className="mb-8 flex items-center justify-between">
-                    <div className="flex flex-col">
-                      <span className="text-2xl font-bold text-[#0F3D3E]" style={{ fontFamily: 'Playfair Display, serif' }}>
-                        Denova<span className="text-[#E8D8C4]">.</span>
-                      </span>
-                      <span className="text-[10px] text-stone-500 font-bold uppercase tracking-widest -mt-0.5">Creations</span>
-                    </div>
+                    <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center select-none">
+                      <img
+                        src={logoPrimary}
+                        alt="Denova Creations Logo"
+                        className="h-11 w-auto object-contain"
+                        loading="eager"
+                      />
+                    </Link>
                   </div>
                   
                   {/* Mobile Navigation List */}

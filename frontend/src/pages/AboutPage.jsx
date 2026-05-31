@@ -141,7 +141,7 @@ const AboutPage = () => {
             "publisher": {
               "@type": "Organization",
               "name": "Denova Creations",
-              "logo": "https://denovacreations.com/images/denova-logo.svg"
+              "logo": "https://denovacreations.com/images/logo-primary.png"
             }
           })}
         </script>

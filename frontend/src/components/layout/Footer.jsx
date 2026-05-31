@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
 import { companyInfo, services } from '../../data/mock';
 import locations from '../../data/locations';
+import logoPrimary from '@/assets/branding/logo-primary.png';
 
 const quickLinks = [
   { label: 'Home', path: '/' },
@@ -28,12 +29,14 @@ const Footer = () => {
             {/* Column 1: Company Profile Summary */}
             <div className="flex flex-col text-left">
               <div className="mb-3">
-                <span className="text-2xl font-bold text-white tracking-tight leading-none" style={{ fontFamily: 'Playfair Display, serif' }}>
-                  Denova<span className="text-[#E8D8C4]">.</span>
-                </span>
-                <span className="text-[9px] text-stone-400 font-bold uppercase tracking-widest mt-0.5 block">
-                  Creations
-                </span>
+                <Link to="/" className="flex items-center select-none">
+                  <img
+                    src={logoPrimary}
+                    alt="Denova Creations Logo"
+                    className="h-11 w-auto object-contain brightness-0 invert"
+                    loading="lazy"
+                  />
+                </Link>
               </div>
               
               <p className="text-stone-400 text-[11px] leading-relaxed mb-4">
