@@ -38,12 +38,12 @@ const iconMap = {
 // Existing High-Quality actual images mapped to a premium fullscreen Ken Burns slider
 const heroSlides = [
   {
-    image: "/images/landingpagehero.webp",
-    heading: "Designing Timeless Luxury Interiors",
-    subheading: "Bengaluru's premier home design studio crafting premium, visually immersive, and highly personalized luxury living spaces."
+    image: "/images/hero2.webp",
+    heading: "Crafting Bespoke Luxury Interiors in Bangalore",
+    subheading: "Experience complete home interiors tailored to your lifestyle—combining exquisite craftsmanship, premium materials, and 100% transparent execution from concept to completion."
   },
   {
-    image: "/images/hero2.webp",
+    image: "/images/landingpagehero.webp",
     heading: "Crafted Spaces. Elevated Living.",
     subheading: "Bespoke home interiors featuring European modular systems, German-engineered hardware, and flawless turnkey execution."
   },
@@ -308,22 +308,42 @@ const HomePage = () => {
               </h1>
 
               {/* Dynamic slide description */}
-              <p className="text-base md:text-lg text-stone-300 mb-10 leading-relaxed max-w-xl transition-all duration-500">
+              <p className="text-base md:text-lg text-stone-300 mb-8 leading-relaxed max-w-2xl transition-all duration-500">
                 {heroSlides[currentSlide].subheading}
               </p>
+
+              {/* Trust highlights row */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8 pt-4 border-t border-white/15">
+                <div className="flex items-center gap-2.5 text-white/90 text-xs md:text-sm font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-[#E8D8C4] shrink-0" />
+                  <span>Free Design Consultation</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-white/90 text-xs md:text-sm font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-[#E8D8C4] shrink-0" />
+                  <span>Transparent Pricing</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-white/90 text-xs md:text-sm font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-[#E8D8C4] shrink-0" />
+                  <span>45–60 Day Delivery</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-white/90 text-xs md:text-sm font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-[#E8D8C4] shrink-0" />
+                  <span>Premium Materials</span>
+                </div>
+              </div>
 
               {/* Luxury Styled CTA buttons */}
               <div className="flex flex-wrap gap-4">
                 <Link to="/contact">
-                  <Button className="bg-[#E8D8C4] hover:bg-white text-[#0F3D3E] font-bold px-6 py-5 rounded-lg text-xs md:text-sm uppercase tracking-wider transition-all duration-300 shadow-lg hover:scale-[1.03] flex items-center gap-2">
-                    <span>Book Consultation</span>
+                  <Button className="bg-[#C8A35F] hover:bg-[#b89555] text-white font-bold px-6 py-4 rounded-sm text-xs md:text-sm uppercase tracking-wider transition-all duration-300 shadow-lg hover:scale-[1.02] flex items-center gap-2">
+                    <span>Book Free Consultation</span>
                     <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
 
                 <Link to="/projects">
-                  <Button className="bg-transparent hover:bg-white/10 border border-white/30 text-white font-bold px-6 py-5 rounded-lg text-xs md:text-sm uppercase tracking-wider transition-all duration-300 shadow-md">
-                    View Showcase
+                  <Button className="bg-transparent hover:bg-white/10 border border-white/30 text-white font-bold px-6 py-4 rounded-sm text-xs md:text-sm uppercase tracking-wider transition-all duration-300 shadow-md">
+                    Explore Portfolio
                   </Button>
                 </Link>
               </div>
