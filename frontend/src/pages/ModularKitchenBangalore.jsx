@@ -1,124 +1,199 @@
-```jsx
-import React from "react";
+import React, { useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
-function ModularKitchenBangalore() {
+const pageMeta = {
+  title: "Modular Kitchen Bangalore | Premium Kitchen Interiors",
+  description:
+    "Premium modular kitchen design in Bangalore with customized layouts, modern finishes, and complete execution by Denova Creations.",
+  url: "https://denovacreations.com/modular-kitchen-bangalore",
+  image: "https://denovacreations.com/images/kitchen1.webp",
+};
+
+const kitchenSolutions = [
+  {
+    title: "L Shape Kitchens",
+    description:
+      "Functional layouts with efficient corner utilization and modern finishes.",
+  },
+  {
+    title: "U Shape Kitchens",
+    description:
+      "Spacious kitchen planning designed for larger families and premium homes.",
+  },
+  {
+    title: "Parallel Kitchens",
+    description:
+      "Smart layouts for compact apartments with optimized storage.",
+  },
+];
+
+const ModularKitchenBangalore = () => {
+  const leadFormRef = useRef(null);
+  const [formData, setFormData] = useState({ name: "", phone: "", email: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((current) => ({ ...current, [name]: value }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
+    setIsSubmitting(false);
+    setFormData({ name: "", phone: "", email: "" });
+    alert("Thank you! We will contact you shortly.");
+  };
+
+  const scrollToForm = () => {
+    leadFormRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
-    <main className="bg-white text-gray-900">
+    <>
+      <Helmet>
+        <title>{pageMeta.title}</title>
+        <meta name="description" content={pageMeta.description} />
+        <link rel="canonical" href={pageMeta.url} />
+        <meta property="og:title" content="Modular Kitchen Bangalore | Denova Creations" />
+        <meta property="og:description" content="Custom modular kitchen interiors in Bangalore designed for functionality, aesthetics, and smart storage." />
+        <meta property="og:url" content={pageMeta.url} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={pageMeta.image} />
+      </Helmet>
 
-      {/* HERO SECTION */}
-      <section className="px-6 lg:px-20 py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+      <section className="relative min-h-[85vh] flex items-center bg-black">
+        <img
+          src="/images/kitchen1.webp"
+          alt="Modular Kitchen Bangalore"
+          className="absolute inset-0 w-full h-full object-cover opacity-40"
+          loading="eager"
+        />
 
-          {/* LEFT CONTENT */}
+        <div className="relative z-10 max-w-6xl mx-auto px-4 grid gap-10 items-center md:grid-cols-2 text-white">
           <div>
-            <p className="text-sm uppercase tracking-widest text-gray-500 mb-4">
-              Premium Modular Kitchen Interiors
-            </p>
-
-            <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6">
-              Premium Modular Kitchen Designers In Bangalore
+            <h1 className="text-4xl font-bold leading-tight md:text-6xl">
+              Premium Modular Kitchen Designs in Bangalore
             </h1>
-
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              Custom modular kitchens with smart storage, elegant finishes
-              and turnkey execution tailored for modern Bangalore homes.
+            <p className="mt-6 text-lg text-gray-200">
+              Smart storage, elegant finishes, and custom kitchen interiors designed to elevate everyday cooking.
             </p>
 
-            <div className="flex flex-wrap gap-4">
-              <a
-                href="/contact"
-                className="bg-black text-white px-8 py-4 rounded-full text-sm font-medium hover:opacity-90 transition"
+            <div className="mt-8 flex flex-wrap gap-4">
+              <button
+                type="button"
+                onClick={scrollToForm}
+                className="rounded-lg bg-[#C8A96A] px-6 py-3 font-semibold text-black transition hover:opacity-90"
               >
-                Book Free Consultation
-              </a>
-
+                Get Free Consultation
+              </button>
               <a
-                href="https://wa.me/919161466606"
+                href="https://wa.me/919164466606"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border border-black px-8 py-4 rounded-full text-sm font-medium hover:bg-black hover:text-white transition"
+                className="rounded-lg border border-white px-6 py-3 font-semibold transition hover:bg-white hover:text-black"
               >
                 WhatsApp Us
               </a>
             </div>
-
-            {/* TRUST BAR */}
-            <div className="flex flex-wrap gap-6 mt-10 text-sm text-gray-600">
-              <span>150+ Homes Delivered</span>
-              <span>Premium Materials</span>
-              <span>Turnkey Execution</span>
-            </div>
           </div>
 
-          {/* RIGHT IMAGE */}
-          <div>
-            <img
-              src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1600&auto=format&fit=crop"
-              alt="Premium Modular Kitchen Bangalore"
-              className="w-full h-[500px] object-cover rounded-3xl"
-            />
-          </div>
+          <form
+            ref={leadFormRef}
+            onSubmit={handleSubmit}
+            className="rounded-xl bg-white p-6 shadow-2xl text-black flex flex-col gap-4"
+          >
+            <h2 className="text-2xl font-bold">Book Free Kitchen Consultation</h2>
+
+            <label className="flex flex-col gap-2 text-sm font-medium">
+              Name
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                placeholder="Your Name"
+                className="rounded-lg border p-3 text-sm outline-none focus:border-black"
+              />
+            </label>
+
+            <label className="flex flex-col gap-2 text-sm font-medium">
+              Phone
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+                placeholder="Phone Number"
+                className="rounded-lg border p-3 text-sm outline-none focus:border-black"
+              />
+            </label>
+
+            <label className="flex flex-col gap-2 text-sm font-medium">
+              Email
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                placeholder="Email Address"
+                className="rounded-lg border p-3 text-sm outline-none focus:border-black"
+              />
+            </label>
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="rounded-lg bg-[#C8A96A] py-3 font-semibold transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-70"
+            >
+              {isSubmitting ? "Submitting..." : "Get Free Estimate"}
+            </button>
+
+            <p className="text-center text-xs text-gray-500">
+              Trusted by homeowners across Bangalore.
+            </p>
+          </form>
         </div>
       </section>
 
-      {/* BENEFITS SECTION */}
-      <section className="px-6 lg:px-20 py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-
-          <div className="text-center mb-14">
-            <h2 className="text-3xl lg:text-5xl font-bold mb-4">
-              Designed For Modern Living
-            </h2>
-
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Functional layouts, premium finishes and elegant modular solutions
-              crafted for contemporary homes.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-            {[
-              "Smart Storage Solutions",
-              "Premium Finishes",
-              "Soft Close Hardware",
-              "Space Optimized Layouts",
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100"
-              >
-                <h3 className="font-semibold text-lg">{item}</h3>
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-6xl px-4">
+          <h2 className="text-center text-3xl font-bold mb-12">Our Modular Kitchen Solutions</h2>
+          <div className="grid gap-8 md:grid-cols-3">
+            {kitchenSolutions.map((item) => (
+              <div key={item.title} className="rounded-xl bg-[#F8F5F0] p-6">
+                <h3 className="mb-3 text-xl font-semibold">{item.title}</h3>
+                <p className="text-gray-600">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA SECTION */}
-      <section className="px-6 lg:px-20 py-20">
-        <div className="max-w-5xl mx-auto bg-black rounded-3xl text-white text-center px-8 py-16">
-
-          <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-            Start Your Dream Kitchen Project
-          </h2>
-
-          <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-            Book a free modular kitchen consultation with Denova Creations today.
+      <section className="bg-[#1A1A1A] py-20 text-white text-center">
+        <div className="mx-auto max-w-3xl px-4">
+          <h2 className="text-4xl font-bold">Ready to Build Your Dream Kitchen?</h2>
+          <p className="mt-4 text-gray-300">
+            Speak with our modular kitchen experts and get a tailored plan for your home.
           </p>
-
-          <a
-            href="/contact"
-            className="bg-white text-black px-8 py-4 rounded-full text-sm font-medium inline-block hover:opacity-90 transition"
+          <button
+            type="button"
+            onClick={scrollToForm}
+            className="mt-8 rounded-lg bg-[#C8A96A] px-8 py-3 font-semibold text-black transition hover:opacity-90"
           >
-            Get Free Kitchen Quote
-          </a>
+            Get Free Consultation
+          </button>
         </div>
       </section>
-
-    </main>
+    </>
   );
-}
+};
+
 
 export default ModularKitchenBangalore;
-```

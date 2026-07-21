@@ -77,7 +77,7 @@ const HomePage = () => {
         <div className="absolute inset-0">
           <img
             src="/images/hero2.webp"
-           alt="Luxury Home Interior Design in Bangalore"
+            alt="Luxury Home Interior Design in Bangalore"
             className="w-full h-full object-cover opacity-40"
           />
         </div>
@@ -92,38 +92,49 @@ const HomePage = () => {
               <span className="text-white/80 text-sm">{companyInfo.rating} Rating • {companyInfo.projectsCompleted}+ Projects</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight animate-fade-in-up" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Premium Interior Designers in Bangalore
-              <span className="text-[#C8A35F]"> - Transform Your Space</span>
+              Crafting Bespoke Luxury Interiors
+              <span className="text-[#C8A35F]"> in Bangalore</span>
             </h1>
             <p className="text-lg md:text-xl text-white/80 mb-8 leading-relaxed animate-fade-in-up stagger-2">
-              Premium interior design solutions for homes, apartments, villas & commercial spaces in Bengaluru. Quality craftsmanship delivered within {companyInfo.deliveryTimeline}.
+              Experience complete home interiors tailored to your lifestyle—combining exquisite craftsmanship, premium materials, and 100% transparent execution from concept to completion.
             </p>
-            <div className="flex flex-wrap gap-4 animate-fade-in-up stagger-3">
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10 pt-6 border-t border-white/15 animate-fade-in-up stagger-3">
+              <div className="flex items-center gap-2.5 text-white/90 text-sm font-medium">
+                <CheckCircle2 className="w-5 h-5 text-[#C8A35F] shrink-0" />
+                <span>Free Design Consultation</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-white/90 text-sm font-medium">
+                <CheckCircle2 className="w-5 h-5 text-[#C8A35F] shrink-0" />
+                <span>Transparent Pricing</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-white/90 text-sm font-medium">
+                <CheckCircle2 className="w-5 h-5 text-[#C8A35F] shrink-0" />
+                <span>45–60 Day Delivery</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-white/90 text-sm font-medium">
+                <CheckCircle2 className="w-5 h-5 text-[#C8A35F] shrink-0" />
+                <span>Premium Materials</span>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-4 animate-fade-in-up stagger-4">
               <Link to="/contact">
                 <Button
                   className="btn-gold px-8 py-4 text-lg rounded-sm font-semibold flex items-center gap-2"
                   aria-label="Book Free Interior Design Consultation"
                 >
-                  Get Free Consultation
+                  Book Free Consultation
                   <ArrowRight className="w-5 h-5" />
-                </Button>
-              </Link>
-
-              <Link to="/estimate">
-                <Button
-                  className="btn-outline border-white text-white hover:bg-white hover:text-[#1F1F1F] px-8 py-4 text-lg rounded-sm font-semibold"
-                  aria-label="Get Detailed Interior Design Estimate"
-                >
-                  Get Detailed Estimate
                 </Button>
               </Link>
 
               <Link to="/projects">
                 <Button
-                  className="bg-white/10 border border-white/20 text-white hover:bg-white hover:text-[#1F1F1F] px-8 py-4 text-lg rounded-sm font-semibold"
-                  aria-label="View Interior Design Projects"
+                  className="btn-outline border-white text-white hover:bg-white hover:text-[#1F1F1F] px-8 py-4 text-lg rounded-sm font-semibold"
+                  aria-label="Explore Portfolio of Interior Design Projects"
                 >
-                  View Projects
+                  Explore Portfolio
                 </Button>
               </Link>
             </div>

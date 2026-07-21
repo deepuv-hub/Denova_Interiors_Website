@@ -115,10 +115,8 @@ function App() {
   <Route path="/estimate" element={<EstimatePage />} />
   <Route path="/interior-designers/:city" element={<CityLanding />} />
   <Route path="/privacy-policy" element={withSEO(PrivacyPolicy)} />
-  <Route path="/modular-kitchen-bangalore" element={<ModularKitchenBangalore />}/>
-/>
-  
-</Routes>
+  <Route path="/modular-kitchen-bangalore" element={<ModularKitchenBangalore />} />
+                </Routes>
                 </Layout>
               }
             />
