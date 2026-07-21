@@ -1,37 +1,40 @@
 import React from 'react';
-import { Phone, MessageCircle } from 'lucide-react';
+import { Phone, MessageSquare } from 'lucide-react';
 import { companyInfo } from '../data/mock';
 
 const FloatingCTA = () => {
-  const whatsappNumber = companyInfo.primaryPhone.replace(/[^0-9]/g, '');
-  const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=Hi, I'm interested in your interior design services.`;
+  const whatsappNumber = "919164466606";
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hi%20Denova%20Creations,%20I%20am%20interested%20in%20interior%20design%20services.`;
 
   return (
-    <div className="floating-cta">
+    <div className="fixed bottom-6 right-6 z-[999] flex flex-col gap-3 select-none">
+      
+      {/* Redesigned Premium WhatsApp Button (Clean & Luxury aesthetic) */}
       <a
         href={whatsappLink}
-        className="floating-btn bg-[#25D366] text-white"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-12 h-12 md:w-14 md:h-14 bg-[#0A2526] text-emerald-400 border border-emerald-500/30 rounded-full flex items-center justify-center shadow-[0_10px_30px_rgba(10,37,38,0.3)] hover:scale-115 active:scale-95 transition-all duration-300 relative group"
         aria-label="Chat on WhatsApp"
       >
-        <MessageCircle className="w-6 h-6" />
+        <MessageSquare className="w-5 h-5 md:w-6 md:h-6 fill-current text-emerald-400" />
+        <span className="absolute right-15 bg-[#0F3D3E] text-[#E8D8C4] border border-[#E8D8C4]/20 text-[10px] uppercase font-bold tracking-widest px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-md">
+          WhatsApp Us
+        </span>
       </a>
+
+      {/* Redesigned Premium Call Button */}
       <a
         href={`tel:${companyInfo.primaryPhone}`}
-        className="floating-btn bg-[#C8A35F] text-[#1F1F1F]"
+        className="w-12 h-12 md:w-14 md:h-14 bg-[#0F3D3E] text-[#E8D8C4] border border-[#E8D8C4]/25 rounded-full flex items-center justify-center shadow-[0_10px_30px_rgba(15,61,62,0.3)] hover:scale-115 active:scale-95 transition-all duration-300 relative group"
         aria-label="Call Now"
       >
-        <Phone className="w-6 h-6" />
+        <Phone className="w-5 h-5 md:w-6 md:h-6 text-[#E8D8C4]" />
+        <span className="absolute right-15 bg-[#0F3D3E] text-[#E8D8C4] border border-[#E8D8C4]/20 text-[10px] uppercase font-bold tracking-widest px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-md">
+          Call Expert
+        </span>
       </a>
-      <a
-  href="https://wa.me/919164466606?text=Hi%20Denova%20Creations,%20I%20am%20interested%20in%20interior%20design%20services."
-  target="_blank"
-  rel="noopener noreferrer"
-  className="fixed bottom-20 right-5 z-50"
->
-  <div className="bg-green-500 text-white px-4 py-3 rounded-full shadow-lg hover:scale-105 transition">
-    WhatsApp
-  </div>
-</a>
+
     </div>
   );
 };

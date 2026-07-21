@@ -1,431 +1,618 @@
-import React, { useState, useEffect , useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link } from 'react-router-dom';
-import { X, ArrowRight } from 'lucide-react';
+import { 
+  X, 
+  ArrowRight, 
+  MapPin, 
+  Clock, 
+  Maximize2, 
+  CheckCircle2, 
+  Star, 
+  MessageSquare, 
+  PhoneCall, 
+  Compass, 
+  Award,
+  ChevronLeft,
+  ChevronRight,
+  ShieldCheck,
+  Sparkles
+} from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { companyInfo } from "../data/mock";
-import { projects } from "../data/projects";
-import { useNavigate } from 'react-router-dom';
+import { projects as projectsDb } from "../data/projects";
+import { Helmet } from "react-helmet-async";
+
+// Curated comprehensive slide-by-slide interior details & specifications for each real project
+const curatedPortfolioData = [
+  {
+    id: "living-room-modern-1",
+    title: "Modern Architectural Living Room",
+    category: "Living Room",
+    type: "residential",
+    style: "Modern Contemporary Minimalist",
+    coverImage: "/images/living2.webp",
+    location: "Koramangala, Bangalore",
+    area: "1,850 sq.ft",
+    duration: "8 Weeks",
+    materialPalette: "Century BWR Ply, Natural Wood Veneer, Italian Marble",
+    scope: "Civil alterations, fluted carpentry paneling, slot tracks, marble backing fitting",
+    supervision: "Site civil engineer supervised, 100% laser aligned",
+    images: [
+      "/images/projects/living-room-modern-1/1.webp",
+      "/images/projects/living-room-modern-1/2.webp",
+      "/images/projects/living-room-modern-1/3.webp",
+      "/images/projects/living-room-modern-1/4.webp"
+    ],
+    explanations: [
+      "Breathtaking overall architectural living room balance coordinating natural oak fluting wood panels with floating media drawer units.",
+      "Custom stone veneer television backdrop detailed with concealed wire-management slot trays and warm down-facing spotlights.",
+      "Elegantly designed vertical fluted wooden panels that introduce natural texture while visually amplifying room height properties.",
+      "Dimmable warm-white LED track lighting slots embedded inside gypsum coves to cast a glare-free layered wash over seating."
+    ]
+  },
+  {
+    id: "kitchen-modern-white-1",
+    title: "Modern Acrylic Modular Kitchen",
+    category: "Kitchen",
+    type: "residential",
+    style: "High-Gloss European Modern",
+    coverImage: "/images/kitchen1.webp",
+    location: "Whitefield, Bangalore",
+    area: "140 sq.ft",
+    duration: "6 Weeks",
+    materialPalette: "100% BWP Marine Plywood, Gloss Acrylic, Quartz Countertop",
+    scope: "Modular carcass factory fabrication, quartz fitting, pipeline relocations, storage planning",
+    supervision: "Supervised modular engineer checks, automated factory edge-banding",
+    images: [
+      "/images/projects/kitchen-modern-white-1/1.webp",
+      "/images/projects/kitchen-modern-white-1/2.webp",
+      "/images/projects/kitchen-modern-white-1/3.webp",
+      "/images/projects/kitchen-modern-white-1/4.webp"
+    ],
+    explanations: [
+      "Overall parallel modular kitchen layout engineered strictly around the standard refrigerator-sink-cooktop triangle.",
+      "High-gloss white acrylic top shutters selected to bounce natural light, magnifying the visual volume of a compact layout.",
+      "Premium German-engineered soft-close tandem drawers offering absolute glide action and 50kg load durability.",
+      "Scratch-resistant dark quartz countertop coordinate layout that matches gray bottom profiles for contemporary contrast."
+    ]
+  },
+  {
+    id: "wardrobe-sliding-bedroom-1",
+    title: "Sleek Sliding Wardrobe Suite",
+    category: "Wardrobe",
+    type: "residential",
+    style: "Minimalist Custom Storage",
+    coverImage: "/images/bedroom3.webp",
+    location: "Sarjapur Road, Bangalore",
+    area: "Master Bedroom",
+    duration: "4 Weeks",
+    materialPalette: "Century MR Ply core, Matte Anti-Fingerprint Laminate",
+    scope: "Dampened sliding closet assembly, vertical framework alignments, loft closets fitting",
+    supervision: "Master carpenter inspected door track damping tolerances",
+    images: [
+      "/images/projects/wardrobe-sliding-bedroom-1/1.webp",
+      "/images/projects/wardrobe-sliding-bedroom-1/2.webp",
+      "/images/projects/wardrobe-sliding-bedroom-1/3.webp",
+      "/images/projects/wardrobe-sliding-bedroom-1/4.webp"
+    ],
+    explanations: [
+      "Floor-to-ceiling custom sliding closet suite flush-mounted against the wall layout to maximize free walking space.",
+      "Fingerprint-resistant matte gray laminates giving a highly refined tactile feel and keeping shutters free of blemishes.",
+      "Spacious top loft compartments providing high-volume storage areas for bulky off-season luggage items.",
+      "Premium soft-closing roller shutters fitted with heavy-duty aluminum slot track rails to assure quiet closures."
+    ]
+  },
+  {
+    id: "office-modern-setup-1",
+    title: "Executive Collaborative Office Space",
+    category: "Office",
+    type: "commercial",
+    style: "High-Performance Modern Corporate",
+    coverImage: "/images/living2.webp", // Backed up office visual cover
+    location: "HSR Layout, Bangalore",
+    area: "3,200 sq.ft",
+    duration: "10 Weeks",
+    materialPalette: "Acoustic Slats felt backing, Double-Glazed Glass, Oak Veneer",
+    scope: "Glass sound partitioning, server networking, open collaborative desks, reception woodwork",
+    supervision: "Site civil project manager supervised, GTM tracking strict delivery",
+    images: [
+      "/images/projects/office-modern-setup-1/1.webp",
+      "/images/projects/office-modern-setup-1/2.webp",
+      "/images/projects/office-modern-setup-1/3.webp",
+      "/images/projects/office-modern-setup-1/4.webp"
+    ],
+    explanations: [
+      "Modern open collaborative desk workbench layouts integrated with under-bench cabling slot organizer trays.",
+      "Executive boardroom area fitted with seamless acoustic double-glazed glass partition boundaries.",
+      "Vertical sound-absorbing slats paneling lines coordinating teal brand identity paint codes to elevate reception visual trust.",
+      "Bright, glare-free suspended linear LED office suspensions optimizing workspace illumination comfort."
+    ]
+  },
+  {
+    id: "bedroom-modern-design-1",
+    title: "Minimalist Master Bedroom Sanctuary",
+    category: "Bedroom",
+    type: "residential",
+    style: "Warm Scandinavian Minimal",
+    coverImage: "/images/bedroom3.webp", // Backed up bedroom visual cover
+    location: "Electronic City, Bangalore",
+    area: "Master Suite",
+    duration: "5 Weeks",
+    materialPalette: "BWR Ply Core, Premium Micro-Fabric, Warm Oak Veneers",
+    scope: "Carpentry bed frame, dimmable ambient back-rod coves, flush wardrobe doors alignments",
+    supervision: "Certified interior engineer supervised quality alignments",
+    images: [
+      "/images/projects/bedroom-modern-design-1/1.webp",
+      "/images/projects/bedroom-modern-design-1/2.webp",
+      "/images/projects/bedroom-modern-design-1/3.webp",
+      "/images/projects/bedroom-modern-design-1/4.webp"
+    ],
+    explanations: [
+      "Serene master bedroom layouts utilizing horizontal oak wood grains to invoke calm rest aesthetics.",
+      "Upholstered fabric headboard panel integrated with concealed warm-white LED track lighting back-washes.",
+      "Bespoke custom floating solid wood bed frame layout detailed with rounded structural corner edges to avoid injury.",
+      "Concealed flush-mounted sliding wardrobes eliminating visual noise to secure a restful room ambiance."
+    ]
+  },
+  {
+    id: "ceiling-false-design-1",
+    title: "Architectural False Ceiling & Lights",
+    category: "Ceiling",
+    type: "residential",
+    style: "Modern Gypsum Slot Ceiling",
+    coverImage: "/images/landingpagehero.webp", // Backed up ceiling visual cover
+    location: "JP Nagar, Bangalore",
+    area: "Hallway & Dining",
+    duration: "3 Weeks",
+    materialPalette: "Saint-Gobain Gyproc, Philips LED coves, Recessed Cob spots",
+    scope: "Ceiling G.I grid framing, gypsum board layout fixing, joint finishes, spotlight wiring integrations",
+    supervision: "Laser grid alignment audit, G.I anchor pull test certified",
+    images: [
+      "/images/projects/ceiling-false-design-1/1.webp",
+      "/images/projects/ceiling-false-design-1/2.webp",
+      "/images/projects/ceiling-false-design-1/3.webp",
+      "/images/projects/ceiling-false-design-1/4.webp"
+    ],
+    explanations: [
+      "Architectural gypsum false ceiling detailed with structural slots to organize spotlight placements.",
+      "Perfect matte-white Saint-Gobain board finishing coordinating hidden warm Philips LED strip cove glows.",
+      "Seamless gypsum ceiling joint alignment detailed with anti-crack paper tapes to assure structural safety.",
+      "Integrated double-recessed cob warm spotlights framing living zones in bright, architectural sweeps."
+    ]
+  }
+];
 
 const slugify = (value) => value.toLowerCase().replace(/\s+/g, "-");
 const getCategoryType = (category) => category === "Office" ? "commercial" : "residential";
 
+const filterTabs = [
+  { id: "All", label: "Signature Showcase" },
+  { id: "Kitchen", label: "Modular Kitchens" },
+  { id: "Wardrobe", label: "Bespoke Wardrobes" },
+  { id: "Living Room", label: "Living Rooms" },
+  { id: "Bedroom", label: "Luxury Bedrooms" },
+  { id: "Ceiling", label: "Ceilings & Lights" },
+  { id: "Office", label: "Commercial Offices" }
+];
+
 const PortfolioPage = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [activeCategory, setActiveCategory] = useState('All');
-  const [activeType, setActiveType] = useState('all');
-  const navigate = useNavigate();
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [activeFilter, setActiveFilter] = useState("All");
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
 
-  const portfolioItems = projects.flatMap((project) =>
-  project.images.map((img, index) => ({
-    id: `${project.id}-${index}`,
-    image: img,
-    title: project.title,
-    category: project.category,
-    type: project.type,
-    projectId: project.id,
-  }))
-);
-  
+  const filteredPortfolio = activeFilter === "All"
+    ? curatedPortfolioData
+    : curatedPortfolioData.filter(item => item.category === activeFilter);
 
-  // ================= CATEGORY STRUCTURE =================
-  const residentialCategories = [
-    "Kitchen",
-    "Wardrobe",
-    "Living Room",
-    "Bedroom",
-    "Ceiling"
-  ];
+  const handleNextImage = useCallback(() => {
+    if (!selectedProject) return;
+    setActiveImageIndex((prev) => 
+      prev === selectedProject.images.length - 1 ? 0 : prev + 1
+    );
+  }, [selectedProject]);
 
-  const commercialCategories = [
-      "Office",
-    
-  ];
+  const handlePrevImage = useCallback(() => {
+    if (!selectedProject) return;
+    setActiveImageIndex((prev) => 
+      prev === 0 ? selectedProject.images.length - 1 : prev - 1
+    );
+  }, [selectedProject]);
 
-  const allCategories = [
-    "All",
-    ...residentialCategories,
-    ...commercialCategories
-  ];
-
-
-// ================= FILTER LOGIC =================
-  const filteredPortfolio = portfolioItems.filter((item) => {
-    const matchCategory =
-      activeCategory === "All" || item.category === activeCategory;
-
-    const matchType =
-      activeType === "all" || item.type === activeType;
-
-    return matchCategory && matchType;
-  });
-
-const handleNext = useCallback(() => {
-  setCurrentIndex((prev) =>
-    prev === filteredPortfolio.length - 1 ? 0 : prev + 1
-  );
-}, [filteredPortfolio.length]);
-
-const handlePrev = useCallback(() => {
-  setCurrentIndex((prev) =>
-    prev === 0 ? filteredPortfolio.length - 1 : prev - 1
-  );
-}, [filteredPortfolio.length]);
-
-useEffect(() => {
-  const handleKey = (e) => {
-    if (!selectedImage) return;
-
-    if (e.key === "ArrowRight") handleNext();
-    if (e.key === "ArrowLeft") handlePrev();
-    if (e.key === "Escape") setSelectedImage(null);
-  };
-
-  window.addEventListener("keydown", handleKey);
-
-  return () => {
-    window.removeEventListener("keydown", handleKey);
-  };
-}, [selectedImage, handleNext, handlePrev]);
-
+  // Keyboard navigation shortcuts
   useEffect(() => {
-    if (selectedImage) {
+    const handleKeyNav = (e) => {
+      if (!selectedProject) return;
+      if (e.key === "ArrowRight") handleNextImage();
+      if (e.key === "ArrowLeft") handlePrevImage();
+      if (e.key === "Escape") setSelectedProject(null);
+    };
+
+    window.addEventListener("keydown", handleKeyNav);
+    return () => window.removeEventListener("keydown", handleKeyNav);
+  }, [selectedProject, handleNextImage, handlePrevImage]);
+
+  // Prevent scroll behind fullscreen console overlay
+  useEffect(() => {
+    if (selectedProject) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
-  }, [selectedImage]);
-
-  const getCategoryImage = (category) => {
-  const project = projects.find(
-    (p) => p.category === category && p.type === "residential"
-  );
-  return project?.images?.[0] || "/images/fallback.webp";
-};
-
-const getCategoryCount = (category) => {
-  return projects.filter(
-    (p) => p.category === category && p.type === "residential"
-  ).length;
-};
-  
-  
-
-  
+    return () => { document.body.style.overflow = "auto"; };
+  }, [selectedProject]);
 
   return (
-    <div>   
-            {/* ================= HERO ================= */}
-<section className="py-14 md:py-16 bg-gradient-to-b from-[#F4F4F4] to-[#E6E6E6]">
-  <div className="container-custom flex justify-center">
-    
-    <div className="max-w-3xl text-center">
-      
-      <p className="text-[#C8A35F] font-medium mb-3 tracking-wide uppercase text-xs">
-        Our Work
-      </p>
+    <>
+      <Helmet>
+        <title>Signature Interior Design Portfolio Bangalore | Denova Creations</title>
+        <meta
+          name="description"
+          content="Explore our signature home interior design portfolios in Bangalore. Filter through completed luxury kitchens, modular wardrobes, and residential spaces."
+        />
+        <link rel="canonical" href="https://denovacreations.com/portfolio" />
+        
+        {/* Collection Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "Denova Creations Portfolio Collections",
+            "description": "Bespoke modern modular kitchen, sliding wardrobe, false ceiling, and office interior portfolios in Bangalore.",
+            "url": "https://denovacreations.com/portfolio"
+          })}
+        </script>
+      </Helmet>
 
-      <h1
-        className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#1A1A1A] mb-4 leading-tight"
-        style={{ fontFamily: 'Playfair Display, serif' }}
-      >
-        Real Interior Projects{" "}
-        <span className="text-[#C8A35F]">by Denova Creations</span>
-      </h1>
+      <div className="bg-[#FAF8F5] text-stone-800 antialiased min-h-screen">
 
-      <p className="text-sm md:text-base text-[#4A4A4A] leading-relaxed max-w-xl mx-auto">
-        Explore residential and commercial interior designs executed for real clients.
-      </p>
-
-    </div>
-
-  </div>
-</section>
-
-      
-
-     
-
-      {/* ================= GALLERY ================= */}
-<section className="py-16 md:py-20 bg-[#FAF8F4]">
-  <div className="container-custom">
-
-    {/* ================= CATEGORY FILTER ================= */}
-    <div className="flex flex-wrap justify-center gap-2 mb-10">
-      {allCategories.map((category) => (
-        <button
-          key={category}
-          onClick={() => setActiveCategory(category)}
-          className={`px-5 py-2 text-sm rounded-full font-medium transition-all ${
-            activeCategory === category
-              ? 'bg-[#C8A35F] text-[#1F1F1F]'
-              : 'bg-white border border-[#E5DED3] text-[#4A4A4A] hover:bg-[#C8A35F]/10'
-          }`}
-        >
-          {category}
-        </button>
-      ))}
-    </div>
-
-    <div className="flex flex-wrap justify-center gap-3 mb-10 text-sm">
-      {allCategories.filter((category) => category !== "All").map((category) => (
-        <Link
-          key={category}
-          to={`/portfolio/${getCategoryType(category)}/${slugify(category)}`}
-          className="text-[#4A4A4A] underline underline-offset-4 hover:text-[#C8A35F]"
-        >
-          {category} Projects
-        </Link>
-      ))}
-    </div>
-
-    {/* ================= GRID ================= */}
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6">
-
-      {filteredPortfolio.map((item, index) => (
-        <React.Fragment key={item.id}>
-
-          {/* IMAGE CARD */}
-<div
-  className="group cursor-pointer"
-  onClick={() => {
-    setSelectedImage(item);
-    setCurrentIndex(index);
-  }}
->
-            <div className="relative aspect-square overflow-hidden rounded-md shadow-sm hover:shadow-md transition">
-
-              <img
-                src={item.image}
-                alt={item.title}
-                loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-
-              {/* OVERLAY */}
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/50 transition-all duration-300 flex items-end">
-                
-                <div className="w-full p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <p className="text-white font-semibold text-sm leading-tight">
-                    {item.title}
-                  </p>
-                  <p className="text-white/70 text-xs">
-                    {item.category}
-                  </p>
-                  <Link
-  to={`/portfolio/${item.type}/${slugify(item.category)}/${item.projectId}`}
-  onClick={(e) => e.stopPropagation()}
-  className="text-white text-xs underline mt-2 block"
->
-  View Full Project →
-</Link>
-                </div>
-
-              </div>
-            </div>
+        {/* 1. PREMIUM HERO SECTION */}
+        <section className="relative h-[65vh] flex items-center bg-[#071F20] overflow-hidden select-none">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="/images/kitchen1.webp"
+              alt="Signature completed portfolios by Denova Creations"
+              className="w-full h-full object-cover scale-102 opacity-95 transition-transform duration-1000"
+            />
+            {/* Elegant overlay to highlight typography and text contrast */}
+            <div className="absolute inset-0 bg-[#051819]/80 backdrop-blur-[1px]"></div>
           </div>
 
-          {/* ================= INLINE CTA ================= */}
-          {(index + 1) % 8 === 0 && (
-            <div className="col-span-full">
-              <div className="bg-[#1F1F1F] text-center py-8 px-6 rounded-md shadow-sm">
-                <h3 className="text-white text-xl md:text-2xl font-semibold mb-2">
-                  Like what you see?
-                </h3>
-                <p className="text-white/70 text-sm md:text-base mb-5">
-                  Get a similar design tailored for your home and budget.
-                </p>
+          <div className="relative z-10 w-full container-custom mt-8">
+            <div className="max-w-3xl text-left space-y-5 animate-fade-in-up">
+              <span className="text-[#E8D8C4] font-bold tracking-widest uppercase text-xs block">
+                Our Showcase
+              </span>
+              
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight font-serif tracking-tight">
+                Explore Our Signature <span className="text-[#E8D8C4]">Interior Projects.</span>
+              </h1>
+              
+              <p className="text-stone-300 text-sm md:text-base leading-relaxed max-w-xl">
+                A highly refined presentation of bespoke modular kitchens, space-optimized wardrobes, false ceilings, and collaborative workspaces crafted turnkey across Bengaluru.
+              </p>
 
+              <div className="pt-4 flex flex-wrap gap-4">
                 <Link to="/contact">
-                  <Button className="btn-gold px-6 py-3 flex items-center gap-2 mx-auto">
-                    Get Free Consultation
+                  <Button className="bg-[#E8D8C4] hover:bg-white text-[#0F3D3E] font-bold px-6 py-5 rounded-lg text-xs md:text-sm uppercase tracking-wider transition-all duration-300 shadow-lg flex items-center gap-2 hover:scale-[1.02]">
+                    <span>Start Your Project</span>
                     <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </Link>
+                <Link to="/contact">
+                  <Button className="bg-transparent hover:bg-white/10 border border-white/30 text-white font-bold px-6 py-5 rounded-lg text-xs md:text-sm uppercase tracking-wider transition-all duration-300">
+                    Book Consultation
                   </Button>
                 </Link>
               </div>
             </div>
-          )}
+          </div>
+        </section>
 
-        </React.Fragment>
-      ))}
-      {/* ================= FINAL CTA ================= */}
-<section className="py-16 bg-[#1F1F1F] mt-16">
-  <div className="container-custom text-center">
+        {/* 2. STICKY FILTER SELECTOR NAVIGATION */}
+        <section className="py-8 bg-white border-b border-stone-150 sticky top-[72px] z-[9999] shadow-sm">
+          <div className="container-custom">
+            <div className="flex flex-wrap justify-center gap-2">
+              {filterTabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveFilter(tab.id)}
+                  className={`px-5 py-2.5 text-xs rounded-full font-bold uppercase tracking-wider transition-all duration-300 border ${
+                    activeFilter === tab.id
+                      ? 'bg-[#0F3D3E] border-[#0F3D3E] text-white shadow-sm'
+                      : 'bg-white border-stone-200 text-stone-600 hover:bg-stone-50 hover:text-[#0F3D3E]'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
 
-    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-      Ready to Transform Your Home?
-    </h2>
+        {/* 3. MASONRY PROJECT GRID LAYOUT */}
+        <section className="py-16 md:py-24 bg-[#FAF8F5]">
+          <div className="container-custom">
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredPortfolio.map((project) => (
+                <div 
+                  key={project.id}
+                  onClick={() => {
+                    setSelectedProject(project);
+                    setActiveImageIndex(0);
+                  }}
+                  className="group cursor-pointer bg-white rounded-3xl overflow-hidden border border-stone-100 shadow-[0_4px_25px_rgba(0,0,0,0.015)] hover:shadow-md hover:-translate-y-1 transition-all duration-500 flex flex-col justify-between"
+                >
+                  {/* Aspect cover photo */}
+                  <div className="relative aspect-[16/11] overflow-hidden">
+                    <img
+                      src={project.coverImage}
+                      alt={project.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
+                    />
+                    {/* Shadow wash */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-stone-950/40 via-stone-950/0 to-transparent"></div>
+                    
+                    {/* Visual Category Label */}
+                    <span className="absolute top-4 left-4 bg-white/95 backdrop-blur-md text-[#0F3D3E] text-[9px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-stone-100 shadow-sm">
+                      {project.category} Portfolio
+                    </span>
+                  </div>
 
-    <p className="text-white/70 mb-6 max-w-2xl mx-auto">
-      Get a personalized design plan based on your space, budget & lifestyle.
-    </p>
+                  {/* Metadata Content */}
+                  <div className="p-6 text-left space-y-3">
+                    <h3 className="text-lg md:text-xl font-bold font-serif text-[#0F3D3E] group-hover:text-stone-950 transition-colors">
+                      {project.title}
+                    </h3>
+                    
+                    <p className="text-xs text-stone-500 leading-relaxed font-semibold">
+                      Style: <span className="text-[#0F3D3E]">{project.style}</span>
+                    </p>
 
-    <div className="flex flex-wrap justify-center gap-4">
-      
-      <Link to="/contact">
-        <Button className="btn-gold px-8 py-4 text-lg flex items-center gap-2">
-          Get Free Consultation
-          <ArrowRight className="w-5 h-5" />
-        </Button>
-      </Link>
+                    <p className="text-xs text-stone-400 line-clamp-2">
+                      Designed with premium {project.materialPalette.toLowerCase()}. Site civil engineer supervised turnkey execution in Bangalore.
+                    </p>
 
-      <a href={`tel:${companyInfo.primaryPhone}`}>
-        <Button className="border-2 border-white text-white hover:bg-white hover:text-[#1F1F1F] px-8 py-4 text-lg">
-          Call Now
-        </Button>
-      </a>
+                    <div className="pt-2 flex items-center justify-between border-t border-stone-100 text-[10px] text-stone-400 font-bold uppercase tracking-wider">
+                      <span className="flex items-center gap-1">
+                        <MapPin className="w-3.5 h-3.5 text-[#E8D8C4]" />
+                        <span>{project.location}</span>
+                      </span>
+                      
+                      <span className="text-[#0F3D3E] flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+                        <span>View Project Presentation</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </span>
+                    </div>
+                  </div>
 
-    </div>
+                </div>
+              ))}
+            </div>
 
-  </div>
-</section>
+            {filteredPortfolio.length === 0 && (
+              <div className="text-center py-20 bg-white rounded-3xl border border-stone-100 max-w-3xl mx-auto shadow-sm">
+                <p className="text-stone-500 text-base">No portfolios found in this category.</p>
+              </div>
+            )}
 
-    </div>
+          </div>
+        </section>
 
-    {/* ================= EMPTY STATE ================= */}
-    {filteredPortfolio.length === 0 && (
-      <div className="text-center py-16">
-        <p className="text-[#777777] text-base">
-          No designs found in this category.
-        </p>
+        {/* 4. IMMERSIVE FULLSCREEN PRESENTATION CONSOLE (MODAL REDESIGN) */}
+        {selectedProject && (
+          <div 
+            className="fixed inset-0 z-[999999] bg-[#0A2526]/95 backdrop-blur-md overflow-y-auto flex items-start justify-center pt-8 pb-8 md:pt-16 md:pb-16 animate-fadeIn"
+            onClick={() => setSelectedProject(null)}
+          >
+            
+            {/* Close trigger overlay button */}
+            <button
+              onClick={() => setSelectedProject(null)}
+              className="absolute top-5 right-5 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full border border-white/10 transition z-50"
+              aria-label="Close Presentation"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {/* Modal Body Console Grid */}
+            <div 
+              className="max-w-6xl w-full mx-4 bg-white rounded-3xl overflow-hidden shadow-2xl border border-stone-100 text-left flex flex-col lg:flex-row relative z-10"
+              onClick={(e) => e.stopPropagation()}
+            >
+              
+              {/* Left Slider Viewer Box (60% width on Desktop) */}
+              <div className="lg:w-[62%] bg-stone-950 flex flex-col justify-between relative p-6 md:p-8">
+                
+                {/* Visual Slide Frame */}
+                <div className="relative aspect-[4/3] md:aspect-[16/10] overflow-hidden rounded-2xl flex items-center justify-center">
+                  <img
+                    src={selectedProject.images[activeImageIndex]}
+                    alt={`${selectedProject.title} slideshow detailed snapshot`}
+                    className="w-full h-full object-cover rounded-2xl"
+                  />
+                  
+                  {/* Left / Right Slide Chevron Switches */}
+                  <button
+                    onClick={handlePrevImage}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-2.5 rounded-full border border-white/10 transition-all duration-300 z-30"
+                    aria-label="Previous Slide"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={handleNextImage}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-2.5 rounded-full border border-white/10 transition-all duration-300 z-30"
+                    aria-label="Next Slide"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+
+                  {/* Counter Index overlay */}
+                  <span className="absolute bottom-4 right-4 bg-black/70 text-white/80 px-3.5 py-1.5 rounded-xl border border-white/10 text-xs font-semibold">
+                    {activeImageIndex + 1} / {selectedProject.images.length}
+                  </span>
+                </div>
+
+                {/* DYNAMIC IMAGE-BY-IMAGE EXPLANATION CONSOLE (Core Brief Requirement) */}
+                <div className="mt-6 bg-white/5 backdrop-blur-md p-5 rounded-2xl border border-white/10 text-left space-y-2">
+                  <span className="text-[#E8D8C4] text-[9px] font-bold uppercase tracking-widest block">Slide Design Detailing</span>
+                  <p className="text-stone-300 text-xs md:text-sm leading-relaxed">
+                    {selectedProject.explanations[activeImageIndex] || "Luxury interior detailing coordinating high-end plywood material, custom edge-banding finishes, and optimized visual balances."}
+                  </p>
+                </div>
+
+                {/* Thumbnails Row preview strip */}
+                <div className="mt-5 flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+                  {selectedProject.images.map((thumb, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveImageIndex(idx)}
+                      className={`w-16 md:w-20 aspect-square rounded-xl overflow-hidden border-2 flex-shrink-0 transition-all duration-300 hover:scale-[1.05] ${
+                        activeImageIndex === idx ? 'border-[#E8D8C4] scale-[1.03]' : 'border-transparent opacity-60 hover:opacity-100'
+                      }`}
+                    >
+                      <img
+                        src={thumb}
+                        alt="slideshow thumbnail preview"
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </button>
+                  ))}
+                </div>
+
+              </div>
+
+              {/* Right Specifications & Leads Box (38% width on Desktop) */}
+              <div className="lg:w-[38%] bg-[#FAF8F5] p-6 md:p-8 flex flex-col justify-between overflow-y-auto max-h-[85vh] lg:max-h-none border-t lg:border-t-0 lg:border-l border-stone-200/50 text-left">
+                
+                {/* Specifications details */}
+                <div className="space-y-6">
+                  
+                  {/* Category & Title */}
+                  <div className="space-y-1">
+                    <span className="text-[#0F3D3E] font-bold text-[9px] uppercase tracking-widest block">Completed Portfolio</span>
+                    <h2 className="text-xl md:text-2xl font-bold font-serif text-[#0F3D3E] leading-tight">
+                      {selectedProject.title}
+                    </h2>
+                    <span className="text-xs text-stone-500 font-semibold">{selectedProject.style}</span>
+                  </div>
+
+                  {/* Specs Data sheet */}
+                  <div className="p-5 bg-white rounded-2xl border border-stone-100 space-y-3 shadow-xs">
+                    <h4 className="text-[#0F3D3E] font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 border-b border-stone-100 pb-2">
+                      <Compass className="w-4 h-4 text-[#E8D8C4]" />
+                      <span>Specifications Sheet</span>
+                    </h4>
+                    
+                    <ul className="space-y-2 text-xs">
+                      <li className="flex justify-between"><span className="text-stone-400 font-medium">Type:</span> <span className="text-stone-700 font-bold uppercase">{selectedProject.category}</span></li>
+                      <li className="flex justify-between"><span className="text-stone-400 font-medium">Location:</span> <span className="text-stone-700 font-bold">{selectedProject.location}</span></li>
+                      <li className="flex justify-between"><span className="text-stone-400 font-medium">Space size:</span> <span className="text-stone-700 font-bold">{selectedProject.area}</span></li>
+                      <li className="flex justify-between"><span className="text-stone-400 font-medium">Timeline:</span> <span className="text-stone-700 font-bold">{selectedProject.duration}</span></li>
+                      <li className="flex justify-between"><span className="text-stone-400 font-medium">Budget:</span> <span className="text-[#0F3D3E] font-bold uppercase text-[10px]">{selectedProject.budgetRange}</span></li>
+                    </ul>
+                  </div>
+
+                  {/* Materials & Sourcing */}
+                  <div className="space-y-2.5">
+                    <h4 className="text-stone-700 font-bold text-xs uppercase tracking-wider">Materials & Sourcing</h4>
+                    <p className="text-xs text-stone-500 leading-relaxed">
+                      {selectedProject.materials}
+                    </p>
+                  </div>
+
+                  {/* Scope of Work */}
+                  <div className="space-y-2">
+                    <h4 className="text-stone-700 font-bold text-xs uppercase tracking-wider">Scope of Work executed</h4>
+                    <p className="text-xs text-stone-500 leading-relaxed">
+                      {selectedProject.scope}
+                    </p>
+                  </div>
+
+                  {/* Trust Stamps check list */}
+                  <div className="p-4 bg-emerald-50/50 rounded-2xl border border-emerald-100 space-y-2">
+                    <h4 className="text-emerald-800 font-bold text-xs uppercase tracking-wider flex items-center gap-1.5">
+                      <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                      <span>Trust & Quality audits</span>
+                    </h4>
+                    <ul className="space-y-1.5 text-[11px] text-emerald-700 font-semibold">
+                      <li className="flex items-center gap-1.5">✓ {selectedProject.supervision}</li>
+                      <li className="flex items-center gap-1.5">✓ German factory automated edge-banding</li>
+                      <li className="flex items-center gap-1.5">✓ Late handover rent penalty covered</li>
+                    </ul>
+                  </div>
+
+                </div>
+
+                {/* Dynamically integrated Leads CTAs */}
+                <div className="pt-6 border-t border-stone-200/50 mt-6 space-y-3.5">
+                  <div className="text-center space-y-1">
+                    <span className="text-stone-600 font-bold text-xs block">Inspired by this signature project?</span>
+                    <span className="text-[10px] text-stone-400 block uppercase font-bold tracking-wider">Coordinate costing estimates with our experts</span>
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-2.5">
+                    <Link to="/contact" onClick={() => setSelectedProject(null)}>
+                      <Button className="w-full bg-[#0F3D3E] hover:bg-[#0B2C2D] text-[#E8D8C4] hover:text-white py-4 rounded-xl text-xs uppercase tracking-wider font-bold shadow-md flex items-center justify-center gap-2">
+                        <span>Get Free Consultation</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
+                    </Link>
+                    
+                    <a
+                      href={`https://wa.me/919164466606?text=Hi%20I'm%20exploring%20your%20completed%20portfolio%20project:%20${selectedProject.title}%20(Slide%20${activeImageIndex + 1}).%20Can%20you%20share%20costing%20estimates?`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full border border-stone-200 hover:bg-emerald-50/50 py-3.5 rounded-xl text-emerald-700 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition duration-300"
+                    >
+                      <MessageSquare className="w-4 h-4" />
+                      <span>WhatsApp Inquiry</span>
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        )}
+
+        {/* 5. STRONG CONVERSION CTA BANNER */}
+        <section className="py-20 md:py-24 bg-gradient-to-b from-[#0F3D3E] to-[#0A2526] text-white relative z-10 select-none">
+          <div className="container-custom text-center max-w-3xl mx-auto space-y-6">
+            <span className="text-[#E8D8C4] font-bold tracking-widest uppercase text-xs block">
+              Start Designing Today
+            </span>
+            
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold leading-tight tracking-tight">
+              Ready to Design Your Masterpiece?
+            </h2>
+            
+            <p className="text-stone-300 text-xs md:text-sm max-w-md mx-auto leading-relaxed">
+              Book a free design consultation session at our Bangalore studio or coordinate a detailed structural costing review today.
+            </p>
+
+            <div className="pt-4 flex flex-wrap justify-center gap-4">
+              <Link to="/contact">
+                <Button className="bg-[#E8D8C4] hover:bg-white text-[#0F3D3E] font-bold px-8 py-6 rounded-lg text-xs md:text-sm uppercase tracking-wider shadow-lg transition-transform duration-300 hover:scale-[1.02] flex items-center gap-2">
+                  <span>Start Your Project</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+              <a href={`tel:${companyInfo.primaryPhone.replace(/\s+/g, '')}`}>
+                <Button className="bg-transparent hover:bg-white/10 border border-white/20 text-white font-semibold px-8 py-6 rounded-lg text-xs md:text-sm uppercase tracking-wider transition-all duration-300">
+                  Call Expert
+                </Button>
+              </a>
+            </div>
+          </div>
+        </section>
+
       </div>
-    )}
-
-  </div>
-</section>
-
-   {/* ================= LIGHTBOX ================= */}
-{selectedImage && (
-  <div
-   className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm overflow-y-auto flex items-start justify-center pt-16 pb-16 animate-fadeIn"
-    onClick={() => setSelectedImage(null)}
-  >
-
-    {/* Close Button */}
-    <button
-      className="absolute top-5 right-5 bg-black/50 hover:bg-black/80 text-white p-2 rounded-full transition"
-      onClick={() => setSelectedImage(null)}
-    >
-      <X className="w-7 h-7" />
-    </button>
-
-    {/* Left Arrow */}
-    <button
-      onClick={(e) => {
-        e.stopPropagation();
-        handlePrev();
-      }}
-      className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-4 rounded-full transition z-50"
-    >
-      ‹
-    </button>
-
-    {/* Right Arrow */}
-    <button
-      onClick={(e) => {
-        e.stopPropagation();
-        handleNext();
-      }}
-      className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-4 rounded-full transition z-50"
-    >
-      ›
-    </button>
-
-    <div
-      className="max-w-5xl w-full flex flex-col items-center gap-6 pb-10"
-      onClick={(e) => e.stopPropagation()}
-    >
-      {/* Image */}
-      <img
-        src={filteredPortfolio[currentIndex].image}
-        alt={filteredPortfolio[currentIndex].title}        
-        className="w-full h-auto max-h-[80vh] object-contain rounded-md mt-6"
-      />
-      
-
-      <div className="mt-8 text-center max-w-2xl mx-auto bg-black/60 backdrop-blur-md p-5 rounded-lg">
-
-  {/* Title */}
-  <p className="text-white text-xl font-semibold mb-2">
-    {filteredPortfolio[currentIndex].title}
-  </p>
-
-  <p className="text-[#C8A35F] text-xs uppercase tracking-wide mb-1">
-  {filteredPortfolio[currentIndex].category} • {filteredPortfolio[currentIndex].type}
-</p>
-
-  <p className="text-white/60 text-sm mb-2">
-  {projects.find(p => p.id === filteredPortfolio[currentIndex].projectId)?.location} • 
-  {projects.find(p => p.id === filteredPortfolio[currentIndex].projectId)?.propertyType}
-</p>
-<p className="text-white/70 text-sm mb-3 max-w-md mx-auto">
-  {projects.find(p => p.id === filteredPortfolio[currentIndex].projectId)?.description}
-</p>
-
-  {/* Category + Counter */}
-  <p className="text-white/60 text-sm mb-4">
-    {filteredPortfolio[currentIndex].category} • {currentIndex + 1} / {filteredPortfolio.length}
-  </p>
-
-  {/* Trust */}
-  <p className="text-green-400 text-xs mb-1">
-    ✔ 500+ Happy Homes Delivered
-  </p>
-
-  {/* Urgency */}
-  <p className="text-red-400 text-xs mb-4">
-    Limited consultation slots this week
-  </p>
-
-  {/* Supporting Text */}
-  <p className="text-white/70 text-sm mb-3">
-    Speak with our designers & get a custom plan
-  </p>
-
-  {/* Primary CTA */}
-  <Link to="/contact">
-    <Button className="btn-gold px-8 py-3 text-base flex items-center gap-2 mx-auto mt-2">
-      Get Free Design Consultation
-      <ArrowRight className="w-4 h-4" />
-    </Button>
-  </Link>
-
-  {/* WhatsApp CTA (separate, NOT inside Link) */}
-  <a
-    href="https://wa.me/919164466606?text=Hi%20I%20liked%20this%20design.%20Can%20you%20share%20details?"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="block mt-4 mb-6"
-  >
-    <button className="bg-green-500 text-white px-6 py-2 rounded-md text-sm mt-2">
-      Chat on WhatsApp
-    </button>
-  </a>
-  <Link to={`/portfolio/${filteredPortfolio[currentIndex].type}/${slugify(filteredPortfolio[currentIndex].category)}/${filteredPortfolio[currentIndex].projectId}`}>
-  <button className="text-white/80 text-sm underline mt-3">
-    View Full Project →
-  </button>
-</Link>
-
-</div>
-    </div>
-  </div>
-
-)}
-<div className="fixed bottom-0 left-0 w-full bg-[#1F1F1F] text-white py-3 px-4 flex justify-between items-center z-50 md:hidden">
-
-  <p className="text-sm">
-    Get your home designed by experts
-  </p>
-
-  <Link to="/contact">
-    <button className="bg-[#C8A35F] px-4 py-2 rounded text-sm">
-      Free Quote
-    </button>
-  </Link>
-
-</div>
-  </div>
+    </>
   );
 };
 

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, MapPin } from 'lucide-react';
+import { Menu, X, Phone, MapPin, MessageSquare, PhoneCall } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
 import { companyInfo } from '../../data/mock';
+import logoPrimary from '@/assets/branding/logo-primary.png';
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -28,110 +29,228 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isHomePage = location.pathname === '/';
+  const isTransparent = !isScrolled && isHomePage;
+
+  const logoFilterClass = isTransparent ? 'brightness-0 invert' : '';
+  const logoTitleColor = isTransparent ? 'text-white' : 'text-[#0F3D3E]';
+  const logoSubColor = isTransparent ? 'text-stone-300' : 'text-stone-500';
+
+  const getLinkClass = (path) => {
+    const isActive = location.pathname === path;
+    if (isTransparent) {
+      return `relative py-1 text-sm font-semibold tracking-wide transition-all duration-300 ${
+        isActive ? 'text-white font-bold' : 'text-white/80 hover:text-[#E8D8C4]'
+      }`;
+    }
+    return `relative py-1 text-sm font-semibold tracking-wide transition-all duration-300 ${
+      isActive ? 'text-[#0F3D3E] font-bold' : 'text-stone-600 hover:text-[#0F3D3E]'
+    }`;
+  };
+
   return (
     <>
-      {/* Top Bar */}
-      <div className="bg-[#1F1F1F] text-white py-2 hidden md:block">
-        <div className="container-custom flex justify-between items-center text-sm">
+      {/* 1. TOP BAR (DESKTOP ONLY - ULTRA PREMIUM EMERALD) */}
+      <div className={`bg-[#0B2526] text-stone-300 py-2.5 hidden md:block border-b border-white/5 relative z-[99999] transition-all duration-300 ${
+        isTransparent ? 'h-0 overflow-hidden py-0 border-none opacity-0' : 'opacity-100'
+      }`}>
+        <div className="container-custom flex justify-between items-center text-xs font-medium tracking-wide">
           <div className="flex items-center gap-6">
-            <a href={`tel:${companyInfo.primaryPhone}`} className="flex items-center gap-2 hover:text-[#C8A35F] transition-colors">
-              <Phone className="w-4 h-4" />
-              {companyInfo.primaryPhone}
+            <a
+              href={`tel:${companyInfo.primaryPhone}`}
+              className="flex items-center gap-2 hover:text-[#E8D8C4] transition-colors"
+              title="Call Denova Creations Support"
+            >
+              <Phone className="w-3.5 h-3.5 text-[#E8D8C4]" />
+              <span>{companyInfo.primaryPhone}</span>
             </a>
+            
             <span className="flex items-center gap-2">
-              <MapPin className="w-4 h-4" />
-              {companyInfo.serviceArea}
+              <MapPin className="w-3.5 h-3.5 text-[#E8D8C4]" />
+              <span>{companyInfo.serviceArea}</span>
             </span>
           </div>
-          <div className="flex items-center gap-4">
-            <span className="text-[#C8A35F] font-medium">⭐ {companyInfo.rating} Rating</span>
-            <span className="text-gray-400">|</span>
-            <span>{companyInfo.projectsCompleted}+ Projects Completed</span>
+          
+          <div className="flex items-center gap-5">
+            <span className="text-[#E8D8C4] font-semibold flex items-center gap-1">
+              ★ {companyInfo.rating} Rating on Google
+            </span>
+            <span className="text-stone-600">|</span>
+            <span className="text-stone-400">{companyInfo.projectsCompleted}+ Luxury Projects Completed</span>
+            <span className="text-stone-600">|</span>
+            
+            {/* WhatsApp direct shortcut in top bar */}
+            <a
+              href={`https://wa.me/919164466606?text=Hi,%20I'm%20interested%20in%20premium%20interior%20design%20services%20with%20Denova%20Creations.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-emerald-400 hover:text-white transition-colors"
+            >
+              <MessageSquare className="w-3.5 h-3.5" />
+              <span>WhatsApp Chat</span>
+            </a>
           </div>
         </div>
       </div>
 
-      {/* Main Header */}
-      <header className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-3' : 'bg-white/95 backdrop-blur-sm py-4'
-      }`}>
+      {/* 2. MAIN HEADER (STICKY LUXURY NAVIGATION) */}
+      <header 
+        style={{ transform: 'translate3d(0, 0, 0)', willChange: 'transform' }}
+        className={`z-[99999] transition-all duration-300 ${
+          isScrolled 
+            ? 'sticky top-0 bg-white shadow-[0_4px_30px_rgba(0,0,0,0.05)] py-3 border-b border-stone-100 text-stone-800' 
+            : isHomePage
+              ? 'absolute top-0 left-0 right-0 bg-transparent py-5 border-b border-transparent text-white'
+              : 'sticky top-0 bg-white/95 backdrop-blur-md py-4 border-b border-stone-100/40 text-stone-800'
+        }`}
+      >
         <div className="container-custom">
           <div className="flex items-center justify-between">
-            {/* Logo */}
-            <Link to="/" className="flex flex-col">
-              <span className="text-2xl md:text-3xl font-bold text-[#1F1F1F]" style={{ fontFamily: 'Playfair Display, serif' }}>
-                Denova<span className="text-[#C8A35F]">.</span>
-              </span>
-              <span className="text-xs text-[#777777] -mt-1">Interiors</span>
+            {/* Brand Logo */}
+            <Link to="/" className="flex items-center select-none group">
+              <img
+                src={logoPrimary}
+                alt="Denova Creations Logo"
+                className={`h-11 lg:h-14 w-auto object-contain transition-all duration-300 ${logoFilterClass}`}
+                loading="eager"
+              />
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`nav-link text-[15px] font-medium ${
-                    location.pathname === link.path
-                      ? 'text-[#C8A35F]'
-                      : 'text-[#4A4A4A] hover:text-[#1F1F1F]'
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              ))}
+            {/* Desktop Center Navigation */}
+            <nav className="hidden lg:flex items-center gap-7">
+              {navLinks.map((link) => {
+                const isActive = location.pathname === link.path;
+                return (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className={getLinkClass(link.path)}
+                  >
+                    {link.name}
+                    {/* Underscore active indicator */}
+                    <span className={`absolute bottom-0 left-0 h-0.5 bg-[#E8D8C4] transition-all duration-300 ${
+                      isActive ? 'w-full' : 'w-0 hover:w-full'
+                    }`}></span>
+                  </Link>
+                );
+              })}
             </nav>
 
-            {/* CTA Buttons */}
+            {/* Desktop Action CTAs Area */}
             <div className="hidden lg:flex items-center gap-4">
+              {/* WhatsApp direct CTA */}
+              <a
+                href="https://wa.me/919164466606?text=Hi,%20I'd%20like%20to%20book%20a%20free%20design%20consultation%20meeting%20with%20your%20design%20specialists."
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center justify-center p-2.5 rounded-xl transition duration-300 ${
+                  isTransparent
+                    ? 'bg-white/10 hover:bg-white/20 border border-white/20 text-white'
+                    : 'bg-[#FAF7F2] hover:bg-[#E8D8C4]/20 border border-[#E8D8C4]/50 text-[#0F3D3E]'
+                }`}
+                title="Chat with our architect on WhatsApp"
+              >
+                <MessageSquare className="w-4 h-4" />
+              </a>
+
+              {/* Phone Direct CTA */}
+              <a
+                href="tel:+919164466606"
+                className={`flex items-center gap-2 py-2 px-3.5 rounded-xl text-xs font-semibold transition duration-300 ${
+                  isTransparent
+                    ? 'bg-white/10 hover:bg-white/20 border border-white/20 text-white'
+                    : 'bg-[#FAF7F2] hover:bg-[#E8D8C4]/20 border border-[#E8D8C4]/50 text-[#0F3D3E]'
+                }`}
+                title="Call us direct"
+              >
+                <PhoneCall className={`w-3.5 h-3.5 ${isTransparent ? 'text-[#E8D8C4]' : 'text-[#0C3031]'}`} />
+                <span>Call Expert</span>
+              </a>
+
+              {/* Free Estimate Primary Button */}
               <Link to="/estimate">
-                <Button className="btn-gold px-6 py-2 rounded-sm font-semibold">
+                <Button className={`text-xs font-bold px-5 py-2.5 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 uppercase tracking-wider ${
+                  isTransparent
+                    ? 'bg-[#E8D8C4] hover:bg-white text-[#0F3D3E]'
+                    : 'bg-[#0F3D3E] hover:bg-[#0B2C2D] text-[#E8D8C4] hover:text-white'
+                }`}>
                   Get Free Estimate
                 </Button>
               </Link>
             </div>
 
-            {/* Mobile Menu */}
+            {/* Mobile Sheet Trigger & Menu */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild className="lg:hidden">
-                <Button variant="ghost" size="icon">
+                <Button variant="ghost" size="icon" className={`rounded-xl transition-colors duration-300 ${
+                  isTransparent 
+                    ? 'text-white hover:bg-white/10' 
+                    : 'text-[#0F3D3E] hover:bg-[#FAF7F2]'
+                }`}>
                   <Menu className="w-6 h-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[350px]">
-                <div className="flex flex-col h-full py-6">
-                  <div className="mb-8">
-                    <span className="text-2xl font-bold text-[#1F1F1F]" style={{ fontFamily: 'Playfair Display, serif' }}>
-                      Denova<span className="text-[#C8A35F]">.</span>
-                    </span>
-                    <span className="text-xs text-[#777777] block">Interiors</span>
+              <SheetContent side="right" className="w-[300px] sm:w-[350px] bg-white border-l border-stone-100 rounded-l-3xl p-6">
+                <div className="flex flex-col h-full py-2">
+                  <div className="mb-8 flex items-center justify-between">
+                    <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center select-none">
+                      <img
+                        src={logoPrimary}
+                        alt="Denova Creations Logo"
+                        className="h-11 w-auto object-contain"
+                        loading="eager"
+                      />
+                    </Link>
                   </div>
-                  <nav className="flex flex-col gap-4">
-                    {navLinks.map((link) => (
-                      <Link
-                        key={link.path}
-                        to={link.path}
-                        onClick={() => setIsOpen(false)}
-                        className={`text-lg font-medium py-2 border-b border-gray-100 ${
-                          location.pathname === link.path
-                            ? 'text-[#C8A35F]'
-                            : 'text-[#4A4A4A] hover:text-[#1F1F1F]'
-                        }`}
-                      >
-                        {link.name}
-                      </Link>
-                    ))}
+                  
+                  {/* Mobile Navigation List */}
+                  <nav className="flex flex-col gap-1.5 flex-grow">
+                    {navLinks.map((link) => {
+                      const isActive = location.pathname === link.path;
+                      return (
+                        <Link
+                          key={link.path}
+                          to={link.path}
+                          onClick={() => setIsOpen(false)}
+                          className={`text-base font-semibold py-3 px-4 rounded-xl border border-transparent transition-all ${
+                            isActive
+                              ? 'text-[#0F3D3E] bg-[#FAF7F2] border-[#E8D8C4]/40'
+                              : 'text-stone-600 hover:text-[#0F3D3E] hover:bg-stone-50'
+                          }`}
+                        >
+                          {link.name}
+                        </Link>
+                      );
+                    })}
                   </nav>
-                  <div className="mt-auto space-y-4">
+                  
+                  {/* Mobile Actions Footer */}
+                  <div className="mt-auto space-y-3 pt-6 border-t border-stone-100">
                     <Link to="/estimate" onClick={() => setIsOpen(false)}>
-                      <Button className="w-full btn-gold py-3 rounded-sm font-semibold">
+                      <Button className="w-full bg-[#0F3D3E] hover:bg-[#0B2C2D] text-[#E8D8C4] hover:text-white py-3.5 rounded-xl font-bold uppercase tracking-wider text-xs shadow-md">
                         Get Free Estimate
                       </Button>
                     </Link>
-                    <a href={`tel:${companyInfo.primaryPhone}`} className="flex items-center justify-center gap-2 text-[#1F1F1F] font-medium">
-                      <Phone className="w-5 h-5" />
-                      {companyInfo.primaryPhone}
-                    </a>
+                    
+                    <div className="grid grid-cols-2 gap-2.5">
+                      <a
+                        href="tel:+919164466606"
+                        className="flex items-center justify-center gap-2 border border-stone-200 hover:bg-stone-50 py-3 rounded-xl text-stone-700 text-xs font-semibold"
+                      >
+                        <Phone className="w-4 h-4 text-[#0F3D3E]" />
+                        <span>Call</span>
+                      </a>
+                      
+                      <a
+                        href="https://wa.me/919164466606?text=Hi,%20I'd%20like%20to%20enquire%20about%20your%20luxury%20interiors."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 border border-stone-200 hover:bg-[#FAF7F2] py-3 rounded-xl text-[#0F3D3E] text-xs font-semibold"
+                      >
+                        <MessageSquare className="w-4 h-4 text-[#0F3D3E]" />
+                        <span>WhatsApp</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </SheetContent>

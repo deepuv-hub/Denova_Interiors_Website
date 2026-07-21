@@ -4,17 +4,19 @@
 
 :root {
   --charcoal: #1F1F1F;
-  --gold: #C8A35F;
-  --gold-dark: #B08D4A;
+  --gold: #0F3D3E; /* Primary Deep Emerald Green */
+  --gold-dark: #0B2C2D; /* Darker Emerald */
   --white: #FFFFFF;
-  --light-grey: #F5F5F5;
-  --heading-color: #1A1A1A;
-  --body-color: #4A4A4A;
-  --muted-color: #777777;
+  --light-grey: #FAF7F2; /* Warm Ivory background */
+  --heading-color: #0F3D3E; /* Emerald for luxury head titles */
+  --body-color: #374151; /* Dark gray for maximum readability */
+  --muted-color: #6B7280;
 
-  --brand-primary: #111111;
-  --brand-accent: #C8A96A;
-  --bg-light: #F8F8F8;
+  --brand-primary: #0F3D3E;
+  --brand-accent: #E8D8C4; /* Warm Beige Accent */
+  --bg-light: #FAF8F5;
+  --emerald: #0F3D3E;
+  --beige: #E8D8C4;
 }
 
 body {
@@ -42,6 +44,7 @@ html {
   width: 8px;
 }
 
+/* Custom scrollbar matching Emerald Theme */
 ::-webkit-scrollbar-track {
   background: var(--light-grey);
 }
@@ -55,34 +58,34 @@ html {
   background: var(--gold-dark);
 }
 
-/* Selection color */
+/* Selection color matching Beige Theme */
 ::selection {
-  background: var(--gold);
-  color: var(--white);
+  background: var(--brand-accent);
+  color: var(--gold);
 }
 
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 12%;
+    --foreground: 24 10% 10%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 12%;
+    --card-foreground: 24 10% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 12%;
-    --primary: 40 45% 58%;
-    --primary-foreground: 0 0% 12%;
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 12%;
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 47%;
-    --accent: 40 45% 58%;
-    --accent-foreground: 0 0% 12%;
+    --popover-foreground: 24 10% 10%;
+    --primary: 181 61% 15%; /* #0F3D3E */
+    --primary-foreground: 33 44% 84%; /* #E8D8C4 */
+    --secondary: 33 44% 96%;
+    --secondary-foreground: 181 61% 15%;
+    --muted: 33 44% 96%;
+    --muted-foreground: 24 10% 45%;
+    --accent: 33 44% 84%; /* #E8D8C4 */
+    --accent-foreground: 181 61% 15%; /* #0F3D3E */
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89%;
-    --input: 0 0% 89%;
-    --ring: 40 45% 58%;
-    --radius: 0.5rem;
+    --border: 33 20% 90%;
+    --input: 33 20% 90%;
+    --ring: 181 61% 15%;
+    --radius: 1rem; /* Curvier, modern luxury radius */
   }
 }
 
