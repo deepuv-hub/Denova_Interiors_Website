@@ -33,6 +33,8 @@ const iconMap = {
   Briefcase: Briefcase,
   Wrench: Wrench,
   Key: Key,
+  Layers: Layers,
+  Sparkles: Sparkles,
 };
 
 // Existing High-Quality actual images mapped to a premium fullscreen Ken Burns slider
