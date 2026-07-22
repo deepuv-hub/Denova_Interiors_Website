@@ -44,7 +44,7 @@ const CategoryPage = () => {
           <Link
             key={project.id}
             className="cursor-pointer group"
-            to={`/portfolio/${type}/${category}/${project.id}`}
+            to={`/projects/${project.slug}`}
           >
             <img
               src={project.images[0]}

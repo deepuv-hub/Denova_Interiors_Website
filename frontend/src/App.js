@@ -21,6 +21,7 @@ const CityLanding = React.lazy(() => import("./pages/CityLanding"));
 const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy"));
 const CategoryPage = React.lazy(() => import("./pages/CategoryPage"));
 const ProjectPage = React.lazy(() => import("./pages/ProjectPage"));
+const ProjectDetailPage = React.lazy(() => import("./pages/ProjectDetailPage"));
 
 // Layout components (keep normal)
 import Header from "./components/layout/Header";
@@ -109,6 +110,7 @@ function App() {
   <Route path="/portfolio" element={withSEO(PortfolioPage)} />
   <Route path="/portfolio/:type/:category" element={<CategoryPage />} />
   <Route path="/portfolio/:type/:category/:projectId" element={<ProjectPage />} />
+  <Route path="/projects/:slug" element={<ProjectDetailPage />} />
 
   <Route path="/materials" element={withSEO(MaterialsPage)} />
   <Route path="/testimonials" element={withSEO(TestimonialsPage)} />

@@ -7,183 +7,14 @@ import {
   Clock, 
   Maximize2, 
   CheckCircle2, 
-  Star, 
   MessageSquare, 
-  PhoneCall, 
   Compass, 
-  Award,
-  ChevronLeft,
-  ChevronRight,
-  ShieldCheck,
-  Sparkles
+  ShieldCheck
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { companyInfo } from "../data/mock";
 import { projects as projectsDb } from "../data/projects";
 import { Helmet } from "react-helmet-async";
-
-// Curated comprehensive slide-by-slide interior details & specifications for each real project
-const curatedPortfolioData = [
-  {
-    id: "living-room-modern-1",
-    title: "Modern Architectural Living Room",
-    category: "Living Room",
-    type: "residential",
-    style: "Modern Contemporary Minimalist",
-    coverImage: "/images/living2.webp",
-    location: "Koramangala, Bangalore",
-    area: "1,850 sq.ft",
-    duration: "8 Weeks",
-    materialPalette: "Century BWR Ply, Natural Wood Veneer, Italian Marble",
-    scope: "Civil alterations, fluted carpentry paneling, slot tracks, marble backing fitting",
-    supervision: "Site civil engineer supervised, 100% laser aligned",
-    images: [
-      "/images/projects/living-room-modern-1/1.webp",
-      "/images/projects/living-room-modern-1/2.webp",
-      "/images/projects/living-room-modern-1/3.webp",
-      "/images/projects/living-room-modern-1/4.webp"
-    ],
-    explanations: [
-      "Breathtaking overall architectural living room balance coordinating natural oak fluting wood panels with floating media drawer units.",
-      "Custom stone veneer television backdrop detailed with concealed wire-management slot trays and warm down-facing spotlights.",
-      "Elegantly designed vertical fluted wooden panels that introduce natural texture while visually amplifying room height properties.",
-      "Dimmable warm-white LED track lighting slots embedded inside gypsum coves to cast a glare-free layered wash over seating."
-    ]
-  },
-  {
-    id: "kitchen-modern-white-1",
-    title: "Modern Acrylic Modular Kitchen",
-    category: "Kitchen",
-    type: "residential",
-    style: "High-Gloss European Modern",
-    coverImage: "/images/kitchen1.webp",
-    location: "Whitefield, Bangalore",
-    area: "140 sq.ft",
-    duration: "6 Weeks",
-    materialPalette: "100% BWP Marine Plywood, Gloss Acrylic, Quartz Countertop",
-    scope: "Modular carcass factory fabrication, quartz fitting, pipeline relocations, storage planning",
-    supervision: "Supervised modular engineer checks, automated factory edge-banding",
-    images: [
-      "/images/projects/kitchen-modern-white-1/1.webp",
-      "/images/projects/kitchen-modern-white-1/2.webp",
-      "/images/projects/kitchen-modern-white-1/3.webp",
-      "/images/projects/kitchen-modern-white-1/4.webp"
-    ],
-    explanations: [
-      "Overall parallel modular kitchen layout engineered strictly around the standard refrigerator-sink-cooktop triangle.",
-      "High-gloss white acrylic top shutters selected to bounce natural light, magnifying the visual volume of a compact layout.",
-      "Premium German-engineered soft-close tandem drawers offering absolute glide action and 50kg load durability.",
-      "Scratch-resistant dark quartz countertop coordinate layout that matches gray bottom profiles for contemporary contrast."
-    ]
-  },
-  {
-    id: "wardrobe-sliding-bedroom-1",
-    title: "Sleek Sliding Wardrobe Suite",
-    category: "Wardrobe",
-    type: "residential",
-    style: "Minimalist Custom Storage",
-    coverImage: "/images/bedroom3.webp",
-    location: "Sarjapur Road, Bangalore",
-    area: "Master Bedroom",
-    duration: "4 Weeks",
-    materialPalette: "Century MR Ply core, Matte Anti-Fingerprint Laminate",
-    scope: "Dampened sliding closet assembly, vertical framework alignments, loft closets fitting",
-    supervision: "Master carpenter inspected door track damping tolerances",
-    images: [
-      "/images/projects/wardrobe-sliding-bedroom-1/1.webp",
-      "/images/projects/wardrobe-sliding-bedroom-1/2.webp",
-      "/images/projects/wardrobe-sliding-bedroom-1/3.webp",
-      "/images/projects/wardrobe-sliding-bedroom-1/4.webp"
-    ],
-    explanations: [
-      "Floor-to-ceiling custom sliding closet suite flush-mounted against the wall layout to maximize free walking space.",
-      "Fingerprint-resistant matte gray laminates giving a highly refined tactile feel and keeping shutters free of blemishes.",
-      "Spacious top loft compartments providing high-volume storage areas for bulky off-season luggage items.",
-      "Premium soft-closing roller shutters fitted with heavy-duty aluminum slot track rails to assure quiet closures."
-    ]
-  },
-  {
-    id: "office-modern-setup-1",
-    title: "Executive Collaborative Office Space",
-    category: "Office",
-    type: "commercial",
-    style: "High-Performance Modern Corporate",
-    coverImage: "/images/living2.webp", // Backed up office visual cover
-    location: "HSR Layout, Bangalore",
-    area: "3,200 sq.ft",
-    duration: "10 Weeks",
-    materialPalette: "Acoustic Slats felt backing, Double-Glazed Glass, Oak Veneer",
-    scope: "Glass sound partitioning, server networking, open collaborative desks, reception woodwork",
-    supervision: "Site civil project manager supervised, GTM tracking strict delivery",
-    images: [
-      "/images/projects/office-modern-setup-1/1.webp",
-      "/images/projects/office-modern-setup-1/2.webp",
-      "/images/projects/office-modern-setup-1/3.webp",
-      "/images/projects/office-modern-setup-1/4.webp"
-    ],
-    explanations: [
-      "Modern open collaborative desk workbench layouts integrated with under-bench cabling slot organizer trays.",
-      "Executive boardroom area fitted with seamless acoustic double-glazed glass partition boundaries.",
-      "Vertical sound-absorbing slats paneling lines coordinating teal brand identity paint codes to elevate reception visual trust.",
-      "Bright, glare-free suspended linear LED office suspensions optimizing workspace illumination comfort."
-    ]
-  },
-  {
-    id: "bedroom-modern-design-1",
-    title: "Minimalist Master Bedroom Sanctuary",
-    category: "Bedroom",
-    type: "residential",
-    style: "Warm Scandinavian Minimal",
-    coverImage: "/images/bedroom3.webp", // Backed up bedroom visual cover
-    location: "Electronic City, Bangalore",
-    area: "Master Suite",
-    duration: "5 Weeks",
-    materialPalette: "BWR Ply Core, Premium Micro-Fabric, Warm Oak Veneers",
-    scope: "Carpentry bed frame, dimmable ambient back-rod coves, flush wardrobe doors alignments",
-    supervision: "Certified interior engineer supervised quality alignments",
-    images: [
-      "/images/projects/bedroom-modern-design-1/1.webp",
-      "/images/projects/bedroom-modern-design-1/2.webp",
-      "/images/projects/bedroom-modern-design-1/3.webp",
-      "/images/projects/bedroom-modern-design-1/4.webp"
-    ],
-    explanations: [
-      "Serene master bedroom layouts utilizing horizontal oak wood grains to invoke calm rest aesthetics.",
-      "Upholstered fabric headboard panel integrated with concealed warm-white LED track lighting back-washes.",
-      "Bespoke custom floating solid wood bed frame layout detailed with rounded structural corner edges to avoid injury.",
-      "Concealed flush-mounted sliding wardrobes eliminating visual noise to secure a restful room ambiance."
-    ]
-  },
-  {
-    id: "ceiling-false-design-1",
-    title: "Architectural False Ceiling & Lights",
-    category: "Ceiling",
-    type: "residential",
-    style: "Modern Gypsum Slot Ceiling",
-    coverImage: "/images/landingpagehero.webp", // Backed up ceiling visual cover
-    location: "JP Nagar, Bangalore",
-    area: "Hallway & Dining",
-    duration: "3 Weeks",
-    materialPalette: "Saint-Gobain Gyproc, Philips LED coves, Recessed Cob spots",
-    scope: "Ceiling G.I grid framing, gypsum board layout fixing, joint finishes, spotlight wiring integrations",
-    supervision: "Laser grid alignment audit, G.I anchor pull test certified",
-    images: [
-      "/images/projects/ceiling-false-design-1/1.webp",
-      "/images/projects/ceiling-false-design-1/2.webp",
-      "/images/projects/ceiling-false-design-1/3.webp",
-      "/images/projects/ceiling-false-design-1/4.webp"
-    ],
-    explanations: [
-      "Architectural gypsum false ceiling detailed with structural slots to organize spotlight placements.",
-      "Perfect matte-white Saint-Gobain board finishing coordinating hidden warm Philips LED strip cove glows.",
-      "Seamless gypsum ceiling joint alignment detailed with anti-crack paper tapes to assure structural safety.",
-      "Integrated double-recessed cob warm spotlights framing living zones in bright, architectural sweeps."
-    ]
-  }
-];
-
-const slugify = (value) => value.toLowerCase().replace(/\s+/g, "-");
-const getCategoryType = (category) => category === "Office" ? "commercial" : "residential";
 
 const filterTabs = [
   { id: "All", label: "Signature Showcase" },
@@ -201,8 +32,8 @@ const PortfolioPage = () => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   const filteredPortfolio = activeFilter === "All"
-    ? curatedPortfolioData
-    : curatedPortfolioData.filter(item => item.category === activeFilter);
+    ? projectsDb
+    : projectsDb.filter(item => item.category === activeFilter);
 
   const handleNextImage = useCallback(() => {
     if (!selectedProject) return;
@@ -346,7 +177,7 @@ const PortfolioPage = () => {
                   {/* Aspect cover photo */}
                   <div className="relative aspect-[16/11] overflow-hidden">
                     <img
-                      src={project.coverImage}
+                      src={project.images[0]}
                       alt={project.title}
                       loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
@@ -371,7 +202,7 @@ const PortfolioPage = () => {
                     </p>
 
                     <p className="text-xs text-stone-400 line-clamp-2">
-                      Designed with premium {project.materialPalette.toLowerCase()}. Site civil engineer supervised turnkey execution in Bangalore.
+                      Designed with premium {project.materialsUsed.toLowerCase()}. Site civil engineer supervised turnkey execution in Bangalore.
                     </p>
 
                     <div className="pt-2 flex items-center justify-between border-t border-stone-100 text-[10px] text-stone-400 font-bold uppercase tracking-wider">
@@ -511,34 +342,34 @@ const PortfolioPage = () => {
                       <li className="flex justify-between"><span className="text-stone-400 font-medium">Type:</span> <span className="text-stone-700 font-bold uppercase">{selectedProject.category}</span></li>
                       <li className="flex justify-between"><span className="text-stone-400 font-medium">Location:</span> <span className="text-stone-700 font-bold">{selectedProject.location}</span></li>
                       <li className="flex justify-between"><span className="text-stone-400 font-medium">Space size:</span> <span className="text-stone-700 font-bold">{selectedProject.area}</span></li>
-                      <li className="flex justify-between"><span className="text-stone-400 font-medium">Timeline:</span> <span className="text-stone-700 font-bold">{selectedProject.duration}</span></li>
-                      <li className="flex justify-between"><span className="text-stone-400 font-medium">Budget:</span> <span className="text-[#0F3D3E] font-bold uppercase text-[10px]">{selectedProject.budgetRange}</span></li>
+                      <li className="flex justify-between"><span className="text-stone-400 font-medium">Timeline:</span> <span className="text-stone-700 font-bold">{selectedProject.completionTime}</span></li>
+                      <li className="flex justify-between"><span className="text-stone-400 font-medium">Budget:</span> <span className="text-[#0F3D3E] font-bold uppercase text-[10px]">{selectedProject.budget}</span></li>
                     </ul>
                   </div>
 
                   {/* Materials & Sourcing */}
                   <div className="space-y-2.5">
                     <h4 className="text-stone-700 font-bold text-xs uppercase tracking-wider">Materials & Sourcing</h4>
-                    <p className="text-xs text-stone-500 leading-relaxed">
-                      {selectedProject.materials}
+                    <p className="text-xs text-stone-500 leading-relaxed font-light">
+                      {selectedProject.materialsUsed}
                     </p>
                   </div>
 
                   {/* Scope of Work */}
                   <div className="space-y-2">
                     <h4 className="text-stone-700 font-bold text-xs uppercase tracking-wider">Scope of Work executed</h4>
-                    <p className="text-xs text-stone-500 leading-relaxed">
-                      {selectedProject.scope}
+                    <p className="text-xs text-stone-500 leading-relaxed font-light">
+                      {selectedProject.scope?.join(", ")}
                     </p>
                   </div>
 
                   {/* Trust Stamps check list */}
-                  <div className="p-4 bg-emerald-50/50 rounded-2xl border border-emerald-100 space-y-2">
-                    <h4 className="text-emerald-800 font-bold text-xs uppercase tracking-wider flex items-center gap-1.5">
-                      <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                  <div className="p-4 bg-[#E8D8C4]/20 rounded-2xl border border-[#E8D8C4]/35 space-y-2">
+                    <h4 className="text-[#0F3D3E] font-bold text-xs uppercase tracking-wider flex items-center gap-1.5">
+                      <ShieldCheck className="w-4 h-4 text-[#0F3D3E]" />
                       <span>Trust & Quality audits</span>
                     </h4>
-                    <ul className="space-y-1.5 text-[11px] text-emerald-700 font-semibold">
+                    <ul className="space-y-1.5 text-[11px] text-[#0F3D3E] font-semibold">
                       <li className="flex items-center gap-1.5">✓ {selectedProject.supervision}</li>
                       <li className="flex items-center gap-1.5">✓ German factory automated edge-banding</li>
                       <li className="flex items-center gap-1.5">✓ Late handover rent penalty covered</li>
@@ -548,17 +379,18 @@ const PortfolioPage = () => {
                 </div>
 
                 {/* Dynamically integrated Leads CTAs */}
-                <div className="pt-6 border-t border-stone-200/50 mt-6 space-y-3.5">
-                  <div className="text-center space-y-1">
-                    <span className="text-stone-600 font-bold text-xs block">Inspired by this signature project?</span>
-                    <span className="text-[10px] text-stone-400 block uppercase font-bold tracking-wider">Coordinate costing estimates with our experts</span>
-                  </div>
-
+                <div className="pt-6 border-t border-stone-200/50 mt-6 space-y-3 border-t">
                   <div className="grid grid-cols-1 gap-2.5">
-                    <Link to="/contact" onClick={() => setSelectedProject(null)}>
+                    <Link to={`/projects/${selectedProject.slug}`} onClick={() => setSelectedProject(null)}>
                       <Button className="w-full bg-[#0F3D3E] hover:bg-[#0B2C2D] text-[#E8D8C4] hover:text-white py-4 rounded-xl text-xs uppercase tracking-wider font-bold shadow-md flex items-center justify-center gap-2">
-                        <span>Get Free Consultation</span>
+                        <span>View Detailed Case Study</span>
                         <ArrowRight className="w-4 h-4" />
+                      </Button>
+                    </Link>
+
+                    <Link to="/contact" onClick={() => setSelectedProject(null)}>
+                      <Button className="w-full bg-white hover:bg-stone-50 text-[#0F3D3E] border border-stone-200 py-4 rounded-xl text-xs uppercase tracking-wider font-bold shadow-xs flex items-center justify-center gap-2">
+                        <span>Get Free Consultation</span>
                       </Button>
                     </Link>
                     
@@ -566,7 +398,7 @@ const PortfolioPage = () => {
                       href={`https://wa.me/919164466606?text=Hi%20I'm%20exploring%20your%20completed%20portfolio%20project:%20${selectedProject.title}%20(Slide%20${activeImageIndex + 1}).%20Can%20you%20share%20costing%20estimates?`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full border border-stone-200 hover:bg-emerald-50/50 py-3.5 rounded-xl text-emerald-700 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition duration-300"
+                      className="w-full border border-[#25D366] hover:bg-[#25D366]/5 py-3.5 rounded-xl text-[#25D366] text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition duration-300"
                     >
                       <MessageSquare className="w-4 h-4" />
                       <span>WhatsApp Inquiry</span>
