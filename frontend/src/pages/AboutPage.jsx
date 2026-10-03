@@ -124,13 +124,6 @@ const AboutPage = () => {
   return (
     <>
       <Helmet>
-        <title>Premium Turnkey Interior Design Studio | About Denova Creations</title>
-        <meta
-          name="description"
-          content="Learn about Denova Creations, Bengaluru's premier turnkey home interior studio. Discover our bespoke design process, German-engineered fabrication, and 10-year warranty."
-        />
-        <link rel="canonical" href="https://denovacreations.com/about" />
-        
         {/* About Page Schema */}
         <script type="application/ld+json">
           {JSON.stringify({

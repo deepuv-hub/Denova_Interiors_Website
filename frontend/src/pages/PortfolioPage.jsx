@@ -75,13 +75,6 @@ const PortfolioPage = () => {
   return (
     <>
       <Helmet>
-        <title>Signature Interior Design Portfolio Bangalore | Denova Creations</title>
-        <meta
-          name="description"
-          content="Explore our signature home interior design portfolios in Bangalore. Filter through completed luxury kitchens, modular wardrobes, and residential spaces."
-        />
-        <link rel="canonical" href="https://denovacreations.com/portfolio" />
-        
         {/* Collection Schema */}
         <script type="application/ld+json">
           {JSON.stringify({

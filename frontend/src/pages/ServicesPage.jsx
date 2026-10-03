@@ -185,13 +185,6 @@ const ServicesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Luxury Interior Design Services Bangalore | Denova Creations</title>
-        <meta
-          name="description"
-          content="Explore bespoke interior design services in Bangalore. We specialize in modular kitchens, wardrobes, living rooms, and complete turnkey home interiors."
-        />
-        <link rel="canonical" href="https://denovacreations.com/services" />
-        
         {/* Services Page Schema */}
         <script type="application/ld+json">
           {JSON.stringify({

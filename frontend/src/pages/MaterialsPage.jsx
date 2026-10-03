@@ -169,13 +169,6 @@ const MaterialsPage = () => {
   return (
     <>
       <Helmet>
-        <title>Interior Materials & Design Guide Bangalore | Denova Creations</title>
-        <meta
-          name="description"
-          content="The ultimate interior materials and planning guide in Bangalore. Discover the differences between BWP marine ply, BWR plywood, acrylics, and modular pricing."
-        />
-        <link rel="canonical" href="https://denovacreations.com/materials" />
-        
         {/* Knowledge Page Schema */}
         <script type="application/ld+json">
           {JSON.stringify({

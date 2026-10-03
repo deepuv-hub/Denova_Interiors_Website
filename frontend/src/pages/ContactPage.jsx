@@ -148,13 +148,6 @@ const ContactPage = () => {
   return (
     <>
       <Helmet>
-        <title>Speak with Luxury Interior Designers Bangalore | Denova Creations</title>
-        <meta
-          name="description"
-          content="Start your luxury interior design journey with Denova Creations Bangalore. Book a free space planning consultation. Custom modular kitchens, wardrobes & turnkey designs."
-        />
-        <link rel="canonical" href="https://denovacreations.com/contact" />
-        
         {/* Local Business Schema */}
         <script type="application/ld+json">
           {JSON.stringify({
