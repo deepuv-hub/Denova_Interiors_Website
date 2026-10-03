@@ -22,6 +22,7 @@ const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy"));
 const CategoryPage = React.lazy(() => import("./pages/CategoryPage"));
 const ProjectPage = React.lazy(() => import("./pages/ProjectPage"));
 const ProjectDetailPage = React.lazy(() => import("./pages/ProjectDetailPage"));
+const NotFoundPage = React.lazy(() => import("./pages/NotFoundPage"));
 
 // Layout components (keep normal)
 import Header from "./components/layout/Header";
@@ -120,7 +121,8 @@ function App() {
   <Route path="/interior-designers/:city" element={<CityLanding />} />
   <Route path="/privacy-policy" element={withSEO(PrivacyPolicy)} />
   <Route path="/modular-kitchen-bangalore" element={<ModularKitchenBangalore />} />
-  
+  <Route path="*" element={<NotFoundPage />} />
+
 </Routes>
                 </Layout>
               }
