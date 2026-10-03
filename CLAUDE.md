@@ -46,7 +46,11 @@ There is no separate lint script. ESLint (react-hooks rules) runs as part of `cr
 
 ## Deployment
 
-Deployed on Vercel. The Vercel configuration is in `frontend/vercel.json`; verify the actual Vercel project root in the Vercel dashboard before changing deployment configuration. `frontend/vercel.json` 308-redirects `www.denovacreations.com` to the apex domain and rewrites all paths to `/index.html` for client-side routing. There is no CI.
+Production (`denovacreations.com`) is served through the Hostinger CDN. The production `.htaccess` lives in Hostinger's `public_html` and is **not** in this repo. It 301-redirects `www` to the apex domain and provides the SPA fallback to `/index.html`, excluding `robots.txt` and `sitemap.xml` from React routing. Change redirects or rewrites there, not in the repo.
+
+- There is no Hostinger deploy script, CI workflow, or deployment documentation in the repo. `frontend/build/` is gitignored.
+- **Unknown:** the exact method used to build and upload files to Hostinger.
+- `frontend/vercel.json` is still in the repo but does not control the production domain. Its redirect and rewrite rules have no effect on the live site.
 
 ## Repo quirks
 
