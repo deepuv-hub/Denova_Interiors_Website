@@ -479,7 +479,7 @@ const ProjectDetailPage = () => {
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>
-            <a href="tel:+919164011181">
+            <a href="tel:+919591039597">
               <Button className="bg-transparent hover:bg-white/10 border border-white/30 text-white font-bold px-8 py-6 rounded-xl text-xs uppercase tracking-wider transition duration-300">
                 Call Our Designers
               </Button>

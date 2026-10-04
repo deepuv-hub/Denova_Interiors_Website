@@ -95,7 +95,7 @@ const Marathahalli = () => {
             name: "Denova Creations",
             url: pageUrl,
             image: imageUrl,
-            telephone: "+91-9164466606",
+            telephone: "+91 9591039597",
             areaServed: [
               "Marathahalli",
               "Bangalore",
@@ -522,10 +522,10 @@ const Marathahalli = () => {
         <div className="flex flex-wrap justify-center gap-4">
 
           <a
-            href="tel:+919164466606"
+            href="tel:+919591039597"
             className="bg-yellow-600 hover:bg-yellow-700 transition px-8 py-4 font-semibold text-white"
           >
-            Call Now: 9164466606
+            Call Now: 9591039597
           </a>
 
           <a

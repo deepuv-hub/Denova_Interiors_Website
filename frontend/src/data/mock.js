@@ -3,7 +3,7 @@
 export const companyInfo = {
   name: "Denova Creations",
   tagline: "A division of Denova Creations",
-  primaryPhone: "+91 9164466606",
+  primaryPhone: "+91 9591039597",
   email: "admin@denovacreations.com",
   address: "373/2, Begur – Hulimavu Rd, Opp. Rejoice Apartment, Classic Paradise Layout, Begur, Bengaluru, Karnataka 560114",
   serviceArea: "Bengaluru (all zones) and nearby locations",

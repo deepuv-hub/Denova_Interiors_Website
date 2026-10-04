@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { submitLead } from "../utils/submitLead";
+import { buildLeadPayload, normalizePhone, trackLeadConversion, useSubmitLock } from "../utils/leadTracking";
 import { companyInfo } from "../data/mock";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
@@ -44,7 +45,7 @@ const contactTestimonials = [
 
 const ContactPage = () => {
   const [step, setStep] = useState(1);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { submitting: isSubmitting, acquire, release } = useSubmitLock();
   const [errors, setErrors] = useState({});
 
   const [form, setForm] = useState({
@@ -72,10 +73,9 @@ const ContactPage = () => {
     const tempErrors = {};
     if (!form.name.trim()) tempErrors.name = "Full Name is required";
     
-    const cleanedPhone = form.phone.replace(/\D/g, "");
     if (!form.phone.trim()) {
       tempErrors.phone = "Phone number is required";
-    } else if (cleanedPhone.length !== 10) {
+    } else if (normalizePhone(form.phone).length !== 10) {
       tempErrors.phone = "Must be a valid 10-digit number";
     }
 
@@ -108,40 +108,35 @@ const ContactPage = () => {
       return;
     }
 
-    const cleanedPhone = form.phone.replace(/\D/g, "");
-    setIsSubmitting(true);
+    if (!acquire()) return;
+
+    const lead = buildLeadPayload({
+      name: form.name,
+      phone: form.phone,
+      email: form.email || "",
+      propertyType: form.propertyType || "Not Specified",
+      location: form.pincode || "",
+      possession: form.possession || "Not Specified",
+      budget: form.budget || "Not Specified",
+      consultationMode: form.consultationMode || "Not Specified",
+      requirements: form.requirements || "Not Specified",
+      source: "Website Contact Page",
+    });
 
     try {
-      const result = await submitLead({
-        name: form.name,
-        phone: cleanedPhone,
-        email: form.email || "",
-        propertyType: form.propertyType || "Not Specified",
-        location: form.pincode || "",
-        possession: form.possession || "Not Specified",
-        budget: form.budget || "Not Specified",
-        consultationMode: form.consultationMode || "Not Specified",
-        requirements: form.requirements || "Not Specified",
-        source: "Website Contact Page",
-      });
+      const result = await submitLead(lead);
 
       if (result.result === "success") {
-        // Track lead submission internally or in GA4 if configured
-        if (window.dataLayer) {
-          window.dataLayer.push({
-            event: "leadSubmit",
-            leadSource: "Contact Page Form"
-          });
-        }
+        await trackLeadConversion({ leadId: lead.lead_id, leadSource: lead.source });
         window.location.href = "/thank-you?source=contact";
       } else {
         alert("Something went wrong. Please check your internet connection and try again.");
-        setIsSubmitting(false);
+        release();
       }
     } catch (error) {
       console.error(error);
       alert("Error submitting details. Please try again.");
-      setIsSubmitting(false);
+      release();
     }
   };
 
@@ -241,7 +236,7 @@ const ContactPage = () => {
                 {/* Instant Quick Direct Connect */}
                 <div className="pt-4 flex flex-wrap gap-4 items-center">
                   <a
-                    href="tel:+919164466606"
+                    href="tel:+919591039597"
                     className="inline-flex items-center gap-2 text-stone-300 hover:text-white text-xs font-semibold transition-colors duration-300"
                   >
                     <PhoneCall className="w-4 h-4 text-[#E8D8C4]" />
@@ -249,7 +244,7 @@ const ContactPage = () => {
                   </a>
                   <span className="hidden sm:inline text-stone-600">|</span>
                   <a
-                    href="https://wa.me/919164466606?text=Hi%20Denova%20Creations%2C%20I%20would%20like%20to%20book%20a%20free%20design%20consultation%20for%20my%20home."
+                    href="https://wa.me/919591039597?text=Hi%20Denova%20Creations%2C%20I%20would%20like%20to%20book%20a%20free%20design%20consultation%20for%20my%20home."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 text-xs font-semibold transition-colors duration-300"
@@ -794,7 +789,7 @@ const ContactPage = () => {
                 </Button>
               </a>
               <a 
-                href="https://wa.me/919164466606?text=Hi%20Denova%20Creations%2C%20I%20would%20like%20to%20book%20a%20free%20design%20consultation%20for%20my%20home."
+                href="https://wa.me/919591039597?text=Hi%20Denova%20Creations%2C%20I%20would%20like%20to%20book%20a%20free%20design%20consultation%20for%20my%20home."
                 target="_blank" 
                 rel="noopener noreferrer"
               >

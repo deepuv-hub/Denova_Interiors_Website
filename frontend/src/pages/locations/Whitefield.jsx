@@ -225,20 +225,6 @@ const Whitefield = () => {
         }),
       });
 
-      // GTM Conversion Dispatch
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: "lead_conversion",
-        page: "whitefield_interior_designers"
-      });
-
-      // Google Ads conversion trigger
-      if (window.gtag) {
-        window.gtag("event", "conversion", {
-          send_to: "AW-11303451952/63-FCIP1rZ8cELD6840q"
-        });
-      }
-
       // Meta Pixel Lead Dispatch
       if (window.fbq) {
         window.fbq("track", "Lead", {
@@ -290,7 +276,7 @@ const Whitefield = () => {
             "name": "Denova Creations",
             "url": pageUrl,
             "image": imageUrl,
-            "telephone": "+91-9164466606",
+            "telephone": "+91 9591039597",
             "areaServed": ["Whitefield", "Bangalore", "East Bangalore"],
             "address": {
               "@type": "PostalAddress",
@@ -410,7 +396,7 @@ const Whitefield = () => {
                       Explore Design Services
                     </Button>
                   </a>
-                  <a href="tel:+919164466606" className="inline-flex items-center gap-2 text-stone-300 hover:text-white text-xs font-semibold transition-colors duration-300">
+                  <a href="tel:+919591039597" className="inline-flex items-center gap-2 text-stone-300 hover:text-white text-xs font-semibold transition-colors duration-300">
                     <PhoneCall className="w-4.5 h-4.5 text-[#E8D8C4]" />
                     <span>Direct Call: +91 91644 66606</span>
                   </a>
@@ -1154,7 +1140,7 @@ const Whitefield = () => {
                 </Button>
               </a>
               <a
-                href="https://wa.me/919164466606?text=Hi%20Denova%20Creations%2C%20I%20would%20like%20to%20get%20a%20turnkey%20home%20interior%20estimate%20for%20my%20residence%20in%20Whitefield."
+                href="https://wa.me/919591039597?text=Hi%20Denova%20Creations%2C%20I%20would%20like%20to%20get%20a%20turnkey%20home%20interior%20estimate%20for%20my%20residence%20in%20Whitefield."
                 target="_blank"
                 rel="noopener noreferrer"
               >

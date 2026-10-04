@@ -1,6 +1,14 @@
-import { SCRIPT_URL } from "../utils/api";
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import {
+  buildLeadPayload,
+  isValidEmail,
+  normalizeName,
+  normalizePhone,
+  postLeadNoCors,
+  trackLeadConversion,
+  useSubmitLock,
+} from "../utils/leadTracking";
 
 const CityLandingTemplate = ({ location }) => {
   const [formData, setFormData] = useState({
@@ -8,7 +16,7 @@ const CityLandingTemplate = ({ location }) => {
     phone: "",
     email: "",
   });
-  const [loading, setLoading] = useState(false);
+  const { submitting: loading, acquire, release } = useSubmitLock();
   const pageUrl = `https://denovacreations.com/interior-designers/${location.slug}`;
   const ogImage = "https://denovacreations.com/images/hero2.webp";
   const seoTitle = `Interior Designers in ${location.name} | Denova Creations`;
@@ -33,34 +41,48 @@ const CityLandingTemplate = ({ location }) => {
       e.preventDefault();
     }
 
-    if (!/^[0-9]{10}$/.test(formData.phone)) {
+    if (!normalizeName(formData.name)) {
+      alert("Please enter your name");
+      return;
+    }
+
+    if (!/^[0-9]{10}$/.test(normalizePhone(formData.phone))) {
       alert("Please enter a valid 10-digit phone number");
       return;
     }
 
-    setLoading(true);
-    // Save Lead
-    try {
-      await fetch(SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        body: JSON.stringify({
-          name: formData.name,
-          phone: formData.phone,
-          email: formData.email,
-          location: location.name,
-          source: "Landing Page",
-        }),
-      });
-    } catch (err) {
-      console.log("Lead save failed");
+    if (!isValidEmail(formData.email)) {
+      alert("Please enter a valid email address");
+      return;
     }
 
+    if (!acquire()) return;
+
+    const lead = buildLeadPayload({
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      location: location.name,
+      source: "Landing Page",
+    });
+
+    // Save Lead
+    try {
+      await postLeadNoCors(lead);
+    } catch (err) {
+      console.error("Lead save failed:", err);
+      alert("We could not submit your request. Please check your connection and try again.");
+      release();
+      return;
+    }
+
+    await trackLeadConversion({ leadId: lead.lead_id, leadSource: lead.source });
+
     // WhatsApp Redirect
-    const msg = `Hi, I'm ${formData.name}. My number is ${formData.phone}. I need interior design service in ${location.name}.`;
+    const msg = `Hi, I'm ${lead.name}. My number is ${lead.phone}. I need interior design service in ${location.name}.`;
 
     window.open(
-      `https://wa.me/919164466606?text=${encodeURIComponent(msg)}`,
+      `https://wa.me/919591039597?text=${encodeURIComponent(msg)}`,
       "_blank"
     );
 
@@ -93,7 +115,7 @@ const CityLandingTemplate = ({ location }) => {
             name: "Denova Creations",
             image: ogImage,
             url: pageUrl,
-            telephone: "+91-9164466606",
+            telephone: "+91 9591039597",
             address: {
               "@type": "PostalAddress",
               streetAddress: "373/2, Begur Hulimavu Road",
@@ -149,7 +171,7 @@ const CityLandingTemplate = ({ location }) => {
               </button>
 
               <a
-                href="https://wa.me/919164466606"
+                href="https://wa.me/919591039597"
                 className="bg-green-500 text-white px-6 py-3 rounded"
               >
                 WhatsApp Now
@@ -197,6 +219,7 @@ const CityLandingTemplate = ({ location }) => {
             />
             <button
               type="submit"
+              disabled={loading}
               className="bg-black text-white py-3 rounded"
             >
               {loading ? "Submitting..." : "Get Free Design Plan"}

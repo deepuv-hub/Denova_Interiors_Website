@@ -194,7 +194,7 @@ const ServicesPage = () => {
               "@type": "LocalBusiness",
               "name": "Denova Creations",
               "image": "https://denovacreations.com/images/hero2.webp",
-              "telephone": "+91-9164466606",
+              "telephone": "+91 9591039597",
               "priceRange": "₹₹₹",
               "address": {
                 "@type": "PostalAddress",

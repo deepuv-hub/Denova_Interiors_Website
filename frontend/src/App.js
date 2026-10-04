@@ -32,6 +32,7 @@ import FloatingLeadForm from "./components/FloatingLeadForm";
 import InternalLinksCTA from "./components/InternalLinksCTA";
 import SEO from "./components/SEO";
 import ScrollToTop from "./components/ScrollToTop";
+import { captureAttribution } from "./utils/leadTracking";
 
 const withSEO = (Component) => (
   <>
@@ -61,31 +62,10 @@ function App() {
     })(window, document, "clarity", "script", "wj9mkjr37f");
   }, []);
 
+  // Store UTM params, gclid and the first landing page for lead attribution.
   useEffect(() => {
-  const params = new URLSearchParams(window.location.search);
-
-  const trackingParams = [
-    "utm_source",
-    "utm_medium",
-    "utm_campaign",
-    "utm_content",
-    "utm_term",
-    "gclid"
-  ];
-
-  trackingParams.forEach((param) => {
-    const value = params.get(param);
-
-    if (value) {
-      localStorage.setItem(param, value);
-    }
-  });
-
-  // Save first landing page
-  if (!localStorage.getItem("landing_page")) {
-    localStorage.setItem("landing_page", window.location.href);
-  }
-}, []);
+    captureAttribution();
+  }, []);
   
   return (
     <div className="App">

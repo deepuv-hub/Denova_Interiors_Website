@@ -52,7 +52,7 @@ const ProjectsPage = () => {
               "@type": "LocalBusiness",
               "name": "Denova Creations",
               "image": "https://denovacreations.com/images/hero2.webp",
-              "telephone": "+91-9164466606"
+              "telephone": "+91 9591039597"
             }
           })}
         </script>
@@ -256,7 +256,7 @@ const ProjectsPage = () => {
                           </Link>
                           
                           <a 
-                            href={`https://wa.me/919164466606?text=Hi%20I'm%20interested%20in%20a%20design%20similar%20to%20your%20${study.title}%20(Slug:%20${study.slug})`}
+                            href={`https://wa.me/919591039597?text=Hi%20I'm%20interested%20in%20a%20design%20similar%20to%20your%20${study.title}%20(Slug:%20${study.slug})`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-emerald-600 hover:text-emerald-700 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors"
@@ -287,7 +287,7 @@ const ProjectsPage = () => {
                               </Button>
                             </Link>
                             <a 
-                              href="https://wa.me/919164466606?text=Hi%20I'm%20exploring%20completed%20portfolio%20projects.%20I'd%20like%20to%20book%20a%20design%20consultation."
+                              href="https://wa.me/919591039597?text=Hi%20I'm%20exploring%20completed%20portfolio%20projects.%20I'd%20like%20to%20book%20a%20design%20consultation."
                               target="_blank"
                               rel="noopener noreferrer"
                               className="bg-transparent hover:bg-white/5 border border-white/20 text-white font-semibold px-6 py-4 rounded-lg text-xs uppercase tracking-wider flex items-center gap-1.5 transition-all"

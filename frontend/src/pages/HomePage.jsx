@@ -29,7 +29,7 @@ const HomePage = () => {
             url: "https://denovacreations.com",
             logo: "https://denovacreations.com/images/logo-primary.png",
             image: "https://denovacreations.com/images/hero2.webp",
-            telephone: "+91-9164466606",
+            telephone: "+91 9591039597",
             address: {
               "@type": "PostalAddress",
               streetAddress: "373/2, Begur Hulimavu Road",

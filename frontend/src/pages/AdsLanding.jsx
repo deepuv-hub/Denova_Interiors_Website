@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import logoPrimary from "@/assets/branding/logo-primary.png";
 import {
@@ -19,8 +19,14 @@ import {
   MapPin,
   Check
 } from "lucide-react";
-
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby9SBHZXrLYiKlvRxaM8TaqICwB7VkWy_6T8B1WTkz_CXEBNTNYo9B_J1WxZlA9Ebxa/exec";
+import {
+  buildLeadPayload,
+  isValidEmail,
+  isValidIndianMobile,
+  postLeadNoCors,
+  trackLeadConversion,
+  useSubmitLock,
+} from "../utils/leadTracking";
 
 /* SAFE IMAGE - OPTIMIZED WITH DYNAMIC RATIO & SKELETON PREVENTING CLS */
 const SafeImage = ({
@@ -67,47 +73,16 @@ const AdsLanding = () => {
     pincode: "",
     possession: "",
     budget: "",
-    utm_source: "",
-    utm_medium: "",
-    utm_campaign: "",
-    utm_content: "",
-    utm_term: "",
-    gclid: "",
-    landing_page: "",
   });
 
   const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
+  const { submitting: loading, acquire, release } = useSubmitLock();
   const [activeFaq, setActiveFaq] = useState(null);
-
-  useEffect(() => {
-    const url = new URL(window.location.href);
-    const utmData = {
-      utm_source: url.searchParams.get("utm_source") || localStorage.getItem("utm_source") || "",
-      utm_medium: url.searchParams.get("utm_medium") || localStorage.getItem("utm_medium") || "",
-      utm_campaign: url.searchParams.get("utm_campaign") || localStorage.getItem("utm_campaign") || "",
-      utm_content: url.searchParams.get("utm_content") || localStorage.getItem("utm_content") || "",
-      utm_term: url.searchParams.get("utm_term") || localStorage.getItem("utm_term") || "",
-      gclid: url.searchParams.get("gclid") || localStorage.getItem("gclid") || "",
-    };
-
-    Object.entries(utmData).forEach(([key, value]) => {
-      if (value) {
-        localStorage.setItem(key, value);
-      }
-    });
-
-    setForm((prev) => ({
-      ...prev,
-      ...utmData,
-      landing_page: window.location.href,
-    }));
-  }, []);
 
   const isFormValid =
     form.name?.trim() &&
-    /^[6-9]\d{9}$/.test(form.phone) &&
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email) &&
+    isValidIndianMobile(form.phone) &&
+    isValidEmail(form.email) &&
     form.propertyType &&
     /^[0-9]{6}$/.test(form.pincode) &&
     form.possession &&
@@ -133,13 +108,13 @@ const AdsLanding = () => {
 
     if (!form.phone.trim()) {
       newErrors.phone = "Phone is required";
-    } else if (!/^[6-9]\d{9}$/.test(form.phone)) {
+    } else if (!isValidIndianMobile(form.phone)) {
       newErrors.phone = "Enter valid 10-digit number";
     }
 
     if (!form.email.trim()) {
       newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+    } else if (!isValidEmail(form.email)) {
       newErrors.email = "Enter valid email";
     }
 
@@ -176,64 +151,30 @@ const AdsLanding = () => {
     const isValid = validateForm();
     if (!isValid) return;
 
-    const cleanedPhone = form.phone.replace(/\D/g, "").slice(0, 10);
-    if (cleanedPhone.length !== 10) {
-      alert("Enter valid number");
+    if (!acquire()) return;
+
+    const lead = buildLeadPayload({
+      name: form.name,
+      phone: form.phone,
+      email: form.email,
+      propertyType: form.propertyType,
+      location: form.pincode,
+      possession: form.possession,
+      budget: form.budget,
+      source: "Ads Landing Page",
+    });
+
+    try {
+      await postLeadNoCors(lead);
+    } catch (err) {
+      console.error("Submission issue:", err);
+      alert("We could not submit your request. Please check your connection and try again.");
+      release();
       return;
     }
 
-    try {
-      setLoading(true);
-
-      await fetch(SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: form.name,
-          phone: form.phone,
-          email: form.email,
-          propertyType: form.propertyType,
-          location: form.pincode,
-          possession: form.possession,
-          budget: form.budget,
-          source: "Ads Landing Page",
-          utm_source: localStorage.getItem("utm_source") || "",
-          utm_medium: localStorage.getItem("utm_medium") || "",
-          utm_campaign: localStorage.getItem("utm_campaign") || "",
-          utm_content: localStorage.getItem("utm_content") || "",
-          utm_term: localStorage.getItem("utm_term") || "",
-          gclid: localStorage.getItem("gclid") || "",
-          landing_page: localStorage.getItem("landing_page") || window.location.href,
-          timestamp: new Date().toISOString(),
-        }),
-      });
-
-      // GTM EVENT
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: "lead_conversion"
-      });
-
-      // GOOGLE ADS DIRECT CONVERSION
-      if (window.gtag) {
-        window.gtag('event', 'conversion', {
-          send_to: 'AW-11303451952/63-FCIP1rZ8cELD6840q'
-        });
-      }
-
-      // REDIRECT AFTER DELAY
-      setTimeout(() => {
-        window.location.href = "/thank-you";
-      }, 1200);
-
-    } catch (err) {
-      console.error("Submission issue:", err);
-    } finally {
-      setLoading(false);
-    }
+    await trackLeadConversion({ leadId: lead.lead_id, leadSource: lead.source });
+    window.location.href = "/thank-you";
   };
 
   return (
@@ -276,7 +217,7 @@ const AdsLanding = () => {
           </div>
           <div className="flex items-center gap-3 md:gap-4">
             <a
-              href="tel:+919164466606"
+              href="tel:+919591039597"
               className="hidden sm:flex items-center gap-2 text-white font-medium hover:text-[#E7D7C9] transition text-sm bg-[#0F3B2E]/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/10"
             >
               <PhoneCall className="w-4 h-4 text-[#E7D7C9]" />
@@ -1683,7 +1624,7 @@ const AdsLanding = () => {
               Request Free Consultation
             </button>
             <a
-              href="https://wa.me/919164466606?text=Hi, I am looking for interior design for my home in Bangalore. My budget is above ₹3L. Please share details."
+              href="https://wa.me/919591039597?text=Hi, I am looking for interior design for my home in Bangalore. My budget is above ₹3L. Please share details."
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 text-white font-semibold text-sm hover:text-[#E7D7C9] transition bg-white/5 border border-white/10 px-8 py-3.5 rounded-lg w-full sm:w-auto hover:bg-white/10"

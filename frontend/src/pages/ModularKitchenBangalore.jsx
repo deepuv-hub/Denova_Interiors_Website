@@ -26,7 +26,14 @@ import {
   Layers,
   Activity
 } from "lucide-react";
-import { SCRIPT_URL } from "../utils/api";
+import {
+  buildLeadPayload,
+  isValidEmail,
+  normalizePhone,
+  postLeadNoCors,
+  trackLeadConversion,
+  useSubmitLock,
+} from "../utils/leadTracking";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
 import { companyInfo } from "../data/mock";
@@ -151,7 +158,7 @@ const kitchenFaqs = [
 
 const ModularKitchenBangalore = () => {
   const [slideIndex, setSlideIndex] = useState(0);
-  const [loading, setLoading] = useState(false);
+  const { submitting: loading, acquire, release } = useSubmitLock();
   const [errors, setErrors] = useState({});
   const [activeFaq, setActiveFaq] = useState(null);
 
@@ -163,37 +170,7 @@ const ModularKitchenBangalore = () => {
     kitchenType: "",
     budget: "",
     message: "",
-    utm_source: "",
-    utm_medium: "",
-    utm_campaign: "",
-    utm_content: "",
-    utm_term: "",
-    gclid: "",
-    landing_page: "",
   });
-
-  // UTM parameters setup
-  useEffect(() => {
-    const url = new URL(window.location.href);
-    const utmData = {
-      utm_source: url.searchParams.get("utm_source") || localStorage.getItem("utm_source") || "GoogleAds",
-      utm_medium: url.searchParams.get("utm_medium") || localStorage.getItem("utm_medium") || "cpc",
-      utm_campaign: url.searchParams.get("utm_campaign") || localStorage.getItem("utm_campaign") || "",
-      utm_content: url.searchParams.get("utm_content") || localStorage.getItem("utm_content") || "",
-      utm_term: url.searchParams.get("utm_term") || localStorage.getItem("utm_term") || "",
-      gclid: url.searchParams.get("gclid") || localStorage.getItem("gclid") || "",
-    };
-
-    Object.entries(utmData).forEach(([key, value]) => {
-      if (value) localStorage.setItem(key, value);
-    });
-
-    setForm((prev) => ({
-      ...prev,
-      ...utmData,
-      landing_page: window.location.href,
-    }));
-  }, []);
 
   // Automatic slide cycle for Hero Background
   useEffect(() => {
@@ -215,16 +192,15 @@ const ModularKitchenBangalore = () => {
     const tempErrors = {};
     if (!form.name.trim()) tempErrors.name = "Full Name is required";
     
-    const cleanedPhone = form.phone.replace(/\D/g, "");
     if (!form.phone.trim()) {
       tempErrors.phone = "Phone number is required";
-    } else if (cleanedPhone.length !== 10) {
+    } else if (normalizePhone(form.phone).length !== 10) {
       tempErrors.phone = "Must be a valid 10-digit number";
     }
 
     if (!form.email.trim()) {
       tempErrors.email = "Email address is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+    } else if (!isValidEmail(form.email)) {
       tempErrors.email = "Enter a valid email address";
     }
 
@@ -270,62 +246,32 @@ const ModularKitchenBangalore = () => {
 
     if (!validateForm()) return;
 
-    const cleanedPhone = form.phone.replace(/\D/g, "").slice(0, 10);
-    setLoading(true);
+    if (!acquire()) return;
+
+    const lead = buildLeadPayload({
+      name: form.name,
+      phone: form.phone,
+      email: form.email,
+      location: form.location,
+      propertyType: `Modular Kitchen (${form.kitchenType})`,
+      possession: "Modular Kitchen Service Page",
+      budget: form.budget,
+      message: form.message || `Interested in ${form.kitchenType} modular kitchen.`,
+      source: "Modular Kitchen Bangalore LP",
+    });
 
     try {
       // Save details to Google Sheets App Script URL
-      await fetch(SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: form.name,
-          phone: cleanedPhone,
-          email: form.email,
-          location: form.location,
-          propertyType: `Modular Kitchen (${form.kitchenType})`,
-          possession: "Modular Kitchen Service Page",
-          budget: form.budget,
-          message: form.message || `Interested in ${form.kitchenType} modular kitchen.`,
-          source: "Modular Kitchen Bangalore LP",
-          utm_source: localStorage.getItem("utm_source") || "GoogleAds",
-          utm_medium: localStorage.getItem("utm_medium") || "cpc",
-          utm_campaign: localStorage.getItem("utm_campaign") || "",
-          utm_content: localStorage.getItem("utm_content") || "",
-          utm_term: localStorage.getItem("utm_term") || "",
-          gclid: localStorage.getItem("gclid") || "",
-          landing_page: localStorage.getItem("landing_page") || window.location.href,
-          timestamp: new Date().toISOString(),
-        }),
-      });
-
-      // GTM custom conversion trigger
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: "lead_conversion",
-        page: "modular_kitchen_bangalore"
-      });
-
-      // Direct Google Ads conversion script triggers
-      if (window.gtag) {
-        window.gtag("event", "conversion", {
-          send_to: "AW-11303451952/63-FCIP1rZ8cELD6840q"
-        });
-      }
-
-      setTimeout(() => {
-        window.location.href = "/thank-you?source=kitchen";
-      }, 1000);
-
+      await postLeadNoCors(lead);
     } catch (err) {
       console.error("Submission issue:", err);
       alert("Something went wrong. Please check your network and try again.");
-    } finally {
-      setLoading(false);
+      release();
+      return;
     }
+
+    await trackLeadConversion({ leadId: lead.lead_id, leadSource: lead.source });
+    window.location.href = "/thank-you?source=kitchen";
   };
 
   return (
@@ -450,7 +396,7 @@ const ModularKitchenBangalore = () => {
                       Explore Kitchen Layouts
                     </Button>
                   </a>
-                  <a href="tel:+919164466606" className="inline-flex items-center gap-2 text-stone-300 hover:text-white text-xs font-semibold transition-colors duration-300">
+                  <a href="tel:+919591039597" className="inline-flex items-center gap-2 text-stone-300 hover:text-white text-xs font-semibold transition-colors duration-300">
                     <PhoneCall className="w-4.5 h-4.5 text-[#E8D8C4]" />
                     <span>Call Expert: +91 91644 66606</span>
                   </a>
@@ -1122,7 +1068,7 @@ const ModularKitchenBangalore = () => {
                 </Button>
               </a>
               <a 
-                href="https://wa.me/919164466606?text=Hi%20Denova%20Creations%2C%20I%20would%20like%20to%20get%20a%20modular%20kitchen%20quote%20estimate."
+                href="https://wa.me/919591039597?text=Hi%20Denova%20Creations%2C%20I%20would%20like%20to%20get%20a%20modular%20kitchen%20quote%20estimate."
                 target="_blank" 
                 rel="noopener noreferrer"
               >
@@ -1142,7 +1088,7 @@ const ModularKitchenBangalore = () => {
         {/* 10. STICKY MOBILE CTA BAR (CRITICAL FOR GOOGLE ADS MOBILE TRAFFIC) */}
         <div className="md:hidden fixed bottom-0 left-0 right-0 z-[999] bg-white/95 border-t border-stone-200 px-4 py-2.5 shadow-2xl flex justify-between gap-3 items-center backdrop-blur-md">
           <a
-            href="tel:+919164466606"
+            href="tel:+919591039597"
             className="flex-1 flex items-center justify-center gap-1.5 py-3 rounded-xl border border-stone-300 text-stone-700 font-bold text-[10px] uppercase tracking-wider bg-white active:bg-stone-50 transition-all text-center"
           >
             <PhoneCall className="w-3.5 h-3.5 text-[#0F3D3E]" />
@@ -1150,7 +1096,7 @@ const ModularKitchenBangalore = () => {
           </a>
           
           <a
-            href="https://wa.me/919164466606?text=Hi%20Denova%20Creations%2C%20I%20would%20like%20to%20get%20a%20modular%20kitchen%20quote%20estimate."
+            href="https://wa.me/919591039597?text=Hi%20Denova%20Creations%2C%20I%20would%20like%20to%20get%20a%20modular%20kitchen%20quote%20estimate."
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center gap-1.5 py-3 rounded-xl text-white font-bold text-[10px] uppercase tracking-wider bg-emerald-600 active:bg-emerald-700 transition-all text-center"

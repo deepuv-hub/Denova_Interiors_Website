@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import {
@@ -18,7 +18,14 @@ import {
   PhoneCall,
   MessageSquare
 } from "lucide-react";
-import { SCRIPT_URL } from "../utils/api";
+import {
+  buildLeadPayload,
+  isValidEmail,
+  isValidIndianMobile,
+  postLeadNoCors,
+  trackLeadConversion,
+  useSubmitLock,
+} from "../utils/leadTracking";
 
 const EstimatePage = () => {
   // Step State
@@ -35,27 +42,11 @@ const EstimatePage = () => {
   });
 
   const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
+  const { submitting: loading, acquire, release } = useSubmitLock();
   const [result, setResult] = useState(null);
-
-  // Set UTM parameters on mount
-  useEffect(() => {
-    const url = new URL(window.location.href);
-    const utmData = {
-      utm_source: url.searchParams.get("utm_source") || localStorage.getItem("utm_source") || "",
-      utm_medium: url.searchParams.get("utm_medium") || localStorage.getItem("utm_medium") || "",
-      utm_campaign: url.searchParams.get("utm_campaign") || localStorage.getItem("utm_campaign") || "",
-      utm_content: url.searchParams.get("utm_content") || localStorage.getItem("utm_content") || "",
-      utm_term: url.searchParams.get("utm_term") || localStorage.getItem("utm_term") || "",
-      gclid: url.searchParams.get("gclid") || localStorage.getItem("gclid") || "",
-    };
-
-    Object.entries(utmData).forEach(([key, value]) => {
-      if (value) {
-        localStorage.setItem(key, value);
-      }
-    });
-  }, []);
+  // Set once this visitor's lead has been sent, so going back and
+  // recalculating does not create a second lead or conversion.
+  const submittedLeadIdRef = useRef(null);
 
   const handleNextStep = () => {
     // Validation before moving next
@@ -126,13 +117,13 @@ const EstimatePage = () => {
     
     if (!form.phone.trim()) {
       newErrors.phone = "Mobile number is required";
-    } else if (!/^[6-9]\d{9}$/.test(form.phone)) {
+    } else if (!isValidIndianMobile(form.phone)) {
       newErrors.phone = "Enter valid 10-digit number";
     }
 
     if (!form.email.trim()) {
       newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+    } else if (!isValidEmail(form.email)) {
       newErrors.email = "Enter valid email address";
     }
 
@@ -145,60 +136,44 @@ const EstimatePage = () => {
       return;
     }
 
-    try {
-      setLoading(true);
+    const calculated = calculateFinalEstimate();
 
-      const calculated = calculateFinalEstimate();
-
-      // Submit Lead data to Google Sheets
-      await fetch(SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: form.name,
-          phone: form.phone,
-          email: form.email,
-          location: form.location,
-          propertyType: `${form.property} (${form.area} sqft)`,
-          possession: `Scope: ${form.scope}`,
-          budget: `${form.budget} Plan (Est: ₹${formatPrice(calculated.min)}L - ₹${formatPrice(calculated.max)}L)`,
-          message: `Calculated Estimate: Scope: ${form.scope}, Area: ${form.area} sqft, Budget: ${form.budget}`,
-          source: "Cost Calculator Page",
-          utm_source: localStorage.getItem("utm_source") || "",
-          utm_medium: localStorage.getItem("utm_medium") || "",
-          utm_campaign: localStorage.getItem("utm_campaign") || "",
-          utm_content: localStorage.getItem("utm_content") || "",
-          utm_term: localStorage.getItem("utm_term") || "",
-          gclid: localStorage.getItem("gclid") || "",
-          landing_page: localStorage.getItem("landing_page") || window.location.href,
-          timestamp: new Date().toISOString(),
-        }),
-      });
-
-      // Dispatch analytical conversion telemetry
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: "lead_conversion",
-        page: "cost_calculator"
-      });
-
-      if (window.gtag) {
-        window.gtag("event", "conversion", {
-          send_to: "AW-11303451952/63-FCIP1rZ8cELD6840q"
-        });
-      }
-
+    if (submittedLeadIdRef.current) {
       setResult(calculated);
-      setStep(6); // Render final calculated panel
+      setStep(6);
+      return;
+    }
 
+    if (!acquire()) return;
+
+    const lead = buildLeadPayload({
+      name: form.name,
+      phone: form.phone,
+      email: form.email,
+      location: form.location,
+      propertyType: `${form.property} (${form.area} sqft)`,
+      possession: `Scope: ${form.scope}`,
+      budget: `${form.budget} Plan (Est: ₹${formatPrice(calculated.min)}L - ₹${formatPrice(calculated.max)}L)`,
+      message: `Calculated Estimate: Scope: ${form.scope}, Area: ${form.area} sqft, Budget: ${form.budget}`,
+      source: "Cost Calculator Page",
+    });
+
+    try {
+      // Submit Lead data to Google Sheets
+      await postLeadNoCors(lead);
     } catch (err) {
       console.error("Calculator save error:", err);
-    } finally {
-      setLoading(false);
+      alert("We could not submit your details. Please check your connection and try again.");
+      release();
+      return;
     }
+
+    submittedLeadIdRef.current = lead.lead_id;
+    await trackLeadConversion({ leadId: lead.lead_id, leadSource: lead.source });
+
+    setResult(calculated);
+    setStep(6); // Render final calculated panel
+    release();
   };
 
   const propertyOptions = [
@@ -567,7 +542,7 @@ const EstimatePage = () => {
                         </Link>
                         
                         <a
-                          href={`https://wa.me/919164466606?text=Hi,%20I'm%20${form.name}.%20My%20carpet%20area%20is%20${form.area}%20sqft%20and%20I'd%20like%20to%20verify%20my%20modular%20estimate.`}
+                          href={`https://wa.me/919591039597?text=Hi,%20I'm%20${form.name}.%20My%20carpet%20area%20is%20${form.area}%20sqft%20and%20I'd%20like%20to%20verify%20my%20modular%20estimate.`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center justify-center gap-2 border-2 border-[#0F3D3E] text-[#0F3D3E] hover:bg-[#0F3D3E] hover:text-white font-bold py-3 rounded-xl text-xs uppercase tracking-widest transition"

@@ -81,7 +81,7 @@ const Header = () => {
             
             {/* WhatsApp direct shortcut in top bar */}
             <a
-              href={`https://wa.me/919164466606?text=Hi,%20I'm%20interested%20in%20premium%20interior%20design%20services%20with%20Denova%20Creations.`}
+              href={`https://wa.me/919591039597?text=Hi,%20I'm%20interested%20in%20premium%20interior%20design%20services%20with%20Denova%20Creations.`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-emerald-400 hover:text-white transition-colors"
@@ -140,7 +140,7 @@ const Header = () => {
             <div className="hidden lg:flex items-center gap-4">
               {/* WhatsApp direct CTA */}
               <a
-                href="https://wa.me/919164466606?text=Hi,%20I'd%20like%20to%20book%20a%20free%20design%20consultation%20meeting%20with%20your%20design%20specialists."
+                href="https://wa.me/919591039597?text=Hi,%20I'd%20like%20to%20book%20a%20free%20design%20consultation%20meeting%20with%20your%20design%20specialists."
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`flex items-center justify-center p-2.5 rounded-xl transition duration-300 ${
@@ -155,7 +155,7 @@ const Header = () => {
 
               {/* Phone Direct CTA */}
               <a
-                href="tel:+919164466606"
+                href="tel:+919591039597"
                 className={`flex items-center gap-2 py-2 px-3.5 rounded-xl text-xs font-semibold transition duration-300 ${
                   isTransparent
                     ? 'bg-white/10 hover:bg-white/20 border border-white/20 text-white'
@@ -234,7 +234,7 @@ const Header = () => {
                     
                     <div className="grid grid-cols-2 gap-2.5">
                       <a
-                        href="tel:+919164466606"
+                        href="tel:+919591039597"
                         className="flex items-center justify-center gap-2 border border-stone-200 hover:bg-stone-50 py-3 rounded-xl text-stone-700 text-xs font-semibold"
                       >
                         <Phone className="w-4 h-4 text-[#0F3D3E]" />
@@ -242,7 +242,7 @@ const Header = () => {
                       </a>
                       
                       <a
-                        href="https://wa.me/919164466606?text=Hi,%20I'd%20like%20to%20enquire%20about%20your%20luxury%20interiors."
+                        href="https://wa.me/919591039597?text=Hi,%20I'd%20like%20to%20enquire%20about%20your%20luxury%20interiors."
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center justify-center gap-2 border border-stone-200 hover:bg-[#FAF7F2] py-3 rounded-xl text-[#0F3D3E] text-xs font-semibold"

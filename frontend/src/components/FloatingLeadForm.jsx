@@ -4,11 +4,12 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { toast } from "sonner";
 import { submitLead } from "../utils/submitLead";
+import { buildLeadPayload, normalizePhone, trackLeadConversion, useSubmitLock } from "../utils/leadTracking";
 
 const FloatingLeadForm = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { submitting: isSubmitting, acquire, release } = useSubmitLock();
   const [inactivityTimer, setInactivityTimer] = useState(null);
 
   const [formData, setFormData] = useState({
@@ -117,10 +118,9 @@ const FloatingLeadForm = () => {
     const tempErrors = {};
     if (!formData.name.trim()) tempErrors.name = "Full Name is required";
     
-    const cleanedPhone = formData.phone.replace(/\D/g, "");
     if (!formData.phone.trim()) {
       tempErrors.phone = "Phone number is required";
-    } else if (cleanedPhone.length !== 10) {
+    } else if (normalizePhone(formData.phone).length !== 10) {
       tempErrors.phone = "Must be a 10-digit number";
     }
 
@@ -140,32 +140,26 @@ const FloatingLeadForm = () => {
 
     if (!validateForm()) return;
 
-    const cleanedPhone = formData.phone.replace(/\D/g, "").slice(0, 10);
-    setIsSubmitting(true);
+    if (!acquire()) return;
+
+    const lead = buildLeadPayload({
+      name: formData.name,
+      phone: formData.phone,
+      email: "",
+      propertyType: formData.propertyType || "Not Specified",
+      location: formData.pincode || "",
+      possession: "",
+      requirements: formData.message || "Bespoke floating consultation request",
+      source: "Floating Lead Widget",
+    });
 
     try {
-      const result = await submitLead({
-        name: formData.name,
-        phone: cleanedPhone,
-        email: "",
-        propertyType: formData.propertyType || "Not Specified",
-        location: formData.pincode || "",
-        possession: "",
-        requirements: formData.message || "Bespoke floating consultation request",
-        source: "Floating Lead Widget",
-      });
+      const result = await submitLead(lead);
 
       if (result.status === "success" || result.result === "success") {
         toast.success("Design consultation request received!");
-        
-        // GTM & analytics events preservation
-        if (window.dataLayer) {
-          window.dataLayer.push({
-            event: "leadSubmit",
-            leadSource: "Global Floating Lead Widget",
-            pincode: formData.pincode
-          });
-        }
+
+        await trackLeadConversion({ leadId: lead.lead_id, leadSource: lead.source });
 
         setFormData({
           name: "",
@@ -185,7 +179,7 @@ const FloatingLeadForm = () => {
       console.error("Floating Lead Submit Error:", error);
       toast.error("Error submitting details. Please try again.");
     } finally {
-      setIsSubmitting(false);
+      release();
     }
   };
 

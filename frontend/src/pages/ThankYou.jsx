@@ -1,32 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Helmet } from "react-helmet-async";
 
+// Confirmation page only. The lead conversion is sent once by the form that
+// submitted the lead (utils/leadTracking.js); visiting or refreshing this
+// page must never send a conversion.
 const ThankYou = () => {
-
-  useEffect(() => {
-  const interval = setInterval(() => {
-    if (window.gtag) {
-
-      window.gtag("event", "conversion", {
-        send_to: "AW-11303451952/63-FCIP1rZ8cELD6840q",
-        value: 1.0,
-        currency: "INR"
-      });
-
-      // 🔥 ADD THIS
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: "lead_conversion"
-      });
-
-      clearInterval(interval);
-    }
-  }, 500);
-
-  setTimeout(() => clearInterval(interval), 5000);
-
-}, []);
-
   return (
     <>
     <Helmet>
@@ -80,14 +58,14 @@ const ThankYou = () => {
       <div className="mt-8 flex gap-4">
 
         <a
-          href="tel:9164466606"
+          href="tel:+919591039597"
           className="bg-black text-white px-6 py-3 rounded"
         >
           Call Now
         </a>
 
         <a
-          href="https://wa.me/919164466606"
+          href="https://wa.me/919591039597"
           className="bg-green-500 text-white px-6 py-3 rounded"
         >
           WhatsApp

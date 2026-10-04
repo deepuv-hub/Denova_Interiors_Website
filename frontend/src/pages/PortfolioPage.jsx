@@ -388,7 +388,7 @@ const PortfolioPage = () => {
                     </Link>
                     
                     <a
-                      href={`https://wa.me/919164466606?text=Hi%20I'm%20exploring%20your%20completed%20portfolio%20project:%20${selectedProject.title}%20(Slide%20${activeImageIndex + 1}).%20Can%20you%20share%20costing%20estimates?`}
+                      href={`https://wa.me/919591039597?text=Hi%20I'm%20exploring%20your%20completed%20portfolio%20project:%20${selectedProject.title}%20(Slide%20${activeImageIndex + 1}).%20Can%20you%20share%20costing%20estimates?`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full border border-[#25D366] hover:bg-[#25D366]/5 py-3.5 rounded-xl text-[#25D366] text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition duration-300"

@@ -3,7 +3,7 @@ import { Phone, MessageSquare } from 'lucide-react';
 import { companyInfo } from '../data/mock';
 
 const FloatingCTA = () => {
-  const whatsappNumber = "919164466606";
+  const whatsappNumber = "919591039597";
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hi%20Denova%20Creations,%20I%20am%20interested%20in%20interior%20design%20services.`;
 
   return (
