@@ -29,7 +29,7 @@ import {
 import {
   buildLeadPayload,
   isValidEmail,
-  normalizePhone,
+  isValidIndianMobile,
   postLeadNoCors,
   trackLeadConversion,
   useSubmitLock,
@@ -194,8 +194,8 @@ const ModularKitchenBangalore = () => {
     
     if (!form.phone.trim()) {
       tempErrors.phone = "Phone number is required";
-    } else if (normalizePhone(form.phone).length !== 10) {
-      tempErrors.phone = "Must be a valid 10-digit number";
+    } else if (!isValidIndianMobile(form.phone)) {
+      tempErrors.phone = "Enter a valid 10-digit mobile number";
     }
 
     if (!form.email.trim()) {
@@ -280,10 +280,19 @@ const ModularKitchenBangalore = () => {
         <title>Premium Modular Kitchen Designers Bangalore | Denova Creations</title>
         <meta
           name="description"
-          content="Get a luxury modular kitchen in Bangalore. BWP waterproof marine plywood, German precision edge-banding, Hettich soft-close hardware & 45-day guaranteed delivery."
+          content="Modular kitchen design and installation in Bangalore: L, U, parallel and island layouts in BWP plywood with soft-close hardware. Get a free kitchen estimate."
         />
         <link rel="canonical" href="https://denovacreations.com/modular-kitchen-bangalore" />
-        
+        <meta property="og:title" content="Premium Modular Kitchen Designers Bangalore | Denova Creations" />
+        <meta property="og:description" content="Modular kitchen design and installation in Bangalore: L, U, parallel and island layouts. Get a free kitchen estimate." />
+        <meta property="og:url" content="https://denovacreations.com/modular-kitchen-bangalore" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://denovacreations.com/images/kitchen1.webp" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Premium Modular Kitchen Designers Bangalore | Denova Creations" />
+        <meta name="twitter:description" content="Modular kitchen design and installation in Bangalore. Get a free kitchen estimate." />
+        <meta name="twitter:image" content="https://denovacreations.com/images/kitchen1.webp" />
+
         {/* Product schema mapping for modular kitchens */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -300,8 +309,7 @@ const ModularKitchenBangalore = () => {
               "@type": "AggregateOffer",
               "priceCurrency": "INR",
               "lowPrice": "150000",
-              "highPrice": "1200000",
-              "offerCount": "150"
+              "highPrice": "1200000"
             }
           })}
         </script>
@@ -346,12 +354,12 @@ const ModularKitchenBangalore = () => {
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E8D8C4]/15 border border-[#E8D8C4]/20 backdrop-blur-xs">
                   <Sparkles className="w-3.5 h-3.5 text-[#E8D8C4]" />
                   <span className="text-[#E8D8C4] font-bold text-[9px] uppercase tracking-widest leading-none">
-                    Google Ads Special Offer
+                    Modular Kitchen Specialists · Bangalore
                   </span>
                 </div>
 
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-serif tracking-tight leading-tight">
-                  Luxury Modular Kitchens <span className="text-[#E8D8C4]">Crafted for Elegant Living.</span>
+                  Modular Kitchens in Bangalore, <span className="text-[#E8D8C4]">Crafted for Elegant Living.</span>
                 </h1>
 
                 <p className="text-stone-300 text-xs md:text-sm leading-relaxed">
@@ -410,12 +418,8 @@ const ModularKitchenBangalore = () => {
                   id="kitchenLeadForm" 
                   className="border-0 bg-white/95 shadow-[0_30px_60px_rgba(5,24,25,0.3)] rounded-3xl overflow-hidden backdrop-blur-md relative"
                 >
-                  {/* Warning ticker */}
                   <div className="bg-[#FAF7F2] py-2.5 px-6 border-b border-[#E8D8C4]/20 flex justify-between items-center text-[10px] font-bold text-[#0F3D3E] uppercase tracking-wider">
-                    <span className="text-red-600 flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping"></span>
-                      Google Ads Direct Booking Discount Active
-                    </span>
+                    <span>Free Kitchen Consultation</span>
                     <span>Free Quote</span>
                   </div>
 
@@ -951,7 +955,7 @@ const ModularKitchenBangalore = () => {
                 Social Proof
               </span>
               <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#0F3D3E] tracking-tight">
-                Google Verified Transformation Stories
+                Client Kitchen Stories
               </h2>
               <p className="text-stone-500 text-xs md:text-sm">
                 Hear directly from Bangalore homeowners who upgraded to the Denova modular kitchen system.
@@ -974,7 +978,6 @@ const ModularKitchenBangalore = () => {
                       <span className="font-serif font-bold text-stone-850 text-xs block">{review.name}</span>
                       <span className="text-[10px] text-stone-400">{review.location}</span>
                     </div>
-                    <span className="text-[9px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full uppercase tracking-wider">Google Verified</span>
                   </div>
                 </div>
               ))}

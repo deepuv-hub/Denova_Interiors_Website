@@ -41,7 +41,7 @@ There is no separate lint script. ESLint (react-hooks rules) runs as part of `cr
 
 - Google Tag Manager `GTM-59NLP9MV` is in `public/index.html`.
 - Microsoft Clarity is injected in a `useEffect` in `App.js`.
-- Lead forms fire `window.dataLayer.push(...)` events, and several pages call `gtag('event', 'conversion', { send_to: 'AW-11303451952/...' })` for Google Ads conversions (AdsLanding, EstimatePage, ModularKitchenBangalore, ThankYou).
+- Lead forms call `trackLeadConversion()` in `src/utils/leadTracking.js`, which pushes one `lead_conversion` dataLayer event per successful lead. The GTM Google Ads tag sends it to the "Submit lead form" conversion (`AW-11303451952/zBhUCM29o5QcELD6840q`). There are no direct `gtag()` calls in the code, and the thank-you page fires nothing.
 - `App.js` stores UTM params, `gclid` and the first landing page in `localStorage` for lead attribution. Keep this intact when changing form submission.
 
 ## Deployment

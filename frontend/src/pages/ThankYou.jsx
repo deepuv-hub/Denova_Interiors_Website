@@ -38,7 +38,7 @@ const ThankYou = () => {
       </h1>
 
       <p className="text-gray-600 mb-6">
-        Our design expert will contact you within <strong>10 minutes</strong>.
+        Our design team will contact you shortly to discuss your requirement.
       </p>
 
       <div className="bg-gray-100 p-6 rounded max-w-md">

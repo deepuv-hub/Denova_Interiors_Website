@@ -25,7 +25,7 @@ const FloatingCTA = () => {
 
       {/* Redesigned Premium Call Button */}
       <a
-        href={`tel:${companyInfo.primaryPhone}`}
+        href={`tel:${companyInfo.primaryPhone.replace(/\s+/g, "")}`}
         className="w-12 h-12 md:w-14 md:h-14 bg-[#0F3D3E] text-[#E8D8C4] border border-[#E8D8C4]/25 rounded-full flex items-center justify-center shadow-[0_10px_30px_rgba(15,61,62,0.3)] hover:scale-115 active:scale-95 transition-all duration-300 relative group"
         aria-label="Call Now"
       >

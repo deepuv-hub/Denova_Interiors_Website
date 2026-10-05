@@ -290,7 +290,7 @@ const AdsLanding = () => {
             </div>
 
             <p className="mt-6 text-xs text-stone-400 italic">
-              End-to-End Execution &nbsp;•&nbsp; 45 Days Delivery Guarantee &nbsp;•&nbsp; No Hidden Costs
+              End-to-End Execution &nbsp;•&nbsp; Typical 30–45 Working-Day Execution &nbsp;•&nbsp; No Hidden Costs
             </p>
 
             {/* PRIMARY BUTTON ON MOBILE */}
@@ -464,7 +464,7 @@ const AdsLanding = () => {
               <div className="space-y-2 text-center text-xs text-stone-500 border-t border-stone-100 pt-4 mt-1">
                 <div className="flex items-center justify-center gap-1.5 text-stone-700 font-medium">
                   <Clock className="w-3.5 h-3.5 text-[#0F3B2E]" />
-                  <span>Call back guaranteed within 30 minutes</span>
+                  <span>Quick call back from our design team</span>
                 </div>
                 <p className="text-[10px] text-stone-400 leading-normal">
                   No Spam • 100% Secure • Fully Confidential
@@ -1233,7 +1233,7 @@ const AdsLanding = () => {
                   <p className="font-bold font-serif text-sm text-stone-900">Rakesh K.</p>
                   <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-stone-100">
                     <span className="inline-flex items-center gap-1 text-[9px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
-                      <CheckCircle className="w-3 h-3" /> Verified Client
+                      <CheckCircle className="w-3 h-3" /> Client Review
                     </span>
                     <span className="inline-flex items-center gap-1 text-[9px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">
                       Handover Complete
@@ -1269,7 +1269,7 @@ const AdsLanding = () => {
                   <p className="font-bold font-serif text-sm text-stone-900">Harish M.</p>
                   <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-stone-100">
                     <span className="inline-flex items-center gap-1 text-[9px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
-                      <CheckCircle className="w-3 h-3" /> Verified Client
+                      <CheckCircle className="w-3 h-3" /> Client Review
                     </span>
                     <span className="inline-flex items-center gap-1 text-[9px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">
                       Handover Complete
@@ -1305,7 +1305,7 @@ const AdsLanding = () => {
                   <p className="font-bold font-serif text-sm text-stone-900">Srinath V.</p>
                   <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-stone-100">
                     <span className="inline-flex items-center gap-1 text-[9px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
-                      <CheckCircle className="w-3 h-3" /> Verified Client
+                      <CheckCircle className="w-3 h-3" /> Client Review
                     </span>
                     <span className="inline-flex items-center gap-1 text-[9px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">
                       Handover Complete
@@ -1481,6 +1481,7 @@ const AdsLanding = () => {
                 onChange={handleChange}
                 className="w-full p-3 border border-stone-200 rounded-lg bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#0F3B2E] focus:border-transparent text-sm transition duration-200 text-stone-800"
               />
+              {errors.name && <p className="text-red-600 text-xs mt-1">{errors.name}</p>}
             </div>
 
             {/* PHONE */}
@@ -1496,6 +1497,7 @@ const AdsLanding = () => {
                 pattern="[6-9]{1}[0-9]{9}"
                 className="w-full p-3 border border-stone-200 rounded-lg bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#0F3B2E] focus:border-transparent text-sm transition duration-200 text-stone-800"
               />
+              {errors.phone && <p className="text-red-600 text-xs mt-1">{errors.phone}</p>}
             </div>
 
             {/* EMAIL */}
@@ -1509,6 +1511,7 @@ const AdsLanding = () => {
                 onChange={handleChange}
                 className="w-full p-3 border border-stone-200 rounded-lg bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#0F3B2E] focus:border-transparent text-sm transition duration-200 text-stone-800"
               />
+              {errors.email && <p className="text-red-600 text-xs mt-1">{errors.email}</p>}
             </div>
 
             {/* PROPERTY TYPE */}
@@ -1527,6 +1530,7 @@ const AdsLanding = () => {
                 <option value="3+ BHK">3+ BHK / Duplex</option>
                 <option value="Villa">Luxury Villa</option>
               </select>
+              {errors.propertyType && <p className="text-red-600 text-xs mt-1">{errors.propertyType}</p>}
             </div>
 
             {/* PINCODE */}
@@ -1537,10 +1541,12 @@ const AdsLanding = () => {
                 placeholder="Pincode"
                 value={form.pincode}
                 maxLength={6}
+                pattern="[0-9]{6}"
                 required
                 onChange={handleChange}
                 className="w-full p-3 border border-stone-200 rounded-lg bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#0F3B2E] focus:border-transparent text-sm transition duration-200 text-stone-800"
               />
+              {errors.pincode && <p className="text-red-600 text-xs mt-1">{errors.pincode}</p>}
             </div>
 
             {/* POSSESSION */}
@@ -1558,6 +1564,7 @@ const AdsLanding = () => {
                 <option value="3-6 Months">3 to 6 Months</option>
                 <option value="6+ Months">More than 6 Months</option>
               </select>
+              {errors.possession && <p className="text-red-600 text-xs mt-1">{errors.possession}</p>}
             </div>
 
             {/* BUDGET */}
@@ -1575,6 +1582,7 @@ const AdsLanding = () => {
                 <option value="10-20L">₹10L – ₹20 Lakhs</option>
                 <option value="20L+">₹20 Lakhs+</option>
               </select>
+              {errors.budget && <p className="text-red-600 text-xs mt-1">{errors.budget}</p>}
             </div>
 
             {/* SUBMIT BUTTON */}
@@ -1608,7 +1616,7 @@ const AdsLanding = () => {
 
         <div className="relative z-10 max-w-3xl mx-auto px-4">
           <span className="text-[10px] font-bold text-[#E7D7C9] tracking-widest uppercase bg-white/5 border border-white/10 px-3 py-1 rounded-full inline-block mb-4">
-            Limited Availability Slots
+            Free Design Consultation
           </span>
           <h2 className="text-3xl md:text-5xl font-bold font-serif mb-6 leading-tight">
             Plan Your Space with Precise Architectural Detail
@@ -1624,7 +1632,7 @@ const AdsLanding = () => {
               Request Free Consultation
             </button>
             <a
-              href="https://wa.me/919591039597?text=Hi, I am looking for interior design for my home in Bangalore. My budget is above ₹3L. Please share details."
+              href={`https://wa.me/919591039597?text=${encodeURIComponent("Hi, I am looking for interior design for my home in Bangalore. My budget is above ₹3L. Please share details.")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 text-white font-semibold text-sm hover:text-[#E7D7C9] transition bg-white/5 border border-white/10 px-8 py-3.5 rounded-lg w-full sm:w-auto hover:bg-white/10"

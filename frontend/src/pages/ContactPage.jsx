@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { submitLead } from "../utils/submitLead";
-import { buildLeadPayload, normalizePhone, trackLeadConversion, useSubmitLock } from "../utils/leadTracking";
+import {
+  buildLeadPayload,
+  isValidIndianMobile,
+  trackLeadConversion,
+  useSubmitLock,
+} from "../utils/leadTracking";
 import { companyInfo } from "../data/mock";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
@@ -75,8 +80,8 @@ const ContactPage = () => {
     
     if (!form.phone.trim()) {
       tempErrors.phone = "Phone number is required";
-    } else if (normalizePhone(form.phone).length !== 10) {
-      tempErrors.phone = "Must be a valid 10-digit number";
+    } else if (!isValidIndianMobile(form.phone)) {
+      tempErrors.phone = "Enter a valid 10-digit mobile number";
     }
 
     if (!form.pincode.trim()) {
@@ -157,7 +162,7 @@ const ContactPage = () => {
               "streetAddress": companyInfo.address,
               "addressLocality": "Bangalore",
               "addressRegion": "KA",
-              "postalCode": "560068",
+              "postalCode": "560114",
               "addressCountry": "IN"
             },
             "url": "https://denovacreations.com/contact",
@@ -264,10 +269,7 @@ const ContactPage = () => {
                 >
                   {/* Top warning strip */}
                   <div className="bg-[#FAF7F2] py-2.5 px-6 border-b border-[#E8D8C4]/20 flex justify-between items-center text-[10px] font-bold text-[#0F3D3E] uppercase tracking-wider">
-                    <span className="text-red-600 flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping"></span>
-                      Limited slots available this week
-                    </span>
+                    <span>Free Design Consultation</span>
                     <span>Free Curation Coves</span>
                   </div>
 
@@ -727,7 +729,7 @@ const ContactPage = () => {
             
             <div className="text-center mb-16 max-w-2xl mx-auto space-y-3">
               <span className="text-[#0F3D3E] font-bold tracking-widest uppercase text-xs block">
-                Verified Reviews
+                Client Reviews
               </span>
               <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#0F3D3E] tracking-tight">
                 Loved by Bangalore Homeowners
@@ -757,7 +759,6 @@ const ContactPage = () => {
                       <span className="font-serif font-bold text-stone-850 text-xs block">{t.name}</span>
                       <span className="text-[10px] text-stone-400">{t.location}</span>
                     </div>
-                    <span className="text-[9px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full uppercase tracking-wider">Google Verified</span>
                   </div>
                 </div>
               ))}

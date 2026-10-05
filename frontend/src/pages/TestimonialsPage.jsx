@@ -118,7 +118,7 @@ const TestimonialsPage = () => {
                 Start Your Project
               </Button>
             </Link>
-            <a href={`tel:${companyInfo.primaryPhone}`}>
+            <a href={`tel:${companyInfo.primaryPhone.replace(/\s+/g, "")}`}>
               <Button className="bg-white text-[#1F1F1F] hover:bg-white/90 px-8 py-4 text-lg rounded-sm font-semibold">
                 Call Us Now
               </Button>

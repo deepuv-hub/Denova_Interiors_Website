@@ -347,10 +347,6 @@ const ProjectsPage = () => {
                     </span>
                   </div>
                   
-                  {/* Google Verified Stamp */}
-                  <span className="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 text-[9px] font-bold uppercase px-2 py-0.5 rounded-full">
-                    ✓ Google Verified
-                  </span>
                 </div>
               </div>
 

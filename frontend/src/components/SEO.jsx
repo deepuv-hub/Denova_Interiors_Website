@@ -26,10 +26,12 @@ const pageMeta = {
     description:
       "Explore completed luxury home interior projects in Bangalore. Discover detailed case studies of modular kitchens, wardrobes, false ceilings, and residential spaces.",
   },
+  // /portfolio lists the same projects as /projects, so /projects is canonical.
   "/portfolio": {
     title: "Signature Interior Design Portfolio Bangalore | Denova Creations",
     description:
       "Explore our signature home interior design portfolios in Bangalore. Filter through completed luxury kitchens, modular wardrobes, and residential spaces.",
+    canonicalPath: "/projects",
   },
   "/materials": {
     title: "Interior Materials & Design Guide Bangalore | Denova Creations",
@@ -86,10 +88,15 @@ const getMeta = (pathname) => {
   return pageMeta["/"];
 };
 
+// "/About/" and "/about" render the same page, so look up and canonicalise
+// the lowercase path without a trailing slash.
+const normalizePath = (pathname) => pathname.toLowerCase().replace(/\/+$/, "") || "/";
+
 const SEO = () => {
   const { pathname } = useLocation();
-  const canonical = `${SITE_URL}${pathname === "/" ? "/" : pathname}`;
-  const meta = getMeta(pathname);
+  const path = normalizePath(pathname);
+  const meta = getMeta(path);
+  const canonical = `${SITE_URL}${meta.canonicalPath || path}`;
 
   return (
     <Helmet>

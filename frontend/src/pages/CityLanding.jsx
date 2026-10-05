@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import locations from "../data/locations";
 import CityLandingTemplate from "../components/CityLandingTemplate";
+import NotFoundPage from "./NotFoundPage";
 
 const CityLanding = (props) => {
   const params = useParams();
@@ -11,13 +12,9 @@ const CityLanding = (props) => {
     (loc) => loc.slug.toLowerCase() === (cityKey && cityKey.toLowerCase())
   );
 
+  // Unknown areas get the noindex 404 page instead of an indexable empty page.
   if (!location) {
-    return (
-      <div style={{ padding: "50px", textAlign: "center" }}>
-        <h1>City Not Found</h1>
-        <p>{cityKey}</p>
-      </div>
-    );
+    return <NotFoundPage />;
   }
 
   return <CityLandingTemplate location={location} />;

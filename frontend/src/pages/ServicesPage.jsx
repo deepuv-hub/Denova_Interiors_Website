@@ -101,8 +101,8 @@ const whyChooseDenova = [
     desc: "Rigorous direct onsite supervision by professional civil engineers, guaranteeing flawless craftsmanship."
   },
   {
-    title: "On-Time Handover Penalty",
-    desc: "Strict 45-day factory-to-site delivery timelines. We pay your rent penalties in case of execution delays."
+    title: "On-Time Handover",
+    desc: "Strict 45-day factory-to-site delivery timelines."
   }
 ];
 
@@ -300,7 +300,7 @@ const ServicesPage = () => {
               </div>
               <div className="space-y-1 border-l border-stone-100">
                 <div className="text-2xl md:text-3xl font-bold font-serif text-[#0F3D3E]">{companyInfo.deliveryTimeline}</div>
-                <div className="text-[10px] text-stone-500 font-bold uppercase tracking-wider">Guaranteed Handover</div>
+                <div className="text-[10px] text-stone-500 font-bold uppercase tracking-wider">Typical Handover</div>
               </div>
             </div>
           </div>
@@ -599,10 +599,6 @@ const ServicesPage = () => {
                     </span>
                   </div>
                   
-                  {/* Google Verified Stamp */}
-                  <span className="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 text-[9px] font-bold uppercase px-2 py-0.5 rounded-full">
-                    ✓ Google Verified
-                  </span>
                 </div>
               </div>
 

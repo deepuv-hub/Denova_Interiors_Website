@@ -1,21 +1,43 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
+import locations from "../data/locations";
+import { projects } from "../data/projects";
 import {
   buildLeadPayload,
   isValidEmail,
+  isValidIndianMobile,
   normalizeName,
-  normalizePhone,
   postLeadNoCors,
   trackLeadConversion,
   useSubmitLock,
 } from "../utils/leadTracking";
+
+const PROPERTY_TYPES = ["1 BHK", "2 BHK", "3 BHK", "3+ BHK", "Villa / Independent House", "Other"];
+
+const RELATED_PAGES = [
+  { to: "/services", label: "Interior design services" },
+  { to: "/modular-kitchen-bangalore", label: "Modular kitchens in Bangalore" },
+  { to: "/estimate", label: "Estimate your interior cost" },
+  { to: "/projects", label: "Completed projects" },
+];
 
 const CityLandingTemplate = ({ location }) => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     email: "",
+    propertyType: "",
   });
+
+  // Only real projects from projects.js: ones in this area first, otherwise
+  // other Bangalore projects (labelled as such, never as local work).
+  const areaKey = location.name.toLowerCase();
+  const localProjects = projects.filter((p) => p.location.toLowerCase().includes(areaKey));
+  const otherProjects = projects
+    .filter((p) => !localProjects.includes(p))
+    .slice(0, localProjects.length ? 2 : 3);
+  const otherAreas = locations.filter((loc) => loc.slug !== location.slug);
   const { submitting: loading, acquire, release } = useSubmitLock();
   const pageUrl = `https://denovacreations.com/interior-designers/${location.slug}`;
   const ogImage = "https://denovacreations.com/images/hero2.webp";
@@ -46,13 +68,18 @@ const CityLandingTemplate = ({ location }) => {
       return;
     }
 
-    if (!/^[0-9]{10}$/.test(normalizePhone(formData.phone))) {
-      alert("Please enter a valid 10-digit phone number");
+    if (!isValidIndianMobile(formData.phone)) {
+      alert("Please enter a valid 10-digit mobile number");
       return;
     }
 
     if (!isValidEmail(formData.email)) {
       alert("Please enter a valid email address");
+      return;
+    }
+
+    if (!formData.propertyType) {
+      alert("Please select your property type");
       return;
     }
 
@@ -62,6 +89,7 @@ const CityLandingTemplate = ({ location }) => {
       name: formData.name,
       phone: formData.phone,
       email: formData.email,
+      propertyType: formData.propertyType,
       location: location.name,
       source: "Landing Page",
     });
@@ -186,7 +214,7 @@ const CityLandingTemplate = ({ location }) => {
             className="bg-white shadow-xl p-6 rounded flex flex-col gap-4"
           >
             <h2 className="text-lg font-semibold">
-              Free Consultation (Limited Slots)
+              Free Design Consultation in {location.name}
             </h2>
 
             <input
@@ -204,7 +232,7 @@ const CityLandingTemplate = ({ location }) => {
               value={formData.phone}
               onChange={(e) => updateFormData("phone", e.target.value)}
               maxLength="10"
-              pattern="[0-9]{10}"
+              pattern="[6-9][0-9]{9}"
               required
               className="p-3 border rounded"
             />
@@ -217,6 +245,19 @@ const CityLandingTemplate = ({ location }) => {
               required
               className="p-3 border rounded"
             />
+
+            <select
+              value={formData.propertyType}
+              onChange={(e) => updateFormData("propertyType", e.target.value)}
+              required
+              aria-label="Property type"
+              className="p-3 border rounded bg-white"
+            >
+              <option value="">Property Type</option>
+              {PROPERTY_TYPES.map((type) => (
+                <option key={type} value={type}>{type}</option>
+              ))}
+            </select>
             <button
               type="submit"
               disabled={loading}
@@ -256,21 +297,32 @@ const CityLandingTemplate = ({ location }) => {
         <p className="text-gray-700 font-medium">
           {location.pricing}
         </p>
+        <p className="mt-3 text-gray-600">
+          Final cost depends on carpet area, scope and materials. For a figure based on your
+          home, try our <Link to="/estimate" className="text-blue-600 underline">interior cost calculator</Link>.
+        </p>
       </section>
 
-      {/* PROJECTS */}
-      <section className="py-16 max-w-6xl mx-auto text-center">
-        <h2 className="text-2xl font-semibold mb-8">
-          Recent Projects in {location.name}
-        </h2>
+      {/* PROJECTS: real entries from projects.js only */}
+      <section className="py-16 max-w-6xl mx-auto px-4">
+        {localProjects.length > 0 && (
+          <>
+            <h2 className="text-2xl font-semibold mb-8 text-center">
+              Our Work in {location.name}
+            </h2>
+            <ProjectGrid items={localProjects} />
+          </>
+        )}
 
-        <div className="grid md:grid-cols-3 gap-6">
-          <img src="/images/project3.webp" alt={`Interior project in ${location.name}`} />
-          <img src="/images/project4.webp" alt={`Interior project in ${location.name}`} />
-          <img src="/images/project3.webp" alt={`Interior project in ${location.name}`} />
-          <img src="/images/project4.webp" alt={`Interior project in ${location.name}`} />
-          <img src="/images/project5.webp" alt={`Interior project in ${location.name}`} />
-          <img src="/images/project6.webp" alt={`Interior project in ${location.name}`} />
+        <h2 className={`text-2xl font-semibold mb-8 text-center ${localProjects.length ? "mt-14" : ""}`}>
+          {localProjects.length ? "More Projects Across Bangalore" : "Recent Projects Across Bangalore"}
+        </h2>
+        <ProjectGrid items={otherProjects} />
+
+        <div className="mt-8 text-center">
+          <Link to="/projects" className="text-blue-600 underline">
+            View all completed projects
+          </Link>
         </div>
       </section>
 
@@ -290,15 +342,26 @@ const CityLandingTemplate = ({ location }) => {
 
       {/* INTERNAL LINKS */}
       <section className="py-10 max-w-4xl mx-auto">
-        <h3 className="text-xl font-semibold mb-4">
-          Areas We Serve in Bangalore
-        </h3>
+        <h2 className="text-xl font-semibold mb-4">
+          Plan Your Interiors
+        </h2>
 
-        <ul className="grid grid-cols-2 gap-2 text-blue-600 underline">
-          <li><a href="/interior-designers/whitefield">Whitefield</a></li>
-          <li><a href="/interior-designers/indiranagar">Indiranagar</a></li>
-          <li><a href="/interior-designers/marathahalli">Marathahalli</a></li>
-          <li><a href="/interior-designers/hsr-layout">HSR Layout</a></li>
+        <ul className="grid sm:grid-cols-2 gap-2 text-blue-600 underline mb-8">
+          {RELATED_PAGES.map((page) => (
+            <li key={page.to}><Link to={page.to}>{page.label}</Link></li>
+          ))}
+        </ul>
+
+        <h2 className="text-xl font-semibold mb-4">
+          Other Areas We Serve in Bangalore
+        </h2>
+
+        <ul className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-blue-600 underline">
+          {otherAreas.map((area) => (
+            <li key={area.slug}>
+              <Link to={`/interior-designers/${area.slug}`}>{area.name}</Link>
+            </li>
+          ))}
         </ul>
       </section>
 
@@ -319,5 +382,24 @@ const CityLandingTemplate = ({ location }) => {
     </div>
   );
 };
+
+const ProjectGrid = ({ items }) => (
+  <div className="grid md:grid-cols-3 gap-6">
+    {items.map((project) => (
+      <Link key={project.id} to={`/projects/${project.slug}`} className="group block text-left">
+        <img
+          src={project.images[0]}
+          alt={`${project.title} in ${project.location}`}
+          loading="lazy"
+          className="w-full h-56 object-cover rounded"
+        />
+        <p className="mt-3 font-semibold group-hover:underline">{project.title}</p>
+        <p className="text-sm text-gray-600">
+          {project.location} · {project.propertyType}
+        </p>
+      </Link>
+    ))}
+  </div>
+);
 
 export default CityLandingTemplate;

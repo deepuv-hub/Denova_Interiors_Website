@@ -18,7 +18,7 @@ const TestimonialsSection = () => {
       <div className="container-custom">
         <div className="text-center mb-16 max-w-2xl mx-auto space-y-3">
           <span className="text-[#0F3D3E] font-bold tracking-widest uppercase text-xs block">
-            Verified Reviews
+            Client Reviews
           </span>
           <h2 className="text-3xl md:text-5xl font-bold text-[#0F3D3E] font-serif leading-tight">
             Client Testimonials

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 import { projects } from "../data/projects";
 import { Button } from "../components/ui/button";
+import NotFoundPage from "./NotFoundPage";
 import { 
   ArrowRight, 
   MapPin, 
@@ -64,23 +65,9 @@ const ProjectDetailPage = () => {
     };
   }, [selectedImgIndex]);
 
-  // Fallback if project is not found
+  // Unknown slugs get the noindex 404 page instead of an indexable empty page.
   if (!project) {
-    return (
-      <div className="container-custom py-24 text-center min-h-[50vh] flex flex-col justify-center items-center">
-        <h2 className="text-3xl font-bold text-stone-800 font-serif mb-4">
-          Project Not Found
-        </h2>
-        <p className="text-stone-600 mb-6">
-          The requested interior design project details could not be located.
-        </p>
-        <Link to="/portfolio">
-          <Button className="bg-[#0F3D3E] hover:bg-[#0B2C2D] text-[#E8D8C4] font-bold px-6 py-3 rounded-lg">
-            Back to Portfolio
-          </Button>
-        </Link>
-      </div>
-    );
+    return <NotFoundPage />;
   }
 
   // SEO configuration

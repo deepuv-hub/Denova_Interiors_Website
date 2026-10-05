@@ -9,8 +9,11 @@ const quickLinks = [
   { label: 'Home', path: '/' },
   { label: 'About Us', path: '/about' },
   { label: 'Services', path: '/services' },
+  { label: 'Modular Kitchens', path: '/modular-kitchen-bangalore' },
+  { label: 'Cost Estimate', path: '/estimate' },
   { label: 'Projects', path: '/projects' },
   { label: 'Portfolio', path: '/portfolio' },
+  { label: 'Our Process', path: '/process' },
   { label: 'Testimonials', path: '/testimonials' },
   { label: 'Contact', path: '/contact' },
   { label: 'Privacy Policy', path: '/privacy-policy' },
@@ -123,7 +126,7 @@ const Footer = () => {
                 <li className="flex items-start gap-2.5">
                   <Phone className="w-3.5 h-3.5 text-[#E8D8C4] flex-shrink-0 mt-0.5" />
                   <div>
-                    <a href={`tel:${companyInfo.primaryPhone}`} className="text-stone-300 hover:text-white font-semibold transition-colors block">
+                    <a href={`tel:${companyInfo.primaryPhone.replace(/\s+/g, "")}`} className="text-stone-300 hover:text-white font-semibold transition-colors block">
                       {companyInfo.primaryPhone}
                     </a>
                     <span className="text-[9px] text-stone-500 block mt-0.5">Mon - Sat: 9:00 AM - 7:00 PM</span>

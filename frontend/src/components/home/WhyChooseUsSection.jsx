@@ -4,7 +4,7 @@ const brandStats = [
   { number: "150+", label: "Completed Luxury Homes", desc: "Delivered strictly within timeline" },
   { number: "10-Year", label: "Material Warranty", desc: "Assuring authentic German hardware" },
   { number: "100%", label: "Transparent Estimates", desc: "Zero hidden costs, zero surprises" },
-  { number: "45-Day", label: "On-Time Handover", desc: "Or we pay your rent penalty" }
+  { number: "45-Day", label: "On-Time Handover", desc: "Planned execution timeline" }
 ];
 
 const WhyChooseUsSection = () => {

@@ -57,7 +57,7 @@ const Header = () => {
         <div className="container-custom flex justify-between items-center text-xs font-medium tracking-wide">
           <div className="flex items-center gap-6">
             <a
-              href={`tel:${companyInfo.primaryPhone}`}
+              href={`tel:${companyInfo.primaryPhone.replace(/\s+/g, "")}`}
               className="flex items-center gap-2 hover:text-[#E8D8C4] transition-colors"
               title="Call Denova Creations Support"
             >

@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { projects } from "../data/projects";
 import { Helmet } from "react-helmet-async";
+import NotFoundPage from "./NotFoundPage";
 
 const slugify = (value) => value.toLowerCase().replace(/\s+/g, "-");
 
@@ -16,14 +17,21 @@ const CategoryPage = () => {
   const categoryName = category.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
   const title = `${categoryName} Interior Designs Bangalore | Denova Creations`;
   const description = `Explore ${categoryName.toLowerCase()} interior design projects by Denova Creations in Bangalore with photos and execution details.`;
-  const pageUrl = `https://denovacreations.com/portfolio/${type}/${category}`;
-  const image = filtered[0]?.images?.[0] || "https://denovacreations.com/images/hero2.webp";
+  const pageUrl = `https://denovacreations.com/portfolio/${type}/${category.toLowerCase()}`;
+  const image = `https://denovacreations.com${filtered[0]?.images?.[0] || "/images/hero2.webp"}`;
 
+  if (filtered.length === 0) {
+    return <NotFoundPage />;
+  }
+
+  // Each category currently holds a single project already listed on /projects,
+  // so these filter pages stay out of the index (noindex, follow).
   return (
     <div className="container-custom py-16">
       <Helmet>
         <title>{title}</title>
         <meta name="description" content={description} />
+        <meta name="robots" content="noindex, follow" />
         <link rel="canonical" href={pageUrl} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
@@ -57,8 +65,8 @@ const CategoryPage = () => {
       </div>
 
       <div className="mt-12 flex flex-wrap gap-4">
-        <Link to="/portfolio" className="underline text-[#4A4A4A] hover:text-[#C8A35F]">
-          Back to Portfolio
+        <Link to="/projects" className="underline text-[#4A4A4A] hover:text-[#C8A35F]">
+          All Projects
         </Link>
         <Link to="/contact" className="underline text-[#4A4A4A] hover:text-[#C8A35F]">
           Discuss a Similar Project

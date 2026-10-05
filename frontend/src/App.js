@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect } from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Toaster } from "./components/ui/sonner";
 import ModularKitchenBangalore from "./pages/ModularKitchenBangalore";
 
@@ -41,17 +41,30 @@ const withSEO = (Component) => (
   </>
 );
 
+// Pages with their own lead form: the floating pop-up form would only interrupt them.
+const hasOwnLeadForm = (pathname) => {
+  const path = pathname.toLowerCase().replace(/\/+$/, "");
+  return (
+    ["/contact", "/estimate", "/modular-kitchen-bangalore"].includes(path) ||
+    path.startsWith("/interior-designers/")
+  );
+};
+
 // Layout wrapper
-const Layout = ({ children }) => (
-  <>
-    <Header />
-    <main className="min-h-screen">{children}</main>
-    <InternalLinksCTA />
-    <Footer />
-    <FloatingCTA />
-    <FloatingLeadForm />
-  </>
-);
+const Layout = ({ children }) => {
+  const { pathname } = useLocation();
+
+  return (
+    <>
+      <Header />
+      <main className="min-h-screen">{children}</main>
+      <InternalLinksCTA />
+      <Footer />
+      <FloatingCTA />
+      {!hasOwnLeadForm(pathname) && <FloatingLeadForm />}
+    </>
+  );
+};
 
 function App() {
   useEffect(() => {

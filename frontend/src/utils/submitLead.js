@@ -16,7 +16,6 @@ export const submitLead = async (leadData) => {
 
     const data = await response.json();
 
-    console.log("Lead API response:", data);
 
     return data;
 

@@ -365,7 +365,6 @@ const PortfolioPage = () => {
                     <ul className="space-y-1.5 text-[11px] text-[#0F3D3E] font-semibold">
                       <li className="flex items-center gap-1.5">✓ {selectedProject.supervision}</li>
                       <li className="flex items-center gap-1.5">✓ German factory automated edge-banding</li>
-                      <li className="flex items-center gap-1.5">✓ Late handover rent penalty covered</li>
                     </ul>
                   </div>
 
