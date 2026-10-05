@@ -21,6 +21,7 @@ import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { companyInfo, testimonials } from '../data/mock';
 import { Helmet } from "react-helmet-async";
+import { BUSINESS_REF } from "../data/business";
 
 const iconMap = {
   Target: Target,
@@ -129,13 +130,9 @@ const AboutPage = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "AboutPage",
-            "name": "About Denova Creations",
-            "description": "Bespoke luxury interior design studio in Bangalore specialized in high-end modular kitchens, wardrobes, and turnkey residential spaces.",
-            "publisher": {
-              "@type": "Organization",
-              "name": "Denova Creations",
-              "logo": "https://denovacreations.com/images/logo-primary.png"
-            }
+            name: "About Denova Creations",
+            url: "https://denovacreations.com/about",
+            about: BUSINESS_REF,
           })}
         </script>
       </Helmet>

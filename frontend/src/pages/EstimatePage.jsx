@@ -26,6 +26,7 @@ import {
   trackLeadConversion,
   useSubmitLock,
 } from "../utils/leadTracking";
+import { FULL_HOME_RATE, PRICING_DISCLAIMER } from "../data/pricing";
 
 const EstimatePage = () => {
   // Step State
@@ -77,34 +78,26 @@ const EstimatePage = () => {
     }));
   };
 
-  const formatPrice = (num) => {
-    return (num / 100000).toFixed(2);
-  };
+  // ₹ amount in lakhs: 1120000 -> "11.2", 1400000 -> "14".
+  const formatLakh = (num) => String(Math.round(num / 10000) / 10);
 
-  // Estimate pricing logic preserved exactly from previous component
+  // Owner-confirmed pricing: full-home interiors at ₹1,400–₹1,800 per sq.ft
+  // including materials, applied to the carpet area entered in step 2.
+  // No published rate exists for kitchen-only, wardrobe-only, civil work or
+  // commercial spaces, so those get a custom estimate instead of a number.
   const calculateFinalEstimate = () => {
-    let rate = 0;
+    const isFullHome = form.scope === "Full Home Interior" && form.property !== "Commercial";
 
-    if (form.scope === "Modular Kitchen Only") rate = 800;
-    else if (form.scope === "Wardrobes Only") rate = 900;
-    else if (form.scope === "Modular Kitchen & Wardrobes") rate = 950;
-    else if (form.scope === "Full Home Interior") rate = 1040;
-    else if (form.scope === "Premium Full Home + Civil Work") rate = 1400;
-
-    if (form.budget === "Premium") rate += 200;
-    if (form.budget === "Luxury") rate += 400;
-
-    // Property multiplier
-    if (form.property === "Villa") rate += 150;
-    if (form.property === "Commercial") rate += 250;
-
-    const min = form.area * rate * 0.9;
-    const max = form.area * rate * 1.1;
+    if (!isFullHome) {
+      return { custom: true };
+    }
 
     return {
-      rate,
-      min,
-      max,
+      custom: false,
+      rateMin: FULL_HOME_RATE.min,
+      rateMax: FULL_HOME_RATE.max,
+      min: form.area * FULL_HOME_RATE.min,
+      max: form.area * FULL_HOME_RATE.max,
     };
   };
 
@@ -151,10 +144,12 @@ const EstimatePage = () => {
       phone: form.phone,
       email: form.email,
       location: form.location,
-      propertyType: `${form.property} (${form.area} sqft)`,
+      propertyType: `${form.property} (${form.area} sqft carpet area)`,
       possession: `Scope: ${form.scope}`,
-      budget: `${form.budget} Plan (Est: ₹${formatPrice(calculated.min)}L - ₹${formatPrice(calculated.max)}L)`,
-      message: `Calculated Estimate: Scope: ${form.scope}, Area: ${form.area} sqft, Budget: ${form.budget}`,
+      budget: calculated.custom
+        ? `Custom estimate requested (${form.budget} finish preference)`
+        : `Indicative ₹${formatLakh(calculated.min)}L - ₹${formatLakh(calculated.max)}L (${form.budget} finish preference)`,
+      message: `Estimate request: Scope: ${form.scope}, Carpet area: ${form.area} sqft, Finish preference: ${form.budget}`,
       source: "Cost Calculator Page",
     });
 
@@ -192,11 +187,12 @@ const EstimatePage = () => {
     { title: "Premium Turnkey + Civil Work", val: "Premium Full Home + Civil Work", desc: "Complete luxury layout restructuring & interiors" }
   ];
 
+  // A preference shared with the designer; it does not change the indicative range.
   const budgetOptions = [
-    { title: "Economy Option", val: "Economy", desc: "Robust materials, cost-effective laminate finishes", fittings: "Standard hardware" },
-    { title: "Standard Option", val: "Standard", desc: "Durable BWR ply, high gloss laminates", fittings: "Soft close runners" },
-    { title: "Premium Luxury", val: "Premium", desc: "HDMR core, acrylic/sleek PU finishes", fittings: "Authentic Hettich hardware" },
-    { title: "Bespoke Royal", val: "Luxury", desc: "Natural wood veneer, Lacquered glass shutters", fittings: "Blum touch-less sliders" }
+    { title: "Economy Option", val: "Economy", desc: "Cost-effective laminate finishes" },
+    { title: "Standard Option", val: "Standard", desc: "Durable ply with high-gloss laminates" },
+    { title: "Premium Luxury", val: "Premium", desc: "Acrylic or PU finishes" },
+    { title: "Bespoke Royal", val: "Luxury", desc: "Veneer and lacquered glass finishes" }
   ];
 
   return (
@@ -205,13 +201,13 @@ const EstimatePage = () => {
         <title>Interior Design Estimate Bangalore | Denova Creations</title>
         <meta
           name="description"
-          content="Estimate your home interior cost in Bangalore with Denova Creations. Calculate modular kitchen, wardrobe and full home interior pricing instantly."
+          content="Estimate full-home interior cost in Bangalore: ₹1,400–₹1,800 per sq.ft including materials. Request a custom estimate for modular kitchens and wardrobes."
         />
         <link rel="canonical" href="https://denovacreations.com/estimate" />
         <meta property="og:title" content="Interior Design Estimate Bangalore | Denova Creations" />
         <meta
           property="og:description"
-          content="Get instant interior cost estimates for modular kitchens, wardrobes and complete home interiors in Bangalore."
+          content="Indicative full-home interior estimate for Bangalore homes at ₹1,400–₹1,800 per sq.ft including materials."
         />
         <meta property="og:image" content="https://denovacreations.com/images/hero2.webp" />
         <meta property="og:url" content="https://denovacreations.com/estimate" />
@@ -220,7 +216,7 @@ const EstimatePage = () => {
         <meta name="twitter:title" content="Interior Design Estimate Bangalore | Denova Creations" />
         <meta
           name="twitter:description"
-          content="Get instant interior cost estimates for modular kitchens, wardrobes and complete home interiors in Bangalore."
+          content="Indicative full-home interior estimate for Bangalore homes at ₹1,400–₹1,800 per sq.ft including materials."
         />
         <meta name="twitter:image" content="https://denovacreations.com/images/hero2.webp" />
       </Helmet>
@@ -259,7 +255,7 @@ const EstimatePage = () => {
               </h1>
 
               <p className="text-stone-300 text-sm md:text-base leading-relaxed max-w-xl">
-                Draft your customized interior estimate instantly. Go through 4 quick steps, input your parameters, and unlock detailed pricing metrics.
+                Full-home interiors are priced at ₹1,400–₹1,800 per sq.ft including materials. Answer 4 quick questions for an indicative estimate, or request a custom estimate for kitchens and wardrobes.
               </p>
             </div>
           </div>
@@ -278,7 +274,7 @@ const EstimatePage = () => {
                   <div className="mb-8">
                     <div className="flex justify-between items-center text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">
                       <span>Step {step} of 5</span>
-                      <span>{step === 1 ? "Property Choice" : step === 2 ? "Carpet Area" : step === 3 ? "Scope Options" : step === 4 ? "Budget Tier" : "Unlock Estimate"}</span>
+                      <span>{step === 1 ? "Property Choice" : step === 2 ? "Carpet Area" : step === 3 ? "Scope Options" : step === 4 ? "Finish Preference" : "Unlock Estimate"}</span>
                     </div>
                     {/* Visual Progress Bar */}
                     <div className="w-full h-2 bg-stone-100 rounded-full overflow-hidden">
@@ -396,7 +392,8 @@ const EstimatePage = () => {
                   {/* STEP 4: BUDGET PREFERENCE */}
                   {step === 4 && (
                     <div>
-                      <h2 className="text-xl md:text-2xl font-bold font-serif text-[#0F3D3E] mb-6">Quality & Budget Plan</h2>
+                      <h2 className="text-xl md:text-2xl font-bold font-serif text-[#0F3D3E] mb-2">Finish Preference</h2>
+                      <p className="text-stone-500 text-xs mb-6">This helps our designer plan materials. Where your final rate falls within the range depends on the materials and finishes you choose.</p>
                       <div className="grid gap-3">
                         {budgetOptions.map((opt, idx) => {
                           const isSelected = form.budget === opt.val;
@@ -414,7 +411,6 @@ const EstimatePage = () => {
                               <div>
                                 <h3 className="font-semibold text-stone-900 text-xs sm:text-sm">{opt.title}</h3>
                                 <p className="text-[10px] text-stone-400 mt-0.5 leading-relaxed">{opt.desc}</p>
-                                <span className="text-[10px] font-bold text-[#0F3D3E] mt-1 block group-hover:text-stone-900">{opt.fittings}</span>
                               </div>
                               <span className={`w-5 h-5 rounded-full flex items-center justify-center border ${
                                 isSelected ? "bg-[#0F3D3E] border-[#0F3D3E] text-white" : "border-stone-300 bg-white"
@@ -504,35 +500,56 @@ const EstimatePage = () => {
                   {/* STEP 6: PRICING DISPLAY PANEL (FINAL CALCULATED RENDER) */}
                   {step === 6 && result && (
                     <div className="text-left animate-fadeIn">
-                      <span className="text-[#0F3D3E] text-[10px] font-bold uppercase tracking-widest block">Calculated Result</span>
-                      <h2 className="text-2xl font-bold font-serif text-stone-900 mt-1 mb-6">Your Customized Budget Estimate</h2>
-                      
-                      <div className="bg-[#0B2526] text-white p-8 rounded-3xl shadow-md border border-[#E8D8C4]/15 mb-6 text-center">
-                        <span className="text-stone-400 text-xs uppercase tracking-widest font-bold">Estimated Pricing Range</span>
-                        <div className="text-3xl md:text-5xl font-serif font-bold text-[#E8D8C4] mt-2 mb-4">
-                          ₹{formatPrice(result.min)}L - ₹{formatPrice(result.max)}L
-                        </div>
-                        <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-1.5 rounded-full text-stone-300 text-xs border border-white/5">
-                          <Check className="w-3.5 h-3.5 text-[#E8D8C4]" />
-                          <span>Includes precision edge-banding & softclose hardware</span>
-                        </div>
-                      </div>
+                      {result.custom ? (
+                        <>
+                          <span className="text-[#0F3D3E] text-[10px] font-bold uppercase tracking-widest block">Request Received</span>
+                          <h2 className="text-2xl font-bold font-serif text-stone-900 mt-1 mb-6">Your Custom Estimate</h2>
+                          <div className="bg-[#0B2526] text-white p-8 rounded-3xl shadow-md border border-[#E8D8C4]/15 mb-6 text-center">
+                            <span className="text-stone-400 text-xs uppercase tracking-widest font-bold">{form.scope}{form.property === "Commercial" ? " · Commercial" : ""}</span>
+                            <p className="text-lg md:text-xl font-serif font-bold text-[#E8D8C4] mt-3">
+                              This scope is priced on your actual layout, so we don't show an automatic figure for it.
+                            </p>
+                            <p className="text-stone-300 text-xs mt-3">
+                              Our designer will prepare a custom estimate based on your requirement and measurements.
+                            </p>
+                          </div>
+                          <p className="text-[11px] text-stone-500 leading-relaxed mb-6">
+                            For full-home interiors, our indicative pricing is ₹{FULL_HOME_RATE.min.toLocaleString("en-IN")}–₹{FULL_HOME_RATE.max.toLocaleString("en-IN")} per sq.ft including materials.
+                          </p>
+                        </>
+                      ) : (
+                        <>
+                          <span className="text-[#0F3D3E] text-[10px] font-bold uppercase tracking-widest block">Indicative Estimate</span>
+                          <h2 className="text-2xl font-bold font-serif text-stone-900 mt-1 mb-6">Your Full-Home Interior Estimate</h2>
 
-                      <div className="grid grid-cols-2 gap-4 mb-6 border-b border-stone-100 pb-6">
-                        <div className="bg-[#FAF7F2] p-4 rounded-2xl border border-stone-200/40">
-                          <span className="text-[10px] text-stone-400 uppercase font-bold block">Rate / Sqft</span>
-                          <span className="text-lg font-serif font-bold text-[#0F3D3E] mt-1 block">₹{result.rate} / sq.ft</span>
-                        </div>
-                        
-                        <div className="bg-[#FAF7F2] p-4 rounded-2xl border border-stone-200/40">
-                          <span className="text-[10px] text-stone-400 uppercase font-bold block">Total Carpet Area</span>
-                          <span className="text-lg font-serif font-bold text-[#0F3D3E] mt-1 block">{form.area} sq.ft</span>
-                        </div>
-                      </div>
+                          <div className="bg-[#0B2526] text-white p-8 rounded-3xl shadow-md border border-[#E8D8C4]/15 mb-6 text-center">
+                            <span className="text-stone-400 text-xs uppercase tracking-widest font-bold">Indicative Estimate</span>
+                            <div className="text-3xl md:text-5xl font-serif font-bold text-[#E8D8C4] mt-2 mb-4">
+                              ₹{formatLakh(result.min)} lakh – ₹{formatLakh(result.max)} lakh
+                            </div>
+                            <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-1.5 rounded-full text-stone-300 text-xs border border-white/5">
+                              <Check className="w-3.5 h-3.5 text-[#E8D8C4]" />
+                              <span>Including materials</span>
+                            </div>
+                          </div>
 
-                      <p className="text-[11px] text-stone-500 leading-relaxed italic mb-6">
-                        *This estimate is calculated based on standard floorplans. Final pricing will depend on specific structural customization, chimney/hob appliance selections, and exact site conditions.
-                      </p>
+                          <div className="grid grid-cols-2 gap-4 mb-6 border-b border-stone-100 pb-6">
+                            <div className="bg-[#FAF7F2] p-4 rounded-2xl border border-stone-200/40">
+                              <span className="text-[10px] text-stone-400 uppercase font-bold block">Rate / Sqft</span>
+                              <span className="text-lg font-serif font-bold text-[#0F3D3E] mt-1 block">₹{result.rateMin.toLocaleString("en-IN")}–₹{result.rateMax.toLocaleString("en-IN")}</span>
+                            </div>
+
+                            <div className="bg-[#FAF7F2] p-4 rounded-2xl border border-stone-200/40">
+                              <span className="text-[10px] text-stone-400 uppercase font-bold block">Carpet Area Entered</span>
+                              <span className="text-lg font-serif font-bold text-[#0F3D3E] mt-1 block">{form.area} sq.ft</span>
+                            </div>
+                          </div>
+
+                          <p className="text-[11px] text-stone-500 leading-relaxed italic mb-6">
+                            {PRICING_DISCLAIMER} This is an indicative estimate, not a quotation.
+                          </p>
+                        </>
+                      )}
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <Link to="/contact" className="w-full">
@@ -540,9 +557,9 @@ const EstimatePage = () => {
                             Book Free Site Survey
                           </button>
                         </Link>
-                        
+
                         <a
-                          href={`https://wa.me/919591039597?text=Hi,%20I'm%20${form.name}.%20My%20carpet%20area%20is%20${form.area}%20sqft%20and%20I'd%20like%20to%20verify%20my%20modular%20estimate.`}
+                          href={`https://wa.me/919591039597?text=${encodeURIComponent(`Hi, I'm ${form.name}. I'd like an estimate for ${form.scope} (${form.property}, about ${form.area} sq.ft carpet area).`)}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center justify-center gap-2 border-2 border-[#0F3D3E] text-[#0F3D3E] hover:bg-[#0F3D3E] hover:text-white font-bold py-3 rounded-xl text-xs uppercase tracking-widest transition"
@@ -609,7 +626,7 @@ const EstimatePage = () => {
                     </li>
                     
                     <li className="flex justify-between pb-1">
-                      <span className="text-stone-400 font-medium">Quality Tier:</span>
+                      <span className="text-stone-400 font-medium">Finish Preference:</span>
                       <span className="font-bold text-[#0F3D3E]">{form.budget || "Not Selected"}</span>
                     </li>
                   </ul>

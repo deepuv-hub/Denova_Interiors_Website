@@ -31,6 +31,7 @@ import {
   Video,
   Check
 } from "lucide-react";
+import { BUSINESS_ENTITY } from "../data/business";
 
 // Curated Bangalore Client Testimonials for Social Proof
 const contactTestimonials = [
@@ -152,27 +153,10 @@ const ContactPage = () => {
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "Denova Creations",
-            "image": "https://denovacreations.com/images/hero.webp",
-            "telephone": companyInfo.primaryPhone,
-            "email": companyInfo.email,
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": companyInfo.address,
-              "addressLocality": "Bangalore",
-              "addressRegion": "KA",
-              "postalCode": "560114",
-              "addressCountry": "IN"
-            },
-            "url": "https://denovacreations.com/contact",
-            "priceRange": "₹₹₹",
-            "openingHoursSpecification": {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-              "opens": "10:00",
-              "closes": "19:30"
-            }
+            "@type": "ContactPage",
+            name: "Contact Denova Creations",
+            url: "https://denovacreations.com/contact",
+            mainEntity: BUSINESS_ENTITY,
           })}
         </script>
       </Helmet>

@@ -98,10 +98,15 @@ const HeroSection = () => {
             </span>
           </div>
 
-          {/* Dynamic slide heading */}
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 leading-[1.1] font-serif tracking-tight min-h-[110px] md:min-h-auto">
-            {heroSlides[currentSlide].heading}
+          {/* Stable page heading; the rotating slide text below is decorative */}
+          <h1 className="text-[#E8D8C4] text-xs md:text-sm font-bold uppercase tracking-widest mb-3">
+            Interior Designers in Bangalore
           </h1>
+
+          {/* Dynamic slide heading */}
+          <p className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 leading-[1.1] font-serif tracking-tight min-h-[110px] md:min-h-auto">
+            {heroSlides[currentSlide].heading}
+          </p>
 
           {/* Dynamic slide description */}
           <p className="text-base md:text-lg text-stone-300 mb-8 leading-relaxed max-w-2xl transition-all duration-500">

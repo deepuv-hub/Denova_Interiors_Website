@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
+import { FULL_HOME_RATE_TEXT } from '../../data/pricing';
 
 const iconMap = {
   Home: Home,
@@ -42,6 +43,7 @@ const luxuryServices = [
   {
     id: 2,
     title: "Modular Kitchens",
+    link: "/modular-kitchen-bangalore",
     description: "Ergonomically designed culinary spaces combining high-gloss luxury finishes with German precision soft-close hardware.",
     icon: "Layers",
     badge: "Most Requested",
@@ -102,6 +104,10 @@ const ServicesSection = () => {
           <p className="text-stone-600 text-sm md:text-base leading-relaxed">
             Transforming residences into luxurious sanctuaries with uncompromised European craftsmanship, precision factory finishes, and personalized spatial design. From <strong>Complete Home Interiors</strong> to bespoke <strong>Modular Kitchens</strong> and <strong>Luxury Wardrobes</strong>, we deliver excellence tailored for homeowners across Bangalore.
           </p>
+          <p className="text-stone-600 text-sm">
+            Full-home interiors are priced at {FULL_HOME_RATE_TEXT}.{" "}
+            <Link to="/estimate" className="text-[#0F3D3E] font-semibold underline">Get an indicative estimate</Link>
+          </p>
         </div>
 
         {/* Trust Statement Bar */}
@@ -130,7 +136,7 @@ const ServicesSection = () => {
               IconComponent = Layers;
             }
             return (
-              <Link key={service.id} to="/services" className="group block h-full">
+              <Link key={service.id} to={service.link || "/services"} className="group block h-full">
                 <Card className={`border rounded-3xl transition-all duration-500 h-full flex flex-col overflow-hidden ${
                   service.isPrimary 
                     ? 'border-[#C8A35F]/60 bg-[#FAF8F5] shadow-md hover:border-[#C8A35F] hover:shadow-[0_20px_45px_rgba(200,163,95,0.15)] hover:-translate-y-1.5' 

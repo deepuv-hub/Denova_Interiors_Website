@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import locations from "../data/locations";
 import { projects } from "../data/projects";
+import { FULL_HOME_RATE_TEXT, PRICING_DISCLAIMER } from "../data/pricing";
 import {
   buildLeadPayload,
   isValidEmail,
@@ -12,6 +13,7 @@ import {
   trackLeadConversion,
   useSubmitLock,
 } from "../utils/leadTracking";
+import { BUSINESS_REF } from "../data/business";
 
 const PROPERTY_TYPES = ["1 BHK", "2 BHK", "3 BHK", "3+ BHK", "Villa / Independent House", "Other"];
 
@@ -135,28 +137,16 @@ const CityLandingTemplate = ({ location }) => {
         <meta name="twitter:description" content={location.description} />
         <meta name="twitter:image" content={ogImage} />
 
-        {/* Local Business Schema */}
+        {/* Service schema (the business itself is described once, on the home page) */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            name: "Denova Creations",
-            image: ogImage,
+            "@type": "Service",
+            serviceType: "Interior Design",
+            name: `Interior design in ${location.name}, Bangalore`,
             url: pageUrl,
-            telephone: "+91 9591039597",
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: "373/2, Begur Hulimavu Road",
-              addressLocality: "Bengaluru",
-              addressRegion: "Karnataka",
-              postalCode: "560114",
-              addressCountry: "IN",
-            },
-            areaServed: {
-              "@type": "Place",
-              name: `${location.name}, Bangalore`,
-            },
-            priceRange: "INR 250000+",
+            provider: BUSINESS_REF,
+            areaServed: { "@type": "Place", name: `${location.name}, Bengaluru` },
           })}
         </script>
 
@@ -295,11 +285,12 @@ const CityLandingTemplate = ({ location }) => {
         </h2>
 
         <p className="text-gray-700 font-medium">
-          {location.pricing}
+          Full-home interiors in {location.name} are priced at {FULL_HOME_RATE_TEXT}.
         </p>
         <p className="mt-3 text-gray-600">
-          Final cost depends on carpet area, scope and materials. For a figure based on your
-          home, try our <Link to="/estimate" className="text-blue-600 underline">interior cost calculator</Link>.
+          {PRICING_DISCLAIMER} Kitchen-only and wardrobe-only work is estimated for your layout.
+          For an indicative figure for your home, try our{" "}
+          <Link to="/estimate" className="text-blue-600 underline">interior cost calculator</Link>.
         </p>
       </section>
 

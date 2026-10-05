@@ -167,8 +167,7 @@ export const testimonials = [
     location: "Whitefield, Bengaluru",
     rating: 5,
     text: "Exceptional work by Denova Creations! They transformed our 3BHK into a dream home. The attention to detail and quality of materials exceeded our expectations.",
-    projectType: "3BHK Apartment",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"
+    projectType: "3BHK Apartment"
   },
   {
     id: 2,
@@ -176,8 +175,7 @@ export const testimonials = [
     location: "Sarjapur Road, Bengaluru",
     rating: 5,
     text: "Professional team with excellent design sense. They completed our villa interior within the promised timeline. Highly recommend their services!",
-    projectType: "Villa Interior",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80"
+    projectType: "Villa Interior"
   },
   {
     id: 3,
@@ -185,8 +183,7 @@ export const testimonials = [
     location: "Electronic City, Bengaluru",
     rating: 5,
     text: "Best decision we made was choosing Denova for our apartment. Budget-friendly options without compromising on quality. Truly impressed!",
-    projectType: "2BHK Apartment",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&q=80"
+    projectType: "2BHK Apartment"
   },
   {
     id: 4,
@@ -194,8 +191,7 @@ export const testimonials = [
     location: "Jayanagar, Bengaluru",
     rating: 5,
     text: "Our old house looks brand new after the renovation. The team was courteous, punctual, and delivered exactly what was promised.",
-    projectType: "Home Renovation",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&q=80"
+    projectType: "Home Renovation"
   }
 ];
 

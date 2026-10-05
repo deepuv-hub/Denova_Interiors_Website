@@ -1,3 +1,11 @@
+import { FULL_HOME_RATE_TEXT, PRICING_DISCLAIMER } from "./pricing";
+
+// Shared answers: pricing is the owner-confirmed full-home rate; timelines are
+// not published per area because they depend on each project's scope.
+const FULL_HOME_PRICING_ANSWER = `Full-home interiors are priced at ${FULL_HOME_RATE_TEXT}. ${PRICING_DISCLAIMER}`;
+const TIMELINE_ANSWER =
+  "Timelines depend on the size and scope of your project. Our designer confirms the schedule for your home during the consultation.";
+
 const locations = [
   {
   name: "Whitefield",
@@ -24,12 +32,11 @@ const locations = [
     "villa interior design"
   ],
 
-  pricing: "Interior cost in Whitefield starts from ₹3.5 Lakhs depending on scope and materials.",
 
   faqs: [
     {
       q: "What is the cost of interiors in Whitefield?",
-      a: "Interior cost starts from ₹3.5 Lakhs depending on requirements."
+      a: FULL_HOME_PRICING_ANSWER
     },
     {
       q: "Do you provide modular kitchen in Whitefield?",
@@ -37,7 +44,7 @@ const locations = [
     },
     {
       q: "How long does interior design take?",
-      a: "Typically 4-8 weeks depending on project size."
+      a: TIMELINE_ANSWER
     }
   ]
 },
@@ -67,13 +74,11 @@ const locations = [
     "villa interior design"
   ],
 
-  pricing:
-    "Interior design cost in Indiranagar starts from ₹4 Lakhs depending on customization, materials, and project scope.",
 
   faqs: [
     {
       q: "What is the cost of interior design in Indiranagar?",
-      a: "Interior design cost typically starts from ₹4 Lakhs depending on requirements and materials."
+      a: FULL_HOME_PRICING_ANSWER
     },
     {
       q: "Do you provide luxury interior design in Indiranagar?",
@@ -85,7 +90,7 @@ const locations = [
     },
     {
       q: "How long does a typical project take?",
-      a: "Most interior projects take between 4-8 weeks depending on scope."
+      a: TIMELINE_ANSWER
     }
   ]
 },
@@ -114,13 +119,11 @@ const locations = [
     "living room and bedroom interiors"
   ],
 
-  pricing:
-    "Interior design cost in Marathahalli starts from ₹2.5 Lakhs depending on apartment size, materials, and customization.",
 
   faqs: [
     {
       q: "What is the cost of interior design in Marathahalli?",
-      a: "Interior cost typically starts from ₹2.5 Lakhs depending on requirements and materials."
+      a: FULL_HOME_PRICING_ANSWER
     },
     {
       q: "Do you provide budget-friendly interior design in Marathahalli?",
@@ -132,7 +135,7 @@ const locations = [
     },
     {
       q: "How long does a project take?",
-      a: "Most projects are completed within 4-6 weeks depending on scope."
+      a: TIMELINE_ANSWER
     }
   ]
 },
@@ -162,13 +165,11 @@ const locations = [
     "villa interior design"
   ],
 
-  pricing:
-    "Interior design cost in Sarjapur Road starts from ₹3 Lakhs depending on project size, materials, and customization.",
 
   faqs: [
     {
       q: "What is the cost of interior design in Sarjapur Road?",
-      a: "Interior cost typically starts from ₹3 Lakhs depending on requirements and materials."
+      a: FULL_HOME_PRICING_ANSWER
     },
     {
       q: "Do you provide interiors for apartments and villas in Sarjapur Road?",
@@ -180,7 +181,7 @@ const locations = [
     },
     {
       q: "How long does an interior project take?",
-      a: "Most projects are completed within 4-8 weeks depending on scope."
+      a: TIMELINE_ANSWER
     }
   ]
 },
@@ -209,13 +210,11 @@ const locations = [
     "living room and bedroom interiors"
   ],
 
-  pricing:
-    "Interior design cost in HSR Layout starts from ₹3 Lakhs depending on project size, materials, and customization.",
 
   faqs: [
     {
       q: "What is the cost of interior design in HSR Layout?",
-      a: "Interior cost typically starts from ₹3 Lakhs depending on requirements and materials."
+      a: FULL_HOME_PRICING_ANSWER
     },
     {
       q: "Do you provide space-saving interiors for apartments in HSR Layout?",
@@ -227,7 +226,7 @@ const locations = [
     },
     {
       q: "How long does an interior project take?",
-      a: "Most projects are completed within 4-8 weeks depending on scope."
+      a: TIMELINE_ANSWER
     }
   ]
 },
@@ -257,13 +256,11 @@ const locations = [
     "villa interior design"
   ],
 
-  pricing:
-    "Interior design cost in Koramangala starts from ₹4 Lakhs depending on customization, materials, and project scope.",
 
   faqs: [
     {
       q: "What is the cost of interior design in Koramangala?",
-      a: "Interior design cost typically starts from ₹4 Lakhs depending on requirements and materials."
+      a: FULL_HOME_PRICING_ANSWER
     },
     {
       q: "Do you provide luxury interior design in Koramangala?",
@@ -275,7 +272,7 @@ const locations = [
     },
     {
       q: "How long does an interior project take?",
-      a: "Most projects are completed within 4-8 weeks depending on scope."
+      a: TIMELINE_ANSWER
     }
   ]
 },
@@ -304,13 +301,11 @@ const locations = [
     "living room and bedroom interiors"
   ],
 
-  pricing:
-    "Interior design cost in Electronic City starts from ₹2.5 Lakhs depending on apartment size, materials, and customization.",
 
   faqs: [
     {
       q: "What is the cost of interior design in Electronic City?",
-      a: "Interior cost typically starts from ₹2.5 Lakhs depending on requirements and materials."
+      a: FULL_HOME_PRICING_ANSWER
     },
     {
       q: "Do you provide affordable interior design in Electronic City?",
@@ -322,7 +317,7 @@ const locations = [
     },
     {
       q: "How long does an interior project take?",
-      a: "Most projects are completed within 4-6 weeks depending on scope."
+      a: TIMELINE_ANSWER
     }
   ]
 },
@@ -352,13 +347,11 @@ const locations = [
     "villa interior design"
   ],
 
-  pricing:
-    "Interior design cost in Hebbal starts from ₹3.5 Lakhs depending on customization, materials, and project scope.",
 
   faqs: [
     {
       q: "What is the cost of interior design in Hebbal?",
-      a: "Interior design cost typically starts from ₹3.5 Lakhs depending on requirements and materials."
+      a: FULL_HOME_PRICING_ANSWER
     },
     {
       q: "Do you provide premium interior design in Hebbal?",
@@ -370,7 +363,7 @@ const locations = [
     },
     {
       q: "How long does an interior project take?",
-      a: "Most projects are completed within 4-8 weeks depending on scope."
+      a: TIMELINE_ANSWER
     }
   ]
 },
@@ -400,13 +393,11 @@ const locations = [
     "living room and bedroom interiors"
   ],
 
-  pricing:
-    "Interior design cost in Yelahanka starts from ₹3 Lakhs depending on home size, materials, and customization.",
 
   faqs: [
     {
       q: "What is the cost of interior design in Yelahanka?",
-      a: "Interior cost typically starts from ₹3 Lakhs depending on requirements and materials."
+      a: FULL_HOME_PRICING_ANSWER
     },
     {
       q: "Do you provide villa interior design in Yelahanka?",
@@ -418,7 +409,7 @@ const locations = [
     },
     {
       q: "How long does an interior project take?",
-      a: "Most projects are completed within 4-8 weeks depending on scope."
+      a: TIMELINE_ANSWER
     }
   ]
 },
@@ -447,13 +438,11 @@ const locations = [
     "independent house interior design"
   ],
 
-  pricing:
-    "Interior design cost in JP Nagar starts from ₹3 Lakhs depending on home size, materials, and customization.",
 
   faqs: [
     {
       q: "What is the cost of interior design in JP Nagar?",
-      a: "Interior cost typically starts from ₹3 Lakhs depending on requirements and materials."
+      a: FULL_HOME_PRICING_ANSWER
     },
     {
       q: "Do you provide interiors for independent houses in JP Nagar?",
@@ -465,7 +454,7 @@ const locations = [
     },
     {
       q: "How long does an interior project take?",
-      a: "Most projects are completed within 4-8 weeks depending on scope."
+      a: TIMELINE_ANSWER
     }
   ]
 },

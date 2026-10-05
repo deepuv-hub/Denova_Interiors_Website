@@ -28,14 +28,12 @@ const TestimonialsSection = () => {
         {/* Testimonials Slider Body */}
         <div className="max-w-4xl mx-auto relative bg-white p-8 md:p-12 rounded-3xl shadow-[0_15px_40px_rgba(15,61,62,0.03)] border border-stone-200/40 text-left flex flex-col md:flex-row gap-8 items-center">
           
-          {/* Client Face Frame */}
-          <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-[#E8D8C4] flex-shrink-0">
-            <img
-              src={testimonials[activeTestimonial].image}
-              alt={testimonials[activeTestimonial].name}
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
+          {/* Client initials (no stock photos for client reviews) */}
+          <div
+            aria-hidden="true"
+            className="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-[#E8D8C4] flex-shrink-0 bg-[#0F3D3E] text-[#E8D8C4] flex items-center justify-center text-2xl md:text-3xl font-serif font-bold"
+          >
+            {testimonials[activeTestimonial].name.split(" ").filter(Boolean).map((w) => w[0]).join("").slice(0, 2).toUpperCase()}
           </div>
 
           {/* Review Text Area */}

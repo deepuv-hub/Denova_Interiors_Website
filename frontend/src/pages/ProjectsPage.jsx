@@ -12,6 +12,7 @@ import { Button } from '../components/ui/button';
 import { companyInfo } from '../data/mock';
 import { projects as projectsDb } from '../data/projects';
 import { Helmet } from "react-helmet-async";
+import { BUSINESS_REF } from "../data/business";
 
 const categoryTabs = ["All", "Kitchen", "Wardrobe", "Living Room", "Bedroom", "Ceiling", "Office"];
 
@@ -45,15 +46,10 @@ const ProjectsPage = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            "name": "Denova Creations completed projects",
-            "description": "Premium story-driven case studies of completed luxury apartments, kitchens, wardrobes, and corporate office spaces in Bangalore.",
-            "url": "https://denovacreations.com/projects",
-            "about": {
-              "@type": "LocalBusiness",
-              "name": "Denova Creations",
-              "image": "https://denovacreations.com/images/hero2.webp",
-              "telephone": "+91 9591039597"
-            }
+            name: "Denova Creations completed projects",
+            description: "Case studies of completed apartment, kitchen, wardrobe and office interior projects in Bangalore.",
+            url: "https://denovacreations.com/projects",
+            about: BUSINESS_REF,
           })}
         </script>
       </Helmet>

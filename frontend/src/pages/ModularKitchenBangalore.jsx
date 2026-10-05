@@ -37,6 +37,7 @@ import {
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
 import { companyInfo } from "../data/mock";
+import { BUSINESS_REF } from "../data/business";
 
 // Cinematic Slideshow Kitchen Projects
 const heroSlides = [
@@ -293,24 +294,17 @@ const ModularKitchenBangalore = () => {
         <meta name="twitter:description" content="Modular kitchen design and installation in Bangalore. Get a free kitchen estimate." />
         <meta name="twitter:image" content="https://denovacreations.com/images/kitchen1.webp" />
 
-        {/* Product schema mapping for modular kitchens */}
+        {/* Service schema; kitchen prices are not confirmed, so no offers are published */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Product",
-            "name": "Luxury Modular Kitchen Interiors Bangalore",
-            "image": "https://denovacreations.com/images/kitchen1.webp",
-            "description": "Bespoke modular kitchens designed with 100% waterproof BWP marine plywood, Gola profiles, and German precision automation.",
-            "brand": {
-              "@type": "Brand",
-              "name": "Denova Creations"
-            },
-            "offers": {
-              "@type": "AggregateOffer",
-              "priceCurrency": "INR",
-              "lowPrice": "150000",
-              "highPrice": "1200000"
-            }
+            "@type": "Service",
+            serviceType: "Modular Kitchen Design and Installation",
+            name: "Modular Kitchens in Bangalore",
+            url: "https://denovacreations.com/modular-kitchen-bangalore",
+            image: "https://denovacreations.com/images/kitchen1.webp",
+            provider: BUSINESS_REF,
+            areaServed: { "@type": "City", name: "Bengaluru" },
           })}
         </script>
       </Helmet>

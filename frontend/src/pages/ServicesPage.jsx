@@ -24,6 +24,7 @@ import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { companyInfo, testimonials } from '../data/mock';
 import { Helmet } from "react-helmet-async";
+import { BUSINESS_REF } from "../data/business";
 
 const iconMap = {
   Home: Home,
@@ -45,7 +46,8 @@ const luxuryServices = [
     features: ["Bespoke Living Rooms", "Wood Fluting & Panel Accents", "Designer False Ceilings", "Smart Space Layout Planning", "Premium TV Entertainment Units"],
     ctaText: "Explore Residential Projects",
     ctaLink: "/projects",
-    startingRate: "₹1,400/sq.ft"
+    rateLabel: "Full home, incl. materials",
+    startingRate: "₹1,400–₹1,800/sq.ft"
   },
   {
     id: 2,
@@ -55,7 +57,8 @@ const luxuryServices = [
     features: ["L-Shaped & Parallel layouts", "Quartz & Italian Marble counters", "German Hafele Soft-Close fittings", "High-Gloss Acrylic finishes", "Custom Pull-out Drawers & Pantries"],
     ctaText: "View Kitchen Portfolio",
     ctaLink: "/modular-kitchen-bangalore",
-    startingRate: "₹1,600/sq.ft"
+    rateLabel: "Priced per running ft",
+    startingRate: "Custom estimate"
   },
   {
     id: 3,
@@ -65,7 +68,8 @@ const luxuryServices = [
     features: ["Sleek Sliding & Openable Wardrobes", "Durable Ply-Laminate lofts", "Glass & Mirror front panels", "Integrated LED drawer organizers", "Coordinated Headboards & Bed frames"],
     ctaText: "View Bedroom Projects",
     ctaLink: "/projects",
-    startingRate: "₹1,300/sq.ft"
+    rateLabel: "Priced per sq.ft of front",
+    startingRate: "Custom estimate"
   },
   {
     id: 4,
@@ -75,7 +79,8 @@ const luxuryServices = [
     features: ["Executive Boardrooms", "Collaborative open workspaces", "Branded Reception Hubs", "Acoustic Wall Paneling", "Strict commercial timeline handovers"],
     ctaText: "Explore Commercial Work",
     ctaLink: "/projects",
-    startingRate: "₹1,500/sq.ft"
+    rateLabel: "Commercial",
+    startingRate: "Custom estimate"
   }
 ];
 
@@ -190,49 +195,19 @@ const ServicesPage = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": "Denova Creations",
-              "image": "https://denovacreations.com/images/hero2.webp",
-              "telephone": "+91 9591039597",
-              "priceRange": "₹₹₹",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "373/2, Begur Hulimavu Road",
-                "addressLocality": "Bengaluru",
-                "postalCode": "560114",
-                "addressCountry": "IN"
-              }
-            },
-            "serviceType": "Interior Design Services",
-            "areaServed": "Bangalore",
-            "hasOfferCatalog": {
+            serviceType: "Interior Design Services",
+            provider: BUSINESS_REF,
+            areaServed: { "@type": "City", name: "Bengaluru" },
+            url: "https://denovacreations.com/services",
+            hasOfferCatalog: {
               "@type": "OfferCatalog",
-              "name": "Interior Design Catalog",
-              "itemListElement": [
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Residential Interior Design"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Modular Kitchen Systems"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Bespoke Wardrobe Fabrication"
-                  }
-                }
-              ]
-            }
+              name: "Interior Design Services",
+              itemListElement: [
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Residential Interior Design" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Modular Kitchen Systems" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Wardrobes and Bedroom Storage" } },
+              ],
+            },
           })}
         </script>
       </Helmet>
@@ -345,7 +320,7 @@ const ServicesPage = () => {
                       
                       {/* Pricing Tag Overlay */}
                       <div className="absolute -bottom-4 -right-4 bg-[#0F3D3E] text-[#E8D8C4] px-5 py-3 rounded-2xl shadow-lg z-20 border border-white/10 text-left">
-                        <span className="text-[9px] font-bold uppercase tracking-widest text-[#E8D8C4]/75 block">Rates From</span>
+                        <span className="text-[9px] font-bold uppercase tracking-widest text-[#E8D8C4]/75 block">{service.rateLabel}</span>
                         <span className="text-base md:text-lg font-bold font-serif">{service.startingRate}</span>
                       </div>
                       

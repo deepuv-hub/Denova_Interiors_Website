@@ -7,9 +7,9 @@ const DEFAULT_IMAGE = `${SITE_URL}/images/hero2.webp`;
 
 const pageMeta = {
   "/": {
-    title: "Luxury Interior Designers in Bangalore | Denova Creations",
+    title: "Interior Designers in Bangalore | Denova Creations",
     description:
-      "Denova Creations designs modular kitchens, wardrobes and complete home interiors in Bangalore with quality materials and end-to-end execution.",
+      "Denova Creations is an interior design company in Bangalore for full-home interiors, modular kitchens and wardrobes. Full-home interiors at ₹1,400–₹1,800 per sq.ft including materials.",
   },
   "/about": {
     title: "Premium Turnkey Interior Design Studio | About Denova Creations",
@@ -49,9 +49,9 @@ const pageMeta = {
       "Understand Denova Creations' design process from consultation and planning to material selection, execution and project handover.",
   },
   "/contact": {
-    title: "Speak with Luxury Interior Designers Bangalore | Denova Creations",
+    title: "Contact Denova Creations | Free Interior Design Consultation",
     description:
-      "Start your luxury interior design journey with Denova Creations Bangalore. Book a free space planning consultation. Custom modular kitchens, wardrobes & turnkey designs.",
+      "Contact Denova Creations in Begur, Bangalore. Call +91 95910 39597 or book a free design consultation for home interiors, modular kitchens and wardrobes.",
   },
   "/estimate": {
     title: "Interior Design Estimate Bangalore | Denova Creations",

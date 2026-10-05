@@ -54,11 +54,12 @@ const TestimonialsPage = () => {
                   "{testimonial.text}"
                 </p>
                 <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-14 h-14 rounded-full object-cover"
-                  />
+                  <div
+                    aria-hidden="true"
+                    className="w-14 h-14 rounded-full bg-[#0F3D3E] text-[#E8D8C4] flex items-center justify-center font-serif font-bold"
+                  >
+                    {testimonial.name.split(" ").filter(Boolean).map((w) => w[0]).join("").slice(0, 2).toUpperCase()}
+                  </div>
                   <div>
                     <p className="font-semibold text-[#1A1A1A]">{testimonial.name}</p>
                     <p className="text-[#777777] text-sm">{testimonial.projectType}</p>

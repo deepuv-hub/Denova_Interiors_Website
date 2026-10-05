@@ -623,7 +623,7 @@ const AdsLanding = () => {
               <ArrowRight className="w-4 h-4" />
             </button>
             <p className="text-xs text-stone-500 mt-4">
-              Complete custom solutions usually scale from ₹5 Lakhs onwards • Full transparency guaranteed
+              Full-home interiors: ₹1,400–₹1,800 per sq.ft including materials • Final pricing depends on design, materials, hardware, scope, site conditions and final measurements
             </p>
           </div>
         </div>
@@ -677,10 +677,10 @@ const AdsLanding = () => {
                 <DollarSign className="w-6 h-6" />
               </div>
               <h3 className="font-semibold font-serif text-lg text-[#0F3B2E] mb-2">
-                Absolute Pricing Guarantee
+                Transparent Estimates
               </h3>
               <p className="text-xs text-stone-600 leading-relaxed">
-                Detailed estimates down to every screw and square foot. What we quote at sign-off is exactly what you pay. Zero surprise hidden costs.
+                Detailed estimates that list materials, hardware and scope before you sign off.
               </p>
             </div>
 
@@ -774,11 +774,6 @@ const AdsLanding = () => {
                   Living layout, customized kitchen module, custom wardrobes & modern TV console.
                 </p>
                 <div className="flex items-center gap-3 mt-3 pt-3 border-t border-stone-100 text-xs font-semibold text-stone-500">
-                  <span className="flex items-center gap-1 text-[#0F3B2E]">
-                    <DollarSign className="w-3.5 h-3.5" />
-                    <span>₹4L – ₹5 Lakhs</span>
-                  </span>
-                  <span className="text-stone-300">•</span>
                   <span className="flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" />
                     <span>45 Days Handover</span>
@@ -803,11 +798,6 @@ const AdsLanding = () => {
                   Premium custom kitchen tailored with acrylic cabinetry, soft-close hardware & quartz countertops.
                 </p>
                 <div className="flex items-center gap-3 mt-3 pt-3 border-t border-stone-100 text-xs font-semibold text-stone-500">
-                  <span className="flex items-center gap-1 text-[#0F3B2E]">
-                    <DollarSign className="w-3.5 h-3.5" />
-                    <span>₹3L – ₹4 Lakhs</span>
-                  </span>
-                  <span className="text-stone-300">•</span>
                   <span className="flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" />
                     <span>30 Days Handover</span>
@@ -832,11 +822,6 @@ const AdsLanding = () => {
                   Highly functional floor-to-ceiling sliding wardrobe layouts with premium built-in vanity console.
                 </p>
                 <div className="flex items-center gap-3 mt-3 pt-3 border-t border-stone-100 text-xs font-semibold text-stone-500">
-                  <span className="flex items-center gap-1 text-[#0F3B2E]">
-                    <DollarSign className="w-3.5 h-3.5" />
-                    <span>₹2.5L – ₹3.5 Lakhs</span>
-                  </span>
-                  <span className="text-stone-300">•</span>
                   <span className="flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" />
                     <span>25 Days Handover</span>
@@ -861,11 +846,6 @@ const AdsLanding = () => {
                   Luxury false ceiling design, architectural accent lighting plots, wooden paneling & TV unit execution.
                 </p>
                 <div className="flex items-center gap-3 mt-3 pt-3 border-t border-stone-100 text-xs font-semibold text-stone-500">
-                  <span className="flex items-center gap-1 text-[#0F3B2E]">
-                    <DollarSign className="w-3.5 h-3.5" />
-                    <span>₹6L – ₹8 Lakhs</span>
-                  </span>
-                  <span className="text-stone-300">•</span>
                   <span className="flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" />
                     <span>50 Days Handover</span>
@@ -890,11 +870,6 @@ const AdsLanding = () => {
                   Sleek handleless modular kitchen incorporating premium lacquer finish and pull-out storage accessories.
                 </p>
                 <div className="flex items-center gap-3 mt-3 pt-3 border-t border-stone-100 text-xs font-semibold text-stone-500">
-                  <span className="flex items-center gap-1 text-[#0F3B2E]">
-                    <DollarSign className="w-3.5 h-3.5" />
-                    <span>₹3.5L – ₹5 Lakhs</span>
-                  </span>
-                  <span className="text-stone-300">•</span>
                   <span className="flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" />
                     <span>28 Days Handover</span>
@@ -919,11 +894,6 @@ const AdsLanding = () => {
                   Clean, visual-space-optimized guest bedroom configuration featuring robust laminate sliding wardrobes.
                 </p>
                 <div className="flex items-center gap-3 mt-3 pt-3 border-t border-stone-100 text-xs font-semibold text-stone-500">
-                  <span className="flex items-center gap-1 text-[#0F3B2E]">
-                    <DollarSign className="w-3.5 h-3.5" />
-                    <span>₹1.8L – ₹3 Lakhs</span>
-                  </span>
-                  <span className="text-stone-300">•</span>
                   <span className="flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" />
                     <span>20 Days Handover</span>
@@ -970,7 +940,7 @@ const AdsLanding = () => {
                   Essential Spaces
                 </h3>
                 <div className="flex items-baseline gap-1 my-4">
-                  <span className="text-3xl md:text-4xl font-bold text-[#0F3B2E] font-serif">₹3.5L – ₹5L</span>
+                  <span className="text-2xl md:text-3xl font-bold text-[#0F3B2E] font-serif">Custom estimate</span>
                 </div>
                 <p className="text-xs text-stone-600 leading-relaxed mb-6">
                   Perfect for compact residences or homeowners seeking clean, essential modular installations without complex paneling work.
@@ -1012,7 +982,8 @@ const AdsLanding = () => {
                   Complete Home Plan
                 </h3>
                 <div className="flex items-baseline gap-1 my-4">
-                  <span className="text-3xl md:text-4xl font-bold text-white font-serif">₹5L – ₹10L</span>
+                  <span className="text-2xl md:text-3xl font-bold text-white font-serif">₹1,400–₹1,800 / sq.ft</span>
+                  <span className="text-xs text-stone-300">incl. materials</span>
                 </div>
                 <p className="text-xs text-stone-300 leading-relaxed mb-6">
                   Comprehensive custom design for the entire flat. Includes refined detailing, custom false ceiling panels, and direct architect oversight.
@@ -1051,7 +1022,7 @@ const AdsLanding = () => {
                   Premium Custom
                 </h3>
                 <div className="flex items-baseline gap-1 my-4">
-                  <span className="text-3xl md:text-4xl font-bold text-[#0F3B2E] font-serif">₹10L+</span>
+                  <span className="text-2xl md:text-3xl font-bold text-[#0F3B2E] font-serif">Custom estimate</span>
                 </div>
                 <p className="text-xs text-stone-600 leading-relaxed mb-6">
                   Elite signature homes with ultra-premium materials, structural interior layouts, customized high-end detailing, and luxury styling.
@@ -1360,7 +1331,7 @@ const AdsLanding = () => {
                   }`}
               >
                 <p className="px-6 py-4 text-xs md:text-sm text-stone-600 leading-relaxed">
-                  The commercial investment varies based on size, custom hardware selections, and finishing details. Typically, essential 2BHK and 3BHK flat interiors scale between ₹3.5 Lakhs and ₹8 Lakhs, with premium custom duplexes and villas starting higher.
+                  Full-home interiors are priced at ₹1,400–₹1,800 per sq.ft including materials. Final pricing depends on design, materials, hardware, scope, site conditions and final measurements. Kitchen-only and wardrobe-only work is estimated separately for your layout.
                 </p>
               </div>
             </div>

@@ -8,51 +8,32 @@ import WhyChooseUsSection from '../components/home/WhyChooseUsSection';
 import ProcessSection from '../components/home/ProcessSection';
 import TestimonialsSection from '../components/home/TestimonialsSection';
 import CTASection from '../components/home/CTASection';
+import { BUSINESS_ENTITY } from "../data/business";
 
 const HomePage = () => {
   return (
     <>
       <Helmet>
-        <title>Luxury Interior Designers in Bangalore | Denova Creations</title>
+        <title>Interior Designers in Bangalore | Denova Creations</title>
         <meta
           name="description"
-          content="Denova Creations is Bengaluru's premier home interior design studio. Specialized in bespoke modular kitchens, luxury wardrobes, and complete turnkey residential designs."
+          content="Denova Creations is an interior design company in Bangalore for full-home interiors, modular kitchens and wardrobes. Full-home interiors at ₹1,400–₹1,800 per sq.ft including materials."
         />
         <link rel="canonical" href="https://denovacreations.com/" />
         
         {/* Local Business Schema */}
         <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ProfessionalService",
-            name: "Denova Creations",
-            url: "https://denovacreations.com",
-            logo: "https://denovacreations.com/images/logo-primary.png",
-            image: "https://denovacreations.com/images/hero2.webp",
-            telephone: "+91 9591039597",
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: "373/2, Begur Hulimavu Road",
-              addressLocality: "Bengaluru",
-              addressRegion: "Karnataka",
-              postalCode: "560114",
-              addressCountry: "IN"
-            },
-            areaServed: "Bangalore",
-            priceRange: "₹₹₹",
-            description:
-              "Bespoke home interior designers in Bangalore specializing in custom modular kitchens, wardrobes, false ceilings, and turnkey luxury interiors."
-          })}
+          {JSON.stringify({ "@context": "https://schema.org", ...BUSINESS_ENTITY })}
         </script>
 
-        <meta property="og:title" content="Luxury Interior Designers in Bangalore | Denova Creations" />
-        <meta property="og:description" content="Elevate your living experience with premium home interior designers in Bangalore. Customized kitchens, wardrobes, and turnkey execution with 10-year warranty." />
+        <meta property="og:title" content="Interior Designers in Bangalore | Denova Creations" />
+        <meta property="og:description" content="Interior designers in Bangalore for full-home interiors, modular kitchens and wardrobes, from design to installation." />
         <meta property="og:image" content="https://denovacreations.com/images/hero2.webp" />
         <meta property="og:url" content="https://denovacreations.com/" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Luxury Interior Designers in Bangalore | Denova Creations" />
-        <meta name="twitter:description" content="Elevate your living experience with premium home interior designers in Bangalore. Customized kitchens, wardrobes, and turnkey execution with 10-year warranty." />
+        <meta name="twitter:title" content="Interior Designers in Bangalore | Denova Creations" />
+        <meta name="twitter:description" content="Interior designers in Bangalore for full-home interiors, modular kitchens and wardrobes, from design to installation." />
         <meta name="twitter:image" content="https://denovacreations.com/images/hero2.webp" />
       </Helmet>
 

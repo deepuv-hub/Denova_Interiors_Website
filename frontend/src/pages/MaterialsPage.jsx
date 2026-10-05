@@ -24,6 +24,7 @@ import {
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { companyInfo } from '../data/mock';
+import { FULL_HOME_RATE_TEXT } from '../data/pricing';
 import { Helmet } from "react-helmet-async";
 
 // Curated Woods Data for comparison
@@ -121,7 +122,7 @@ const estimationTiers = [
     tier: "Premium Elite",
     price: "₹3.0L - ₹5.5L",
     materials: "100% BWP Marine Plywood wet areas, gloss acrylic shutters, Hettich soft-close sliders.",
-    bestFor: "Urban 2BHK & 3BHK turnkey modular apartment packages."
+    bestFor: "Modular kitchen and wardrobe packages for 2BHK & 3BHK apartments."
   },
   {
     tier: "Signature Luxury",
@@ -622,7 +623,10 @@ const MaterialsPage = () => {
               <div className="lg:col-span-6 space-y-6">
                 <span className="text-[#0F3D3E] font-bold tracking-widest uppercase text-xs block font-bold">Costing Transparency</span>
                 <h2 className="text-3xl font-bold font-serif text-[#0F3D3E] tracking-tight leading-tight">Estimation Cost Tiers</h2>
-                
+                <p className="text-xs text-stone-500">
+                  These tiers cover modular furniture packages. Full-home interiors are priced at {FULL_HOME_RATE_TEXT}.
+                </p>
+
                 <div className="space-y-4">
                   {estimationTiers.map((tier, idx) => (
                     <div key={idx} className="p-5 bg-white rounded-3xl border border-stone-100 shadow-[0_5px_15px_rgba(0,0,0,0.005)] space-y-2">
