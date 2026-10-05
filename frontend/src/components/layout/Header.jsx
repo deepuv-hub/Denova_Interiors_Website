@@ -72,13 +72,6 @@ const Header = () => {
           </div>
           
           <div className="flex items-center gap-5">
-            <span className="text-[#E8D8C4] font-semibold flex items-center gap-1">
-              ★ {companyInfo.rating} Rating on Google
-            </span>
-            <span className="text-stone-600">|</span>
-            <span className="text-stone-400">{companyInfo.projectsCompleted}+ Luxury Projects Completed</span>
-            <span className="text-stone-600">|</span>
-            
             {/* WhatsApp direct shortcut in top bar */}
             <a
               href={`https://wa.me/919591039597?text=Hi,%20I'm%20interested%20in%20premium%20interior%20design%20services%20with%20Denova%20Creations.`}

@@ -4,13 +4,9 @@ import { Link } from "react-router-dom";
 import {
   ArrowRight,
   ArrowLeft,
-  CheckCircle2,
-  Star,
   Home,
   Building2,
   Castle,
-  Compass,
-  ShieldCheck,
   Check,
   PhoneCall,
   MessageSquare
@@ -291,18 +287,6 @@ const EstimatePage = () => {
 
           <div className="relative z-10 container-custom">
             <div className="max-w-3xl text-left">
-              {/* Google ratings */}
-              <div className="flex items-center gap-2 mb-4">
-                <span className="flex text-[#E8D8C4]">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-current" />
-                  ))}
-                </span>
-                <span className="text-stone-300 text-xs font-semibold uppercase tracking-wider">
-                  4.9 Google Rating • Bangalore's Premium Brand
-                </span>
-              </div>
-
               <h1 className="text-4xl md:text-5xl font-bold font-serif leading-tight text-white mb-4">
                 Interior Design Cost Calculator <span className="text-[#E8D8C4]">for Bangalore Homes</span>
               </h1>
@@ -767,64 +751,27 @@ const EstimatePage = () => {
                   </p>
                 </div>
 
-                <div className="bg-white p-6 rounded-3xl border border-stone-200/50 text-left">
-                  <h3 className="font-serif font-bold text-stone-900 text-sm mb-4">Instant Assurances</h3>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-2.5 text-xs text-stone-600">
-                      <ShieldCheck className="w-4 h-4 text-[#0F3D3E] flex-shrink-0 mt-0.5" />
-                      <span>10-Year structural material warranty</span>
-                    </li>
-                    <li className="flex items-start gap-2.5 text-xs text-stone-600">
-                      <CheckCircle2 className="w-4 h-4 text-[#0F3D3E] flex-shrink-0 mt-0.5" />
-                      <span>Transparent line-item material invoice</span>
-                    </li>
-                    <li className="flex items-start gap-2.5 text-xs text-stone-600">
-                      <Compass className="w-4 h-4 text-[#0F3D3E] flex-shrink-0 mt-0.5" />
-                      <span>Vastu-friendly architectural alignments</span>
-                    </li>
-                  </ul>
-                </div>
-
               </div>
 
             </div>
           </div>
         </section>
 
-        {/* TRUST BANNER */}
+        {/* CONFIRMED PRICING FACTS */}
         <section className="bg-white py-12 border-t border-stone-100">
           <div className="container-custom">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
               <div>
-                <div className="flex justify-center mb-3">
-                  <Star className="w-6 h-6 text-[#0F3D3E]" />
-                </div>
-                <h4 className="text-xl font-bold text-stone-950 font-serif">4.9 / 5★</h4>
-                <p className="text-stone-400 text-xs font-semibold mt-1">Google Rating</p>
+                <h4 className="text-xl font-bold text-stone-950 font-serif">₹1,400–₹1,800 / sq.ft.</h4>
+                <p className="text-stone-400 text-xs font-semibold mt-1">Full-home interiors, including materials</p>
               </div>
-
               <div>
-                <div className="flex justify-center mb-3">
-                  <Home className="w-6 h-6 text-[#0F3D3E]" />
-                </div>
-                <h4 className="text-xl font-bold text-stone-950 font-serif">150+</h4>
-                <p className="text-stone-400 text-xs font-semibold mt-1">Homes Delivered</p>
+                <h4 className="text-xl font-bold text-stone-950 font-serif">Carpet Area</h4>
+                <p className="text-stone-400 text-xs font-semibold mt-1">Basis for full-home pricing</p>
               </div>
-
               <div>
-                <div className="flex justify-center mb-3">
-                  <Building2 className="w-6 h-6 text-[#0F3D3E]" />
-                </div>
                 <h4 className="text-xl font-bold text-stone-950 font-serif">Bengaluru</h4>
-                <p className="text-stone-400 text-xs font-semibold mt-1">All Zones Covered</p>
-              </div>
-
-              <div>
-                <div className="flex justify-center mb-3">
-                  <CheckCircle2 className="w-6 h-6 text-[#0F3D3E]" />
-                </div>
-                <h4 className="text-xl font-bold text-stone-950 font-serif">45-60 Days</h4>
-                <p className="text-stone-400 text-xs font-semibold mt-1">Delivery Timeline</p>
+                <p className="text-stone-400 text-xs font-semibold mt-1">Service area</p>
               </div>
             </div>
           </div>
