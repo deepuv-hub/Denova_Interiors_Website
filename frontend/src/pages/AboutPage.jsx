@@ -1,21 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  ArrowRight, 
-  CheckCircle2, 
-  Target, 
-  Compass, 
-  ShieldCheck, 
-  Award, 
-  Users, 
-  Star, 
-  MapPin, 
-  Sparkles, 
-  ChevronRight,
-  MessageSquare,
-  PhoneCall,
-  Activity,
-  Heart
+import {
+  ArrowRight,
+  Target,
+  Compass,
+  ShieldCheck,
+  Award,
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
@@ -37,17 +27,12 @@ const AboutPage = () => {
     {
       icon: Target,
       title: 'Execution Excellence',
-      description: 'We prioritize absolute technical precision, ensuring factory edge-band finishing, durable materials, and immaculate alignments.'
+      description: 'We prioritize technical precision, durable materials, and immaculate alignments.'
     },
     {
       icon: Compass,
       title: 'Client-Centric Philosophy',
       description: 'Your unique lifestyle maps our blueprint. We coordinate design reviews, material touches, and cost outlines tailored to you.'
-    },
-    {
-      icon: ShieldCheck,
-      title: 'Structural Transparency',
-      description: 'Zero hidden fees, zero material substitutions. Every quotation outlines wood grades, thicknesses, and hardware brand tags.'
     },
     {
       icon: Award,
@@ -58,21 +43,6 @@ const AboutPage = () => {
 
   const premiumAdvantages = [
     {
-      number: "150+",
-      title: "Completed Luxury Homes",
-      desc: "Delivered strictly on time to satisfied homeowners in Bengaluru."
-    },
-    {
-      number: "German",
-      title: "Precision Engineering",
-      desc: "Factory machine finishing with zero margin for manual assembly errors."
-    },
-    {
-      number: "100%",
-      title: "Transparent Quotations",
-      desc: "No hidden charges, no surprises, and fully itemized material bills."
-    },
-    {
       number: "Turnkey",
       title: "Hassle-Free Delivery",
       desc: "Complete project management from floor plans to final deep cleaning."
@@ -81,11 +51,6 @@ const AboutPage = () => {
       number: "Tailored",
       title: "Architectural Layouts",
       desc: "Spacious wardrobes, false ceilings, and smart space planning."
-    },
-    {
-      number: "10-Year",
-      title: "Solid Warranty",
-      desc: "Long-term support backed by authentic hardware brands (Hettich, Hafele)."
     }
   ];
 
@@ -112,13 +77,13 @@ const AboutPage = () => {
     },
     {
       num: "05",
-      title: "Precision Fabrication",
-      desc: "Custom components are machine-finished in the factory with automated edge-banding to assure quality."
+      title: "Fabrication",
+      desc: "Custom components are fabricated to the approved design."
     },
     {
       num: "06",
       title: "Turnkey Handover",
-      desc: "Site installation supervised by engineers, final deep cleanup, and formal reveal of your luxury home."
+      desc: "Supervised site installation, final deep cleanup, and formal reveal of your luxury home."
     }
   ];
 
@@ -162,7 +127,7 @@ const AboutPage = () => {
               </h1>
               
               <p className="text-stone-300 text-sm md:text-base leading-relaxed max-w-xl">
-                Denova Creations is Bengaluru's premier turnkey home design studio. We bring European aesthetics, German-engineered precision, and authentic styling to create timeless living sanctuaries.
+                Denova Creations is a turnkey home design studio in Bengaluru. We bring European aesthetics and authentic styling to create timeless living sanctuaries.
               </p>
 
               <div className="pt-4 flex flex-wrap gap-4">
@@ -218,7 +183,7 @@ const AboutPage = () => {
                     At Denova Creations, we believe that an interior space is much more than curated coordinates of wood and fabric. It is a three-dimensional representation of your life story, your values, and your daily rituals.
                   </p>
                   <p>
-                    Established in the heart of Bengaluru, we have dedicated ourselves to bridging the gap between imaginative, high-end designs and practical execution realities. By investing heavily in modern factory machinery and professional site engineers, we ensure that every blueprint is translated to site reality with zero compromises.
+                    Established in the heart of Bengaluru, we have dedicated ourselves to bridging the gap between imaginative, high-end designs and practical execution realities.
                   </p>
                   
                   {/* Subtle Accent Highlight Quote */}
@@ -227,7 +192,7 @@ const AboutPage = () => {
                   </blockquote>
 
                   <p>
-                    Whether fabricating a high-gloss modular kitchen featuring intelligent space storage or styling a serene personal sanctuary bedroom, our philosophy remains client-first. We completely eliminate sub-contracting risks, securing an orderly, transparent, and timeline-strict delivery standard.
+                    Whether fabricating a high-gloss modular kitchen featuring intelligent space storage or styling a serene personal sanctuary bedroom, our philosophy remains client-first.
                   </p>
                 </div>
               </div>
@@ -282,7 +247,7 @@ const AboutPage = () => {
                   </div>
                   <h3 className="text-xl md:text-2xl font-bold text-[#0F3D3E] font-serif">Elevating Daily Experiences</h3>
                   <p className="text-stone-600 text-xs md:text-sm leading-relaxed max-w-2xl mx-auto">
-                    To redefine how residential spaces are curated, positioning Denova Creations as Bengaluru's benchmark studio for timeless luxury interior architecture. We visualize homes that capture perfect symmetry, balanced functional layouts, and aesthetic excellence that inspires elevated living standards.
+                    To redefine how residential spaces are curated through timeless luxury interior architecture. We visualize homes that capture perfect symmetry, balanced functional layouts, and aesthetic excellence that inspires elevated living standards.
                   </p>
                 </div>
               ) : (
@@ -292,14 +257,14 @@ const AboutPage = () => {
                   </div>
                   <h3 className="text-xl md:text-2xl font-bold text-[#0F3D3E] font-serif">Delivery with Complete Honesty</h3>
                   <p className="text-stone-600 text-xs md:text-sm leading-relaxed max-w-2xl mx-auto">
-                    To deliver stress-free, turnkey home design journeys executed with German-engineered machinery, absolute billing transparency, and authentic brand fittings. We coordinate and hand over bespoke residences strictly within predicted timelines and protect them with a solid 10-year warranty.
+                    To deliver stress-free, turnkey home design journeys with authentic brand fittings.
                   </p>
                 </div>
               )}
             </div>
 
-            {/* Core Values 2x2 Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto text-left">
+            {/* Core Values Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto text-left">
               {coreValues.map((value, idx) => {
                 const IconComponent = value.icon;
                 return (
@@ -335,12 +300,12 @@ const AboutPage = () => {
                 Why Choose Denova?
               </h2>
               <p className="text-stone-500 text-xs md:text-sm max-w-lg mx-auto">
-                We combine creative luxury styling with highly structured factory execution systems to provide a premium design experience.
+                We combine creative luxury styling with turnkey project management to provide a premium design experience.
               </p>
             </div>
 
             {/* Feature Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {premiumAdvantages.map((adv, idx) => (
                 <div 
                   key={idx} 
@@ -382,7 +347,7 @@ const AboutPage = () => {
                 Our Design Journey
               </h2>
               <p className="text-stone-500 text-xs md:text-sm">
-                A simple, elegant, and completely transparent step-by-step interior design execution path.
+                A simple, elegant, step-by-step interior design execution path.
               </p>
             </div>
 
@@ -439,19 +404,8 @@ const AboutPage = () => {
                   Our creative core is centered around spatial intelligence. We analyze spatial volumes, natural interior lighting directions, and physical foot traffic flows before proposing layouts.
                 </p>
                 <p>
-                  Every material finish, from high-gloss cabinetry to subtle textured accent paneling, is hand-selected in design meetings at our Bengaluru studio. By maintaining active and strict direct manufacturing controls, we completely bypass third-party sub-contracting quality issues, yielding a flawless luxury reveal standard.
+                  Every material finish, from high-gloss cabinetry to subtle textured accent paneling, is hand-selected in design meetings at our Bengaluru studio.
                 </p>
-                
-                <div className="grid grid-cols-2 gap-4 pt-4">
-                  <div className="p-4 bg-[#FAF8F5] rounded-2xl border border-stone-100">
-                    <span className="text-lg font-serif font-bold text-[#0F3D3E] block">45-Day</span>
-                    <span className="text-[10px] text-stone-500 font-semibold uppercase tracking-wider">Fast Turnaround</span>
-                  </div>
-                  <div className="p-4 bg-[#FAF8F5] rounded-2xl border border-stone-100">
-                    <span className="text-lg font-serif font-bold text-[#0F3D3E] block">German</span>
-                    <span className="text-[10px] text-stone-500 font-semibold uppercase tracking-wider">Factory Finishes</span>
-                  </div>
-                </div>
               </div>
 
             </div>
@@ -464,19 +418,7 @@ const AboutPage = () => {
             
             <div className="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-3xl shadow-[0_15px_40px_rgba(15,61,62,0.02)] border border-stone-200/40 text-left flex flex-col md:flex-row gap-8 items-center">
               
-              {/* Left trust ratings */}
-              <div className="flex-shrink-0 text-center md:text-left space-y-2 border-b md:border-b-0 md:border-r border-stone-100 pb-6 md:pb-0 md:pr-10">
-                <div className="text-5xl font-serif font-bold text-[#0F3D3E] tracking-tight">4.9★</div>
-                <div className="flex justify-center md:justify-start text-amber-400 gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-current" />
-                  ))}
-                </div>
-                <p className="text-[10px] text-stone-500 font-bold uppercase tracking-wider">Google Customer Rating</p>
-                <div className="pt-2 text-stone-400 text-xs">{companyInfo.projectsCompleted}+ Premium Homes Served</div>
-              </div>
-
-              {/* Right featured review */}
+              {/* Featured review */}
               <div className="flex-grow space-y-4">
                 <blockquote className="text-xs md:text-sm text-stone-600 italic leading-relaxed font-medium">
                   "Working with Denova Creations was a flawless experience. They completely managed our apartment interiors turnkey while keeping us updated on GTM timeline tracking. The final finishing details of our modular kitchen and wood fluting look extremely premium!"

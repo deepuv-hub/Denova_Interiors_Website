@@ -4,12 +4,10 @@ import { Link } from "react-router-dom";
 import {
   Sparkles,
   Star,
-  Award,
   ShieldCheck,
   Clock,
   Compass,
   DollarSign,
-  Users,
   PhoneCall,
   Calendar,
   ChevronDown,
@@ -17,7 +15,6 @@ import {
   CheckCircle,
   ArrowRight,
   MapPin,
-  Check,
   Zap,
   Info,
   MessageSquare,
@@ -44,7 +41,7 @@ const heroSlides = [
   {
     img: "/images/kitchen1.webp",
     title: "Luxury Modular Kitchen Designs",
-    tagline: "German-precision edge-banding and space-optimized workflows."
+    tagline: "Space-optimized kitchen workflows."
   },
   {
     img: "/images/kitchen2.webp",
@@ -54,7 +51,7 @@ const heroSlides = [
   {
     img: "/images/kitchen3.webp",
     title: "Boiling Water Proof Core Cabinetry",
-    tagline: "100% BWP Marine Plywood built to withstand heavy Indian cooking."
+    tagline: "BWP Marine Plywood for wet kitchen zones."
   },
   {
     img: "/images/landingpagehero.webp",
@@ -104,7 +101,7 @@ const kitchenWoods = [
   {
     name: "BWP Marine Plywood (IS:710)",
     bestFor: "Wet sink cabinets, bottom carcasses, utility areas",
-    benefit: "100% Boiling Water Proof synthetic resin bonding. Zero delamination or termite risk under heavy water exposure.",
+    benefit: "Boiling Water Proof synthetic resin bonding, suited to areas with heavy water exposure.",
     rank: "Mandatory Core"
   },
   {
@@ -114,10 +111,10 @@ const kitchenWoods = [
     rank: "Standard Core"
   },
   {
-    name: "German Precision Edge-Banding",
+    name: "Edge-Banding",
     bestFor: "Carcass edges, drawer panels, shutter borders",
-    benefit: "Automated millimeter-accurate hotmelt bonding that leaves zero gaps. Prevents moisture ingress and panel swelling.",
-    rank: "Factory Shield"
+    benefit: "Hotmelt edge bonding seals exposed board edges to help limit moisture ingress and panel swelling.",
+    rank: "Edge Finish"
   }
 ];
 
@@ -141,15 +138,11 @@ const kitchenReviews = [
 const kitchenFaqs = [
   {
     q: "Why is BWP Plywood mandatory for modular kitchens?",
-    a: "BWP (Boiling Water Proof) marine-grade plywood (certified IS:710) uses premium synthetic phenol-formaldehyde resin. This allows the core wood to withstand direct water contact and boiling water up to 72 hours without swelling or delamination. We mandate BWP for all under-sink boxes and lower carcass modules."
+    a: "BWP (Boiling Water Proof) marine-grade plywood (IS:710 grade) uses synthetic phenol-formaldehyde resin, which makes it more resistant to direct water contact, swelling and delamination than MR or BWR grades. We recommend BWP for under-sink boxes and lower carcass modules."
   },
   {
     q: "How are modular kitchen costs calculated in Bangalore?",
     a: "Modular kitchen pricing is calculated based on Running Feet (R.Ft) of the horizontal space, separating the base cabinets, wall cabinets, and countertop quartz. The core carcass material (BWP vs BWR), selected surface finish (laminate vs acrylic), and tandem accessories (Hettich drawers, pantry pull-outs) determine the final estimate."
-  },
-  {
-    q: "What is the delivery turnaround timeline for Denova modular kitchens?",
-    a: "Our strict turnaround timeline is 45 days. Because all modular components are precision-cut, pre-drilled, and hotmelt edge-banded in our automated factory, onsite assembly at your Bangalore apartment takes only 5 to 7 days, ensuring a clean, dust-free installation."
   },
   {
     q: "Do you design according to Vastu principles?",
@@ -357,40 +350,8 @@ const ModularKitchenBangalore = () => {
                 </h1>
 
                 <p className="text-stone-300 text-xs md:text-sm leading-relaxed">
-                  German precision edge-banding, Vastu-friendly cooking triangle zones, and 100% water-proof BWP marine plywood carcass shields built for Indian homes.
+                  Vastu-friendly cooking triangle zones and BWP marine plywood carcasses built for Indian homes.
                 </p>
-
-                {/* Core trust matrix */}
-                <div className="grid grid-cols-2 gap-4 border-t border-stone-700/50 pt-6 text-white text-xs font-semibold">
-                  <div className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-[#E8D8C4] mt-0.5" />
-                    <div>
-                      <span className="text-white block">10-Year Warranty</span>
-                      <span className="text-stone-400 font-normal text-[10px]">Millimeter factory precision</span>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-[#E8D8C4] mt-0.5" />
-                    <div>
-                      <span className="text-white block">150+ Kitchens Built</span>
-                      <span className="text-stone-400 font-normal text-[10px]">Zero middleman markups</span>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-[#E8D8C4] mt-0.5" />
-                    <div>
-                      <span className="text-white block">100% Waterproof</span>
-                      <span className="text-stone-400 font-normal text-[10px]">BWP Marine Ply wet cabinet base</span>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-[#E8D8C4] mt-0.5" />
-                    <div>
-                      <span className="text-white block">45-Day Turnaround</span>
-                      <span className="text-stone-400 font-normal text-[10px]">Neat, dustless onsite assembly</span>
-                    </div>
-                  </div>
-                </div>
 
                 <div className="pt-4 flex flex-wrap gap-4 items-center">
                   <a href="#layouts">
@@ -423,7 +384,7 @@ const ModularKitchenBangalore = () => {
                         Get Free Kitchen Estimate
                       </h2>
                       <p className="text-stone-500 text-xs font-medium">
-                        Receive a detailed itemized costing estimate within 30 minutes.
+                        Our team will contact you to discuss your requirement.
                       </p>
                     </div>
 
@@ -606,18 +567,10 @@ const ModularKitchenBangalore = () => {
         {/* 2. DUSTLESS TRUST STATS STRIP */}
         <section className="py-8 bg-white border-b border-stone-150 select-none">
           <div className="container-custom">
-            <div className="flex flex-wrap justify-center lg:justify-between items-center gap-6 lg:gap-0 max-w-5xl mx-auto text-xs font-bold text-stone-600">
+            <div className="flex flex-wrap justify-center items-center gap-6 lg:gap-12 max-w-5xl mx-auto text-xs font-bold text-stone-600">
               <span className="flex items-center gap-2">
                 <CheckCircle className="w-4.5 h-4.5 text-[#0F3D3E]" />
-                150+ Modular Kitchens Completed
-              </span>
-              <span className="flex items-center gap-2">
-                <CheckCircle className="w-4.5 h-4.5 text-[#0F3D3E]" />
-                German Precision Edge-banding
-              </span>
-              <span className="flex items-center gap-2">
-                <CheckCircle className="w-4.5 h-4.5 text-[#0F3D3E]" />
-                Century/Kitply IS:710 certified BWP Ply
+                Century/Kitply IS:710 BWP Ply
               </span>
               <span className="flex items-center gap-2">
                 <CheckCircle className="w-4.5 h-4.5 text-[#0F3D3E]" />
@@ -707,36 +660,22 @@ const ModularKitchenBangalore = () => {
               <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#0F3D3E] tracking-tight">
                 Designed for Reliability & Elegance
               </h2>
-              <p className="text-stone-500 text-xs md:text-sm">
-                We eliminate sub-contracting and field carpentry errors with automated factory precision edge finishes.
-              </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto text-left">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto text-left">
               
               {/* Point 1 */}
               <div className="p-8 bg-[#FAF8F5] rounded-3xl border border-stone-100/60 space-y-3.5 hover:border-[#E8D8C4] hover:bg-white transition-all duration-300">
                 <div className="w-9 h-9 bg-white text-[#0F3D3E] border border-stone-100 flex items-center justify-center rounded-lg shadow-xs">
                   <ShieldCheck className="w-5 h-5 text-[#E8D8C4]" />
                 </div>
-                <h3 className="font-serif font-bold text-base text-[#0F3D3E]">100% Waterproof Carcass</h3>
+                <h3 className="font-serif font-bold text-base text-[#0F3D3E]">BWP Plywood for Wet Zones</h3>
                 <p className="text-stone-500 text-xs md:text-sm leading-relaxed">
-                  We use IS:710 Boiling Water Proof (BWP) marine plywood exclusively under sinks and washing zones to prevent structural rot or termite nesting.
+                  We use IS:710 Boiling Water Proof (BWP) marine plywood under sinks and washing zones to help resist moisture damage and swelling.
                 </p>
               </div>
 
               {/* Point 2 */}
-              <div className="p-8 bg-[#FAF8F5] rounded-3xl border border-stone-100/60 space-y-3.5 hover:border-[#E8D8C4] hover:bg-white transition-all duration-300">
-                <div className="w-9 h-9 bg-white text-[#0F3D3E] border border-stone-100 flex items-center justify-center rounded-lg shadow-xs">
-                  <Award className="w-5 h-5 text-[#E8D8C4]" />
-                </div>
-                <h3 className="font-serif font-bold text-base text-[#0F3D3E]">German Edge-Banding Precision</h3>
-                <p className="text-stone-500 text-xs md:text-sm leading-relaxed">
-                  All board borders undergo automated factory edge-binding with PUR hotmelt technology, sealing boards 100% from water entry and swelling.
-                </p>
-              </div>
-
-              {/* Point 3 */}
               <div className="p-8 bg-[#FAF8F5] rounded-3xl border border-stone-100/60 space-y-3.5 hover:border-[#E8D8C4] hover:bg-white transition-all duration-300">
                 <div className="w-9 h-9 bg-white text-[#0F3D3E] border border-stone-100 flex items-center justify-center rounded-lg shadow-xs">
                   <Clock className="w-5 h-5 text-[#E8D8C4]" />
@@ -747,7 +686,7 @@ const ModularKitchenBangalore = () => {
                 </p>
               </div>
 
-              {/* Point 4 */}
+              {/* Point 3 */}
               <div className="p-8 bg-[#FAF8F5] rounded-3xl border border-stone-100/60 space-y-3.5 hover:border-[#E8D8C4] hover:bg-white transition-all duration-300">
                 <div className="w-9 h-9 bg-white text-[#0F3D3E] border border-stone-100 flex items-center justify-center rounded-lg shadow-xs">
                   <Compass className="w-5 h-5 text-[#E8D8C4]" />
@@ -755,28 +694,6 @@ const ModularKitchenBangalore = () => {
                 <h3 className="font-serif font-bold text-base text-[#0F3D3E]">Vastu-Optimized Placement</h3>
                 <p className="text-stone-500 text-xs md:text-sm leading-relaxed">
                   Our layouts strictly map Vastu principles, placing the cooking stove in the South-East zone and keeping the washing sink completely separate.
-                </p>
-              </div>
-
-              {/* Point 5 */}
-              <div className="p-8 bg-[#FAF8F5] rounded-3xl border border-stone-100/60 space-y-3.5 hover:border-[#E8D8C4] hover:bg-white transition-all duration-300">
-                <div className="w-9 h-9 bg-white text-[#0F3D3E] border border-stone-100 flex items-center justify-center rounded-lg shadow-xs">
-                  <DollarSign className="w-5 h-5 text-[#E8D8C4]" />
-                </div>
-                <h3 className="font-serif font-bold text-base text-[#0F3D3E]">Zero Cost Deviations</h3>
-                <p className="text-stone-500 text-xs md:text-sm leading-relaxed">
-                  Once your 3D kitchen layout is approved, your itemized cost quotation is locked. Zero extra charges, zero mid-project price changes.
-                </p>
-              </div>
-
-              {/* Point 6 */}
-              <div className="p-8 bg-[#FAF8F5] rounded-3xl border border-stone-100/60 space-y-3.5 hover:border-[#E8D8C4] hover:bg-white transition-all duration-300">
-                <div className="w-9 h-9 bg-white text-[#0F3D3E] border border-stone-100 flex items-center justify-center rounded-lg shadow-xs">
-                  <Users className="w-5 h-5 text-[#E8D8C4]" />
-                </div>
-                <h3 className="font-serif font-bold text-base text-[#0F3D3E]">Dedicated Structural Supervision</h3>
-                <p className="text-stone-500 text-xs md:text-sm leading-relaxed">
-                  A certified civil engineer monitors your onsite module alignment and stone fittings directly, avoiding manual carpentry errors.
                 </p>
               </div>
 
@@ -799,11 +716,11 @@ const ModularKitchenBangalore = () => {
                 </div>
                 
                 <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#0F3D3E] tracking-tight leading-tight">
-                  Premium Sourcing. Total Transparency.
+                  Kitchen Materials & Hardware
                 </h2>
-                
+
                 <p className="text-stone-500 text-xs md:text-sm leading-relaxed">
-                  We believe a luxury kitchen should last a generation. We only source certified, branded boards and authentic Hettich/Hafele hardware to guarantee lifetime performance.
+                  We believe a luxury kitchen should last a generation. We source branded boards and authentic Hettich/Hafele hardware.
                 </p>
 
                 {/* Woods data blocks */}
@@ -868,7 +785,7 @@ const ModularKitchenBangalore = () => {
                     ₹1.5L - ₹2.5L
                   </span>
                   <p className="text-stone-500 text-xs leading-relaxed">
-                    Perfect for compact standard apartments or rental homes requiring robust, waterproof modular cores at an optimized price point.
+                    Perfect for compact standard apartments or rental homes requiring robust modular cores at an optimized price point.
                   </p>
                   <ul className="space-y-2 pt-2 border-t border-stone-200/50 text-[11px] text-stone-600 font-semibold">
                     <li className="flex items-center gap-2">✔ Moisture resistant BWR Plywood carcass</li>
@@ -886,7 +803,6 @@ const ModularKitchenBangalore = () => {
 
               {/* Tier 2 */}
               <div className="p-8 bg-white rounded-3xl border-2 border-[#0F3D3E] shadow-xl flex flex-col justify-between relative">
-                <span className="absolute top-4 right-4 bg-emerald-700 text-white font-bold text-[8px] uppercase tracking-widest px-2.5 py-1 rounded-full">Best Seller</span>
                 <div className="space-y-4">
                   <span className="text-[#E8D8C4] font-bold text-[9px] uppercase tracking-widest block">Premium Elite</span>
                   <h3 className="font-serif font-bold text-xl text-[#0F3D3E]">Urban Parallel / U-Shape</h3>
@@ -897,7 +813,7 @@ const ModularKitchenBangalore = () => {
                     Our signature tier for modern home owners. Full BWP marine ply cores matched with highly reflective contemporary surface finishes.
                   </p>
                   <ul className="space-y-2 pt-2 border-t border-stone-200/50 text-[11px] text-stone-600 font-semibold">
-                    <li className="flex items-center gap-2 text-emerald-800">✔ 100% BWP Marine Plywood core</li>
+                    <li className="flex items-center gap-2 text-emerald-800">✔ BWP Marine Plywood core</li>
                     <li className="flex items-center gap-2">✔ Premium Gloss Acrylic shutters</li>
                     <li className="flex items-center gap-2">✔ Hettich soft-close tandem drawers</li>
                     <li className="flex items-center gap-2">✔ Custom modular bottle pull-outs</li>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle2, Clock, ArrowRight } from 'lucide-react';
+import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
 import { processSteps, faqs, companyInfo } from '../data/mock';
@@ -18,7 +18,7 @@ const ProcessPage = () => {
               <span className="text-[#C8A35F]"> Work</span>
             </h1>
             <p className="text-lg md:text-xl text-[#4A4A4A] leading-relaxed">
-              A streamlined, transparent process designed to transform your vision into reality with minimal hassle and maximum satisfaction.
+              A streamlined process designed to transform your vision into reality with minimal hassle and maximum satisfaction.
             </p>
           </div>
         </div>
@@ -39,21 +39,13 @@ const ProcessPage = () => {
                   </div>
                   
                   {/* Content */}
-                  <div className="lg:col-span-7">
+                  <div className="lg:col-span-10">
                     <h3 className="text-2xl md:text-3xl font-semibold text-[#1A1A1A] mb-3" style={{ fontFamily: 'Playfair Display, serif' }}>
                       {step.title}
                     </h3>
                     <p className="text-[#4A4A4A] text-lg leading-relaxed">
                       {step.description}
                     </p>
-                  </div>
-                  
-                  {/* Duration */}
-                  <div className="lg:col-span-3 flex lg:justify-end">
-                    <div className="flex items-center gap-2 bg-[#F5F5F5] px-4 py-2 rounded-sm">
-                      <Clock className="w-5 h-5 text-[#C8A35F]" />
-                      <span className="text-[#4A4A4A] font-medium">{step.duration}</span>
-                    </div>
                   </div>
                 </div>
                 
@@ -63,37 +55,6 @@ const ProcessPage = () => {
                 )}
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline Summary */}
-      <section className="py-16 bg-[#1F1F1F]">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Typical Project Timeline
-            </h2>
-            <p className="text-white/70 max-w-2xl mx-auto">
-              Most residential projects are completed within 45-60 days. Timeline may vary based on project scope and complexity.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-8 border border-white/10 rounded-sm">
-              <p className="text-4xl font-bold text-[#C8A35F] mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>1-2 Weeks</p>
-              <p className="text-white/80 font-medium mb-2">Design Phase</p>
-              <p className="text-white/60 text-sm">Consultation, planning, and design approval</p>
-            </div>
-            <div className="text-center p-8 border border-white/10 rounded-sm">
-              <p className="text-4xl font-bold text-[#C8A35F] mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>6-10 Weeks</p>
-              <p className="text-white/80 font-medium mb-2">Execution Phase</p>
-              <p className="text-white/60 text-sm">Material procurement and installation</p>
-            </div>
-            <div className="text-center p-8 border border-white/10 rounded-sm">
-              <p className="text-4xl font-bold text-[#C8A35F] mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>2-3 Days</p>
-              <p className="text-white/80 font-medium mb-2">Handover Phase</p>
-              <p className="text-white/60 text-sm">Quality check and final delivery</p>
-            </div>
           </div>
         </div>
       </section>

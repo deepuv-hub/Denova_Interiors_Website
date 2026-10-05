@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Link } from 'react-router-dom';
-import { 
-  X, 
-  ArrowRight, 
-  MapPin, 
-  Clock, 
-  Maximize2, 
-  CheckCircle2, 
-  MessageSquare, 
-  Compass, 
-  ShieldCheck
+import {
+  X,
+  ArrowRight,
+  MapPin,
+  Clock,
+  Maximize2,
+  CheckCircle2,
+  MessageSquare,
+  Compass,
+  ShieldCheck,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { companyInfo } from "../data/mock";
@@ -195,7 +197,7 @@ const PortfolioPage = () => {
                     </p>
 
                     <p className="text-xs text-stone-400 line-clamp-2">
-                      Designed with premium {project.materialsUsed.toLowerCase()}. Site civil engineer supervised turnkey execution in Bangalore.
+                      Designed with premium {project.materialsUsed.toLowerCase()}.
                     </p>
 
                     <div className="pt-2 flex items-center justify-between border-t border-stone-100 text-[10px] text-stone-400 font-bold uppercase tracking-wider">
@@ -283,7 +285,7 @@ const PortfolioPage = () => {
                 <div className="mt-6 bg-white/5 backdrop-blur-md p-5 rounded-2xl border border-white/10 text-left space-y-2">
                   <span className="text-[#E8D8C4] text-[9px] font-bold uppercase tracking-widest block">Slide Design Detailing</span>
                   <p className="text-stone-300 text-xs md:text-sm leading-relaxed">
-                    {selectedProject.explanations[activeImageIndex] || "Luxury interior detailing coordinating high-end plywood material, custom edge-banding finishes, and optimized visual balances."}
+                    {selectedProject.explanations[activeImageIndex] || "Luxury interior detailing coordinating high-end plywood material and optimized visual balances."}
                   </p>
                 </div>
 
@@ -364,7 +366,6 @@ const PortfolioPage = () => {
                     </h4>
                     <ul className="space-y-1.5 text-[11px] text-[#0F3D3E] font-semibold">
                       <li className="flex items-center gap-1.5">✓ {selectedProject.supervision}</li>
-                      <li className="flex items-center gap-1.5">✓ German factory automated edge-banding</li>
                     </ul>
                   </div>
 

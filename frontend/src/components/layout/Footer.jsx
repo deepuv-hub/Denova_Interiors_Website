@@ -43,7 +43,7 @@ const Footer = () => {
               </div>
               
               <p className="text-stone-400 text-[11px] leading-relaxed mb-4">
-                Bengaluru's premier home interior brand. Specializing in factory-finished modular kitchens, bespoke wardrobes, and complete luxury turnkey residential interior designs.
+                Interior design for homes in Bengaluru: full-home interiors, modular kitchens and custom wardrobes.
               </p>
               
               {/* Luxury Social Icons Bar */}
@@ -129,7 +129,6 @@ const Footer = () => {
                     <a href={`tel:${companyInfo.primaryPhone.replace(/\s+/g, "")}`} className="text-stone-300 hover:text-white font-semibold transition-colors block">
                       {companyInfo.primaryPhone}
                     </a>
-                    <span className="text-[9px] text-stone-500 block mt-0.5">Mon - Sat: 9:00 AM - 7:00 PM</span>
                   </div>
                 </li>
                 

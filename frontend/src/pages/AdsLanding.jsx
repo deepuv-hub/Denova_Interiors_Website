@@ -8,7 +8,6 @@ import {
   ShieldCheck,
   Clock,
   Compass,
-  DollarSign,
   Users,
   PhoneCall,
   Calendar,
@@ -16,8 +15,7 @@ import {
   ChevronUp,
   CheckCircle,
   ArrowRight,
-  MapPin,
-  Check
+  Check,
 } from "lucide-react";
 import {
   buildLeadPayload,
@@ -256,7 +254,7 @@ const AdsLanding = () => {
             {/* TAGLINE */}
             <div className="inline-flex items-center gap-2 bg-[#E7D7C9]/10 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#E7D7C9]/20 text-[#E7D7C9] text-xs font-semibold uppercase tracking-wider mb-6">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Bengaluru's Premium Interior Brand</span>
+              <span>Interior design for homes in Bengaluru</span>
             </div>
 
             {/* MAIN H1 - SEO CONVERSION TARGETED */}
@@ -273,24 +271,8 @@ const AdsLanding = () => {
               For homeowners planning high-end luxury interiors with structured, transparent execution.
             </p>
 
-            {/* TRUST SIGNALS */}
-            <div className="mt-8 pt-8 border-t border-white/10 grid grid-cols-3 gap-4 text-left">
-              <div>
-                <p className="text-2xl md:text-3xl font-bold text-white font-serif">100+</p>
-                <p className="text-[10px] md:text-xs text-stone-400 uppercase tracking-widest font-semibold mt-1">Homes Delivered</p>
-              </div>
-              <div>
-                <p className="text-2xl md:text-3xl font-bold text-white font-serif">4.8★</p>
-                <p className="text-[10px] md:text-xs text-stone-400 uppercase tracking-widest font-semibold mt-1">Google Rating</p>
-              </div>
-              <div>
-                <p className="text-2xl md:text-3xl font-bold text-white font-serif">10 Yr</p>
-                <p className="text-[10px] md:text-xs text-stone-400 uppercase tracking-widest font-semibold mt-1">Material Warranty</p>
-              </div>
-            </div>
-
             <p className="mt-6 text-xs text-stone-400 italic">
-              End-to-End Execution &nbsp;•&nbsp; Typical 30–45 Working-Day Execution &nbsp;•&nbsp; No Hidden Costs
+              End-to-End Execution
             </p>
 
             {/* PRIMARY BUTTON ON MOBILE */}
@@ -640,11 +622,11 @@ const AdsLanding = () => {
           </h2>
           <div className="w-16 h-1 bg-[#E7D7C9] mx-auto mt-4 mb-8 rounded-full"></div>
           <p className="text-stone-600 max-w-2xl mx-auto text-sm leading-relaxed mb-12">
-            We focus on strict execution discipline, absolute material integrity, and structured milestones. No confusion, no unapproved budget escalations.
+            We focus on strict execution discipline, absolute material integrity, and structured milestones.
           </p>
 
           {/* VALUES GRID */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+          <div className="grid md:grid-cols-2 gap-6 text-left">
             {/* VALUE CARD 1 */}
             <div className="bg-white border border-[#E5DDD3] rounded-xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-md transition duration-300">
               <div className="w-12 h-12 rounded-xl bg-[#0F3B2E]/5 flex items-center justify-center text-[#0F3B2E] mb-4">
@@ -667,20 +649,7 @@ const AdsLanding = () => {
                 Strict Schedule Milestones
               </h3>
               <p className="text-xs text-stone-600 leading-relaxed">
-                Every project is tracked with modern gantt timelines. We maintain systematic progress, ensuring your home is delivered on time, as scheduled.
-              </p>
-            </div>
-
-            {/* VALUE CARD 3 */}
-            <div className="bg-white border border-[#E5DDD3] rounded-xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-md transition duration-300">
-              <div className="w-12 h-12 rounded-xl bg-[#0F3B2E]/5 flex items-center justify-center text-[#0F3B2E] mb-4">
-                <DollarSign className="w-6 h-6" />
-              </div>
-              <h3 className="font-semibold font-serif text-lg text-[#0F3B2E] mb-2">
-                Transparent Estimates
-              </h3>
-              <p className="text-xs text-stone-600 leading-relaxed">
-                Detailed estimates that list materials, hardware and scope before you sign off.
+                Every project is tracked with modern gantt timelines. We maintain systematic progress.
               </p>
             </div>
 
@@ -706,7 +675,7 @@ const AdsLanding = () => {
                 Premium Material Integrity
               </h3>
               <p className="text-xs text-stone-600 leading-relaxed">
-                We strictly deploy branded, certified high-grade waterproof plywood, robust hardware systems, and durable laminates.
+                We strictly deploy branded, high-grade waterproof plywood, robust hardware systems, and durable laminates.
               </p>
             </div>
 
@@ -732,7 +701,7 @@ const AdsLanding = () => {
               Start Planning Your Interior
             </button>
             <p className="text-[11px] text-stone-500 mt-3">
-              100+ Happy Homeowners • Dedicated Execution Teams • 10-Year Warranty Coverage
+              Dedicated Execution Teams
             </p>
           </div>
         </div>
@@ -751,7 +720,7 @@ const AdsLanding = () => {
             </h2>
             <div className="w-16 h-1 bg-[#E7D7C9] mx-auto mt-4 mb-3 rounded-full"></div>
             <p className="text-stone-600 text-sm leading-relaxed">
-              Step inside real homes designed, executed, and handed over by Denova Creations. Every project represents precise budget compliance.
+              Step inside real homes designed, executed, and handed over by Denova Creations.
             </p>
           </div>
 
@@ -773,12 +742,6 @@ const AdsLanding = () => {
                 <p className="text-xs text-stone-600 mt-1">
                   Living layout, customized kitchen module, custom wardrobes & modern TV console.
                 </p>
-                <div className="flex items-center gap-3 mt-3 pt-3 border-t border-stone-100 text-xs font-semibold text-stone-500">
-                  <span className="flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5" />
-                    <span>45 Days Handover</span>
-                  </span>
-                </div>
               </div>
             </div>
 
@@ -797,12 +760,6 @@ const AdsLanding = () => {
                 <p className="text-xs text-stone-600 mt-1">
                   Premium custom kitchen tailored with acrylic cabinetry, soft-close hardware & quartz countertops.
                 </p>
-                <div className="flex items-center gap-3 mt-3 pt-3 border-t border-stone-100 text-xs font-semibold text-stone-500">
-                  <span className="flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5" />
-                    <span>30 Days Handover</span>
-                  </span>
-                </div>
               </div>
             </div>
 
@@ -821,12 +778,6 @@ const AdsLanding = () => {
                 <p className="text-xs text-stone-600 mt-1">
                   Highly functional floor-to-ceiling sliding wardrobe layouts with premium built-in vanity console.
                 </p>
-                <div className="flex items-center gap-3 mt-3 pt-3 border-t border-stone-100 text-xs font-semibold text-stone-500">
-                  <span className="flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5" />
-                    <span>25 Days Handover</span>
-                  </span>
-                </div>
               </div>
             </div>
 
@@ -845,12 +796,6 @@ const AdsLanding = () => {
                 <p className="text-xs text-stone-600 mt-1">
                   Luxury false ceiling design, architectural accent lighting plots, wooden paneling & TV unit execution.
                 </p>
-                <div className="flex items-center gap-3 mt-3 pt-3 border-t border-stone-100 text-xs font-semibold text-stone-500">
-                  <span className="flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5" />
-                    <span>50 Days Handover</span>
-                  </span>
-                </div>
               </div>
             </div>
 
@@ -869,12 +814,6 @@ const AdsLanding = () => {
                 <p className="text-xs text-stone-600 mt-1">
                   Sleek handleless modular kitchen incorporating premium lacquer finish and pull-out storage accessories.
                 </p>
-                <div className="flex items-center gap-3 mt-3 pt-3 border-t border-stone-100 text-xs font-semibold text-stone-500">
-                  <span className="flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5" />
-                    <span>28 Days Handover</span>
-                  </span>
-                </div>
               </div>
             </div>
 
@@ -893,12 +832,6 @@ const AdsLanding = () => {
                 <p className="text-xs text-stone-600 mt-1">
                   Clean, visual-space-optimized guest bedroom configuration featuring robust laminate sliding wardrobes.
                 </p>
-                <div className="flex items-center gap-3 mt-3 pt-3 border-t border-stone-100 text-xs font-semibold text-stone-500">
-                  <span className="flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5" />
-                    <span>20 Days Handover</span>
-                  </span>
-                </div>
               </div>
             </div>
           </div>
@@ -1054,10 +987,6 @@ const AdsLanding = () => {
               </button>
             </div>
           </div>
-
-          <p className="text-center text-xs text-stone-500 mt-12">
-            No last-minute cost escalations. Detailed item-wise commercial sheet provided prior to any project kick-off.
-          </p>
         </div>
       </section>
 
@@ -1156,23 +1085,6 @@ const AdsLanding = () => {
             <div className="w-16 h-1 bg-[#E7D7C9] mx-auto mt-4 mb-3 rounded-full"></div>
             <p className="text-stone-600 text-sm leading-relaxed">
               Real experiences from homeowners who trusted Denova Creations for their space execution.
-            </p>
-          </div>
-
-          {/* GOOGLE TRUST SCORE BOX */}
-          <div className="bg-white border border-[#E5DDD3] p-5 rounded-2xl max-w-md mx-auto text-center shadow-sm mb-12 flex flex-col items-center justify-center">
-            <div className="flex items-center gap-1 text-[#E7D7C9] mb-1">
-              <Star className="w-5 h-5 fill-current" />
-              <Star className="w-5 h-5 fill-current" />
-              <Star className="w-5 h-5 fill-current" />
-              <Star className="w-5 h-5 fill-current" />
-              <Star className="w-5 h-5 fill-current" />
-            </div>
-            <p className="font-bold text-stone-900 text-base">
-              Google Customer Rating: <span className="text-[#0F3B2E]">4.8 / 5</span>
-            </p>
-            <p className="text-xs text-stone-500">
-              Based on over 100+ complete residential projects in Bangalore
             </p>
           </div>
 
@@ -1311,7 +1223,7 @@ const AdsLanding = () => {
             </h2>
             <div className="w-16 h-1 bg-[#E7D7C9] mx-auto mt-4 mb-3 rounded-full"></div>
             <p className="text-stone-600 text-sm">
-              Quick answers regarding modular specifications, timelines, and commercial procedures in Bangalore.
+              Quick answers regarding modular specifications and commercial procedures in Bangalore.
             </p>
           </div>
 
@@ -1332,44 +1244,6 @@ const AdsLanding = () => {
               >
                 <p className="px-6 py-4 text-xs md:text-sm text-stone-600 leading-relaxed">
                   Full-home interiors are priced at ₹1,400–₹1,800 per sq.ft including materials. Final pricing depends on design, materials, hardware, scope, site conditions and final measurements. Kitchen-only and wardrobe-only work is estimated separately for your layout.
-                </p>
-              </div>
-            </div>
-
-            {/* FAQ 2 */}
-            <div className="border border-[#E5DDD3] rounded-xl overflow-hidden bg-[#FAF8F5]">
-              <button
-                onClick={() => toggleFaq(1)}
-                className="w-full px-6 py-4 flex items-center justify-between text-left font-semibold font-serif text-sm md:text-base text-[#0F3B2E] transition focus:outline-none"
-              >
-                <span>How long does it take from plan design to site handover?</span>
-                {activeFaq === 1 ? <ChevronUp className="w-4 h-4 shrink-0 text-[#0F3B2E]" /> : <ChevronDown className="w-4 h-4 shrink-0 text-[#0F3B2E]" />}
-              </button>
-              <div
-                className={`transition-all duration-300 ease-in-out overflow-hidden ${activeFaq === 1 ? "max-h-40 border-t border-[#E5DDD3]/40" : "max-h-0"
-                  }`}
-              >
-                <p className="px-6 py-4 text-xs md:text-sm text-stone-600 leading-relaxed">
-                  Most regular interior execution milestones are achieved within 30 to 45 working days post final draft sign-off. Detailed bespoke custom work or high-end villa configurations can scale up to 60 working days.
-                </p>
-              </div>
-            </div>
-
-            {/* FAQ 3 */}
-            <div className="border border-[#E5DDD3] rounded-xl overflow-hidden bg-[#FAF8F5]">
-              <button
-                onClick={() => toggleFaq(2)}
-                className="w-full px-6 py-4 flex items-center justify-between text-left font-semibold font-serif text-sm md:text-base text-[#0F3B2E] transition focus:outline-none"
-              >
-                <span>Are there warranty guarantees on materials used?</span>
-                {activeFaq === 2 ? <ChevronUp className="w-4 h-4 shrink-0 text-[#0F3B2E]" /> : <ChevronDown className="w-4 h-4 shrink-0 text-[#0F3B2E]" />}
-              </button>
-              <div
-                className={`transition-all duration-300 ease-in-out overflow-hidden ${activeFaq === 2 ? "max-h-40 border-t border-[#E5DDD3]/40" : "max-h-0"
-                  }`}
-              >
-                <p className="px-6 py-4 text-xs md:text-sm text-stone-600 leading-relaxed">
-                  Yes, absolute assurance is provided. We carry a structural material warranty of up to 10 years on select boiling waterproof plywood laminates, and direct brand warranties on premium hardware accessories.
                 </p>
               </div>
             </div>
@@ -1407,7 +1281,7 @@ const AdsLanding = () => {
                   }`}
               >
                 <p className="px-6 py-4 text-xs md:text-sm text-stone-600 leading-relaxed">
-                  All plywood batches undergo rigorous waterproof and density certifications at the facility before transit. We also welcome client structural checks directly on-site prior to final laminations.
+                  We welcome client structural checks directly on-site prior to final laminations.
                 </p>
               </div>
             </div>
@@ -1570,7 +1444,7 @@ const AdsLanding = () => {
 
             <div className="text-center mt-2 text-[11px] text-stone-500 space-y-1">
               <p className="font-semibold text-stone-700">
-                Senior architect will contact you within 30 minutes.
+                Our team will contact you to discuss your requirement.
               </p>
               <p className="text-stone-400">
                 No spam • 100% confidential • Complete execution team based in Bangalore
@@ -1593,7 +1467,7 @@ const AdsLanding = () => {
             Plan Your Space with Precise Architectural Detail
           </h2>
           <p className="text-stone-300 text-sm md:text-base mb-8 max-w-xl mx-auto leading-relaxed">
-            Eliminate structural layout guesswork, design deviations, and commercial confusion. Secure a direct design consultation with our senior project team today.
+            Eliminate structural layout guesswork. Secure a direct design consultation with our senior project team today.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
@@ -1612,7 +1486,7 @@ const AdsLanding = () => {
             </a>
           </div>
           <p className="text-xs text-stone-400 mt-6 uppercase tracking-wider font-semibold">
-            ⭐ 4.8 Rating • 100+ Homes Handed Over • Dedicated Bangalore Support
+            Dedicated Bangalore Support
           </p>
         </div>
       </section>
@@ -1639,9 +1513,8 @@ const AdsLanding = () => {
       {/* SMART STICKY BOTTOM MOBILE CTA */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-stone-200/50 px-4 py-3 flex items-center justify-between shadow-[0_-8px_30px_rgba(0,0,0,0.08)]">
         <div>
-          <p className="text-[9px] font-bold text-stone-400 uppercase tracking-widest leading-none">Consultation Slots Open</p>
-          <p className="text-xs font-bold text-[#0F3B2E] mt-1 flex items-center gap-1 font-serif">
-            <span>★ 4.8 Rated (100+ Homes)</span>
+          <p className="text-xs font-bold text-[#0F3B2E] flex items-center gap-1 font-serif">
+            <span>Free design consultation</span>
           </p>
         </div>
         <button

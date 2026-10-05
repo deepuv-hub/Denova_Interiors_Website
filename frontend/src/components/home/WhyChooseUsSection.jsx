@@ -1,10 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { FULL_HOME_RATE_TEXT } from '../../data/pricing';
 
+// Only owner-confirmed facts here (no ratings, counts, warranties or timelines).
 const brandStats = [
-  { number: "150+", label: "Completed Luxury Homes", desc: "Delivered strictly within timeline" },
-  { number: "10-Year", label: "Material Warranty", desc: "Assuring authentic German hardware" },
-  { number: "100%", label: "Transparent Estimates", desc: "Zero hidden costs, zero surprises" },
-  { number: "45-Day", label: "On-Time Handover", desc: "Planned execution timeline" }
+  { number: "₹1,400–₹1,800", label: "Per sq.ft.", desc: "Full-home interiors, including materials" },
+  { number: "Carpet Area", label: "Pricing Basis", desc: "Full-home pricing is based on carpet area" },
+  { number: "Bengaluru", label: "Service Area", desc: "Interior design for homes in Bengaluru" }
 ];
 
 const WhyChooseUsSection = () => {
@@ -13,17 +15,18 @@ const WhyChooseUsSection = () => {
       <div className="container-custom">
         <div className="text-center mb-16 max-w-2xl mx-auto space-y-3">
           <span className="text-[#E8D8C4] font-bold tracking-widest uppercase text-xs block">
-            The Denova Advantage
+            Clear Pricing
           </span>
           <h2 className="text-3xl md:text-5xl font-bold text-white font-serif leading-tight">
-            Architectural Standards
+            How Full-Home Pricing Works
           </h2>
           <p className="text-stone-400 text-xs md:text-sm leading-relaxed max-w-lg mx-auto">
-            We implement structural guidelines, strict material audits, and direct site supervision to deliver flawless luxury homes.
+            Full-home interiors are priced at {FULL_HOME_RATE_TEXT}, based on carpet area.{" "}
+            <Link to="/estimate" className="text-[#E8D8C4] underline">Get an indicative estimate</Link>
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-10">
           {brandStats.map((stat, idx) => (
             <div key={idx} className="flex flex-col text-center items-center space-y-3 p-6 bg-white/5 rounded-3xl border border-white/5 shadow-md">
               <div className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-[#E8D8C4] tracking-tight">

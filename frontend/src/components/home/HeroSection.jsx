@@ -1,30 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  ArrowRight, 
-  Star, 
-  CheckCircle2, 
-  ChevronRight, 
-  ChevronLeft 
+import {
+  ArrowRight,
+  CheckCircle2,
+  ChevronRight,
+  ChevronLeft,
 } from 'lucide-react';
 import { Button } from '../ui/button';
-import { companyInfo } from '../../data/mock';
 
 const heroSlides = [
   {
     image: "/images/hero2.webp",
     heading: "Crafting Bespoke Luxury Interiors in Bangalore",
-    subheading: "Experience complete home interiors tailored to your lifestyle—combining exquisite craftsmanship, premium materials, and 100% transparent execution from concept to completion."
+    subheading: "Experience complete home interiors tailored to your lifestyle, from concept to completion."
   },
   {
     image: "/images/landingpagehero.webp",
     heading: "Crafted Spaces. Elevated Living.",
-    subheading: "Bespoke home interiors featuring European modular systems, German-engineered hardware, and flawless turnkey execution."
+    subheading: "Bespoke home interiors with modular systems and turnkey execution."
   },
   {
     image: "/images/kitchen1.webp",
     heading: "Luxury Modular Kitchens",
-    subheading: "Precision-engineered kitchens with high-gloss acrylic finishes, intelligent accessories, and 10-year durability warranties."
+    subheading: "Modular kitchens with high-gloss acrylic finishes and intelligent accessories."
   },
   {
     image: "/images/bedroom3.webp",
@@ -86,18 +84,6 @@ const HeroSection = () => {
       {/* Slider Content Overlay */}
       <div className="relative z-20 w-full container-custom mt-16 md:mt-24 select-none">
         <div className="max-w-3xl text-left">
-          {/* Premium review status badge */}
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10 text-white mb-6 animate-fade-in">
-            <span className="flex text-amber-400">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-3.5 h-3.5 fill-current" />
-              ))}
-            </span>
-            <span className="text-[10px] md:text-xs font-semibold uppercase tracking-wider">
-              Trusted Luxury Home Design • {companyInfo.rating}/5 Rating
-            </span>
-          </div>
-
           {/* Stable page heading; the rotating slide text below is decorative */}
           <h1 className="text-[#E8D8C4] text-xs md:text-sm font-bold uppercase tracking-widest mb-3">
             Interior Designers in Bangalore
@@ -114,7 +100,7 @@ const HeroSection = () => {
           </p>
 
           {/* Trust highlights row */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8 pt-4 border-t border-white/15">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 pt-4 border-t border-white/15">
             <div className="flex items-center gap-2.5 text-white/90 text-xs md:text-sm font-medium">
               <CheckCircle2 className="w-4 h-4 text-[#E8D8C4] shrink-0" />
               <span>Free Design Consultation</span>
@@ -122,10 +108,6 @@ const HeroSection = () => {
             <div className="flex items-center gap-2.5 text-white/90 text-xs md:text-sm font-medium">
               <CheckCircle2 className="w-4 h-4 text-[#E8D8C4] shrink-0" />
               <span>Transparent Pricing</span>
-            </div>
-            <div className="flex items-center gap-2.5 text-white/90 text-xs md:text-sm font-medium">
-              <CheckCircle2 className="w-4 h-4 text-[#E8D8C4] shrink-0" />
-              <span>45–60 Day Delivery</span>
             </div>
             <div className="flex items-center gap-2.5 text-white/90 text-xs md:text-sm font-medium">
               <CheckCircle2 className="w-4 h-4 text-[#E8D8C4] shrink-0" />

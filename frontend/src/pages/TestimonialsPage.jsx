@@ -20,19 +20,6 @@ const TestimonialsPage = () => {
               Real experiences from our valued clients. Their satisfaction is our greatest achievement.
             </p>
           </div>
-          <div className="flex items-center gap-6 mt-8">
-            <div className="flex items-center gap-2">
-              <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-6 h-6 fill-[#C8A35F] text-[#C8A35F]" />
-                ))}
-              </div>
-              <span className="text-2xl font-bold text-[#1A1A1A]">{companyInfo.rating}</span>
-            </div>
-            <div className="text-[#777777]">
-              Based on {companyInfo.projectsCompleted}+ happy clients
-            </div>
-          </div>
         </div>
       </section>
 
@@ -68,38 +55,6 @@ const TestimonialsPage = () => {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16 bg-[#1F1F1F]">
-        <div className="container-custom">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <p className="text-4xl md:text-5xl font-bold text-[#C8A35F] mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>
-                {companyInfo.rating}
-              </p>
-              <p className="text-white/70">Average Rating</p>
-            </div>
-            <div>
-              <p className="text-4xl md:text-5xl font-bold text-[#C8A35F] mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>
-                {companyInfo.projectsCompleted}+
-              </p>
-              <p className="text-white/70">Happy Clients</p>
-            </div>
-            <div>
-              <p className="text-4xl md:text-5xl font-bold text-[#C8A35F] mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>
-                100%
-              </p>
-              <p className="text-white/70">Project Completion</p>
-            </div>
-            <div>
-              <p className="text-4xl md:text-5xl font-bold text-[#C8A35F] mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>
-                95%
-              </p>
-              <p className="text-white/70">Referral Rate</p>
-            </div>
           </div>
         </div>
       </section>

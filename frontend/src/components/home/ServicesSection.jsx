@@ -1,19 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  ArrowRight, 
-  CheckCircle2, 
-  ShieldCheck, 
-  Award, 
-  ChevronRight, 
-  Home, 
-  Building2, 
-  Castle, 
-  Briefcase, 
-  Wrench, 
-  Key, 
-  Layers, 
-  Sparkles 
+import {
+  ArrowRight,
+  CheckCircle2,
+  ChevronRight,
+  Home,
+  Building2,
+  Castle,
+  Briefcase,
+  Wrench,
+  Key,
+  Layers,
+  Sparkles,
 } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
@@ -38,17 +36,17 @@ const luxuryServices = [
     icon: "Home",
     badge: "Signature Offering",
     isPrimary: true,
-    features: ["Full Turnkey Project Execution", "Bespoke 3D Architectural Renders", "10-Year Solid Material Warranty"]
+    features: ["Full Turnkey Project Execution", "Bespoke 3D Architectural Renders"]
   },
   {
     id: 2,
     title: "Modular Kitchens",
     link: "/modular-kitchen-bangalore",
-    description: "Ergonomically designed culinary spaces combining high-gloss luxury finishes with German precision soft-close hardware.",
+    description: "Ergonomically designed culinary spaces combining high-gloss finishes with soft-close hardware.",
     icon: "Layers",
     badge: "Most Requested",
     isPrimary: true,
-    features: ["100% Waterproof BWP Marine Core", "Vastu-Optimized Cooking Triangle", "Anti-Scratch Acrylic & Quartz Finishes"]
+    features: ["Vastu-Optimized Cooking Triangle", "Acrylic & Quartz Finishes"]
   },
   {
     id: 3,
@@ -57,7 +55,7 @@ const luxuryServices = [
     icon: "Castle",
     badge: "Bespoke Storage",
     isPrimary: true,
-    features: ["Custom Walk-In & Sliding Systems", "Integrated Sensor LED Illumination", "German Soft-Close Motion Hardware"]
+    features: ["Custom Walk-In & Sliding Systems", "Integrated Sensor LED Illumination", "Soft-Close Motion Hardware"]
   },
   {
     id: 4,
@@ -81,7 +79,7 @@ const luxuryServices = [
     description: "Complete architectural makeover for existing properties, upgrading structural utilities, storage, and visual appeal.",
     icon: "Wrench",
     isPrimary: false,
-    features: ["Hassle-Free Structural Redesigns", "Modernized Kitchens & Bathrooms", "45–60 Day On-Time Handover"]
+    features: ["Structural Redesigns", "Modernized Kitchens & Bathrooms"]
   }
 ];
 
@@ -102,30 +100,12 @@ const ServicesSection = () => {
             Premium Interior Design Services in Bangalore
           </h2>
           <p className="text-stone-600 text-sm md:text-base leading-relaxed">
-            Transforming residences into luxurious sanctuaries with uncompromised European craftsmanship, precision factory finishes, and personalized spatial design. From <strong>Complete Home Interiors</strong> to bespoke <strong>Modular Kitchens</strong> and <strong>Luxury Wardrobes</strong>, we deliver excellence tailored for homeowners across Bangalore.
+            Transforming residences with personalized spatial design. From <strong>Complete Home Interiors</strong> to bespoke <strong>Modular Kitchens</strong> and <strong>Luxury Wardrobes</strong>, we deliver excellence tailored for homeowners across Bangalore.
           </p>
           <p className="text-stone-600 text-sm">
             Full-home interiors are priced at {FULL_HOME_RATE_TEXT}.{" "}
             <Link to="/estimate" className="text-[#0F3D3E] font-semibold underline">Get an indicative estimate</Link>
           </p>
-        </div>
-
-        {/* Trust Statement Bar */}
-        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 mb-14 py-3.5 px-6 bg-[#FAF8F5] rounded-2xl border border-stone-200/70 max-w-3xl mx-auto text-[#0F3D3E] text-xs md:text-sm font-medium shadow-xs">
-          <div className="flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-[#C8A35F] shrink-0" />
-            <span>Trusted by 150+ Homeowners across Bangalore</span>
-          </div>
-          <span className="hidden sm:inline text-stone-300">•</span>
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-[#C8A35F] shrink-0" />
-            <span>10-Year Material Warranty</span>
-          </div>
-          <span className="hidden sm:inline text-stone-300">•</span>
-          <div className="flex items-center gap-2">
-            <Award className="w-4 h-4 text-[#C8A35F] shrink-0" />
-            <span>Zero Sub-Contracting</span>
-          </div>
         </div>
 
         {/* Service Cards Grid with Clear Visual Hierarchy */}

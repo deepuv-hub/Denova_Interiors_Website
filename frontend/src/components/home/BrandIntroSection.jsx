@@ -1,5 +1,6 @@
 import React from 'react';
-import { CheckCircle2 } from 'lucide-react';
+import {
+} from 'lucide-react';
 
 const BrandIntroSection = () => {
   return (
@@ -18,23 +19,9 @@ const BrandIntroSection = () => {
             </h2>
 
             <p className="text-stone-600 text-sm md:text-base leading-relaxed max-w-2xl">
-              At Denova Creations, we believe your residence should represent a sanctuary curated around your individual story. As Bengaluru's premier turnkey home interior studio, we blend high-end custom furniture, German precision edge-banding, and exquisite architectural layouts to deliver spaces of absolute distinction.
+              At Denova Creations, we believe your residence should represent a sanctuary curated around your individual story. We design full-home interiors, modular kitchens and custom wardrobes for homes in Bengaluru.
             </p>
 
-            <div className="pt-4 flex flex-wrap gap-6 items-center">
-              <div className="flex items-center gap-2 text-stone-700 font-bold text-xs uppercase tracking-wider">
-                <CheckCircle2 className="w-4 h-4 text-[#0F3D3E]" />
-                <span>German Factory Finish</span>
-              </div>
-              <div className="flex items-center gap-2 text-stone-700 font-bold text-xs uppercase tracking-wider">
-                <CheckCircle2 className="w-4 h-4 text-[#0F3D3E]" />
-                <span>No Sub-Contracting</span>
-              </div>
-              <div className="flex items-center gap-2 text-stone-700 font-bold text-xs uppercase tracking-wider">
-                <CheckCircle2 className="w-4 h-4 text-[#0F3D3E]" />
-                <span>10-Year Solid Warranty</span>
-              </div>
-            </div>
           </div>
 
           {/* Right Side Visual Block */}

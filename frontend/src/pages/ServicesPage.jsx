@@ -8,9 +8,8 @@ import {
   Castle, 
   Briefcase, 
   Wrench, 
-  Key, 
-  Star, 
-  Layers, 
+  Key,
+  Layers,
   ShieldCheck, 
   Clock, 
   MapPin, 
@@ -52,9 +51,9 @@ const luxuryServices = [
   {
     id: 2,
     title: "Modular Kitchen Systems",
-    description: "Precision German-engineered modular kitchens. Engineered for optimal ergonomic utility, smart storage storage, and lifelong build durability.",
+    description: "Modular kitchens designed for ergonomic utility and smart storage.",
     image: "/images/kitchen1.webp",
-    features: ["L-Shaped & Parallel layouts", "Quartz & Italian Marble counters", "German Hafele Soft-Close fittings", "High-Gloss Acrylic finishes", "Custom Pull-out Drawers & Pantries"],
+    features: ["L-Shaped & Parallel layouts", "Quartz & Italian Marble counters", "Hafele Soft-Close fittings", "High-Gloss Acrylic finishes", "Custom Pull-out Drawers & Pantries"],
     ctaText: "View Kitchen Portfolio",
     ctaLink: "/modular-kitchen-bangalore",
     rateLabel: "Priced per running ft",
@@ -76,7 +75,7 @@ const luxuryServices = [
     title: "Corporate & Executive Offices",
     description: "Architectural commercial environments crafted to enhance corporate visual identity, work collaboration, and professional efficiency.",
     image: "/images/living2.webp",
-    features: ["Executive Boardrooms", "Collaborative open workspaces", "Branded Reception Hubs", "Acoustic Wall Paneling", "Strict commercial timeline handovers"],
+    features: ["Executive Boardrooms", "Collaborative open workspaces", "Branded Reception Hubs", "Acoustic Wall Paneling"],
     ctaText: "Explore Commercial Work",
     ctaLink: "/projects",
     rateLabel: "Commercial",
@@ -90,24 +89,12 @@ const whyChooseDenova = [
     desc: "Every layout is drawn from scratch around your personal style. No generic grids, no repetitive styles."
   },
   {
-    title: "German-Engineered Materials",
-    desc: "Machine edge-banding and core hardware systems powered by Hettich, Hafele, and authentic Century Ply."
-  },
-  {
-    title: "100% Transparent Quotations",
-    desc: "Fully itemized cost sheets detailing precise materials, thicknesses, brand tags, and labor dimensions."
-  },
-  {
     title: "Photorealistic 3D Renders",
-    desc: "See exact lights, textures, paint colors, and layouts before factory cutting, eliminating execution errors."
+    desc: "See exact lights, textures, paint colors, and layouts before fabrication begins."
   },
   {
-    title: "Dedicated Site Engineers",
-    desc: "Rigorous direct onsite supervision by professional civil engineers, guaranteeing flawless craftsmanship."
-  },
-  {
-    title: "On-Time Handover",
-    desc: "Strict 45-day factory-to-site delivery timelines."
+    title: "Site Supervision",
+    desc: "Direct onsite supervision through installation."
   }
 ];
 
@@ -134,8 +121,8 @@ const processSteps = [
   },
   {
     num: "05",
-    title: "German Factory Fabrication",
-    desc: "Precision machining, automated edge-banding, and visual quality control checks in the plant."
+    title: "Fabrication",
+    desc: "Custom components are fabricated to the approved design."
   },
   {
     num: "06",
@@ -237,7 +224,7 @@ const ServicesPage = () => {
               </h1>
               
               <p className="text-stone-300 text-sm md:text-base leading-relaxed max-w-xl">
-                Bengaluru's premier home design studio delivering exquisite modular kitchens, custom wardrobes, false ceilings, and premium turnkey residential spaces.
+                Interior design for homes in Bengaluru: modular kitchens, custom wardrobes, false ceilings, and turnkey residential spaces.
               </p>
 
               <div className="pt-4 flex flex-wrap gap-4">
@@ -257,30 +244,6 @@ const ServicesPage = () => {
           </div>
         </section>
 
-        {/* 2. TRUST STATS STRIP */}
-        <section className="py-8 bg-white border-b border-stone-150">
-          <div className="container-custom">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center items-center">
-              <div className="space-y-1">
-                <div className="text-2xl md:text-3xl font-bold font-serif text-[#0F3D3E]">{companyInfo.projectsCompleted}+</div>
-                <div className="text-[10px] text-stone-500 font-bold uppercase tracking-wider">Luxury Turned Keys</div>
-              </div>
-              <div className="space-y-1 border-l border-stone-100">
-                <div className="text-2xl md:text-3xl font-bold font-serif text-[#0F3D3E]">German</div>
-                <div className="text-[10px] text-stone-500 font-bold uppercase tracking-wider">Edge-Band Finishes</div>
-              </div>
-              <div className="space-y-1 border-l border-stone-100">
-                <div className="text-2xl md:text-3xl font-bold font-serif text-[#0F3D3E]">10-Year</div>
-                <div className="text-[10px] text-stone-500 font-bold uppercase tracking-wider">Solid Warranty</div>
-              </div>
-              <div className="space-y-1 border-l border-stone-100">
-                <div className="text-2xl md:text-3xl font-bold font-serif text-[#0F3D3E]">{companyInfo.deliveryTimeline}</div>
-                <div className="text-[10px] text-stone-500 font-bold uppercase tracking-wider">Typical Handover</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* 3. CORE SERVICES CENTERPIECE (ALTERNATING EDITORIAL SECTION) */}
         <section className="py-20 md:py-28 bg-[#FAF8F5] relative overflow-hidden">
           <div className="container-custom">
@@ -293,7 +256,7 @@ const ServicesPage = () => {
                 Our Creative Expertise
               </h2>
               <p className="text-stone-500 text-xs md:text-sm">
-                From luxury apartments to modern modular systems, we craft premium environments matching absolute technical precision.
+                From luxury apartments to modern modular systems, we craft premium environments.
               </p>
             </div>
 
@@ -390,13 +353,10 @@ const ServicesPage = () => {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F3D3E] font-serif leading-tight">
                 Why We Are Different
               </h2>
-              <p className="text-stone-500 text-xs md:text-sm max-w-lg mx-auto">
-                We remove manual assembly errors, bypass subcontractor layers, and establish detailed warranties to guarantee absolute luxury.
-              </p>
             </div>
 
             {/* Core Advantages Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {whyChooseDenova.map((item, idx) => (
                 <div 
                   key={idx} 
@@ -437,7 +397,7 @@ const ServicesPage = () => {
                 Our Design Process
               </h2>
               <p className="text-stone-500 text-xs md:text-sm">
-                A simple, elegant, and completely transparent step-by-step interior design execution path.
+                A simple, elegant, step-by-step interior design execution path.
               </p>
             </div>
 
@@ -546,19 +506,7 @@ const ServicesPage = () => {
             
             <div className="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-3xl shadow-[0_15px_40px_rgba(15,61,62,0.02)] border border-stone-200/40 text-left flex flex-col md:flex-row gap-8 items-center">
               
-              {/* Left trust ratings */}
-              <div className="flex-shrink-0 text-center md:text-left space-y-2 border-b md:border-b-0 md:border-r border-stone-100 pb-6 md:pb-0 md:pr-10">
-                <div className="text-5xl font-serif font-bold text-[#0F3D3E] tracking-tight">4.9★</div>
-                <div className="flex justify-center md:justify-start text-amber-400 gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-current" />
-                  ))}
-                </div>
-                <p className="text-[10px] text-stone-500 font-bold uppercase tracking-wider">Google Customer Rating</p>
-                <div className="pt-2 text-stone-400 text-xs">{companyInfo.projectsCompleted}+ Premium Homes Served</div>
-              </div>
-
-              {/* Right featured review */}
+              {/* Featured review */}
               <div className="flex-grow space-y-4">
                 <blockquote className="text-xs md:text-sm text-stone-600 italic leading-relaxed font-medium">
                   "Choosing Denova Creations was the best choice for our modular kitchen design. Their factory engineering precision and 100% itemized billing transparency saved us from any hidden contractor fees. Everything was completed on time!"

@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 import { 
   ArrowRight, 
   MapPin, 
-  CheckCircle2, 
-  Star, 
-  MessageSquare, 
+  CheckCircle2,
+  MessageSquare,
   Compass
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
@@ -315,19 +314,7 @@ const ProjectsPage = () => {
             
             <div className="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-3xl shadow-[0_15px_40px_rgba(15,61,62,0.02)] border border-stone-200/40 text-left flex flex-col md:flex-row gap-8 items-center">
               
-              {/* Left trust ratings */}
-              <div className="flex-shrink-0 text-center md:text-left space-y-2 border-b md:border-b-0 md:border-r border-stone-100 pb-6 md:pb-0 md:pr-10">
-                <div className="text-5xl font-serif font-bold text-[#0F3D3E] tracking-tight">4.9★</div>
-                <div className="flex justify-center md:justify-start text-amber-400 gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-current" />
-                  ))}
-                </div>
-                <p className="text-[10px] text-stone-500 font-bold uppercase tracking-wider">Google Customer Rating</p>
-                <div className="pt-2 text-stone-400 text-xs">{companyInfo.projectsCompleted}+ Premium Homes Served</div>
-              </div>
-
-              {/* Right featured review */}
+              {/* Featured review */}
               <div className="flex-grow space-y-4">
                 <blockquote className="text-xs md:text-sm text-stone-600 italic leading-relaxed font-medium">
                   "Exploring Denova's completed case studies gave us so much confidence. We could see the exact color palettes, core plywood qualities, and execution stages before signing the contract. The actual living room woodwork fits perfectly!"

@@ -33,10 +33,10 @@ const coreWoods = [
     name: "BWP Marine Plywood",
     shortName: "Boiling Water Proof (Marine Grade)",
     lifespan: "15–20+ Years",
-    waterproof: "100% Waterproof (Withstands 72 hrs boiling)",
+    waterproof: "Waterproof grade (Withstands 72 hrs boiling)",
     priceRange: "₹85 - ₹120 per sq.ft",
     bestFor: "Modular kitchens under-sink, wet utility areas, bathroom vanities, balcony storages",
-    desc: "Marine-grade plywood built with superior BWP phenol formaldehyde resin. Extremely strong, zero delamination risk, and 100% boiling-water-proof.",
+    desc: "Marine-grade plywood built with superior BWP phenol formaldehyde resin. Extremely strong and boiling-water-proof.",
     maintenance: "Very Low"
   },
   {
@@ -75,8 +75,8 @@ const processSteps = [
   { num: "01", title: "Creative Survey", desc: "Site survey, spatial measurements, and alignment on lifestyle requirements." },
   { num: "02", title: "Space Planning", desc: "Analyzing walking clearance, furniture placement, and zoning maps." },
   { num: "03", title: "Curation & 3D", desc: "touching materials at the studio, finalizing color palettes, and drafting photorealistic 3Ds." },
-  { num: "04", title: "Factory Carcass", desc: "Automated German machine carcass edge-banding and precision board cutting." },
-  { num: "05", title: "Engineered Assembly", desc: "turnkey assembly supervised on-site by certified structural civil engineers." },
+  { num: "04", title: "Carcass Production", desc: "Board cutting and carcass edge-banding." },
+  { num: "05", title: "Engineered Assembly", desc: "Turnkey on-site assembly and installation." },
   { num: "06", title: "Handover & Styling", desc: "Deep cleaning, final inspection, and formal reveal of your luxury home." }
 ];
 
@@ -121,7 +121,7 @@ const estimationTiers = [
   {
     tier: "Premium Elite",
     price: "₹3.0L - ₹5.5L",
-    materials: "100% BWP Marine Plywood wet areas, gloss acrylic shutters, Hettich soft-close sliders.",
+    materials: "BWP Marine Plywood wet areas, gloss acrylic shutters, Hettich soft-close sliders.",
     bestFor: "Modular kitchen and wardrobe packages for 2BHK & 3BHK apartments."
   },
   {
@@ -135,7 +135,7 @@ const estimationTiers = [
 const faqsData = [
   {
     q: "Which plywood is best for modular kitchens?",
-    a: "We highly recommend using Boiling Water Proof (BWP) marine-grade plywood (IS:710 certified) for all modular kitchen under-sink areas, utility boxes, and bottom cabinets. BWR (Boiling Water Resistant) plywood is suitable for upper dry cabinets, but BWP is mandatory for wet zones to prevent swelling and termite decay."
+    a: "We highly recommend using Boiling Water Proof (BWP) marine-grade plywood (IS:710 grade) for all modular kitchen under-sink areas, utility boxes, and bottom cabinets. BWR (Boiling Water Resistant) plywood is suitable for upper dry cabinets, but BWP is mandatory for wet zones to prevent swelling and termite decay."
   },
   {
     q: "What is the difference between BWP Plywood and Commercial Plywood?",
@@ -152,10 +152,6 @@ const faqsData = [
   {
     q: "How are modular kitchen costs calculated?",
     a: "Modular kitchens are calculated in Running Feet (R.Ft) along the length of the counter. Standard calculations separate the bottom counter cabinets, quartz countertops, and upper wall cabinets. Accessories (tandem boxes, pantries) and premium hardware (Hafele, Hettich) are added to this base rate."
-  },
-  {
-    q: "What is the delivery timeline for a turnkey home interior in Bangalore?",
-    a: "At Denova Creations, our strict factory-to-site turnaround is 45 to 60 days. Because all components are precision-cut and automated edge-banded in our factory, onsite assembly takes only 7-10 days, eliminating dust and manual carpentry delays."
   }
 ];
 
@@ -244,7 +240,7 @@ const MaterialsPage = () => {
                 How Turnkey Interiors Work
               </h2>
               <p className="text-stone-500 text-xs md:text-sm">
-                From initial survey dimensions to factory manufacturing, we coordinate a stress-free spatial journey.
+                From initial survey dimensions to manufacturing and assembly, we coordinate a stress-free spatial journey.
               </p>
             </div>
 
@@ -385,7 +381,7 @@ const MaterialsPage = () => {
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
                     <div>
                       <span className="text-stone-800 block">Kitchen Sink Cabinets</span>
-                      <span className="text-stone-400 font-normal text-[10px]">100% BWP Marine Ply carcass base</span>
+                      <span className="text-stone-400 font-normal text-[10px]">BWP Marine Ply carcass base</span>
                     </div>
                   </div>
                   <div className="flex items-start gap-2.5">
@@ -475,7 +471,7 @@ const MaterialsPage = () => {
                   </div>
                   <div className="space-y-1 border-t border-stone-100 pt-3">
                     <span className="text-stone-400 block font-semibold text-[9px] uppercase">Modular Hardware</span>
-                    <p className="text-[#0F3D3E] font-bold">German soft-close tandem drawer systems (Hafele, Hettich) and visual pneumatic gas-lift dampers.</p>
+                    <p className="text-[#0F3D3E] font-bold">Soft-close tandem drawer systems (Hafele, Hettich) and visual pneumatic gas-lift dampers.</p>
                   </div>
                 </div>
               </div>
@@ -724,7 +720,7 @@ const MaterialsPage = () => {
                 Frequently Asked Questions
               </h2>
               <p className="text-stone-500 text-xs md:text-sm">
-                Find clear answers to structural interior materials, waterproof grades, and timeline calculations.
+                Find clear answers to structural interior materials, waterproof grades, and cost calculations.
               </p>
             </div>
 

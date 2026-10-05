@@ -19,12 +19,12 @@ const processSteps = [
   {
     num: "04",
     title: "Precision Fabrication",
-    desc: "Custom components are machine-finished with factory edge-banding to avoid manual errors.",
+    desc: "Custom components are produced to the approved design.",
   },
   {
     num: "05",
     title: "Turnkey Reveal",
-    desc: "Site installation by certified engineers, final deep cleanup, and formal luxury handover."
+    desc: "Site installation, final cleanup, and handover."
   }
 ];
 

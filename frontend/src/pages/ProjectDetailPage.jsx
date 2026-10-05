@@ -473,7 +473,7 @@ const ProjectDetailPage = () => {
             </a>
           </div>
           <p className="text-[10px] text-stone-400 pt-2">
-            No obligation consult • Turnkey transparent quotes • 10-Year Warranty execution
+            No obligation consult
           </p>
         </div>
       </section>

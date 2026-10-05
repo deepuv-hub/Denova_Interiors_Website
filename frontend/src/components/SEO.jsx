@@ -14,7 +14,7 @@ const pageMeta = {
   "/about": {
     title: "Premium Turnkey Interior Design Studio | About Denova Creations",
     description:
-      "Learn about Denova Creations, Bengaluru's premier turnkey home interior studio. Discover our bespoke design process, German-engineered fabrication, and 10-year warranty.",
+      "Learn about Denova Creations, an interior design studio in Bengaluru for full-home interiors, modular kitchens and custom wardrobes.",
   },
   "/services": {
     title: "Luxury Interior Design Services Bangalore | Denova Creations",

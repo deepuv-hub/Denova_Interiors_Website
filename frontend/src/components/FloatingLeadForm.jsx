@@ -225,10 +225,6 @@ const FloatingLeadForm = () => {
                 >
                   <X className="w-4 h-4" />
                 </button>
-                <div className="flex items-center gap-1 mb-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
-                  <span className="text-[9px] font-bold text-stone-500 uppercase tracking-widest leading-none">Response within 30 mins</span>
-                </div>
                 <h4 className="font-serif font-bold text-base text-[#0F3D3E] leading-tight">Start Your Luxury Project</h4>
               </div>
 
@@ -324,7 +320,6 @@ const FloatingLeadForm = () => {
                 {/* Trust indications */}
                 <div className="border-t border-stone-100 pt-3 flex justify-between text-[9px] font-bold text-stone-400">
                   <span>✔ Free 3D Blueprint</span>
-                  <span>✔ 150+ Projects Completed</span>
                 </div>
 
               </form>
@@ -343,10 +338,6 @@ const FloatingLeadForm = () => {
               <div className="flex justify-between items-start mb-4 text-left">
                 <div>
                   <h4 className="font-serif font-bold text-lg text-[#0F3D3E]">Free Design Curation</h4>
-                  <p className="text-[10px] text-stone-400 font-semibold uppercase tracking-wider flex items-center gap-1 mt-0.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
-                    Response within 30 minutes
-                  </p>
                 </div>
                 <button 
                   onClick={handleMinimize}
@@ -428,7 +419,6 @@ const FloatingLeadForm = () => {
 
                 <div className="flex justify-center gap-5 text-[9px] font-bold text-stone-400 text-center mt-1">
                   <span>✔ Free 3D Plan</span>
-                  <span>✔ 150+ Projects Completed</span>
                 </div>
 
               </form>

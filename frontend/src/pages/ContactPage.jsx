@@ -13,14 +13,10 @@ import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
 import {
   ArrowRight,
-  CheckCircle2,
   MapPin,
   PhoneCall,
   MessageSquare,
-  Clock,
   Mail,
-  ShieldCheck,
-  Award,
   Sparkles,
   ChevronDown,
   User,
@@ -29,7 +25,7 @@ import {
   Calendar,
   Layers,
   Video,
-  Check
+  Check,
 } from "lucide-react";
 import { BUSINESS_ENTITY } from "../data/business";
 
@@ -196,31 +192,8 @@ const ContactPage = () => {
                 </h1>
 
                 <p className="text-stone-300 text-xs md:text-sm leading-relaxed">
-                  Every exceptional home begins with a conversation. Share your visual requirements, and our master architects will draft a bespoke space plan and itemized structural quote.
+                  Every exceptional home begins with a conversation. Share your visual requirements, and our master architects will draft a bespoke space plan.
                 </p>
-
-                {/* Trust Badges Matrix */}
-                <div className="grid grid-cols-2 gap-4 border-t border-stone-700/50 pt-6 text-white">
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-500/10 text-[#E8D8C4] border border-[#E8D8C4]/25 flex items-center justify-center flex-shrink-0">
-                      <ShieldCheck className="w-4.5 h-4.5" />
-                    </div>
-                    <div>
-                      <span className="text-xs font-bold font-serif block">10-Year Warranty</span>
-                      <span className="text-[10px] text-stone-400">German precision edge-banding</span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-500/10 text-[#E8D8C4] border border-[#E8D8C4]/25 flex items-center justify-center flex-shrink-0">
-                      <Award className="w-4.5 h-4.5" />
-                    </div>
-                    <div>
-                      <span className="text-xs font-bold font-serif block">150+ Homes Designed</span>
-                      <span className="text-[10px] text-stone-400">100% direct-factory transparency</span>
-                    </div>
-                  </div>
-                </div>
 
                 {/* Instant Quick Direct Connect */}
                 <div className="pt-4 flex flex-wrap gap-4 items-center">
@@ -264,7 +237,7 @@ const ContactPage = () => {
                         Book Private Consultation
                       </h2>
                       <p className="text-stone-500 text-xs font-medium">
-                        Our master design expert will reach out within 30 minutes.
+                        Our team will contact you to discuss your requirement.
                       </p>
                     </div>
 
@@ -546,7 +519,6 @@ const ContactPage = () => {
                     <div className="border-t border-stone-100 pt-4 flex justify-center gap-5 text-[10px] font-semibold text-stone-400">
                       <span className="flex items-center gap-1">✔ Free consultation</span>
                       <span className="flex items-center gap-1">✔ No obligation</span>
-                      <span className="flex items-center gap-1">✔ 30 min callback</span>
                     </div>
 
                   </CardContent>
@@ -573,7 +545,7 @@ const ContactPage = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto text-left">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto text-left">
               
               {/* Box 1 */}
               <div className="p-8 bg-[#FAF8F5] rounded-3xl border border-stone-100/60 space-y-4 hover:border-[#E8D8C4] transition-all duration-300">
@@ -582,7 +554,7 @@ const ContactPage = () => {
                 </div>
                 <h3 className="font-serif font-bold text-base text-[#0F3D3E]">Space Planning Blueprint</h3>
                 <p className="text-stone-500 text-xs md:text-sm leading-relaxed">
-                  Our designers draft a detailed AutoCAD walking zoning outline to guarantee ergonomic flow, optimal clearance zones, and smart layout maps.
+                  Our designers draft a detailed AutoCAD walking zoning outline to plan ergonomic flow, optimal clearance zones, and smart layout maps.
                 </p>
               </div>
 
@@ -593,18 +565,7 @@ const ContactPage = () => {
                 </div>
                 <h3 className="font-serif font-bold text-base text-[#0F3D3E]">Studio Materials Curation</h3>
                 <p className="text-stone-500 text-xs md:text-sm leading-relaxed">
-                  Touch and compare authentic 100% BWP Marine plywood cores, visual gloss acrylics, matte laminates, and premium fittings in our Bangalore studio.
-                </p>
-              </div>
-
-              {/* Box 3 */}
-              <div className="p-8 bg-[#FAF8F5] rounded-3xl border border-stone-100/60 space-y-4 hover:border-[#E8D8C4] transition-all duration-300">
-                <div className="w-10 h-10 bg-white text-[#0F3D3E] border border-stone-100 flex items-center justify-center rounded-xl shadow-xs">
-                  <Award className="w-5 h-5 text-[#E8D8C4]" />
-                </div>
-                <h3 className="font-serif font-bold text-base text-[#0F3D3E]">Itemized Zero-Deviation Costing</h3>
-                <p className="text-stone-500 text-xs md:text-sm leading-relaxed">
-                  Receive a fully transparent modular structural pricing log with exact itemized square feet breakups. Absolute clarity with zero hidden surprises.
+                  Touch and compare authentic BWP Marine plywood cores, visual gloss acrylics, matte laminates, and premium fittings in our Bangalore studio.
                 </p>
               </div>
 
@@ -657,19 +618,6 @@ const ContactPage = () => {
                     </div>
                   </div>
 
-                  {/* Operational block */}
-                  <div className="flex gap-4 border-t border-stone-200/50 pt-4">
-                    <div className="w-9 h-9 bg-white text-[#0F3D3E] border border-stone-100 flex items-center justify-center rounded-xl flex-shrink-0 shadow-xs">
-                      <Clock className="w-4.5 h-4.5 text-[#E8D8C4]" />
-                    </div>
-                    <div className="space-y-1">
-                      <span className="text-[#0F3D3E] font-serif font-bold text-sm block">Studio Curation Hours</span>
-                      <p className="text-stone-500 leading-normal font-semibold">
-                        Monday – Sunday: 10:00 AM – 7:30 PM (All Days Open)
-                      </p>
-                    </div>
-                  </div>
-
                   {/* Connect block */}
                   <div className="flex gap-4 border-t border-stone-200/50 pt-4">
                     <div className="w-9 h-9 bg-white text-[#0F3D3E] border border-stone-100 flex items-center justify-center rounded-xl flex-shrink-0 shadow-xs">
@@ -718,9 +666,6 @@ const ContactPage = () => {
               <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#0F3D3E] tracking-tight">
                 Loved by Bangalore Homeowners
               </h2>
-              <p className="text-stone-500 text-xs md:text-sm">
-                Join 150+ families who experienced the Denova modular edge-banding difference.
-              </p>
             </div>
 
             {/* Testimonials Grid */}
@@ -763,7 +708,7 @@ const ContactPage = () => {
             </h2>
             
             <p className="text-stone-300 text-xs md:text-sm max-w-md mx-auto leading-relaxed">
-              Plan your direct-factory turnkey modular home interior with certified structural engineers today.
+              Plan your turnkey modular home interior today.
             </p>
 
             <div className="pt-4 flex flex-wrap justify-center gap-4">

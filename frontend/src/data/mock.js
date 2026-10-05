@@ -6,10 +6,7 @@ export const companyInfo = {
   primaryPhone: "+91 9591039597",
   email: "admin@denovacreations.com",
   address: "373/2, Begur – Hulimavu Rd, Opp. Rejoice Apartment, Classic Paradise Layout, Begur, Bengaluru, Karnataka 560114",
-  serviceArea: "Bengaluru (all zones) and nearby locations",
-  rating: 4.9,
-  projectsCompleted: 150,
-  deliveryTimeline: "45-60 days"
+  serviceArea: "Bengaluru (all zones) and nearby locations"
 };
 
 export const services = [
@@ -231,7 +228,7 @@ export const processSteps = [
 export const faqs = [
   {
     question: "What is the typical project timeline?",
-    answer: "Most projects are completed within 45-60 days, depending on the scope and complexity. We provide a detailed timeline during the initial consultation."
+    answer: "Timelines depend on the scope and complexity of the project. We provide a detailed timeline during the initial consultation."
   },
   {
     question: "Do you offer budget-friendly options?",
