@@ -398,7 +398,7 @@ const ModularKitchenBangalore = () => {
                   </a>
                   <a href="tel:+919591039597" className="inline-flex items-center gap-2 text-stone-300 hover:text-white text-xs font-semibold transition-colors duration-300">
                     <PhoneCall className="w-4.5 h-4.5 text-[#E8D8C4]" />
-                    <span>Call Expert: +91 91644 66606</span>
+                    <span>Call Expert: +91 95910 39597</span>
                   </a>
                 </div>
 

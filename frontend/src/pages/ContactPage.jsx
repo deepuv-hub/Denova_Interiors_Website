@@ -240,7 +240,7 @@ const ContactPage = () => {
                     className="inline-flex items-center gap-2 text-stone-300 hover:text-white text-xs font-semibold transition-colors duration-300"
                   >
                     <PhoneCall className="w-4 h-4 text-[#E8D8C4]" />
-                    <span>Call Studio: +91 91644 66606</span>
+                    <span>Call Studio: +91 95910 39597</span>
                   </a>
                   <span className="hidden sm:inline text-stone-600">|</span>
                   <a

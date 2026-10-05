@@ -13,8 +13,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { SCRIPT_URL } from "./api";
 
 // Reference only: the conversion is sent by the GTM Google Ads tag that is
-// triggered by LEAD_CONVERSION_EVENT, not from this code.
-export const GOOGLE_ADS_LEAD_CONVERSION = "AW-11303451952/63-FCIP1rZ8cELD6840q";
+// triggered by LEAD_CONVERSION_EVENT, not from this code. Google Ads action
+// "Submit lead form" (ID 7558717133); the GTM tag must use this same label.
+export const GOOGLE_ADS_LEAD_CONVERSION = "AW-11303451952/zBhUCM29o5QcELD6840q";
 export const LEAD_CONVERSION_EVENT = "lead_conversion";
 
 const ATTRIBUTION_PARAMS = [

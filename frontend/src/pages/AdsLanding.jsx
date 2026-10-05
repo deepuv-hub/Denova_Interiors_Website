@@ -221,7 +221,7 @@ const AdsLanding = () => {
               className="hidden sm:flex items-center gap-2 text-white font-medium hover:text-[#E7D7C9] transition text-sm bg-[#0F3B2E]/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/10"
             >
               <PhoneCall className="w-4 h-4 text-[#E7D7C9]" />
-              <span>+91 91644 66606</span>
+              <span>+91 95910 39597</span>
             </a>
             <button
               onClick={scrollToForm}
