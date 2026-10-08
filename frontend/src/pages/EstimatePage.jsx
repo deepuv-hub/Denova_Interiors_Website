@@ -19,7 +19,7 @@ import {
   trackLeadConversion,
   useSubmitLock,
 } from "../utils/leadTracking";
-import { FULL_HOME_RATE, PRICING_DISCLAIMER } from "../data/pricing";
+import { FULL_HOME_RATE, FULL_HOME_RATE_RANGE, FULL_HOME_RATE_TEXT, PRICING_DISCLAIMER } from "../data/pricing";
 
 const FULL_HOME = "Full Home Interior";
 const KITCHEN = "Modular Kitchen Only";
@@ -30,7 +30,7 @@ const CIVIL = "Premium Full Home + Civil Work";
 const MIN_CARPET_AREA = 200;
 const MAX_CARPET_AREA = 10000;
 
-const RATE_LINE = `₹${FULL_HOME_RATE.min.toLocaleString("en-IN")}–₹${FULL_HOME_RATE.max.toLocaleString("en-IN")} per sq.ft., including materials.`;
+const RATE_LINE = `${FULL_HOME_RATE_TEXT}.`;
 
 // Copy for scopes without a confirmed rate: these never show a number.
 const CUSTOM_COPY = {
@@ -101,7 +101,7 @@ const EstimatePage = () => {
   const submittedLeadIdRef = useRef(null);
 
   // Only full-home interiors for homes have a confirmed rate (carpet area x
-  // ₹1,400–₹1,800 incl. materials). Every other scope is a custom estimate.
+  // FULL_HOME_RATE). Every other scope is a custom estimate.
   const isFullHomeEstimate = form.scope === FULL_HOME && form.property !== "Commercial";
   const hasKitchen = form.scope === KITCHEN || form.scope === KITCHEN_WARDROBES;
   const hasWardrobes = form.scope === WARDROBES || form.scope === KITCHEN_WARDROBES;
@@ -252,13 +252,13 @@ const EstimatePage = () => {
         <title>Interior Design Cost Calculator Bangalore | Denova Creations</title>
         <meta
           name="description"
-          content="Estimate your home interior budget in Bangalore. Full-home interiors from ₹1,400–₹1,800 per sq.ft of carpet area including materials. Custom estimates for modular kitchens and wardrobes."
+          content={`Estimate your home interior budget in Bangalore. Full-home interiors from ${FULL_HOME_RATE_TEXT} of carpet area. Custom estimates for modular kitchens and wardrobes.`}
         />
         <link rel="canonical" href="https://denovacreations.com/estimate" />
         <meta property="og:title" content="Interior Design Cost Calculator Bangalore | Denova Creations" />
         <meta
           property="og:description"
-          content="Indicative full-home interior budget for Bangalore homes: ₹1,400–₹1,800 per sq.ft of carpet area including materials."
+          content={`Indicative full-home interior budget for Bangalore homes: ${FULL_HOME_RATE_TEXT} of carpet area.`}
         />
         <meta property="og:image" content="https://denovacreations.com/images/hero2.webp" />
         <meta property="og:url" content="https://denovacreations.com/estimate" />
@@ -267,7 +267,7 @@ const EstimatePage = () => {
         <meta name="twitter:title" content="Interior Design Cost Calculator Bangalore | Denova Creations" />
         <meta
           name="twitter:description"
-          content="Indicative full-home interior budget for Bangalore homes: ₹1,400–₹1,800 per sq.ft of carpet area including materials."
+          content={`Indicative full-home interior budget for Bangalore homes: ${FULL_HOME_RATE_TEXT} of carpet area.`}
         />
         <meta name="twitter:image" content="https://denovacreations.com/images/hero2.webp" />
       </Helmet>
@@ -292,7 +292,7 @@ const EstimatePage = () => {
               </h1>
 
               <p className="text-stone-300 text-sm md:text-base leading-relaxed max-w-xl">
-                Full-home interiors from ₹1,400–₹1,800 per sq.ft of carpet area, including materials. Get an indicative budget for your home, or request a custom estimate for a modular kitchen or wardrobes.
+                Full-home interiors from {FULL_HOME_RATE_TEXT} of carpet area. Get an indicative budget for your home, or request a custom estimate for a modular kitchen or wardrobes.
               </p>
             </div>
           </div>
@@ -762,8 +762,8 @@ const EstimatePage = () => {
           <div className="container-custom">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
               <div>
-                <h4 className="text-xl font-bold text-stone-950 font-serif">₹1,400–₹1,800 / sq.ft.</h4>
-                <p className="text-stone-400 text-xs font-semibold mt-1">Full-home interiors, including materials</p>
+                <h4 className="text-xl font-bold text-stone-950 font-serif">{FULL_HOME_RATE_RANGE} / sq.ft.</h4>
+                <p className="text-stone-400 text-xs font-semibold mt-1">Full-home interiors, indicative range</p>
               </div>
               <div>
                 <h4 className="text-xl font-bold text-stone-950 font-serif">Carpet Area</h4>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
+import { FULL_HOME_RATE_TEXT } from "../data/pricing";
 
 const SITE_URL = "https://denovacreations.com";
 const DEFAULT_IMAGE = `${SITE_URL}/images/hero2.webp`;
@@ -9,7 +10,7 @@ const pageMeta = {
   "/": {
     title: "Interior Designers in Bangalore | Denova Creations",
     description:
-      "Denova Creations is an interior design company in Bangalore for full-home interiors, modular kitchens and wardrobes. Full-home interiors at ₹1,400–₹1,800 per sq.ft including materials.",
+      `Denova Creations is an interior design company in Bangalore for full-home interiors, modular kitchens and wardrobes. Full-home interiors at ${FULL_HOME_RATE_TEXT}.`,
   },
   "/about": {
     title: "Premium Turnkey Interior Design Studio | About Denova Creations",

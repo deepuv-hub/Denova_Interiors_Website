@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FULL_HOME_RATE_TEXT } from '../../data/pricing';
+import { FULL_HOME_RATE_RANGE, FULL_HOME_RATE_TEXT } from '../../data/pricing';
 
 // Only owner-confirmed facts here (no ratings, counts, warranties or timelines).
 const brandStats = [
-  { number: "₹1,400–₹1,800", label: "Per sq.ft.", desc: "Full-home interiors, including materials" },
+  { number: FULL_HOME_RATE_RANGE, label: "Per sq.ft.", desc: "Full-home interiors, indicative range" },
   { number: "Carpet Area", label: "Pricing Basis", desc: "Full-home pricing is based on carpet area" },
   { number: "Bengaluru", label: "Service Area", desc: "Interior design for homes in Bengaluru" }
 ];

@@ -24,6 +24,7 @@ import { Card, CardContent } from '../components/ui/card';
 import { companyInfo, testimonials } from '../data/mock';
 import { Helmet } from "react-helmet-async";
 import { BUSINESS_REF } from "../data/business";
+import { FULL_HOME_RATE_RANGE } from "../data/pricing";
 
 const iconMap = {
   Home: Home,
@@ -45,8 +46,8 @@ const luxuryServices = [
     features: ["Bespoke Living Rooms", "Wood Fluting & Panel Accents", "Designer False Ceilings", "Smart Space Layout Planning", "Premium TV Entertainment Units"],
     ctaText: "Explore Residential Projects",
     ctaLink: "/projects",
-    rateLabel: "Full home, incl. materials",
-    startingRate: "₹1,400–₹1,800/sq.ft"
+    rateLabel: "Full home, indicative",
+    startingRate: `${FULL_HOME_RATE_RANGE}/sq.ft`
   },
   {
     id: 2,

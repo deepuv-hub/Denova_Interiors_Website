@@ -25,14 +25,12 @@ import {
   trackLeadConversion,
   useSubmitLock,
 } from "../utils/leadTracking";
+import { FULL_HOME_RATE, FULL_HOME_RATE_RANGE, PRICING_DISCLAIMER } from "../data/pricing";
 
-// Landing-page pricing. Intentionally local to this page (Google Ads LP);
-// the rest of the site still uses src/data/pricing.js.
-const PRICE_RANGE = "₹800–₹1,800/sq.ft.";
+const PRICE_RANGE = `${FULL_HOME_RATE_RANGE}/sq.ft.`;
 const PRICE_RANGE_TEXT = `Indicative full-home interior pricing: ${PRICE_RANGE}`;
-const PRICE_SPLIT_TEXT = "Starting from ₹800/sq.ft. | Up to ₹1,800/sq.ft.";
-const PRICE_QUALIFIER =
-  "Final pricing depends on design, materials, hardware, scope, site conditions and final measurements.";
+const PRICE_SPLIT_TEXT = `Starting from ₹${FULL_HOME_RATE.min.toLocaleString("en-IN")}/sq.ft. | Up to ₹${FULL_HOME_RATE.max.toLocaleString("en-IN")}/sq.ft.`;
+const PRICE_QUALIFIER = PRICING_DISCLAIMER;
 
 const PRIMARY_CTA = "Get Free Consultation";
 

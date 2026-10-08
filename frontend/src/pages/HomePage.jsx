@@ -9,6 +9,7 @@ import ProcessSection from '../components/home/ProcessSection';
 import TestimonialsSection from '../components/home/TestimonialsSection';
 import CTASection from '../components/home/CTASection';
 import { BUSINESS_ENTITY } from "../data/business";
+import { FULL_HOME_RATE_TEXT } from "../data/pricing";
 
 const HomePage = () => {
   return (
@@ -17,7 +18,7 @@ const HomePage = () => {
         <title>Interior Designers in Bangalore | Denova Creations</title>
         <meta
           name="description"
-          content="Denova Creations is an interior design company in Bangalore for full-home interiors, modular kitchens and wardrobes. Full-home interiors at ₹1,400–₹1,800 per sq.ft including materials."
+          content={`Denova Creations is an interior design company in Bangalore for full-home interiors, modular kitchens and wardrobes. Full-home interiors at ${FULL_HOME_RATE_TEXT}.`}
         />
         <link rel="canonical" href="https://denovacreations.com/" />
         
