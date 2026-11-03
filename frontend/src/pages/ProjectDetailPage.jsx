@@ -453,6 +453,9 @@ const ProjectDetailPage = () => {
         </section>
       )}
 
+      {/* Multiplex ad at the end of the project story */}
+      <AdSlot key={`${project.slug}-multiplex`} unit="multiplex" className="max-w-6xl mx-auto px-4 py-12 md:py-16" />
+
       {/* 10. STRONG CONSULTATION CTA */}
       <section className="py-20 bg-[#0F3D3E] text-white select-none">
         <div className="container-custom text-center max-w-3xl mx-auto space-y-6">

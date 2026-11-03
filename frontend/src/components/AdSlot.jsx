@@ -22,6 +22,11 @@ const AD_UNITS = {
     "data-ad-layout": "in-article",
     style: { display: "block", textAlign: "center" },
   },
+  // Multiplex unit (grid of recommendations), for the end of an article
+  multiplex: {
+    "data-ad-slot": "5235469553",
+    "data-ad-format": "autorelaxed",
+  },
 };
 
 const AdSlot = ({ unit = "display", className = "container-custom py-6" }) => {
