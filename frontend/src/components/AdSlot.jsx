@@ -15,6 +15,13 @@ const AD_UNITS = {
     "data-ad-format": "fluid",
     "data-ad-layout-key": "-gf-14+4-fr+rt",
   },
+  // In-article unit, for placing between sections of long-form content
+  inArticle: {
+    "data-ad-slot": "2576470440",
+    "data-ad-format": "fluid",
+    "data-ad-layout": "in-article",
+    style: { display: "block", textAlign: "center" },
+  },
 };
 
 const AdSlot = ({ unit = "display", className = "container-custom py-6" }) => {

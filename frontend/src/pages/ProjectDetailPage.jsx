@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 import { projects } from "../data/projects";
 import { Button } from "../components/ui/button";
+import AdSlot from "../components/AdSlot";
 import NotFoundPage from "./NotFoundPage";
 import { 
   ArrowRight, 
@@ -257,6 +258,9 @@ const ProjectDetailPage = () => {
           </div>
         </div>
       </section>
+
+      {/* In-article ad between the design story and the technical sections */}
+      <AdSlot key={project.slug} unit="inArticle" className="max-w-3xl mx-auto px-4 pt-12 md:pt-16" />
 
       {/* 5. TECHNICAL SPECIFICATIONS & MATERIALS */}
       <section className="py-16 md:py-24 max-w-6xl mx-auto px-4">
