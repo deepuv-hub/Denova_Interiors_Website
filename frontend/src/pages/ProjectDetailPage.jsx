@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 import { projects } from "../data/projects";
 import { Button } from "../components/ui/button";
+import AdSlot from "../components/AdSlot";
 import NotFoundPage from "./NotFoundPage";
 import { 
   ArrowRight, 
@@ -258,6 +259,9 @@ const ProjectDetailPage = () => {
         </div>
       </section>
 
+      {/* In-article ad between the design story and the technical sections */}
+      <AdSlot key={project.slug} unit="inArticle" className="max-w-3xl mx-auto px-4 pt-12 md:pt-16" />
+
       {/* 5. TECHNICAL SPECIFICATIONS & MATERIALS */}
       <section className="py-16 md:py-24 max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -448,6 +452,9 @@ const ProjectDetailPage = () => {
           </div>
         </section>
       )}
+
+      {/* Multiplex ad at the end of the project story */}
+      <AdSlot key={`${project.slug}-multiplex`} unit="multiplex" className="max-w-6xl mx-auto px-4 py-12 md:py-16" />
 
       {/* 10. STRONG CONSULTATION CTA */}
       <section className="py-20 bg-[#0F3D3E] text-white select-none">

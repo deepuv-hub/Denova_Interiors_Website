@@ -30,6 +30,7 @@ import Footer from "./components/layout/Footer";
 import FloatingCTA from "./components/FloatingCTA";
 import FloatingLeadForm from "./components/FloatingLeadForm";
 import InternalLinksCTA from "./components/InternalLinksCTA";
+import AdSlot from "./components/AdSlot";
 import SEO from "./components/SEO";
 import ScrollToTop from "./components/ScrollToTop";
 import { captureAttribution } from "./utils/leadTracking";
@@ -58,6 +59,8 @@ const Layout = ({ children }) => {
     <>
       <Header />
       <main className="min-h-screen">{children}</main>
+      {/* Ad Display1 */}
+      <AdSlot key={pathname} />
       <InternalLinksCTA />
       <Footer />
       <FloatingCTA />

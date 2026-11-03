@@ -8,6 +8,7 @@ import {
   Compass
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
+import AdSlot from '../components/AdSlot';
 import { companyInfo } from '../data/mock';
 import { projects as projectsDb } from '../data/projects';
 import { Helmet } from "react-helmet-async";
@@ -294,6 +295,8 @@ const ProjectsPage = () => {
                         </div>
                       </div>
                     )}
+                    {/* In-feed ad after the 3rd case study (CTA blocks follow the 2nd, 4th, ...) */}
+                    {idx === 2 && <AdSlot unit="inFeed" className="" />}
                   </React.Fragment>
                 );
               })}
