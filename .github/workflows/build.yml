@@ -96,4 +96,12 @@ jobs:
           git add -A prebuilt
           if git diff --cached --quiet; then echo "No changes"; exit 0; fi
           git commit -q -m "Update pre-rendered build for ${GITHUB_SHA::7}"
-          git push
+          # GitHub occasionally rejects a push with a transient server error
+          # (e.g. "fatal error in commit_refs_rules"), so retry a few times.
+          for attempt in 1 2 3 4; do
+            git push && exit 0
+            echo "Push failed (attempt $attempt), retrying..."
+            sleep $((attempt * 15))
+            git pull --rebase -q origin main
+          done
+          echo "::error::Could not push the pre-rendered build"; exit 1
