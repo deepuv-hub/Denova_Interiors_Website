@@ -16,7 +16,9 @@ const quickLinks = [
   { label: 'Our Process', path: '/process' },
   { label: 'Testimonials', path: '/testimonials' },
   { label: 'Contact', path: '/contact' },
+  { label: 'Interior Guides', path: '/guides' },
   { label: 'Privacy Policy', path: '/privacy-policy' },
+  { label: 'Terms of Use', path: '/terms' },
 ];
 
 const Footer = () => {
@@ -184,6 +186,7 @@ const Footer = () => {
           
           <div className="flex gap-5">
             <Link to="/privacy-policy" className="hover:text-[#E8D8C4] transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-[#E8D8C4] transition-colors">Terms of Use</Link>
             <Link to="/contact" className="hover:text-[#E8D8C4] transition-colors">Contact Support</Link>
           </div>
         </div>

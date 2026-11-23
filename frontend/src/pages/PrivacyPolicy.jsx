@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
         </h1>
 
         <p className="text-sm text-gray-500 text-center mb-8">
-          Effective Date: {new Date().toLocaleDateString()}
+          Effective Date: 23 November 2026
         </p>
 
         {/* CONTENT */}
@@ -56,6 +56,27 @@ const PrivacyPolicy = () => {
             <p>
               We may use tools like Google Ads, Google Analytics, and Meta Ads
               to understand user behavior and improve marketing performance.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="font-semibold text-lg mb-2">5A. Advertising (Google AdSense)</h2>
+            <p>
+              Some pages on this website show ads served by Google AdSense.
+              Third-party vendors, including Google, use cookies to serve ads
+              based on your prior visits to this website or other websites.
+              Google's use of advertising cookies enables it and its partners
+              to serve ads to you based on your visits to this site and/or
+              other sites on the Internet.
+            </p>
+            <p className="mt-2">
+              You may opt out of personalised advertising by visiting{" "}
+              <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="underline">Google Ads Settings</a>.
+              You can also opt out of some third-party vendors' use of cookies
+              for personalised advertising at{" "}
+              <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="underline">www.aboutads.info</a>.
+              To learn how Google uses data, see{" "}
+              <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" className="underline">How Google uses information from sites that use its services</a>.
             </p>
           </section>
 

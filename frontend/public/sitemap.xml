@@ -142,4 +142,32 @@
     <priority>0.6</priority>
   </url>
 
+  <url>
+    <loc>https://denovacreations.com/terms</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Guides -->
+  <url>
+    <loc>https://denovacreations.com/guides</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/guides/carpet-area-interior-budget-bangalore</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/guides/plywood-grades-mr-bwr-bwp-explained</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://denovacreations.com/guides/modular-kitchen-layouts-guide</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>

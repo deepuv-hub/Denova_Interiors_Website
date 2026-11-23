@@ -59,6 +59,11 @@ const pageMeta = {
     description:
       "Request a free estimate for home interiors in Bangalore, including modular kitchens, wardrobes and complete interior execution.",
   },
+  "/terms": {
+    title: "Terms of Use | Denova Creations",
+    description:
+      "Terms of use for the Denova Creations website, including how prices, estimates and website content should be used.",
+  },
   "/privacy-policy": {
     title: "Privacy Policy | Denova Creations",
     description:

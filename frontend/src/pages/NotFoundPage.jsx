@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 
 const NotFoundPage = () => {
   return (
-    <div className="container-custom py-20 text-center">
+    <div className="container-custom py-20 text-center" data-page-not-found>
       <Helmet>
         <title>Page Not Found | Denova Creations</title>
         <meta name="description" content="The page you are looking for could not be found." />

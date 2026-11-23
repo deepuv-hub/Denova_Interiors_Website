@@ -23,6 +23,9 @@ const CategoryPage = React.lazy(() => import("./pages/CategoryPage"));
 const ProjectPage = React.lazy(() => import("./pages/ProjectPage"));
 const ProjectDetailPage = React.lazy(() => import("./pages/ProjectDetailPage"));
 const NotFoundPage = React.lazy(() => import("./pages/NotFoundPage"));
+const TermsPage = React.lazy(() => import("./pages/TermsPage"));
+const GuidesPage = React.lazy(() => import("./pages/GuidesPage"));
+const GuideArticlePage = React.lazy(() => import("./pages/GuideArticlePage"));
 
 // Layout components (keep normal)
 import Header from "./components/layout/Header";
@@ -71,6 +74,8 @@ const Layout = ({ children }) => {
 
 function App() {
   useEffect(() => {
+    // Not during pre-rendering, or the snapshot would carry a second Clarity tag.
+    if (navigator.userAgent === "ReactSnap") return;
     (function(c,l,a,r,i,t,y){
       c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
       t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
@@ -116,6 +121,9 @@ function App() {
   <Route path="/estimate" element={<EstimatePage />} />
   <Route path="/interior-designers/:city" element={<CityLanding />} />
   <Route path="/privacy-policy" element={withSEO(PrivacyPolicy)} />
+  <Route path="/terms" element={withSEO(TermsPage)} />
+  <Route path="/guides" element={<GuidesPage />} />
+  <Route path="/guides/:slug" element={<GuideArticlePage />} />
   <Route path="/modular-kitchen-bangalore" element={<ModularKitchenBangalore />} />
   <Route path="*" element={<NotFoundPage />} />
 

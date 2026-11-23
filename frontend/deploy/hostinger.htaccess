@@ -1,0 +1,37 @@
+# Recommended .htaccess for Hostinger public_html (denovacreations.com).
+#
+# Use ONLY with a pre-rendered build (`yarn build`, which now runs react-snap
+# and writes build/<route>/index.html for every page plus build/404.html).
+# Before replacing the live file, copy any extra rules it has (caching,
+# compression, security headers) into the marked section below.
+
+Options -MultiViews
+DirectorySlash Off
+RewriteEngine On
+
+# 1. www -> apex (same as the current live rule)
+RewriteCond %{HTTP_HOST} ^www\.denovacreations\.com$ [NC]
+RewriteRule ^(.*)$ https://denovacreations.com/$1 [R=301,L]
+
+# 2. Drop trailing slashes so /about/ and /about don't both exist
+#    (canonical URLs on the site have no trailing slash).
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+# 3. Real files (JS, CSS, images, robots.txt, sitemap.xml, ads.txt) as-is
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# 4. Pre-rendered pages: /about -> /about/index.html
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME}/index.html -f
+RewriteRule ^(.+)$ $1/index.html [L]
+
+# 5. Everything else is a real 404 (status 404, not 200).
+#    404.html is the app shell, so a visitor on a page that was somehow not
+#    pre-rendered still sees the right page; Google gets a correct 404.
+#    This replaces the old "send everything to /index.html" SPA fallback,
+#    which made every made-up URL look like a real page to Google.
+ErrorDocument 404 /404.html
+
+# ---- keep your existing caching / compression / header rules below ----
