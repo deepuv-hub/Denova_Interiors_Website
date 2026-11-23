@@ -16,7 +16,24 @@ const locations = [
   description:
     "Interior designers in Whitefield Bangalore offering modular kitchens, wardrobes, and modern home interiors by Denova Creations.",
 
-  intro: `Whitefield is one of Bangalore’s fastest-growing residential hubs with premium apartments and villas. Denova Creations provides customized interior design solutions in Whitefield tailored for modern families and professionals.`,
+  intro: "Whitefield in East Bangalore grew around the International Tech Park and the tech campuses that followed, and today it is one of the city's largest residential areas. Homes here range from large gated apartment communities to villa layouts, and the Namma Metro Purple Line now connects the area to the rest of the city. Many homes belong to working professionals and families, and a good number are bought as investments to rent out. Denova Creations designs and installs complete home interiors, modular kitchens and wardrobes for Whitefield homes.",
+
+  localGuide: [
+      {
+          "heading": "Plan for hard water",
+          "text": "Many parts of Whitefield have depended on borewell and tanker water, which is often hard and leaves scale on taps, sinks and countertops. Choose easy-to-clean, non-porous surfaces around the sink, use BWP plywood with sealed edges for the sink unit, and pick fittings that are easy to descale."
+      },
+      {
+          "heading": "Make room for work",
+          "text": "With so many residents working in tech, a proper work-from-home corner is often on the list: a study counter built into a bedroom wardrobe, good task lighting, enough sockets and a quiet spot away from the living room."
+      },
+      {
+          "heading": "Furnishing a flat to rent out",
+          "text": "For investment flats, durability and easy maintenance matter more than statement finishes. Laminate shutters, good hinges and channels, and neutral colours suit most tenants and keep upkeep low."
+      }
+  ],
+
+  guideLinks: ["new-flat-interiors-checklist", "plywood-grades-mr-bwr-bwp-explained", "kitchen-countertop-materials"],
 
   keywords: [
     "2BHK interiors",
@@ -34,6 +51,10 @@ const locations = [
 
 
   faqs: [
+    {
+      q: "Do you design interiors for rental flats in Whitefield?",
+      a: "Yes. For flats that will be rented out we usually suggest durable laminate finishes, good-quality hardware and neutral colours, which suit most tenants and keep maintenance simple."
+    },
     {
       q: "What is the cost of interiors in Whitefield?",
       a: FULL_HOME_PRICING_ANSWER
@@ -58,7 +79,24 @@ const locations = [
   description:
   "Interior designers in Indiranagar Bangalore offering luxury home interiors, modular kitchens, and modern apartment designs.",
 
-  intro: `Indiranagar is one of Bangalore’s most premium residential and lifestyle areas, known for upscale apartments and independent homes. Denova Creations specializes in luxury and modern interior design solutions in Indiranagar, tailored for high-end living and stylish urban homes.`,
+  intro: "Indiranagar is one of Bangalore's older planned residential layouts and one of its most sought-after neighbourhoods. Its tree-lined streets mix independent houses – many rebuilt as multi-floor homes – with apartments, close to the busy 100 Feet Road and 12th Main and served by the Namma Metro Purple Line. A lot of interior work here is renovation of older homes, or fitting out a newly rebuilt house floor by floor. Denova Creations provides complete home interiors, modular kitchens and wardrobes in Indiranagar.",
+
+  localGuide: [
+      {
+          "heading": "Renovating an older house",
+          "text": "In older Indiranagar homes, the hidden services usually need attention before new furniture goes in: rewiring for modern appliances, replacing old plumbing, waterproofing the terrace and bathrooms, and checking for termites."
+      },
+      {
+          "heading": "Multi-floor homes",
+          "text": "Rebuilt houses often have a separate floor for parents, a rental floor and the owner's own floors. Each floor can be planned with its own kitchen and storage, while keeping finishes consistent where the family shares spaces."
+      },
+      {
+          "heading": "Character worth keeping",
+          "text": "Some older homes have solid wood doors, mosaic or red oxide floors and high ceilings. New interiors can be designed around them rather than replacing them – warm wood-grain finishes sit well alongside old joinery."
+      }
+  ],
+
+  guideLinks: ["renovating-older-home-bangalore", "home-lighting-plan", "wardrobe-finishes-guide"],
 
   keywords: [
     "luxury home interiors",
@@ -76,6 +114,10 @@ const locations = [
 
 
   faqs: [
+    {
+      q: "Do you take up renovation of older houses in Indiranagar?",
+      a: "Yes. For older homes we plan the hidden work – electrical, plumbing, waterproofing and termite treatment – before the new kitchen, wardrobes and finishes, so the interiors last."
+    },
     {
       q: "What is the cost of interior design in Indiranagar?",
       a: FULL_HOME_PRICING_ANSWER
@@ -103,7 +145,24 @@ const locations = [
   description:
   "Affordable interior designers in Marathahalli Bangalore for 2BHK, 3BHK, modular kitchens, and modern home interiors.",
 
-  intro: `Marathahalli is a major residential hub in Bangalore, popular among working professionals and families living in apartments and gated communities. Denova Creations offers affordable and functional interior design solutions in Marathahalli, focusing on space optimization and modern living needs.`,
+  intro: "Marathahalli sits on the Outer Ring Road, close to the large tech parks along the corridor, which makes it popular with working professionals and young families. Most homes are apartments, many of them compact 2BHK and 3BHK flats, and a large share are rented. Interiors here need to make the most of the space and stand up to everyday use. Denova Creations offers complete home interiors, modular kitchens and wardrobes in Marathahalli.",
+
+  localGuide: [
+      {
+          "heading": "Getting the most from a compact flat",
+          "text": "Wardrobes with lofts up to the ceiling, storage beds, wall-mounted TV units and tall kitchen units add a lot of storage without using more floor space – important in the compact flats common in the area."
+      },
+      {
+          "heading": "Finishes that handle everyday use",
+          "text": "For busy households and rented flats, laminate shutters, sealed edges and good-quality hinges and drawer channels hold up far better than delicate high-gloss finishes."
+      },
+      {
+          "heading": "Planning work around traffic and building rules",
+          "text": "Many apartment buildings near the Outer Ring Road have set hours for interior work and material deliveries. Factory-made modular furniture keeps the time spent working inside the flat short."
+      }
+  ],
+
+  guideLinks: ["small-2bhk-space-saving-ideas", "modular-vs-carpenter-furniture", "kitchen-hardware-guide"],
 
   keywords: [
     "2BHK home interiors",
@@ -121,6 +180,10 @@ const locations = [
 
 
   faqs: [
+    {
+      q: "What interiors suit a compact 2BHK in Marathahalli?",
+      a: "Built-in storage that uses the full wall height, sliding wardrobes in small bedrooms, storage beds and wall-mounted units work well. Our guide to compact 2BHKs has more ideas."
+    },
     {
       q: "What is the cost of interior design in Marathahalli?",
       a: FULL_HOME_PRICING_ANSWER
@@ -149,7 +212,24 @@ const locations = [
   description:
   "Interior designers in Sarjapur Road Bangalore for modular kitchens, villa interiors, and modern apartment designs.",
 
-  intro: `Sarjapur Road is one of Bangalore’s fastest-developing residential corridors, known for modern apartments, gated communities, and villa projects. Denova Creations offers customized interior design solutions in Sarjapur Road, focusing on functional layouts, modern aesthetics, and family-friendly living spaces.`,
+  intro: "Sarjapur Road in South-East Bangalore has grown into one of the city's busiest residential corridors, lined with large new gated communities and villa projects. Many homeowners here are getting the keys to a new flat or villa and furnishing it from scratch. Denova Creations designs complete home interiors, modular kitchens and wardrobes for Sarjapur Road homes.",
+
+  localGuide: [
+      {
+          "heading": "Starting with a new home",
+          "text": "In a newly handed-over flat, inspect it carefully and get the builder to fix defects before interiors begin, collect the floor and electrical plans, and settle appliance and AC positions before the furniture is designed."
+      },
+      {
+          "heading": "Association rules",
+          "text": "Large gated communities usually have rules for interior work: working hours, deposits, lift booking and debris removal. Knowing them early helps plan a realistic schedule."
+      },
+      {
+          "heading": "Villas and larger homes",
+          "text": "Villas bring more rooms, staircases, terraces and often a home office or entertainment area. Planning the whole house together keeps finishes and lighting consistent from floor to floor."
+      }
+  ],
+
+  guideLinks: ["new-flat-interiors-checklist", "carpet-area-interior-budget-bangalore", "false-ceiling-guide"],
 
   keywords: [
     "2BHK home interiors",
@@ -167,6 +247,10 @@ const locations = [
 
 
   faqs: [
+    {
+      q: "When should I start interiors after taking possession on Sarjapur Road?",
+      a: "Once the builder has fixed handover defects and you have the floor and electrical plans. Decide appliances and AC positions first, then the furniture design."
+    },
     {
       q: "What is the cost of interior design in Sarjapur Road?",
       a: FULL_HOME_PRICING_ANSWER
@@ -194,7 +278,24 @@ const locations = [
   description:
   "Interior designers in HSR Layout Bangalore for modular kitchens, smart storage, and modern home interiors.",
 
-  intro: `HSR Layout is one of Bangalore’s most well-planned residential areas, known for modern apartments and family-friendly living. Denova Creations offers customized interior design solutions in HSR Layout, focusing on functional layouts, clean aesthetics, and efficient space utilization for contemporary homes.`,
+  intro: "HSR Layout is a planned residential layout in South-East Bangalore, organised into numbered sectors, with a mix of independent houses and mid-size apartment buildings. It is home to many young professionals and start-up founders as well as long-settled families. Denova Creations offers complete home interiors, modular kitchens and wardrobes in HSR Layout.",
+
+  localGuide: [
+      {
+          "heading": "Homes that double as offices",
+          "text": "Many residents work from home at least part of the week. A dedicated study counter, good task lighting, extra sockets and storage for work equipment make a real difference."
+      },
+      {
+          "heading": "Independent houses with rental floors",
+          "text": "Independent houses here often have floors that are rented out. Those floors benefit from durable, easy-maintenance finishes, while the owner's floor can carry the premium materials."
+      },
+      {
+          "heading": "Clean, practical kitchens",
+          "text": "Modular kitchens with drawers instead of shelves, under-cabinet lighting and good corner solutions suit busy households that cook every day."
+      }
+  ],
+
+  guideLinks: ["home-lighting-plan", "modular-kitchen-layouts-guide", "kitchen-hardware-guide"],
 
   keywords: [
     "2BHK home interiors",
@@ -212,6 +313,10 @@ const locations = [
 
 
   faqs: [
+    {
+      q: "Can you design a home office in an HSR Layout apartment?",
+      a: "Yes. A study counter can be built into a bedroom wardrobe or a wall unit, with task lighting and sockets planned before the walls and ceiling are finished."
+    },
     {
       q: "What is the cost of interior design in HSR Layout?",
       a: FULL_HOME_PRICING_ANSWER
@@ -240,7 +345,24 @@ const locations = [
   description:
   "Luxury interior designers in Koramangala Bangalore for premium home interiors and modular kitchen designs.",
 
-  intro: `Koramangala is one of Bangalore’s most vibrant and premium residential areas, known for modern apartments, independent homes, and a strong startup culture. Denova Creations offers luxury and contemporary interior design solutions in Koramangala, tailored for stylish urban living and design-conscious homeowners.`,
+  intro: "Koramangala is one of Bangalore's most lively neighbourhoods, organised into numbered blocks and known for its restaurants, start-ups and busy commercial streets. Homes range from older independent houses to premium apartments, and many homeowners here are design-conscious and looking for a distinctive finish. Denova Creations provides complete home interiors, modular kitchens and wardrobes in Koramangala.",
+
+  localGuide: [
+      {
+          "heading": "Premium finishes, chosen well",
+          "text": "Veneer, PU paint and acrylic can give a home a distinctive look. They need more care than laminate, so they work best where they are seen and appreciated – the living room, the master bedroom – with tougher finishes in daily-use areas."
+      },
+      {
+          "heading": "Renovating older homes",
+          "text": "Older independent houses here often need rewiring, new plumbing and waterproofing before new interiors. Doing this first protects the investment in finishes."
+      },
+      {
+          "heading": "Lighting that sets the mood",
+          "text": "Layered lighting – a soft ambient light, task lights and accent lights on feature walls – makes a big difference to how a premium interior looks in the evening."
+      }
+  ],
+
+  guideLinks: ["wardrobe-finishes-guide", "home-lighting-plan", "renovating-older-home-bangalore"],
 
   keywords: [
     "luxury home interiors",
@@ -258,6 +380,10 @@ const locations = [
 
 
   faqs: [
+    {
+      q: "Which wardrobe finish suits a premium Koramangala home?",
+      a: "Acrylic, PU paint and veneer give a premium look; laminate is tougher for daily use. Many homes combine them – see our wardrobe finishes guide."
+    },
     {
       q: "What is the cost of interior design in Koramangala?",
       a: FULL_HOME_PRICING_ANSWER
@@ -285,7 +411,24 @@ const locations = [
   description:
   "Affordable interior designers in Electronic City Bangalore for modular kitchens and modern apartment interiors.",
 
-  intro: `Electronic City is one of Bangalore’s largest IT hubs, home to working professionals and growing residential communities. Denova Creations offers affordable and smart interior design solutions in Electronic City, focusing on functional layouts, quick execution, and modern living needs for apartments and compact homes.`,
+  intro: "Electronic City in South Bangalore is one of the city's largest IT hubs, with big tech campuses across its phases and good road access along Hosur Road and the elevated expressway. Many homes here are compact 1BHK and 2BHK apartments – often first homes for working professionals, or flats bought to rent out. Denova Creations offers complete home interiors, modular kitchens and wardrobes in Electronic City.",
+
+  localGuide: [
+      {
+          "heading": "Spending where it counts",
+          "text": "On a first-home budget, the kitchen and wardrobes deserve the best materials and hardware because they are used every day. Decorative panelling and extras can be added later."
+      },
+      {
+          "heading": "Compact layouts",
+          "text": "Sliding wardrobes, storage beds, lofts and wall-mounted units help compact flats hold more without feeling crowded."
+      },
+      {
+          "heading": "Quick, tidy installation",
+          "text": "Factory-made modular furniture means less time and mess inside the flat, which helps in buildings with strict working hours or when you are moving in soon."
+      }
+  ],
+
+  guideLinks: ["carpet-area-interior-budget-bangalore", "small-2bhk-space-saving-ideas", "modular-vs-carpenter-furniture"],
 
   keywords: [
     "2BHK home interiors",
@@ -303,6 +446,10 @@ const locations = [
 
 
   faqs: [
+    {
+      q: "How should I budget interiors for a 2BHK in Electronic City?",
+      a: "Use the carpet area of your flat with our indicative full-home rate, and prioritise the kitchen and wardrobes. Our budgeting guide walks through it step by step."
+    },
     {
       q: "What is the cost of interior design in Electronic City?",
       a: FULL_HOME_PRICING_ANSWER
@@ -331,7 +478,24 @@ const locations = [
   description:
   "Premium interior designers in Hebbal Bangalore for modular kitchens, luxury apartments, and elegant home interiors.",
 
-  intro: `Hebbal is one of Bangalore’s premium residential areas, known for luxury apartments, lake-facing homes, and well-developed infrastructure. Denova Creations offers elegant and high-quality interior design solutions in Hebbal, focusing on spacious layouts, modern aesthetics, and comfortable family living.`,
+  intro: "Hebbal in North Bangalore sits beside Hebbal Lake and the Hebbal flyover, on the main route to Kempegowda International Airport. The area is known for premium high-rise apartments, including lake-facing homes with large windows and generous layouts. Denova Creations offers complete home interiors, modular kitchens and wardrobes in Hebbal.",
+
+  localGuide: [
+      {
+          "heading": "Large windows and strong light",
+          "text": "High-rise homes with big windows get plenty of daylight, and also glare and heat. Plan blinds or curtains with the interiors, and keep veneer and some fabrics out of direct sun, where they can fade."
+      },
+      {
+          "heading": "Spacious layouts",
+          "text": "Larger apartments allow walk-in wardrobes, a separate dining area and a fuller kitchen with an island or breakfast counter. Planning the whole home together keeps it consistent."
+      },
+      {
+          "heading": "Premium kitchens",
+          "text": "Quartz or granite countertops, good hardware, tall units and corner solutions suit families who cook a lot and entertain often."
+      }
+  ],
+
+  guideLinks: ["kitchen-countertop-materials", "wardrobe-finishes-guide", "home-lighting-plan"],
 
   keywords: [
     "premium home interiors",
@@ -349,6 +513,10 @@ const locations = [
 
 
   faqs: [
+    {
+      q: "How do I protect interiors from sunlight in a high-rise Hebbal flat?",
+      a: "Plan blinds or curtains along with the interiors, and choose finishes that resist fading for surfaces that get direct sun. Veneer and some fabrics fade faster than laminate."
+    },
     {
       q: "What is the cost of interior design in Hebbal?",
       a: FULL_HOME_PRICING_ANSWER
@@ -377,7 +545,24 @@ const locations = [
   description:
   "Interior designers in Yelahanka Bangalore for villa interiors, modular kitchens, and modern family homes.",
 
-  intro: `Yelahanka is one of Bangalore’s most peaceful residential areas, known for spacious homes, villas, and well-planned communities. Denova Creations offers customized interior design solutions in Yelahanka, focusing on functional layouts, elegant designs, and comfortable family living for apartments and independent houses.`,
+  intro: "Yelahanka in North Bangalore combines the old town with newer residential areas, and is home to the Yelahanka Air Force Station, where the Aero India show is held. Its quieter setting and closeness to the airport have brought villas, independent houses and plotted developments, so homes here are often larger than in central Bangalore. Denova Creations offers complete home interiors, modular kitchens and wardrobes in Yelahanka.",
+
+  localGuide: [
+      {
+          "heading": "Independent houses and villas",
+          "text": "Larger homes mean more rooms, staircases, terraces and bathrooms. Terrace and bathroom waterproofing deserve attention before interiors, especially in independent houses."
+      },
+      {
+          "heading": "Planning a whole house at once",
+          "text": "Designing every floor together keeps finishes, lighting and storage consistent, and lets the budget be balanced across rooms rather than spent on the first few."
+      },
+      {
+          "heading": "Pooja rooms and family spaces",
+          "text": "Bigger homes often have room for a dedicated pooja room, a family lounge or a home office, which can be planned from the start rather than fitted in later."
+      }
+  ],
+
+  guideLinks: ["carpet-area-interior-budget-bangalore", "false-ceiling-guide", "vastu-kitchen-planning"],
 
   keywords: [
     "villa interior design",
@@ -395,6 +580,10 @@ const locations = [
 
 
   faqs: [
+    {
+      q: "Do you do interiors for independent houses and villas in Yelahanka?",
+      a: "Yes. For larger homes we plan all floors together and check waterproofing, electrical and plumbing before the interiors begin."
+    },
     {
       q: "What is the cost of interior design in Yelahanka?",
       a: FULL_HOME_PRICING_ANSWER
@@ -422,7 +611,24 @@ const locations = [
   description:
   "Interior designers in JP Nagar Bangalore for modular kitchens and customized family home interiors.",
 
-  intro: `JP Nagar is one of Bangalore’s well-established residential areas, known for independent houses, apartments, and family-friendly neighborhoods. Denova Creations offers customized interior design solutions in JP Nagar, focusing on comfortable layouts, functional designs, and modern aesthetics tailored for family living.`,
+  intro: "JP Nagar in South Bangalore is a long-established residential area, organised into numbered phases near Bannerghatta Road. It has a mix of older independent houses and apartments, and many homes are shared by more than one generation of the family. Denova Creations offers complete home interiors, modular kitchens and wardrobes in JP Nagar.",
+
+  localGuide: [
+      {
+          "heading": "Homes for the whole family",
+          "text": "In multi-generation homes, comfortable heights, good lighting and easy-to-reach storage help older family members, while children's rooms need flexible storage that grows with them."
+      },
+      {
+          "heading": "Pooja units and Vastu",
+          "text": "Many families here want a pooja unit and a kitchen planned with Vastu in mind. Both are easiest to get right when they are part of the first design."
+      },
+      {
+          "heading": "Renovating established homes",
+          "text": "Older houses and apartments often need rewiring, plumbing updates and waterproofing before new furniture. Planning this first avoids costly rework."
+      }
+  ],
+
+  guideLinks: ["vastu-kitchen-planning", "renovating-older-home-bangalore", "home-lighting-plan"],
 
   keywords: [
     "2BHK home interiors",
@@ -440,6 +646,10 @@ const locations = [
 
 
   faqs: [
+    {
+      q: "Can you plan a Vastu-friendly kitchen in a JP Nagar home?",
+      a: "Yes. Tell us at the first meeting and share the directions of the kitchen walls; we will plan the hob, sink and storage positions around them where the layout allows."
+    },
     {
       q: "What is the cost of interior design in JP Nagar?",
       a: FULL_HOME_PRICING_ANSWER

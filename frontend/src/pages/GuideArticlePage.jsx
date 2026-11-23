@@ -10,7 +10,8 @@ const formatDate = (iso) =>
   new Date(`${iso}T00:00:00`).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" });
 
 // Internal links inside guide text are written as plain sentences; the
-// "related" list at the end carries the actual links.
+// "related" list at the end carries the actual links. "img" blocks must use
+// the business's own project photos (public/images/...).
 const Block = ({ block }) => {
   switch (block.type) {
     case "h2":
@@ -28,6 +29,13 @@ const Block = ({ block }) => {
         <ol className="list-decimal pl-6 space-y-2 my-4">
           {block.items.map((item, i) => <li key={i}>{item}</li>)}
         </ol>
+      );
+    case "img":
+      return (
+        <figure className="my-8">
+          <img src={block.src} alt={block.alt} loading="lazy" className="w-full rounded-xl object-cover" />
+          {block.caption && <figcaption className="text-xs text-stone-500 mt-2 text-center">{block.caption}</figcaption>}
+        </figure>
       );
     case "tip":
       return (

@@ -14,6 +14,7 @@ import {
   useSubmitLock,
 } from "../utils/leadTracking";
 import { BUSINESS_REF } from "../data/business";
+import { getGuide } from "../data/guides";
 
 const PROPERTY_TYPES = ["1 BHK", "2 BHK", "3 BHK", "3+ BHK", "Villa / Independent House", "Other"];
 
@@ -264,6 +265,37 @@ const CityLandingTemplate = ({ location }) => {
       <section className="py-10 max-w-4xl mx-auto">
         <p className="text-gray-600">{location.intro}</p>
       </section>
+
+      {/* AREA-SPECIFIC PLANNING NOTES */}
+      {location.localGuide?.length > 0 && (
+        <section className="py-10 max-w-4xl mx-auto">
+          <h2 className="text-2xl font-semibold mb-6">
+            Planning Interiors in {location.name}
+          </h2>
+          <div className="space-y-6">
+            {location.localGuide.map((item) => (
+              <div key={item.heading}>
+                <h3 className="text-lg font-semibold mb-1">{item.heading}</h3>
+                <p className="text-gray-600">{item.text}</p>
+              </div>
+            ))}
+          </div>
+          {location.guideLinks?.length > 0 && (
+            <div className="mt-8">
+              <h3 className="text-base font-semibold mb-2">Helpful guides</h3>
+              <ul className="list-disc pl-6 space-y-1">
+                {location.guideLinks.map(getGuide).filter(Boolean).map((g) => (
+                  <li key={g.slug}>
+                    <Link to={`/guides/${g.slug}`} className="underline text-[#0F3D3E] hover:text-[#C8A35F]">
+                      {g.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </section>
+      )}
 
       {/* SERVICES */}
       <section className="py-10 max-w-4xl mx-auto">
