@@ -48,7 +48,9 @@ There is no separate lint script. ESLint (react-hooks rules) runs as part of `cr
 
 ## Deployment
 
-Production (`denovacreations.com`) is served through the Hostinger CDN. The production `.htaccess` lives in Hostinger's `public_html` and is **not** in this repo. `frontend/deploy/hostinger.htaccess` is the recommended replacement for use with pre-rendered builds (serves `/<route>/index.html`, real 404 status via `404.html`, no blanket SPA fallback). It 301-redirects `www` to the apex domain and provides the SPA fallback to `/index.html`, excluding `robots.txt` and `sitemap.xml` from React routing. Change redirects or rewrites there, not in the repo.
+Production (`denovacreations.com`) is served through the Hostinger CDN. The production `.htaccess` lives in Hostinger's `public_html` and is **not** in this repo. The current live file 301-redirects `www` to the apex domain and provides the SPA fallback to `/index.html`, excluding `robots.txt` and `sitemap.xml` from React routing. Change redirects or rewrites there, not in the repo.
+
+`frontend/deploy/hostinger.htaccess` is the recommended replacement for use with pre-rendered builds: it keeps the `www` redirect, serves `/<route>/index.html`, and returns a real 404 status via `404.html` instead of the blanket SPA fallback. It must be copied to Hostinger by hand.
 
 - There is no Hostinger deploy script, CI workflow, or deployment documentation in the repo. `frontend/build/` is gitignored.
 - **Unknown:** the exact method used to build and upload files to Hostinger.
