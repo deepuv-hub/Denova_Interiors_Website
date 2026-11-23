@@ -1,37 +1,57 @@
-# Recommended .htaccess for Hostinger public_html (denovacreations.com).
+# .htaccess for Hostinger public_html (denovacreations.com).
 #
-# Use ONLY with a pre-rendered build (`yarn build`, which now runs react-snap
-# and writes build/<route>/index.html for every page plus build/404.html).
-# Before replacing the live file, copy any extra rules it has (caching,
-# compression, security headers) into the marked section below.
+# Shipped automatically: scripts/build.js copies this file to build/.htaccess
+# and Hostinger publishes build/ to public_html. It expects a pre-rendered
+# build (build/<route>/index.html for every page, plus build/404.html).
+# Based on the previous live file (www redirect, .builds block, caching),
+# with the blanket "send everything to index.html" fallback replaced.
 
 Options -MultiViews
 DirectorySlash Off
+
+<IfModule mod_rewrite.c>
 RewriteEngine On
+RewriteBase /
 
-# 1. www -> apex (same as the current live rule)
-RewriteCond %{HTTP_HOST} ^www\.denovacreations\.com$ [NC]
-RewriteRule ^(.*)$ https://denovacreations.com/$1 [R=301,L]
+# Force non-www
+RewriteCond %{HTTP_HOST} ^www\.denovacreations\.com [NC]
+RewriteRule ^(.*)$ https://denovacreations.com/$1 [L,R=301]
 
-# 2. Drop trailing slashes so /about/ and /about don't both exist
-#    (canonical URLs on the site have no trailing slash).
+# Block hidden build folders
+RewriteRule ^\.builds - [F,L]
+
+# Drop trailing slashes so /about/ and /about don't both exist
+# (canonical URLs on the site have no trailing slash)
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.+)/$ /$1 [R=301,L]
+RewriteRule ^(.+)/$ /$1 [L,R=301]
 
-# 3. Real files (JS, CSS, images, robots.txt, sitemap.xml, ads.txt) as-is
+# Real files (JS, CSS, images, robots.txt, sitemap.xml, ads.txt) as-is
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteRule ^ - [L]
 
-# 4. Pre-rendered pages: /about -> /about/index.html
+# Pre-rendered pages: /about -> /about/index.html
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteCond %{REQUEST_FILENAME}/index.html -f
 RewriteRule ^(.+)$ $1/index.html [L]
+</IfModule>
 
-# 5. Everything else is a real 404 (status 404, not 200).
-#    404.html is the app shell, so a visitor on a page that was somehow not
-#    pre-rendered still sees the right page; Google gets a correct 404.
-#    This replaces the old "send everything to /index.html" SPA fallback,
-#    which made every made-up URL look like a real page to Google.
+# Everything else is a real 404 (status 404, not 200). 404.html is the app
+# shell, so a visitor on a page that was not pre-rendered still sees it.
 ErrorDocument 404 /404.html
 
-# ---- keep your existing caching / compression / header rules below ----
+# Cache optimisation
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/webp "access plus 1 year"
+ExpiresByType image/jpeg "access plus 1 year"
+ExpiresByType image/png "access plus 1 year"
+ExpiresByType image/svg+xml "access plus 1 year"
+ExpiresByType text/css "access plus 1 year"
+ExpiresByType application/javascript "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+<FilesMatch "\.(js|css|png|jpg|jpeg|webp|svg)$">
+Header set Cache-Control "public, max-age=31536000, immutable"
+</FilesMatch>
+</IfModule>

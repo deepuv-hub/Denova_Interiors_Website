@@ -1,0 +1,99 @@
+# Builds the site with react-snap pre-rendering (Hostinger's build servers
+# can't run Chrome, so this has to happen here), checks the output, and on
+# pushes to main commits it to frontend/prebuilt/. Hostinger auto-deploys
+# that commit: its `yarn build` (scripts/build.js) just copies prebuilt/.
+name: Build site
+
+on:
+  push:
+    branches: ["**"]
+    paths-ignore: ["**.md", "frontend/prebuilt/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+          cache-dependency-path: frontend/yarn.lock
+
+      # Libraries needed by the Chromium that react-snap's puppeteer downloads
+      - name: Install Chromium dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libgbm1 libnss3 libxss1 libasound2 \
+            libatk-bridge2.0-0 libgtk-3-0 libgconf-2-4 libx11-xcb1 >/dev/null
+
+      - name: Install packages
+        run: yarn install --frozen-lockfile --network-timeout 600000
+
+      # scripts/build.js pre-renders when GITHUB_ACTIONS=true.
+      # CI=false: CRA would otherwise fail the build on ESLint warnings.
+      - name: Build and pre-render
+        run: yarn build
+        env:
+          CI: "false"
+
+      - name: Check pre-rendered output
+        run: |
+          set -e
+          words() { sed -e 's/<script[^>]*>.*<\/script>//g' -e 's/<[^>]*>/ /g' "$1" | wc -w; }
+          echo "Pre-rendered pages:"; find build -name index.html | sort
+          test -f build/404.html || { echo "::error::build/404.html is missing"; exit 1; }
+          test -f build/.htaccess || { echo "::error::build/.htaccess is missing"; exit 1; }
+          for page in build/index.html build/about/index.html build/guides/index.html build/terms/index.html; do
+            test -f "$page" || { echo "::error::$page is missing"; exit 1; }
+            n=$(words "$page"); echo "$page: $n words"
+            [ "$n" -gt 150 ] || { echo "::error::$page has only $n words - pre-rendering did not capture content"; exit 1; }
+          done
+          if grep -l 'pagead2.googlesyndication.com' -r build --include=*.html; then
+            echo "::error::AdSense script found in a pre-rendered page"; exit 1
+          fi
+          count=$(grep -o 'googletagmanager.com/gtm.js' build/about/index.html | wc -l)
+          [ "$count" -le 1 ] || { echo "::error::GTM appears $count times in about/index.html"; exit 1; }
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site-build
+          path: frontend/build
+          include-hidden-files: true
+
+      # images/ is left out: Hostinger's build copies it from public/.
+      - name: Update frontend/prebuilt
+        run: |
+          rm -rf prebuilt
+          rsync -a --exclude '/images/' build/ prebuilt/
+          echo "Built from ${GITHUB_SHA}" > prebuilt/BUILD_INFO.txt
+
+      - name: Test the Hostinger build path
+        run: |
+          set -e
+          mv build build-ci
+          USE_PREBUILT=1 GITHUB_ACTIONS=false node scripts/build.js
+          diff -rq build-ci build | grep -v BUILD_INFO && { echo "::error::Hostinger build differs from CI build"; exit 1; } || true
+          rm -rf build-ci
+
+      - name: Commit pre-rendered build
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add -A prebuilt
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -q -m "Update pre-rendered build for ${GITHUB_SHA::7}"
+          git push

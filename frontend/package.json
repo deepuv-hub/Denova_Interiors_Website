@@ -62,8 +62,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build",
-    "postbuild": "react-snap",
+    "build": "node scripts/build.js",
     "test": "craco test"
   },
   "reactSnap": {
