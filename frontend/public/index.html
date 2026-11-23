@@ -17,6 +17,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0F3D3E" />
+  <title>Interior Designers in Bangalore | Denova Creations</title>
+
+  <!-- AdSense account verification only. The ad script itself is loaded by
+       src/components/AdSlot.jsx, and only on pages with real content. -->
+  <meta name="google-adsense-account" content="ca-pub-1542816127514935" />
 
   <!-- ✅ NON-BLOCKING GOOGLE FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +37,9 @@
   <!-- ✅ GTM PRODUCTION IMPLEMENTATION -->
   <!-- Google Tag Manager -->
   <script>
-    (function(w,d,s,l,i){
+    // Skip during pre-rendering (react-snap), otherwise the snapshot would
+    // contain an extra copy of the GTM script and tags would fire twice.
+    if (navigator.userAgent !== 'ReactSnap') (function(w,d,s,l,i){
       w[l]=w[l]||[];
       w[l].push({
         'gtm.start': new Date().getTime(),
@@ -52,11 +59,6 @@
   </script>
   <!-- End Google Tag Manager -->
 
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1542816127514935"
-    crossorigin="anonymous"></script>
-  <!-- End Google AdSense -->
-
 </head>
 
 <body>
@@ -73,7 +75,8 @@
   <!-- End Google Tag Manager (noscript) -->
 
   <noscript>
-    You need to enable JavaScript to run this app.
+    Denova Creations – interior designers in Bangalore for full-home interiors,
+    modular kitchens and wardrobes. Call +91 95910 39597.
   </noscript>
 
   <div id="root"></div>

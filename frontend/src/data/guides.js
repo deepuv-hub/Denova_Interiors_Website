@@ -1,0 +1,190 @@
+// Long-form guides (the site's blog). Each guide renders at /guides/:slug via
+// GuideArticlePage, is listed on /guides, and must be added to
+// public/sitemap.xml. Keep prices consistent with data/pricing.js and do not
+// state business facts (warranties, timelines, brands) the owner has not
+// confirmed. Body blocks: { type: "p" | "h2" | "h3" | "ul" | "ol" | "tip", ... }.
+import { FULL_HOME_RATE, FULL_HOME_RATE_TEXT, PRICING_DISCLAIMER } from "./pricing";
+
+const rate = (n) => `₹${n.toLocaleString("en-IN")}`;
+const example = (sqft) =>
+  `${rate(sqft * FULL_HOME_RATE.min)} to ${rate(sqft * FULL_HOME_RATE.max)}`;
+
+export const guides = [
+  {
+    slug: "carpet-area-interior-budget-bangalore",
+    title: "Carpet Area vs Super Built-Up Area: How to Budget Your Home Interiors",
+    description:
+      "Why interior quotes in Bangalore are based on carpet area, how to work out yours from the sale agreement, and how to turn it into a realistic full-home interior budget.",
+    category: "Budget & Planning",
+    published: "2026-11-23",
+    updated: "2026-11-23",
+    readMinutes: 4,
+    image: "/images/living1.webp",
+    imageAlt: "Furnished living room in a Bangalore apartment",
+    body: [
+      { type: "p", text: "Most people in Bangalore know their flat by one number: the area printed in the builder's brochure. A \"1,450 sq.ft 3BHK\" sounds precise, but that figure is usually the super built-up area, and it is not the number an interior designer should use to price your home. Mixing up the two is one of the most common reasons interior budgets go wrong before a single sheet of plywood is cut." },
+      { type: "p", text: "This guide explains the three area figures you will see, which one interior pricing is based on, how to find it, and how to turn it into a working budget." },
+
+      { type: "h2", text: "The three area figures, in plain words" },
+      { type: "ul", items: [
+        "Carpet area – the usable floor area inside your flat. Under the Real Estate (Regulation and Development) Act, 2016 (RERA), it is the net usable floor area, excluding external walls, service shafts, exclusive balconies or verandahs and open terraces, but including the internal partition walls.",
+        "Built-up area – carpet area plus the thickness of the external walls, and often your balconies.",
+        "Super built-up area – built-up area plus your share of common areas: lobbies, staircases, lift wells, the clubhouse and so on. This is the largest number, and in many apartment projects it is 25–35% more than the carpet area.",
+      ] },
+      { type: "p", text: "Interiors are built inside your walls, so the work and the material scale with the space you actually use. That is why full-home interior pricing is normally based on carpet area." },
+
+      { type: "h2", text: "How to find your carpet area" },
+      { type: "ol", items: [
+        "Check your sale agreement. For projects registered under RERA, the agreement has to state the carpet area.",
+        "Look up the project on the Karnataka RERA website, which lists unit types and their carpet areas for registered projects.",
+        "If you only have a floor plan, add up the room dimensions (length × width for each room, including the kitchen, bathrooms and passages). It will be close enough for a first budget.",
+        "If none of these is available, a rough rule is to take 70–75% of the super built-up area – but treat that as a placeholder until the site is measured.",
+      ] },
+      { type: "tip", text: "Your interior designer will measure the site before the final quote. Use your own figure for budgeting, and expect the measured figure to be the one that counts." },
+
+      { type: "h2", text: "Turning carpet area into a budget" },
+      { type: "p", text: `At Denova Creations, full-home interiors are currently priced at ${FULL_HOME_RATE_TEXT} of carpet area. That range is wide on purpose: the same flat can be done very simply or very richly. A worked example:` },
+      { type: "ul", items: [
+        `A 2BHK with about 900 sq.ft of carpet area: roughly ${example(900)}.`,
+        `A 3BHK with about 1,200 sq.ft of carpet area: roughly ${example(1200)}.`,
+        `A villa with about 2,500 sq.ft of carpet area: roughly ${example(2500)}.`,
+      ] },
+      { type: "p", text: `${PRICING_DISCLAIMER} Use the example as a range to plan around, not a quote.` },
+
+      { type: "h2", text: "What moves you up or down the range" },
+      { type: "h3", text: "Scope" },
+      { type: "p", text: "A \"full home\" can mean kitchen, wardrobes and a TV unit, or it can mean every room including false ceilings, wall panelling, lighting, a study, a pooja unit and loose furniture. Write down exactly which rooms and which items you want before comparing any quotes." },
+      { type: "h3", text: "Core material" },
+      { type: "p", text: "The board that cabinets are built from (MR or BWR plywood, BWP plywood, HDHMR, MDF or particle board) affects both cost and how well the furniture copes with moisture. Kitchens and bathroom vanities are where this matters most. Our guide to plywood grades covers the differences." },
+      { type: "h3", text: "Finish and hardware" },
+      { type: "p", text: "Laminate is the most economical finish; acrylic, PU paint, veneer and lacquered glass cost more. Soft-close hinges, tandem drawers, tall units and corner solutions in the kitchen add up quickly. Ask for these to be listed line by line." },
+      { type: "h3", text: "Civil and electrical changes" },
+      { type: "p", text: "Moving plumbing points, changing flooring, re-wiring or breaking walls are usually priced separately from furniture. If you are buying a new flat, ask the builder about changes before handover, when they are cheaper to make." },
+
+      { type: "h2", text: "A simple way to set your budget" },
+      { type: "ol", items: [
+        "Confirm your carpet area.",
+        "Decide your scope room by room.",
+        "Multiply the carpet area by the low and high ends of the rate to get a range.",
+        "Keep 10% aside for changes you decide on during the project – there are always some.",
+        "Compare quotes only when they cover the same scope, materials and hardware.",
+      ] },
+      { type: "p", text: "If you would like a quick indicative figure for your own home, try the cost calculator, or book a consultation and we will measure and quote properly." },
+    ],
+    faqs: [
+      { q: "Is interior design priced on carpet area or super built-up area?", a: "Full-home interiors are usually priced on carpet area, because the work is done inside your walls. Always check which area a quote uses before comparing it with another." },
+      { q: "How much smaller is carpet area than super built-up area?", a: "It varies by project, but carpet area is often 25–35% smaller than the super built-up area in Bangalore apartment complexes. Your sale agreement or the Karnataka RERA listing gives the exact figure." },
+    ],
+    related: [{ label: "Estimate your interior cost", to: "/estimate" }, { label: "Plywood grades explained", to: "/guides/plywood-grades-mr-bwr-bwp-explained" }],
+  },
+
+  {
+    slug: "plywood-grades-mr-bwr-bwp-explained",
+    title: "MR, BWR, BWP or Marine? Plywood Grades for Home Interiors Explained",
+    description:
+      "What the plywood grades on a quotation mean, which Indian Standards cover them, and which grade to use for kitchens, wardrobes and bathroom vanities in Bangalore homes.",
+    category: "Materials",
+    published: "2026-11-23",
+    updated: "2026-11-23",
+    readMinutes: 3,
+    image: "/images/wardrobe.webp",
+    imageAlt: "Built-in wardrobe made from laminated plywood",
+    body: [
+      { type: "p", text: "Almost every interior quotation in India lists the plywood grade, usually as a short code: MR, BWR, BWP or \"marine\". These codes decide how the furniture will behave around water, and they affect the price more than most finishes do. Here is what they mean and where each one makes sense." },
+
+      { type: "h2", text: "The grades, and the standards behind them" },
+      { type: "p", text: "Plywood grades in India are defined by the Bureau of Indian Standards (BIS). The two standards you will see are IS 303 (plywood for general purposes) and IS 710 (marine plywood). A sheet sold as a particular grade should carry the relevant IS mark and the manufacturer's details." },
+      { type: "ul", items: [
+        "MR (Moisture Resistant) – IS 303. Usually bonded with urea-formaldehyde resin. Fine in dry, indoor conditions; not meant for areas that get wet.",
+        "BWR (Boiling Water Resistant) – IS 303. Typically bonded with phenolic resin, so it copes much better with humidity and occasional splashes.",
+        "BWP (Boiling Water Proof) – IS 303. Also phenol-formaldehyde bonded, to a higher water-resistance requirement than BWR.",
+        "Marine – IS 710. Made for boats and very wet conditions, with stricter rules on the veneers and the bond. It is rarely necessary inside a home.",
+      ] },
+      { type: "tip", text: "\"Water resistant\" refers to the glue line. No plywood is happy sitting in water: edges that are left unsealed will still absorb moisture, so good edge banding matters as much as the grade." },
+
+      { type: "h2", text: "Which grade where" },
+      { type: "h3", text: "Kitchen base cabinets and the sink unit" },
+      { type: "p", text: "This is where water damage actually happens: a slow leak under the sink, spills that run behind the skirting, wet mopping. BWP plywood is the sensible choice for base units and essential for the sink cabinet. Many people also use it for the wall units for a consistent build." },
+      { type: "h3", text: "Bathroom vanities" },
+      { type: "p", text: "Use BWP at minimum, keep a gap between the cabinet and the wet floor where you can, and make sure every exposed edge is sealed." },
+      { type: "h3", text: "Wardrobes, TV units, bed backs and study units" },
+      { type: "p", text: "These stay dry, so MR or BWR plywood is usually adequate. Choose BWR if the wardrobe is against an external wall that faces the monsoon or a bathroom wall that could develop damp." },
+      { type: "h3", text: "Shutters" },
+      { type: "p", text: "Shutters are often made from the same plywood as the carcass, but some finishes, such as acrylic and PU, may be applied on MDF or HDHMR boards for a flatter surface. Ask what your shutter core is, not just the carcass." },
+
+      { type: "h2", text: "What about HDHMR, MDF and particle board?" },
+      { type: "p", text: "Engineered boards are common in factory-made modular furniture. HDHMR (high density, high moisture resistance board) is dense, flat and holds up reasonably well to humidity. MDF gives a very smooth surface for paint finishes but is weak against water. Particle board is the most economical and best kept to dry, low-load uses. None of these is wrong; the question is whether the board suits where it is used." },
+
+      { type: "h2", text: "How to check what you are getting" },
+      { type: "ol", items: [
+        "Ask for the grade, thickness and brand of plywood for each item – carcass and shutters – in the quotation.",
+        "Check the sheets on site for the IS mark, the grade and the manufacturer's stamp.",
+        "Ask how exposed edges will be finished (edge banding, and on which faces).",
+        "Ask which hardware brand is used for hinges and channels. A good board with poor hinges still fails early.",
+      ] },
+      { type: "p", text: "Bangalore's climate is mild, but the monsoon months are humid and kitchens are used heavily. Spending on the right grade in wet areas and saving on dry ones is usually the best balance of cost and life. Our materials page goes further into finishes and hardware." },
+    ],
+    faqs: [
+      { q: "Is BWR plywood waterproof?", a: "No. BWR is boiling water resistant – its glue holds up well to humidity and splashes – but it is not meant for constantly wet areas. Use BWP for sink units and bathroom vanities." },
+      { q: "Do I need marine plywood for my kitchen?", a: "Usually not. BWP plywood with properly sealed edges is enough for most home kitchens. Marine plywood (IS 710) is made for much wetter conditions and costs more." },
+    ],
+    related: [{ label: "Interior materials guide", to: "/materials" }, { label: "Modular kitchens in Bangalore", to: "/modular-kitchen-bangalore" }],
+  },
+
+  {
+    slug: "modular-kitchen-layouts-guide",
+    title: "L-Shaped, U-Shaped, Parallel or Straight? Choosing a Modular Kitchen Layout",
+    description:
+      "How the four common modular kitchen layouts work, which suits which apartment kitchen, and the measurements to check before you sign off a design.",
+    category: "Kitchens",
+    published: "2026-11-23",
+    updated: "2026-11-23",
+    readMinutes: 3,
+    image: "/images/kitchen1.webp",
+    imageAlt: "Modular kitchen with base and wall cabinets",
+    body: [
+      { type: "p", text: "The layout of a kitchen is decided mostly by the room you already have: where the window is, where the plumbing and the gas line come in, and where the doors are. Within those limits, choosing the right layout makes more difference to daily cooking than any finish or colour. Here are the four layouts you will see in most Bangalore apartments, and how to judge them." },
+
+      { type: "h2", text: "Start with the work triangle" },
+      { type: "p", text: "Designers often talk about the \"work triangle\" between the sink, the hob and the refrigerator – the three places you move between most. The idea is simple: keep the three close enough to save steps, far enough apart to give you counter space between them, and keep traffic (people walking through to the utility area, for example) out of the triangle." },
+      { type: "p", text: "In Indian kitchens it also helps to plan a clear stretch of counter next to the hob for chopping and plating, and a place for the appliances that live on the counter: mixer-grinder, water purifier and often a microwave." },
+
+      { type: "h2", text: "The four common layouts" },
+      { type: "h3", text: "Straight (single wall)" },
+      { type: "p", text: "Everything along one wall. It suits small or narrow kitchens and studio flats. The drawback is counter space: with the sink and hob on the same run, the space between them is usually the only prep area, so tall units and good wall storage become important." },
+      { type: "h3", text: "Parallel (galley)" },
+      { type: "p", text: "Two counters facing each other. Very efficient for cooking – you turn rather than walk – and common in apartments where the kitchen leads to a utility balcony. Keep at least about 1 metre (roughly 3.5 ft) of clear space between the two counters so two people and open drawers can coexist." },
+      { type: "h3", text: "L-shaped" },
+      { type: "p", text: "Two counters meeting at a corner. It is the most common layout in 2BHK and 3BHK apartments because it works in most room shapes and leaves floor space open. Plan the corner carefully: a blind corner with ordinary shelves wastes space, so ask about corner carousels or pull-out solutions." },
+      { type: "h3", text: "U-shaped" },
+      { type: "p", text: "Counters on three walls. It gives the most storage and counter space, and lets the sink, hob and refrigerator sit on separate runs. It needs a reasonably wide kitchen; in a narrow room a U-shape can feel cramped and has two corners to solve instead of one." },
+
+      { type: "h2", text: "Measurements worth checking" },
+      { type: "ul", items: [
+        "Counter height: around 850–900 mm suits most people; if the main cook is tall or short, adjust for them.",
+        "Counter depth: about 600 mm is standard and fits most hobs and sinks.",
+        "Gap between counter and wall units: around 600 mm, and more above the hob, following the chimney manufacturer's guidance.",
+        "Space beside the hob: leave counter on both sides where you can, so pan handles do not hang over an edge or into a wall.",
+        "Refrigerator: check the door swing and the space needed behind for ventilation.",
+      ] },
+      { type: "tip", text: "Before finalising, mark the layout on the floor with masking tape and \"cook\" a meal in the empty room. Problems with door swings and walking space show up immediately." },
+
+      { type: "h2", text: "Things people often forget" },
+      { type: "ol", items: [
+        "Enough electrical points at counter height for every appliance you use – and where they will sit.",
+        "A tall unit or pantry pull-out for dry storage, which reduces clutter on the counter.",
+        "Lighting under the wall units, so you are not working in your own shadow.",
+        "A dedicated place for the dustbin and recycling, ideally a pull-out under or near the sink.",
+        "Ventilation: a chimney ducted to the outside works far better than one that only recirculates.",
+      ] },
+      { type: "p", text: "The best layout is the one that fits your room and the way you cook. If you share a photo and a rough floor plan of your kitchen at the consultation, we can show you which layouts fit and how much storage each one gives." },
+    ],
+    faqs: [
+      { q: "Which modular kitchen layout is best for a 2BHK apartment?", a: "An L-shaped layout suits most 2BHK kitchens because it works in many room shapes and keeps floor space open. In narrow kitchens with a utility balcony at the end, a parallel layout is often more efficient." },
+      { q: "What is the standard kitchen counter height in India?", a: "Around 850–900 mm from the floor is typical, but it is worth adjusting for the height of the person who cooks most." },
+    ],
+    related: [{ label: "Modular kitchens in Bangalore", to: "/modular-kitchen-bangalore" }, { label: "See a completed kitchen", to: "/projects/modern-white-modular-kitchen" }],
+  },
+];
+
+export const getGuide = (slug) => guides.find((g) => g.slug === slug);

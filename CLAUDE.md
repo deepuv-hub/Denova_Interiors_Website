@@ -23,7 +23,9 @@ There is no separate lint script. ESLint (react-hooks rules) runs as part of `cr
 ## Architecture
 
 - **Stack:** React 19 + Create React App (`react-scripts` 5) wrapped by CRACO, React Router 7, Tailwind 3 + shadcn/ui (Radix) components in `src/components/ui/`, `react-helmet-async` for head tags. The `@/` import alias maps to `src/`.
-- **Rendering:** Pure client-side SPA. `react-snap` is installed and `index.js` defines `window.snapSaveState`, but no `postbuild` script runs it, so pages are **not** prerendered. Crawlers see an empty `index.html` without a default `<title>`/description.
+- **Rendering:** Client-side SPA, pre-rendered at build time. `yarn build` runs `react-snap` as `postbuild` (config in `package.json` → `reactSnap`), which crawls the built site and writes `build/<route>/index.html` for every linked page plus `build/404.html`. New pages must be linked from somewhere (or added to `reactSnap.include`) to be pre-rendered. Third-party scripts (GTM in `index.html`, Clarity in `App.js`, AdSense in `AdSlot.jsx`) are skipped when `navigator.userAgent === "ReactSnap"` so snapshots don't carry duplicate tags; keep that guard on any new tracking script.
+- **AdSense:** The ad script is not in `index.html` (only the `google-adsense-account` verification meta is). `components/AdSlot.jsx` injects it on first use and renders only on content pages (`pageAllowsAds`: allow-list of paths/prefixes, never forms, legal pages, `/interior-designers/*`, `/lp/*`, thank-you or the 404 page, detected via the `data-page-not-found` marker in `NotFoundPage`). This is to satisfy AdSense's "ads on screens without publisher content" policy; don't add the global script back.
+- **Guides (blog):** `src/data/guides.js` → `/guides` (`GuidesPage`) and `/guides/:slug` (`GuideArticlePage`, with Article + FAQPage JSON-LD and an in-article ad). Add each new guide to `public/sitemap.xml`.
 - **Routing (`src/App.js`):** Two-level `<Routes>`. `/lp/interior-design-bangalore` (Google Ads landing) and `/thank-you` render without the site chrome. Everything else goes through a `path="*"` route wrapped in `Layout` (Header, Footer, InternalLinksCTA, FloatingCTA, FloatingLeadForm) with a nested `<Routes>`. There is no 404 route. Most pages are `React.lazy`-loaded.
 - **Data-driven pages:** These share one data source, so changes to the data affect several routes and the sitemap:
   - `src/data/projects.js` → `/portfolio/:type/:category` (`CategoryPage`, matches `slugify(project.category)`), `/portfolio/:type/:category/:projectId` (`ProjectPage`, matches `id`), and `/projects/:slug` (`ProjectDetailPage`, matches `slug`). Project images live at `public/images/projects/<id>/<n>.webp`.
@@ -46,7 +48,7 @@ There is no separate lint script. ESLint (react-hooks rules) runs as part of `cr
 
 ## Deployment
 
-Production (`denovacreations.com`) is served through the Hostinger CDN. The production `.htaccess` lives in Hostinger's `public_html` and is **not** in this repo. It 301-redirects `www` to the apex domain and provides the SPA fallback to `/index.html`, excluding `robots.txt` and `sitemap.xml` from React routing. Change redirects or rewrites there, not in the repo.
+Production (`denovacreations.com`) is served through the Hostinger CDN. The production `.htaccess` lives in Hostinger's `public_html` and is **not** in this repo. `frontend/deploy/hostinger.htaccess` is the recommended replacement for use with pre-rendered builds (serves `/<route>/index.html`, real 404 status via `404.html`, no blanket SPA fallback). It 301-redirects `www` to the apex domain and provides the SPA fallback to `/index.html`, excluding `robots.txt` and `sitemap.xml` from React routing. Change redirects or rewrites there, not in the repo.
 
 - There is no Hostinger deploy script, CI workflow, or deployment documentation in the repo. `frontend/build/` is gitignored.
 - **Unknown:** the exact method used to build and upload files to Hostinger.
