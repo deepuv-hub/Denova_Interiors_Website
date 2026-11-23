@@ -1,0 +1,81 @@
+# Builds the site (with react-snap pre-rendering), checks the output, and
+# publishes a ready-to-upload copy:
+#   - as a downloadable artifact "site-build" on every run
+#   - on the `deploy` branch for pushes to main (contents = Hostinger public_html,
+#     including .htaccess from frontend/deploy/hostinger.htaccess)
+name: Build site
+
+on:
+  push:
+    branches: ["**"]
+    paths-ignore: ["**.md"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+          cache-dependency-path: frontend/yarn.lock
+
+      # Libraries needed by the Chromium that react-snap's puppeteer downloads
+      - name: Install Chromium dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libgbm1 libnss3 libxss1 libasound2 \
+            libatk-bridge2.0-0 libgtk-3-0 libgconf-2-4 libx11-xcb1 >/dev/null
+
+      - name: Install packages
+        run: yarn install --frozen-lockfile --network-timeout 600000
+
+      # CI=false: CRA would otherwise fail the build on ESLint warnings
+      - name: Build and pre-render
+        run: yarn build
+        env:
+          CI: "false"
+
+      - name: Check pre-rendered output
+        run: |
+          set -e
+          words() { sed -e 's/<script[^>]*>.*<\/script>//g' -e 's/<[^>]*>/ /g' "$1" | wc -w; }
+          echo "Pre-rendered pages:"; find build -name index.html | sort
+          test -f build/404.html || { echo "::error::build/404.html is missing"; exit 1; }
+          for page in build/index.html build/about/index.html build/guides/index.html build/terms/index.html; do
+            test -f "$page" || { echo "::error::$page is missing"; exit 1; }
+            n=$(words "$page"); echo "$page: $n words"
+            [ "$n" -gt 150 ] || { echo "::error::$page has only $n words - pre-rendering did not capture content"; exit 1; }
+          done
+          if grep -l 'pagead2.googlesyndication.com' -r build --include=*.html; then
+            echo "::error::AdSense script found in a pre-rendered page"; exit 1
+          fi
+          count=$(grep -o 'googletagmanager.com/gtm.js' build/about/index.html | wc -l)
+          [ "$count" -le 1 ] || { echo "::error::GTM appears $count times in about/index.html"; exit 1; }
+          cp deploy/hostinger.htaccess build/.htaccess
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site-build
+          path: frontend/build
+          include-hidden-files: true
+
+      - name: Publish to deploy branch
+        if: github.ref == 'refs/heads/main'
+        run: |
+          cd build
+          git init -q -b deploy
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Build of ${GITHUB_SHA}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" deploy
